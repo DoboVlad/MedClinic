@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MedicProject
 {
-    // Ceau Vlad
+   
     public class Program
     {
         public static void Main(string[] args)
