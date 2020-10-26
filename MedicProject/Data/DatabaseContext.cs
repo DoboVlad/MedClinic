@@ -13,7 +13,7 @@ namespace MedicProject.Data
         {
 
         }
-
+        //frwafew
         //create table User in database
         public DbSet<User> User { get; set; }
 
