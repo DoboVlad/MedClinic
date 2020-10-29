@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedicProject.Models
 {
-    [Table("Appointments")]
+    [Table("APPOINTMENTS")]
     public class Appointments
     {
         public int Id { get; set; }

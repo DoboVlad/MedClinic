@@ -10,8 +10,8 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace MedicProject.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20201029125743_UserAppointmentsTables")]
-    partial class UserAppointmentsTables
+    [Migration("20201029140711_AddTables")]
+    partial class AddTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,7 +41,7 @@ namespace MedicProject.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Appointments");
+                    b.ToTable("APPOINTMENTS");
                 });
 
             modelBuilder.Entity("MedicProject.Models.User", b =>
@@ -66,7 +66,7 @@ namespace MedicProject.Migrations
                     b.Property<string>("description")
                         .HasColumnType("NVARCHAR2(2000)");
 
-                    b.Property<int>("doctorId")
+                    b.Property<int?>("doctorId")
                         .HasColumnType("NUMBER(10)");
 
                     b.Property<string>("email")
@@ -92,7 +92,9 @@ namespace MedicProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.HasIndex("doctorId");
+
+                    b.ToTable("USERS");
                 });
 
             modelBuilder.Entity("MedicProject.Models.Appointments", b =>
@@ -102,6 +104,13 @@ namespace MedicProject.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MedicProject.Models.User", b =>
+                {
+                    b.HasOne("MedicProject.Models.User", "doctor")
+                        .WithMany("Pacients")
+                        .HasForeignKey("doctorId");
                 });
 #pragma warning restore 612, 618
         }

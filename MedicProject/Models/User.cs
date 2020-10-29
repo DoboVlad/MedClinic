@@ -25,12 +25,15 @@ namespace MedicProject.Models
         public byte[] PasswordHash { get; set; }
 
         public byte[] PasswordSalt {get;set;}
-        public int isApproved { get; set; }
-        public int isMedic { get; set;}
+        public int isApproved { get; set; }=0;
+        public int isMedic { get; set;}=0;
 
         public string description { get; set; }
         public string photo {get;set;}
-        public int doctorId { get; set; }
+        public User doctor{get;set;}
+        public int? doctorId { get; set; }
+
+        public ICollection<User> Pacients{get;set;}
         public ICollection<Appointments> Appointments {get; set;}
         
 
