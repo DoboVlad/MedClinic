@@ -1,7 +1,7 @@
 .container2 {
     width: 60%;
     margin: 10% auto;
-     
+
 }
 
 form {
@@ -32,11 +32,16 @@ button {
   background-color: #5084F2;
   color: white;
   padding: 10px 16px;
-  margin-left: 35%;
+  margin: auto;
   border: none;
   cursor: pointer;
+  display: block;
   width: 30%;
-  font-size: 20px;
+}
+
+.text{
+  text-align: center;
+  margin: auto;
 }
 
 button:hover {
@@ -64,12 +69,24 @@ img.avatar {
 
 span.psw {
   float: right;
+  margin-top: -10px;
 }
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 800px) {
   span.psw {
      display: block;
      float: none;
+  }
+  button {
+    background-color: #5084F2;
+    color: white;
+    padding: 10px 16px;
+    margin-left: 35%;
+    border: none;
+    cursor: pointer;
+    width: 80px;
+    font-size: 12px;
+    margin: auto;
   }
 }
