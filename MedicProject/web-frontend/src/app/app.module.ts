@@ -10,6 +10,7 @@ import { DoctorsComponent } from './Components/doctors/doctors.component';
 import { AppointmentsComponent } from './Components/appointments/appointments.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ForgotPasswordComponent } from './Components/forgot-password/forgot-pas
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
