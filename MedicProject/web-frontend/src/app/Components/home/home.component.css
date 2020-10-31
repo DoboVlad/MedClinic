@@ -1,0 +1,13 @@
+.imgDescription{
+    display: flex;
+    flex-direction: row;
+}
+.imgDescription img{
+    height: 50px;
+    weight:50px;
+    
+}
+.imgDescription p{
+    float:right;
+
+}
