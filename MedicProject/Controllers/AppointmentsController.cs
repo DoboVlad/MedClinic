@@ -51,10 +51,11 @@ namespace MedicProject.Controllers
              return await _context.APPOINTMENTS.AnyAsync(x => x.hour == Hour);
         } 
         
-        [HttpGet]
-        [Route("getAppointments")]
-        public async Task<IEnumerable<Appointments>> getAppointments(int userId){
-            var appointments =  await _context.APPOINTMENTS.ToListAsync<Appointments>();
+    
+        [HttpGet("{userId}")]
+        public IQueryable<Appointments> getAppointments(int userId){
+            Console.WriteLine("Id= " + userId);
+            var appointments =  _context.APPOINTMENTS.FromSqlRaw("SELECT * FROM APPOINTMENTS").Where(p => p.UserId == userId);
             return appointments;
         }
     }
