@@ -24,7 +24,7 @@ namespace MedicProject.Controllers
 
         [HttpPost]
         [Route("/createApp")]
-        [Authorize]
+        [Authorize]// only the users with a token can access this method
         public async Task<ActionResult<Appointments>> createAppointment(CreateAppointmentDTO app)
         {
             if(await AppointmentDateExist(app.date)){
@@ -39,22 +39,27 @@ namespace MedicProject.Controllers
                 hour = app.hour,
                 UserId = app.UserId
             };
-
+            
             return Appointment;
         }
 
-         private async Task<bool> AppointmentDateExist(DateTime date){
+        //verify if the date is already used in the database
+        private async Task<bool> AppointmentDateExist(DateTime date){
              return await _context.APPOINTMENTS.AnyAsync(x => x.date == date);
         } 
 
+        //verify if the hour is already used in the database
         private async Task<bool> AppointmentHourExist(string Hour){
              return await _context.APPOINTMENTS.AnyAsync(x => x.hour == Hour);
-        } 
-        
-    
+        }
+
+        // return all the appointemnts made by a user
+        // TODO: Find a way to make this method asynchronous
         [HttpGet("{userId}")]
         public IQueryable<Appointments> getAppointments(int userId){
-            Console.WriteLine("Id= " + userId);
+            Console.WriteLine("Id= " + userId); // for testing
+            // SELECT * FROM APPOINTMENTS a
+            // WHERE a.userId = userId
             var appointments =  _context.APPOINTMENTS.FromSqlRaw("SELECT * FROM APPOINTMENTS").Where(p => p.UserId == userId);
             return appointments;
         }

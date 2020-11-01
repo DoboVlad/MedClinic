@@ -25,13 +25,15 @@ namespace MedicProject.Controllers
 
         [HttpGet]
         [Route("getUsers")]
+        // return all users from database
+        // used only for testing
         public async Task<ActionResult<IEnumerable>> getAllUsers(){
             return await _context.USERS.ToListAsync();
         }
 
         [HttpPost("register")]
         public async Task<ActionResult<User>> Register(RegisterDTO RegisterDTO){
-            if ( await UserExists(RegisterDTO.email)) return BadRequest("There is allready an existing account with this email");
+            if ( await UserExists(RegisterDTO.email)) return BadRequest("There is already an existing account with this email");
             using var hmac=new HMACSHA512();
             var user = new User{
                 firstName=RegisterDTO.firstName,
@@ -57,7 +59,7 @@ namespace MedicProject.Controllers
             return await _context.USERS.AnyAsync(x => x.email == email.ToLower());
     }
 
-    [HttpPost("login")]
+        [HttpPost("login")]
         public async Task<ActionResult<UserDTO>> Login(LoginDTO LoginDto){
                 var user=await _context.USERS.SingleOrDefaultAsync(x => x.email==LoginDto.email);
                 if(user==null) return Unauthorized("Invalid credentials");
@@ -70,10 +72,11 @@ namespace MedicProject.Controllers
                 }
               
               if(user.isApproved==0) 
-              return Unauthorized("Contul dumneavoastra nu a fost inca aprobat de catre medicul ales.");
+              return Unauthorized("Your account have not been aproved yet.");
               
                return new UserDTO
             {
+                id = user.Id,
                 email=user.email,
                 firstName=user.firstName,
                 lastName=user.lastName,
