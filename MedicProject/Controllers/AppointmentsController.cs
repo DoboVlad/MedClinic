@@ -23,8 +23,8 @@ namespace MedicProject.Controllers
         }
 
         [HttpPost]
-        [Route("/createApp")]
-        [Authorize]// only the users with a token can access this method
+        [Route("createApp")]
+        //[Authorize]// only the users with a token can access this method
         public async Task<ActionResult<Appointments>> createAppointment(CreateAppointmentDTO app)
         {
             if(await AppointmentDateExist(app.date)){
@@ -32,7 +32,6 @@ namespace MedicProject.Controllers
                     return BadRequest("This date is already used!");
                 }
             }
-
             var Appointment = new Appointments
             {
                 date = app.date,
@@ -40,6 +39,9 @@ namespace MedicProject.Controllers
                 UserId = app.UserId
             };
             
+            _context.APPOINTMENTS.Add(Appointment);
+            await _context.SaveChangesAsync();
+
             return Appointment;
         }
 
