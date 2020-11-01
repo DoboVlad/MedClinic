@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,12 @@ namespace MedicProject.Controllers
         public UsersController(DatabaseContext context,ITokenService tokenService){
             _context=context;
             _tokenService=tokenService;
+        }
+
+        [HttpGet]
+        [Route("getUsers")]
+        public async Task<ActionResult<IEnumerable>> getAllUsers(){
+            return await _context.USERS.ToListAsync();
         }
 
         [HttpPost("register")]

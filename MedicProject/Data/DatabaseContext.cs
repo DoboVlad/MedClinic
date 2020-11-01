@@ -17,6 +17,6 @@ namespace MedicProject.Data
         //create table User in database
         public DbSet<User> USERS { get; set; }
 
-       
+        public DbSet<Appointments> APPOINTMENTS { get; set; }
     }
 }
