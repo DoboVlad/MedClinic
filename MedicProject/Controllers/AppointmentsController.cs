@@ -59,12 +59,59 @@ namespace MedicProject.Controllers
         // return all the appointements made by a user
         // TODO: Find a way to make this method asynchronous
         [HttpGet("{userId}")]
-        public IQueryable<Appointments> getAppointments(int userId){
-            Console.WriteLine("Id= " + userId); // for testing
+        public async Task<ActionResult<IList<Appointments>>> getAppointments(int userId){
             // SELECT * FROM APPOINTMENTS a
             // WHERE a.userId = userId
-            var appointments =  _context.APPOINTMENTS.FromSqlRaw("SELECT * FROM APPOINTMENTS").Where(p => p.UserId == userId);
+            var appointments = await _context.APPOINTMENTS.Where(p => p.UserId == userId).ToListAsync();
             return appointments;
+        }
+
+        [HttpGet("historyAppointments")]
+        // return all the appointments that have a date smaller than today
+        public async Task<List<NextOrHistoryAppointmentsDTO>> getBackApp(){
+            DateTime date = DateTime.Now;
+            var users = await _context.USERS.ToListAsync();
+            var appointments = await _context.APPOINTMENTS.ToListAsync();
+
+            var app = appointments.Join(
+                users,
+                keyApp => keyApp.UserId,
+                keyUsers => keyUsers.Id,
+                (appointments, users) => new NextOrHistoryAppointmentsDTO(
+                    users.Id,
+                    users.firstName,
+                    users.lastName,
+                    appointments.date,
+                    appointments.hour,
+                    users.phoneNumber
+                )
+            ).Where(app => app.date < date).ToList();
+
+            return app;
+        }
+
+         [HttpGet("nextAppointments")]
+        // return all the appointments that have a date bigger than today
+        public async Task<List<NextOrHistoryAppointmentsDTO>> getNextApp(){
+            DateTime date = DateTime.Now;
+            var users = await _context.USERS.ToListAsync();
+            var appointments = await _context.APPOINTMENTS.ToListAsync();
+
+            var app = appointments.Join(
+                users,
+                keyApp => keyApp.UserId,
+                keyUsers => keyUsers.Id,
+                (appointments, users) => new NextOrHistoryAppointmentsDTO(
+                    users.Id,
+                    users.firstName,
+                    users.lastName,
+                    appointments.date,
+                    appointments.hour,
+                    users.phoneNumber
+                )
+            ).Where(app => app.date > date).ToList();
+
+            return app;
         }
 
         //return all the appointements of a medic
@@ -75,21 +122,21 @@ namespace MedicProject.Controllers
             var users =  await _context.USERS.ToListAsync();
 
             //get all appointments from db
-            var appointemnts = await _context.APPOINTMENTS.ToListAsync();
+            var appointments = await _context.APPOINTMENTS.ToListAsync();
 
             //join appointments with users lists
-            var medicAppointemnts = appointemnts.Join(
+            var medicAppointemnts = appointments.Join(
                 users,
                 keyFromAppointemnts => keyFromAppointemnts.UserId,
                 keyFromUsers => keyFromUsers.Id,
-                (appointements, users) => new {
+                (appointments, users) => new {
                     doctorId = users.doctorId,
                     pactientFirstName = users.firstName,
                     pacientLastName = users.lastName,
                     phone = users.phoneNumber,
                     email = users.email,
-                    DateOfApp = appointements.date,
-                    HourOfApp = appointements.hour
+                    DateOfApp = appointments.date,
+                    HourOfApp = appointments.hour
                 }
             );
 
@@ -98,14 +145,14 @@ namespace MedicProject.Controllers
                 medicAppointemnts,
                 keyFromUser => keyFromUser.Id,
                 keyFromMedic => keyFromMedic.doctorId,
-                (medic, appointements) => new {
+                (medic, appointments) => new {
                     MedicId = medic.Id,
-                    pactientFirstName = appointements.pactientFirstName,
-                    pacientLastName = appointements.pacientLastName,
-                    phone = appointements.phone,
-                    email = appointements.email,
-                    DateOfApp = appointements.DateOfApp,
-                    HourOfApp = appointements.HourOfApp
+                    pactientFirstName = appointments.pactientFirstName,
+                    pacientLastName = appointments.pacientLastName,
+                    phone = appointments.phone,
+                    email = appointments.email,
+                    DateOfApp = appointments.DateOfApp,
+                    HourOfApp = appointments.HourOfApp
                 }
             );
 
