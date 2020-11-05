@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using MedicProject.Data;
 using MedicProject.Interfaces;
+using MedicProject.Mappers;
 using MedicProject.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +35,7 @@ namespace MedicProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ITokenService,TokenService>();
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(OptionsBuilderConfigurationExtensions=>{
                 OptionsBuilderConfigurationExtensions.TokenValidationParameters = new TokenValidationParameters{
                     ValidateIssuerSigningKey=true,

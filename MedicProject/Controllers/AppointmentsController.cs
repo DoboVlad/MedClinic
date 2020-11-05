@@ -1,4 +1,5 @@
-﻿using MedicProject.Data;
+﻿using AutoMapper;
+using MedicProject.Data;
 using MedicProject.DTO;
 using MedicProject.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -16,10 +17,12 @@ namespace MedicProject.Controllers
     [Route("api/[controller]")]
     public class AppointmentsController: ControllerBase
     {
+        private readonly IMapper _mapper;
         private readonly DatabaseContext _context;
 
-        public AppointmentsController(DatabaseContext context)
+        public AppointmentsController(DatabaseContext context, IMapper mapper)
         {
+            _mapper = mapper;
             _context = context;
         }
 
@@ -68,50 +71,30 @@ namespace MedicProject.Controllers
 
         [HttpGet("historyAppointments")]
         // return all the appointments that have a date smaller than today
-        public async Task<List<NextOrHistoryAppointmentsDTO>> getBackApp(){
+        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getBackApp(){
             DateTime date = DateTime.Now;
-            var users = await _context.USERS.ToListAsync();
-            var appointments = await _context.APPOINTMENTS.ToListAsync();
+            var appointments = await _context.APPOINTMENTS
+            .Include(p => p.User)
+            .Where(app => app.date < date)
+            .ToListAsync();
+            
+            var appToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
 
-            var app = appointments.Join(
-                users,
-                keyApp => keyApp.UserId,
-                keyUsers => keyUsers.Id,
-                (appointments, users) => new NextOrHistoryAppointmentsDTO(
-                    users.Id,
-                    users.firstName,
-                    users.lastName,
-                    appointments.date,
-                    appointments.hour,
-                    users.phoneNumber
-                )
-            ).Where(app => app.date < date).ToList();
-
-            return app;
+            return Ok(appToReturn);
         }
 
          [HttpGet("nextAppointments")]
         // return all the appointments that have a date bigger than today
-        public async Task<List<NextOrHistoryAppointmentsDTO>> getNextApp(){
+        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getNextApp(){
             DateTime date = DateTime.Now;
-            var users = await _context.USERS.ToListAsync();
-            var appointments = await _context.APPOINTMENTS.ToListAsync();
+            var appointments = await _context.APPOINTMENTS
+            .Include(p => p.User)
+            .Where(p => p.date > date)
+            .ToListAsync();
 
-            var app = appointments.Join(
-                users,
-                keyApp => keyApp.UserId,
-                keyUsers => keyUsers.Id,
-                (appointments, users) => new NextOrHistoryAppointmentsDTO(
-                    users.Id,
-                    users.firstName,
-                    users.lastName,
-                    appointments.date,
-                    appointments.hour,
-                    users.phoneNumber
-                )
-            ).Where(app => app.date > date).ToList();
+            var appointementsToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
 
-            return app;
+            return Ok(appointementsToReturn);
         }
 
         //return all the appointements of a medic
@@ -160,6 +143,20 @@ namespace MedicProject.Controllers
             var finalResult = result.Where(medic => medic.MedicId == id).ToList();
 
             return finalResult;
+        }
+
+        // api/appointments/delete/id
+        // delete an appointment by ID
+        [HttpDelete("delete/{appId}")]
+        public async Task<ActionResult> deleteApp(int appId)
+        {
+            var appointment = await _context.APPOINTMENTS.FirstOrDefaultAsync(app => app.Id == appId);
+
+            _context.APPOINTMENTS.Remove(appointment);
+
+            if(await _context.SaveChangesAsync() > 0) return Ok(appointment);
+
+            return BadRequest("Appointment wasn't found");
         }
     }
 }
