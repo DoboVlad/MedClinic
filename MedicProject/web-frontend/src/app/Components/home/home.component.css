@@ -1,13 +1,20 @@
-.imgDescription{
+/*.imgDescription{
     display: flex;
     flex-direction: row;
-}
+}*/
 .imgDescription img{
     height: 50px;
     width:50px;
+   /* align-content: flex-start;
+    flex-grow: 8;*/
+    align: left;
     
 }
-.imgDescription p{
-    float:right;
-
+.imgDescription b{
+    
+    /*align-content: flex-end;
+    align-self: center;*/
+    font-size: 20px;
+    color:rgb(44, 44, 117);
+    
 }

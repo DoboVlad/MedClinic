@@ -1,23 +1,22 @@
 <div class="register-page">
     <div class="form">
-      <form class="register-form">
+      <form class="register-form" [formGroup] = "registerForm" (ngSubmit) = "onSubmit()">
         <div class="reg">Sign Up</div><br>
-        <input type="text" placeholder="First Name" required/>
-        <input type="text" placeholder="Last Name" required/>
-        <input type="text" placeholder=" Social Security number" required/>
+        <input type="text" placeholder="First Name" formControlName = "firstName" required/>
+        <input type="text" placeholder="Last Name" formControlName = "lastName" required/>
+        <input type="text" placeholder=" Social Security number" formControlName ="cnp" required/>
         <div class="data">Birthday:</div>
-        <input type="date" placeholder="Birthday" required/>
-        <input type="email" placeholder="Email" required/>
-        <input type="text" placeholder="Phone number" required/>
-        <input type="password" placeholder="Password" required/>
-        <input type="password" placeholder="Confirm Password" required/>
+        <input type="date" placeholder="Birthday" formControlName = "birthday" required/>
+        <input type="email" placeholder="Email" formControlName = "email" required/>
+        <input type="text" placeholder="Phone number" formControlName = "phone" required/>
+        <input type="password" placeholder="Password" formControlName = "password" required/>
+        <input type="password" placeholder="Confirm Password" formControlName = "confirm" required/>
         <div class="doctors">Choose a doctor:</div>
-        <select name="doctors" id="doctors" required>
-          <option value="" disabled selected>></option>
-          <option value="doctor1">Doctor1</option>
-          <option value="doctor2">Doctor2</option>
-          <option value="doctor3">Doctor3</option>
-        </select><br><br>
+          <select name="doctors" id="doctors" formControlName = "doctor" required>
+            <option value="doctor1">Doctor1</option>
+            <option value="doctor2">Doctor2</option>
+            <option value="doctor3">Doctor3</option>
+          </select><br><br>
         <button>Register</button>
         <p class="message">Already registered? <a routerLink="/login">Login</a></p>
       </form>
