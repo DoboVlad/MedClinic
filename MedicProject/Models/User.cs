@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using MedicProject.Extensions;
 
 namespace MedicProject.Models
 {
@@ -35,6 +36,10 @@ namespace MedicProject.Models
 
         public ICollection<User> Pacients{get;set;}
         public ICollection<Appointments> Appointments {get; set;}
+
+        public int Getage(){
+          return dateOfBirth.CalculateAge();
+        }
         
 
     }

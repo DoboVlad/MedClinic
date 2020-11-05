@@ -1,7 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using MedicProject.Data;
 using MedicProject.DTO;
 using MedicProject.Interfaces;
@@ -18,18 +22,128 @@ namespace MedicProject.Controllers
     {      
         private readonly DatabaseContext _context;
         private readonly ITokenService _tokenService;
-        public UsersController(DatabaseContext context,ITokenService tokenService){
+        private readonly IMapper _mapper;
+        public UsersController(DatabaseContext context,ITokenService tokenService,IMapper mapper){
             _context=context;
             _tokenService=tokenService;
+            _mapper = mapper;
         }
 
         [HttpGet]
         [Route("getUsers")]
-        // return all users from database
-        // used only for testing
-        public async Task<ActionResult<IEnumerable>> getAllUsers(){
-            return await _context.USERS.ToListAsync();
+        // return all patients for a medic
+        public async Task<ActionResult<IEnumerable<PatientDTO>>> getUsers(int idMedic){
+            var users = await _context.USERS.Where(p => p.doctorId == idMedic).ToListAsync();
+            var patients = _mapper.Map<IEnumerable<PatientDTO>>(users);
+            return Ok(patients);
         }
+
+        [HttpGet]
+        [Route("getDoctors")]
+        //returns all doctors from database
+        public async Task<ActionResult<IEnumerable<DoctorDTO>>> getDoctors(){
+            var users = await _context.USERS.Where(d => d.isMedic == 1).ToListAsync();
+            var doctors = _mapper.Map<IEnumerable<DoctorDTO>>(users);
+            return Ok(doctors);
+        }
+
+        [HttpGet]
+        [Route("getUser")]
+        //returns one specific user from the database (for user Myaccount and fordoctors to see the selected pacient's data)
+        public async Task<PatientDTO> getUser(int id){
+        var user = await _context.USERS.FindAsync(id);
+        return  _mapper.Map<PatientDTO>(user);
+        
+        }
+
+        [HttpGet]
+        [Route("getDoctor")]
+        //returns a doctor's data (for doctor Myaccount) (the data includes photo and description)
+        public async Task<DoctorDTO> getDoctor(int id){
+        var user = await _context.USERS.FindAsync(id);
+        return  _mapper.Map<DoctorDTO>(user);
+        }
+
+        [HttpGet]
+        [Route("DeleteUser")]
+        //deletes an user from the database
+        public async Task deleteUser(int id){
+            var user=await _context.USERS.FindAsync(id);
+            _context.USERS.Remove(user);
+            _context.SaveChanges();
+        }
+
+        [HttpGet]
+        [Route("getUnapprovedUsers")]
+        //returns all unapproved users of a doctor
+        public async Task<ActionResult<IEnumerable<PatientDTO>>> getUnapprovedUsers(int id){
+               var users = await _context.USERS.Where(p => p.doctorId == id).Where(p => p.isApproved == 0).ToListAsync();
+               var unapprovedusers = _mapper.Map<IEnumerable<PatientDTO>>(users);
+               return Ok(unapprovedusers);
+        }
+
+        [HttpGet]
+        [Route("ApproveUser")]
+        //approves a selected user
+        public async Task ApproveUser(int id){
+            var user=await _context.USERS.FindAsync(id);
+            user.isApproved=1;
+            _context.USERS.Update(user);
+            _context.SaveChanges();
+
+        }
+
+        [HttpPost]
+        [Route("updateUser")]
+        public async Task UpdateUser(PatientDTO patientDTO){
+           // var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+           // var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+           var user=await _context.USERS.FindAsync(patientDTO.Id);
+           user.firstName=patientDTO.firstName;
+           user.lastName=patientDTO.lastName;
+           user.phoneNumber=patientDTO.phoneNumber;
+           user.email=patientDTO.email.ToLower();
+           _context.USERS.Update(user);
+           _context.SaveChanges();
+
+        }
+
+        [HttpPost]
+        [Route("updateMedic")]
+        public async Task UpdateMedic(DoctorDTO doctorDTO){
+            // var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+           // var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+           var user=await _context.USERS.FindAsync(doctorDTO.Id);
+           user.firstName=doctorDTO.firstName;
+           user.lastName=doctorDTO.lastName;
+           user.phoneNumber=doctorDTO.phoneNumber;
+           user.email=doctorDTO.email.ToLower();
+           user.description=doctorDTO.description;
+           user.photo=doctorDTO.photo;
+            _context.USERS.Update(user);
+            _context.SaveChanges();
+
+        }
+
+         [HttpPost]
+         [Route("ChangePassword")]
+        public async Task<ActionResult> changePassword(ChangePasswordDTO changePasswordDTO){
+           // var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+           // var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+            var user=await _context.USERS.FindAsync(changePasswordDTO.Id);
+            using var hmac1= new HMACSHA512(user.PasswordSalt);
+            var computedHash = hmac1.ComputeHash(Encoding.UTF8.GetBytes(changePasswordDTO.oldPassword));
+                for(int i=0;i<computedHash.Length;i++){
+                    if(computedHash[i]!=user.PasswordHash[i]) return Unauthorized("Parola incorecta");
+                }
+            using var hmac=new HMACSHA512();
+            user.PasswordHash=hmac.ComputeHash(Encoding.UTF8.GetBytes(changePasswordDTO.newPassword));
+            user.PasswordSalt=hmac.Key;
+            _context.USERS.Update(user);
+            _context.SaveChanges();
+            return Ok();
+        }
+
 
         [HttpPost("register")]
         public async Task<ActionResult<User>> Register(RegisterDTO RegisterDTO){

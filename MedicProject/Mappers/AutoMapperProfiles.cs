@@ -10,6 +10,8 @@ namespace MedicProject.Mappers
         {
             CreateMap<Appointments, NextOrHistoryAppointmentsDTO>();
             CreateMap<User, UserDTO>();
+            CreateMap<User, PatientDTO>();
+            CreateMap<User, DoctorDTO>();
         }
     }
 }
