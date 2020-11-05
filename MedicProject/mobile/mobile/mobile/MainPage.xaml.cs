@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using mobile.Resources;
 using Xamarin.Forms;
 
 namespace mobile
@@ -15,9 +16,21 @@ namespace mobile
             InitializeComponent();
         }
 
-       async private void btnRegister_Clicked(object sender, EventArgs e)
+       async private void btnLogIn_Clicked(object sender, EventArgs e)
         {
+            Animations.Button_Scale_Clicked((Button)sender);
             await this.Navigation.PushAsync(new LogInPage());
+        }
+      
+        private void btnRegister_Clicked(object sender, EventArgs e)
+        {
+            Animations.Button_Scale_Clicked((Button)sender);
+        }
+         private void btnAboutUs_Clicked(object sender, EventArgs e)
+        {
+            Animations.Button_Scale_Clicked((Button)sender);
+
+
         }
     }
 }

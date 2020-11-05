@@ -6,6 +6,7 @@
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="#5084F2"/>
             <Setter Property="FontSize" Value="18"/>
+            
 
         </Style>
         <Style TargetType="Entry">

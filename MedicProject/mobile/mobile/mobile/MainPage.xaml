@@ -4,10 +4,8 @@
              xmlns:local ="clr-namespace:mobile.Helpers"
              x:Class="mobile.MainPage"
              Title="MedClinic"
-             Padding="50,0,50,0">
-
-    
-    <Grid>
+             >
+    <Grid Padding="50,0,50,0">
         <Grid.RowDefinitions>
 
             <RowDefinition Height="2*"/>
@@ -18,9 +16,9 @@
         </Grid.RowDefinitions>
 
         <Image Source="{local:ImageResource  mobile.Images.logo.png}"  Grid.Row="0"/>
-        <Button Grid.Row="1" Text="{local:Translate Register}"/>
-        <Button Grid.Row="2" Text="{local:Translate LogIn}" Clicked="btnRegister_Clicked"/>
-        <Button Grid.Row="3" Text="{local:Translate AboutUs}"/>
+        <Button x:Name="btnRegister" Grid.Row="1" Text="{local:Translate Register}" Clicked="btnRegister_Clicked"/>
+        <Button x:Name="btnLogIn" Grid.Row="2" Text="{local:Translate LogIn}" Clicked="btnLogIn_Clicked"/>
+        <Button x:Name="btnAboutUs" Grid.Row="3" Text="{local:Translate AboutUs}" Clicked="btnAboutUs_Clicked"/>
         <Label Grid.Row="4" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="EndAndExpand"/>
 
     </Grid>
