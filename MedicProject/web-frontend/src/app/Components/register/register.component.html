@@ -12,11 +12,12 @@
         <input type="password" placeholder="Password" required/>
         <input type="password" placeholder="Confirm Password" required/>
         <div class="doctors">Choose a doctor:</div>
-          <select name="doctors" id="doctors" required>
-            <option value="doctor1">Doctor1</option>
-            <option value="doctor2">Doctor2</option>
-            <option value="doctor3">Doctor3</option>
-          </select><br><br>
+        <select name="doctors" id="doctors" required>
+          <option value="" disabled selected>></option>
+          <option value="doctor1">Doctor1</option>
+          <option value="doctor2">Doctor2</option>
+          <option value="doctor3">Doctor3</option>
+        </select><br><br>
         <button>Register</button>
         <p class="message">Already registered? <a routerLink="/login">Login</a></p>
       </form>
