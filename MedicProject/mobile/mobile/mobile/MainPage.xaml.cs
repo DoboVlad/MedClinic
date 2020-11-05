@@ -14,5 +14,10 @@ namespace mobile
         {
             InitializeComponent();
         }
+
+       async private void btnRegister_Clicked(object sender, EventArgs e)
+        {
+            await this.Navigation.PushAsync(new LogInPage());
+        }
     }
 }

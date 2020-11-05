@@ -3,6 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mobile.App">
     <Application.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="#5084F2"/>
+            <Setter Property="FontSize" Value="18"/>
 
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="#5084F2"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#5084F2"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="CornerRadius" Value="10"/>
+        </Style>
     </Application.Resources>
 </Application>

@@ -9,7 +9,7 @@ namespace mobile.Helpers
 {
     //to add images, add the image in the images folder and set the action, in properties, to embedded image
 
-    [ContentProperty(nameof(Source))] //to make sure the content si a source type
+    [ContentProperty(nameof(Source))] //to make sure the content is a source type
 
     public class ImageResourceExtension : IMarkupExtension
     {   // IMarkupExtension is needed  
