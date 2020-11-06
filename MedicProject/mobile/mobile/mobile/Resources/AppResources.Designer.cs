@@ -70,11 +70,11 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current adress.
+        ///   Looks up a localized string similar to Current address.
         /// </summary>
-        internal static string Adress {
+        internal static string Address {
             get {
-                return ResourceManager.GetString("Adress", resourceCulture);
+                return ResourceManager.GetString("Address", resourceCulture);
             }
         }
         
@@ -115,7 +115,7 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Personal identification number.
+        ///   Looks up a localized string similar to Personal Identification Number.
         /// </summary>
         internal static string Cnp {
             get {
@@ -232,7 +232,7 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your registartion is successful. Please wait for the doctor to accept your request..
+        ///   Looks up a localized string similar to Your registration is successful. Please wait for the doctor to accept your request..
         /// </summary>
         internal static string RegistrationSucceed {
             get {

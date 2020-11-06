@@ -120,8 +120,8 @@
   <data name="AboutUs" xml:space="preserve">
     <value>About Us</value>
   </data>
-  <data name="Adress" xml:space="preserve">
-    <value>Current adress</value>
+  <data name="Address" xml:space="preserve">
+    <value>Current address</value>
   </data>
   <data name="AllRightsRes" xml:space="preserve">
     <value>All Rights Reserved.</value>
@@ -136,7 +136,7 @@
     <value>Choose a doctor</value>
   </data>
   <data name="Cnp" xml:space="preserve">
-    <value>Personal identification number</value>
+    <value>Personal Identification Number</value>
   </data>
   <data name="ConfPwd" xml:space="preserve">
     <value>Confirm password</value>
@@ -175,7 +175,7 @@
     <value>Register</value>
   </data>
   <data name="RegistrationSucceed" xml:space="preserve">
-    <value>Your registartion is successful. Please wait for the doctor to accept your request.</value>
+    <value>Your registration is successful. Please wait for the doctor to accept your request.</value>
   </data>
   <data name="SingUp" xml:space="preserve">
     <value>Sign up!</value>

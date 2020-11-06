@@ -35,7 +35,7 @@
             <DatePicker x:Name="dpBirthDate" MinimumDate="01/01/1900" MaximumDate="{x:Static sys:DateTime.Now}" Date="06/21/2018"  Grid.Row="5"/>
             <Entry x:Name="entPlaceOfBirth" Placeholder="{local:Translate PlaceOfBirth}" ReturnType="Next" Keyboard="Text" Grid.Row="6" FontSize="Medium"/>
 
-            <Entry x:Name="entAdress" Placeholder="{local:Translate Adress}" ReturnType="Next" Keyboard="Text" Grid.Row="7" FontSize="Medium"/>
+            <Entry x:Name="entAdress" Placeholder="{local:Translate Address}" ReturnType="Next" Keyboard="Text" Grid.Row="7" FontSize="Medium"/>
             <Picker x:Name="pckDoctor" HorizontalOptions="FillAndExpand" Grid.Row="8" Title="{local:Translate ChooseDoctor}">
                 <Picker.Items>
                     <x:String>Medic1</x:String>
