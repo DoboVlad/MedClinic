@@ -120,20 +120,32 @@
   <data name="AboutUs" xml:space="preserve">
     <value>About Us</value>
   </data>
+  <data name="Adress" xml:space="preserve">
+    <value>Current adress</value>
+  </data>
   <data name="AllRightsRes" xml:space="preserve">
     <value>All Rights Reserved.</value>
   </data>
-  <data name="Appointments" xml:space="preserve">
-    <value>Appointments</value>
+  <data name="ChooseDoctor" xml:space="preserve">
+    <value>Choose a doctor</value>
   </data>
-  <data name="AppointmentsShort" xml:space="preserve">
-    <value>Appts</value>
+  <data name="Cnp" xml:space="preserve">
+    <value>Personal identification number</value>
+  </data>
+  <data name="ConfPwd" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First name</value>
   </data>
   <data name="ForgottenPass" xml:space="preserve">
     <value>Forgotten password?</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
+  <data name="GoMainPage" xml:space="preserve">
+    <value>Click here to go to main page.</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last name</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Log in</value>
@@ -141,11 +153,20 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
-  <data name="Profile" xml:space="preserve">
-    <value>Profile</value>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="PlaceOfBirth" xml:space="preserve">
+    <value>Place of birth</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
+  </data>
+  <data name="RegistrationSucceed" xml:space="preserve">
+    <value>Your registartion is successful. Please wait for the doctor to accept your request.</value>
+  </data>
+  <data name="SingUp" xml:space="preserve">
+    <value>Sign up!</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>

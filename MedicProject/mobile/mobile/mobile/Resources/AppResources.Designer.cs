@@ -70,6 +70,15 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current adress.
+        /// </summary>
+        internal static string Adress {
+            get {
+                return ResourceManager.GetString("Adress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All Rights Reserved..
         /// </summary>
         internal static string AllRightsRes {
@@ -79,38 +88,11 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Appointments.
-        /// </summary>
-        internal static string Appointments {
-            get {
-                return ResourceManager.GetString("Appointments", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Appts.
-        /// </summary>
-        internal static string AppointmentsShort {
-            get {
-                return ResourceManager.GetString("AppointmentsShort", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Forgotten password?.
         /// </summary>
         internal static string ForgottenPass {
             get {
                 return ResourceManager.GetString("ForgottenPass", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Home.
-        /// </summary>
-        internal static string Home {
-            get {
-                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         
@@ -133,20 +115,29 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profile.
-        /// </summary>
-        internal static string Profile {
-            get {
-                return ResourceManager.GetString("Profile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         internal static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your registartion is successful. Please wait for the doctor to accept your request..
+        /// </summary>
+        internal static string RegistrationSucceed {
+            get {
+                return ResourceManager.GetString("RegistrationSucceed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sign up!.
+        /// </summary>
+        internal static string SingUp {
+            get {
+                return ResourceManager.GetString("SingUp", resourceCulture);
             }
         }
         

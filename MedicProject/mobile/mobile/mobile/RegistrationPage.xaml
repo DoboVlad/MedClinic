@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile.RegistrationPage"
+             xmlns:local ="clr-namespace:mobile.Helpers"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+             >
+    <!--line6-to generate the sysdate-->
+    <ScrollView>
+    <Grid VerticalOptions="Center" Margin="20, 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+            <Entry x:Name="entFirstName" Placeholder="{local:Translate FirstName}" ReturnType="Next" FontSize="Medium" Keyboard="Text" Grid.Row="0"/>
+            <Entry x:Name="entLastName" Placeholder="{local:Translate LastName}" ReturnType="Next" FontSize="Medium" Keyboard="Text" Grid.Row="1" />
+            <Entry x:Name="entEmail" Placeholder="Email" ReturnType="Next" Keyboard="Email" Grid.Row="2" FontSize="Medium">
+                    <!--behaviour-->
+                </Entry>
+            <Entry x:Name="entPhone" Placeholder="{local:Translate Phone}" ReturnType="Next" Keyboard="Telephone" Grid.Row="3" FontSize="Medium">
+                    <!--behaviour-->
+                </Entry>
+            <Entry x:Name="entCnp" Placeholder="{local:Translate Cnp}" ReturnType="Next" Keyboard="Numeric" Grid.Row="4" FontSize="Medium">
+                    <!--behaviour-->
+            </Entry>
+            <DatePicker x:Name="dpBirthDate" MinimumDate="01/01/1900" MaximumDate="{x:Static sys:DateTime.Now}" Date="06/21/2018"  Grid.Row="5"/>
+            <Entry x:Name="entPlaceOfBirth" Placeholder="{local:Translate PlaceOfBirth}" ReturnType="Next" Keyboard="Text" Grid.Row="6" FontSize="Medium"/>
+
+            <Entry x:Name="entAdress" Placeholder="{local:Translate Adress}" ReturnType="Next" Keyboard="Text" Grid.Row="7" FontSize="Medium"/>
+            <Picker x:Name="pckDoctor" HorizontalOptions="FillAndExpand" Grid.Row="8" Title="{local:Translate ChooseDoctor}">
+                <Picker.Items>
+                    <x:String>Medic1</x:String>
+                    <x:String>Medic2</x:String>
+                </Picker.Items>
+            </Picker>
+            <Entry x:Name ="entPassword" Placeholder="{local:Translate Password}" ReturnType="Next" IsPassword="True" Grid.Row="9"/>
+            <Entry x:Name ="entConfPwd" Placeholder="{local:Translate ConfPwd}" ReturnType="Next" IsPassword="True" Grid.Row="10"/>
+            <Button x:Name="btnRegister" Text="{local:Translate SingUp}" Clicked="btnRegister_Clicked" Grid.Row="11" />
+    
+        </Grid>
+    </ScrollView>
+</ContentPage>

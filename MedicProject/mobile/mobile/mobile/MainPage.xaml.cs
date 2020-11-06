@@ -22,9 +22,10 @@ namespace mobile
             await this.Navigation.PushAsync(new LogInPage());
         }
       
-        private void btnRegister_Clicked(object sender, EventArgs e)
+        async private void btnRegister_Clicked(object sender, EventArgs e)
         {
             Animations.Button_Scale_Clicked((Button)sender);
+            await this.Navigation.PushAsync(new RegistrationPage());
         }
         async private void btnAboutUs_Clicked(object sender, EventArgs e)
         {
