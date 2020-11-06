@@ -88,65 +88,11 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose a doctor.
-        /// </summary>
-        internal static string ChooseDoctor {
-            get {
-                return ResourceManager.GetString("ChooseDoctor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Personal identification number.
-        /// </summary>
-        internal static string Cnp {
-            get {
-                return ResourceManager.GetString("Cnp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Confirm password.
-        /// </summary>
-        internal static string ConfPwd {
-            get {
-                return ResourceManager.GetString("ConfPwd", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to First name.
-        /// </summary>
-        internal static string FirstName {
-            get {
-                return ResourceManager.GetString("FirstName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Forgotten password?.
         /// </summary>
         internal static string ForgottenPass {
             get {
                 return ResourceManager.GetString("ForgottenPass", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Click here to go to main page..
-        /// </summary>
-        internal static string GoMainPage {
-            get {
-                return ResourceManager.GetString("GoMainPage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Last name.
-        /// </summary>
-        internal static string LastName {
-            get {
-                return ResourceManager.GetString("LastName", resourceCulture);
             }
         }
         
@@ -165,24 +111,6 @@ namespace mobile.Resources {
         internal static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Phone number.
-        /// </summary>
-        internal static string Phone {
-            get {
-                return ResourceManager.GetString("Phone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Place of birth.
-        /// </summary>
-        internal static string PlaceOfBirth {
-            get {
-                return ResourceManager.GetString("PlaceOfBirth", resourceCulture);
             }
         }
         

@@ -17,9 +17,10 @@ namespace mobile
             InitializeComponent();
         }
 
-         private void btnLogIn_Clicked(object sender, EventArgs e)
+       async private void btnLogIn_Clicked(object sender, EventArgs e)
         {
             Animations.Button_Scale_Clicked((Button)sender);
+            await this.Navigation.PushAsync(new TabbedPageMain());
         }
        
     }
