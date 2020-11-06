@@ -73,7 +73,7 @@
   .form .message {
     margin: 15px 0 0;
     color: #b3b3b3;
-    font-size: 14px;
+    font-size: 16px;
   }
   .form .message a  {
     color: #5084F2;
@@ -85,7 +85,7 @@
     text-align: left;
     color: #757575;
   }
-
+ 
   .container {
     position: relative;
     z-index: 1;
