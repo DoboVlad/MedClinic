@@ -12,11 +12,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\about us.png" />
+    <None Remove="Images\apoinment.png" />
+    <None Remove="Images\home.png" />
     <None Remove="Images\logo.png" />
+    <None Remove="Images\profil.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Images\about us.png" />
+    <EmbeddedResource Include="Images\apoinment.png" />
+    <EmbeddedResource Include="Images\home.png" />
     <EmbeddedResource Include="Images\logo.png" />
+    <EmbeddedResource Include="Images\profil.png" />
   </ItemGroup>
 
   <ItemGroup>
