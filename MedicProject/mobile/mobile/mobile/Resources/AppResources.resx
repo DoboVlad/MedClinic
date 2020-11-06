@@ -123,14 +123,26 @@
   <data name="AllRightsRes" xml:space="preserve">
     <value>All Rights Reserved.</value>
   </data>
+  <data name="Appointments" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
+  <data name="AppointmentsShort" xml:space="preserve">
+    <value>Appts</value>
+  </data>
   <data name="ForgottenPass" xml:space="preserve">
     <value>Forgotten password?</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Log in</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>

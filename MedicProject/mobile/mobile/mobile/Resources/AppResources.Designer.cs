@@ -79,11 +79,38 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Appointments.
+        /// </summary>
+        internal static string Appointments {
+            get {
+                return ResourceManager.GetString("Appointments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Appts.
+        /// </summary>
+        internal static string AppointmentsShort {
+            get {
+                return ResourceManager.GetString("AppointmentsShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Forgotten password?.
         /// </summary>
         internal static string ForgottenPass {
             get {
                 return ResourceManager.GetString("ForgottenPass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        internal static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         
@@ -102,6 +129,15 @@ namespace mobile.Resources {
         internal static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile.
+        /// </summary>
+        internal static string Profile {
+            get {
+                return ResourceManager.GetString("Profile", resourceCulture);
             }
         }
         
