@@ -126,6 +126,12 @@
   <data name="AllRightsRes" xml:space="preserve">
     <value>All Rights Reserved.</value>
   </data>
+  <data name="Appointments" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
+  <data name="AppointmentsShort" xml:space="preserve">
+    <value>Appts</value>
+  </data>
   <data name="ChooseDoctor" xml:space="preserve">
     <value>Choose a doctor</value>
   </data>
@@ -144,6 +150,9 @@
   <data name="GoMainPage" xml:space="preserve">
     <value>Click here to go to main page.</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>Last name</value>
   </data>
@@ -158,6 +167,9 @@
   </data>
   <data name="PlaceOfBirth" xml:space="preserve">
     <value>Place of birth</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
