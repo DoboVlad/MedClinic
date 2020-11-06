@@ -8,10 +8,8 @@
              Title ="{local:Translate Home}">
     <!--used ios namespace to ensure the tabbed page is not overlapping the status bar -->
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{local:Translate Home}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView>
+            
+        </ListView>
     </ContentPage.Content>
 </ContentPage>
