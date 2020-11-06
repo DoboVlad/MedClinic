@@ -5,7 +5,8 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="true"
              xmlns:local ="clr-namespace:mobile.Helpers"
-             Title="{local:Translate Profile}" >
+             Title="{local:Translate Profile}" 
+             IconImageSource="{local:ImageResource mobile.Images.profile.png}">
     <!--used ios namespace to ensure the tabbed page is not overlapping the status bar -->
     <ContentPage.Content>
         <StackLayout>

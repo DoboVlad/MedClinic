@@ -12,19 +12,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\about us.png" />
-    <None Remove="Images\apoinment.png" />
+    <None Remove="Images\aboutUs.png" />
+    <None Remove="Images\appointment.png" />
     <None Remove="Images\home.png" />
     <None Remove="Images\logo.png" />
-    <None Remove="Images\profil.png" />
+    <None Remove="Images\profile.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Images\about us.png" />
-    <EmbeddedResource Include="Images\apoinment.png" />
+    <EmbeddedResource Include="Images\aboutUs.png" />
+    <EmbeddedResource Include="Images\appointment.png" />
     <EmbeddedResource Include="Images\home.png" />
     <EmbeddedResource Include="Images\logo.png" />
-    <EmbeddedResource Include="Images\profil.png" />
+    <EmbeddedResource Include="Images\profile.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -60,9 +60,6 @@
     <EmbeddedResource Update="Resources\AppResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\HomeItemTemplate.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="TabbedPageMain.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

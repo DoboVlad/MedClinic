@@ -19,6 +19,7 @@ namespace mobile
             Children.Add(new HomePage());
             Children.Add(new ProfilePage());
             Children.Add(new AboutUsPage());
+
         }
     }
 }

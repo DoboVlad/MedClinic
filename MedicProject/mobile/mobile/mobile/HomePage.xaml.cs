@@ -15,6 +15,22 @@ namespace mobile
         public HomePage()
         {
             InitializeComponent();
+
+            // dummy data to see the functionality of the list view
+            List<Appointment> aplist = new List<Appointment>();
+            aplist.Add(new Appointment {Date="10.10.2020",Hour="10:00",Status="Active" });
+            aplist.Add(new Appointment { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
+            aplist.Add(new Appointment { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
+            aplist.Add(new Appointment { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
+            aplist.Add(new Appointment { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
+            aplist.Add(new Appointment { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
+            aplist.Add(new Appointment { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
+            aplist.Add(new Appointment { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
+
+
+            list.ItemsSource = aplist;
+
+
         }
     }
 }
