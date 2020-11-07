@@ -9,10 +9,14 @@
              IconImageSource="{local:ImageResource mobile.Images.aboutUs.png}">
     <!--used ios namespace to ensure the tabbed page is not overlapping the status bar -->
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{local:Translate AboutUs}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>  
     </ContentPage.Content>
 </ContentPage>

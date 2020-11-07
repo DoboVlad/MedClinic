@@ -16,7 +16,18 @@
     </ContentPage.Resources>
     <!-- here is the template for the list view items of the home page, it has 3 labels about time, duration and status of each appointment-->
     <ContentPage.Content>
-        <ListView x:Name="list" RowHeight="60">
+        <StackLayout>
+            <!--NEED TO SET THE PICKER FOR TRANSLATION-->
+            <Picker Title="{local:Translate Sort}" Margin="320,0,10,5" TextColor="#5084F2">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Active</x:String>
+                        <x:String>Inactive</x:String>
+                        <x:String>All</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <ListView x:Name="list" RowHeight="60">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -38,5 +49,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

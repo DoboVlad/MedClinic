@@ -120,8 +120,14 @@
   <data name="AboutUs" xml:space="preserve">
     <value>About Us</value>
   </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
   <data name="Address" xml:space="preserve">
     <value>Current address</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
   </data>
   <data name="AllRightsRes" xml:space="preserve">
     <value>All Rights Reserved.</value>
@@ -153,6 +159,9 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>Last name</value>
   </data>
@@ -179,6 +188,9 @@
   </data>
   <data name="SingUp" xml:space="preserve">
     <value>Sign up!</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Sort</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>
