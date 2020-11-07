@@ -5,11 +5,11 @@ namespace MedicProject.DTO
 {
     public class RegisterDTO
     {   [Required(ErrorMessage="Please enter your first name.")]
-        [RegularExpression("^[A-Za-z ,.'-]+$",ErrorMessage="The first name can only contain letter")]
+        [RegularExpression("^[A-Za-z ,.'-]+$",ErrorMessage="The first name can only contain letters")]
         public string firstName { get; set; }
 
         [Required(ErrorMessage="Please enter your last name.")]
-        [RegularExpression("^[A-Za-z ,.'-]+$",ErrorMessage="The last name can only contain letter")]
+        [RegularExpression("^[A-Za-z ,.'-]+$",ErrorMessage="The last name can only contain letters")]
         public string lastName { get; set; }
         
         [Required(ErrorMessage="Please enter your email.")]

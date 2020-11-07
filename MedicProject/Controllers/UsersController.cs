@@ -96,6 +96,7 @@ namespace MedicProject.Controllers
 
         [HttpPost]
         [Route("updateUser")]
+        //updates a user (user Myaccount)
         public async Task UpdateUser(PatientDTO patientDTO){
            // var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
            // var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
@@ -111,10 +112,11 @@ namespace MedicProject.Controllers
 
         [HttpPost]
         [Route("updateMedic")]
+        //updates a doctor (doctor myaccount)
         public async Task UpdateMedic(DoctorDTO doctorDTO){
             // var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
            // var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
-           var user=await _context.USERS.FindAsync(doctorDTO.Id);
+           var user=await _context.USERS.SingleOrDefaultAsync(x=> x.Id == doctorDTO.Id);
            user.firstName=doctorDTO.firstName;
            user.lastName=doctorDTO.lastName;
            user.phoneNumber=doctorDTO.phoneNumber;
@@ -129,9 +131,9 @@ namespace MedicProject.Controllers
          [HttpPost]
          [Route("ChangePassword")]
         public async Task<ActionResult> changePassword(ChangePasswordDTO changePasswordDTO){
-           // var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            // var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
            // var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
-            var user=await _context.USERS.FindAsync(changePasswordDTO.Id);
+            var user = await _context.USERS.SingleOrDefaultAsync(x=> x.Id == changePasswordDTO.Id);
             using var hmac1= new HMACSHA512(user.PasswordSalt);
             var computedHash = hmac1.ComputeHash(Encoding.UTF8.GetBytes(changePasswordDTO.oldPassword));
                 for(int i=0;i<computedHash.Length;i++){
@@ -141,7 +143,7 @@ namespace MedicProject.Controllers
             user.PasswordHash=hmac.ComputeHash(Encoding.UTF8.GetBytes(changePasswordDTO.newPassword));
             user.PasswordSalt=hmac.Key;
             _context.USERS.Update(user);
-            _context.SaveChanges();
+            await  _context.SaveChangesAsync();
             return Ok();
         }
 
