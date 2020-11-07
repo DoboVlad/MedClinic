@@ -31,7 +31,7 @@ namespace MedicProject.Controllers
         }
 
         [HttpGet]
-        [Route("getUsers")]
+        [Route("getPatients")]
         // return all patients for a medic
         public async Task<ActionResult<IEnumerable<PatientDTO>>> getUsers(int idMedic){
             var users = await _context.USERS.Where(p => p.doctorId == idMedic).ToListAsync();
@@ -65,13 +65,13 @@ namespace MedicProject.Controllers
         return  _mapper.Map<DoctorDTO>(user);
         }
 
-        [HttpGet]
+        [HttpDelete]
         [Route("DeleteUser")]
         //deletes an user from the database
         public async Task deleteUser(int id){
             var user=await _context.USERS.FindAsync(id);
             _context.USERS.Remove(user);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
         [HttpGet]
@@ -83,18 +83,18 @@ namespace MedicProject.Controllers
                return Ok(unapprovedusers);
         }
 
-        [HttpGet]
+        [HttpPut]
         [Route("ApproveUser")]
         //approves a selected user
         public async Task ApproveUser(int id){
             var user=await _context.USERS.FindAsync(id);
             user.isApproved=1;
             _context.USERS.Update(user);
-            _context.SaveChanges();
+           await  _context.SaveChangesAsync();
 
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("updateUser")]
         //updates a user (user Myaccount)
         public async Task UpdateUser(PatientDTO patientDTO){
@@ -106,11 +106,11 @@ namespace MedicProject.Controllers
            user.phoneNumber=patientDTO.phoneNumber;
            user.email=patientDTO.email.ToLower();
            _context.USERS.Update(user);
-           _context.SaveChanges();
+          await  _context.SaveChangesAsync();
 
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("updateMedic")]
         //updates a doctor (doctor myaccount)
         public async Task UpdateMedic(DoctorDTO doctorDTO){
@@ -124,7 +124,7 @@ namespace MedicProject.Controllers
            user.description=doctorDTO.description;
            user.photo=doctorDTO.photo;
             _context.USERS.Update(user);
-            _context.SaveChanges();
+          await  _context.SaveChangesAsync();
 
         }
 
@@ -150,8 +150,9 @@ namespace MedicProject.Controllers
 
         [HttpGet]
         [Route("searchUser")]
-        public async Task<ActionResult<IEnumerable<PatientDTO>>> searchUser(string s){
-            var users = await _context.USERS.Where(p => p.firstName.Contains(s) || p.lastName.Contains(s) || Convert.ToString(p.firstName) +" "+ Convert.ToString(p.lastName) == s || Convert.ToString(p.lastName)+" "+ Convert.ToString(p.firstName) == s).ToListAsync();
+        public async Task<ActionResult<IEnumerable<PatientDTO>>> searchUser(string s,int id){
+           
+            var users = await _context.USERS.Where(p => p.firstName.Contains(s) || p.lastName.Contains(s) || Convert.ToString(p.firstName) +" "+ Convert.ToString(p.lastName) == s || Convert.ToString(p.lastName)+" "+ Convert.ToString(p.firstName) == s).Where(x => x.doctorId== id).Where(x => x.isMedic==0).ToListAsync();
             var userstoreturn = _mapper.Map<IEnumerable<PatientDTO>>(users);
             return Ok(userstoreturn);
         
@@ -162,7 +163,7 @@ namespace MedicProject.Controllers
         [HttpGet]
         [Route("searchDoctor")]
         public async Task<ActionResult<IEnumerable<DoctorDTO>>> searchDoctor(string s){
-        var users = await _context.USERS.Where(p => p.firstName.Contains(s) || p.lastName.Contains(s) || Convert.ToString(p.firstName) +" "+ Convert.ToString(p.lastName) == s || Convert.ToString(p.lastName)+" "+ Convert.ToString(p.firstName) == s).ToListAsync();
+        var users = await _context.USERS.Where(p => p.firstName.Contains(s) || p.lastName.Contains(s) || Convert.ToString(p.firstName) +" "+ Convert.ToString(p.lastName) == s || Convert.ToString(p.lastName)+" "+ Convert.ToString(p.firstName) == s).Where(x => x.isMedic==1).ToListAsync();
         var userstoreturn = _mapper.Map<IEnumerable<DoctorDTO>>(users);
         return Ok(userstoreturn);
        }
