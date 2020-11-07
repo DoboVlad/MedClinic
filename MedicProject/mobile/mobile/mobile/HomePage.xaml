@@ -27,7 +27,7 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <ListView x:Name="list" RowHeight="60">
+            <ListView x:Name="appointmentsList" RowHeight="60">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

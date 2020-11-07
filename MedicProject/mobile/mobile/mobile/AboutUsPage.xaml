@@ -8,12 +8,24 @@
              Title="{local:Translate AboutUs}"
              IconImageSource="{local:ImageResource mobile.Images.aboutUs.png}">
     <!--used ios namespace to ensure the tabbed page is not overlapping the status bar -->
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="25,0,0,0"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <ListView>
+        <ListView x:Name="doctorsList" RowHeight="390">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        
+                        <StackLayout Padding="20">
+                            <Image x:Name="imgDoctor" Source="{Binding Image}" Margin="0,0,0,10" WidthRequest="220" HeightRequest="220"/>
+                            <Label x:Name="lblFullName" Text="{Binding FullName}" Margin="0" FontSize="24" FontAttributes="Bold"/>
+                            <Label x:Name="lblJobTitle" Text="{Binding JobTitle}"/>
+                            <Label x:Name="lblEmail" Text="{Binding Email}"/>
+                            <Label x:Name="lblPhone" Text="{Binding Phone}"/>
+                            
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

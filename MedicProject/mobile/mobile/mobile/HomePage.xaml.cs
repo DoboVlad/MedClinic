@@ -34,7 +34,7 @@ namespace mobile
 
             
 
-            list.ItemsSource = aplist;
+            appointmentsList.ItemsSource = aplist;
 
 
         }

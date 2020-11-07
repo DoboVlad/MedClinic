@@ -16,6 +16,7 @@
     <None Remove="Images\appointment.png" />
     <None Remove="Images\home.png" />
     <None Remove="Images\logo.png" />
+    <None Remove="Images\man.png" />
     <None Remove="Images\profile.png" />
   </ItemGroup>
 
@@ -24,6 +25,7 @@
     <EmbeddedResource Include="Images\appointment.png" />
     <EmbeddedResource Include="Images\home.png" />
     <EmbeddedResource Include="Images\logo.png" />
+    <EmbeddedResource Include="Images\man.png" />
     <EmbeddedResource Include="Images\profile.png" />
   </ItemGroup>
 
