@@ -18,14 +18,8 @@
     <ContentPage.Content>
         <StackLayout>
             <!--NEED TO SET THE PICKER FOR TRANSLATION-->
-            <Picker Title="{local:Translate Sort}" Margin="320,0,10,5" TextColor="#5084F2">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Active</x:String>
-                        <x:String>Inactive</x:String>
-                        <x:String>All</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
+            <Picker Title="{local:Translate Sort}" x:Name="pickerSort" Margin="320,0,10,5" TextColor="#5084F2">
+              
             </Picker>
             <ListView x:Name="appointmentsList" RowHeight="60">
             <ListView.ItemTemplate>

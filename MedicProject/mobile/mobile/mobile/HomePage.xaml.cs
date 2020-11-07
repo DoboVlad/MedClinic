@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using mobile.Helpers;
+using mobile.Resources;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -32,11 +33,11 @@ namespace mobile
             aplist.Add(new Appointment { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
             aplist.Add(new Appointment { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
 
-            
-
             appointmentsList.ItemsSource = aplist;
+            // bind the picker to enable translation
+            pickerSort.ItemsSource = new List<string> { AppResources.Active, AppResources.Inactive, AppResources.All};
 
-
+          
         }
     }
 }
