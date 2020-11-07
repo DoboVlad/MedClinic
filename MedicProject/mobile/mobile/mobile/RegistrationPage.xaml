@@ -6,46 +6,59 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib" 
              >
     <!--line6-to generate the sysdate-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="TextColor" Value="#000033"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="#2D3589"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ScrollView>
     <Grid VerticalOptions="Center" Margin="20, 0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+            <RowDefinition Height="70"/>
+             <RowDefinition Height="13*"/>
+             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-            <Entry x:Name="entFirstName" Placeholder="{local:Translate FirstName}" ReturnType="Next" FontSize="Medium" Keyboard="Text" Grid.Row="0"/>
-            <Entry x:Name="entLastName" Placeholder="{local:Translate LastName}" ReturnType="Next" FontSize="Medium" Keyboard="Text" Grid.Row="1" />
-            <Entry x:Name="entEmail" Placeholder="Email" ReturnType="Next" Keyboard="Email" Grid.Row="2" FontSize="Medium">
-                    <!--behaviour-->
-                </Entry>
-            <Entry x:Name="entPhone" Placeholder="{local:Translate Phone}" ReturnType="Next" Keyboard="Telephone" Grid.Row="3" FontSize="Medium">
-                    <!--behaviour-->
-                </Entry>
-            <Entry x:Name="entCnp" Placeholder="{local:Translate Cnp}" ReturnType="Next" Keyboard="Numeric" Grid.Row="4" FontSize="Medium">
-                    <!--behaviour-->
-            </Entry>
-            <DatePicker x:Name="dpBirthDate" MinimumDate="01/01/1900" MaximumDate="{x:Static sys:DateTime.Now}" Date="06/21/2018"  Grid.Row="5"/>
-            <Entry x:Name="entPlaceOfBirth" Placeholder="{local:Translate PlaceOfBirth}" ReturnType="Next" Keyboard="Text" Grid.Row="6" FontSize="Medium"/>
+            <Image Source="{local:ImageResource mobile.Images.logo.png}" Grid.Row="0"/>
 
-            <Entry x:Name="entAdress" Placeholder="{local:Translate Address}" ReturnType="Next" Keyboard="Text" Grid.Row="7" FontSize="Medium"/>
-            <Picker x:Name="pckDoctor" HorizontalOptions="FillAndExpand" Grid.Row="8" Title="{local:Translate ChooseDoctor}">
-                <Picker.Items>
-                    <x:String>Medic1</x:String>
-                    <x:String>Medic2</x:String>
-                </Picker.Items>
-            </Picker>
-            <Entry x:Name ="entPassword" Placeholder="{local:Translate Password}" ReturnType="Next" IsPassword="True" Grid.Row="9"/>
-            <Entry x:Name ="entConfPwd" Placeholder="{local:Translate ConfPwd}" ReturnType="Next" IsPassword="True" Grid.Row="10"/>
-            <Button x:Name="btnRegister" Text="{local:Translate SingUp}" Clicked="btnRegister_Clicked" Grid.Row="11" />
-    
-        </Grid>
+            <StackLayout Grid.Row="1" Margin="0, 20">
+                <Label x:Name ="lblFirstName" Text="{local:Translate FirstName}"/>
+                <Entry x:Name="entFirstName" Placeholder="{local:Translate FirstName}" ReturnType="Next" Keyboard="Text"/>
+                <Label x:Name ="lblLastName" Text="{local:Translate LastName}"/>
+                <Entry x:Name="entLastName" Placeholder="{local:Translate LastName}" ReturnType="Next" Keyboard="Text" />
+                <Label x:Name ="lblEmail" Text="Email"/>
+                <Entry x:Name="entEmail" Placeholder="Email" ReturnType="Next" Keyboard="Email" />
+                <Label x:Name ="lblPhone" Text="{local:Translate Phone}"/>
+                <Entry x:Name="entPhone" Placeholder="{local:Translate Phone}" ReturnType="Next" Keyboard="Telephone" />
+                <Label x:Name ="lblPCnp" Text="{local:Translate Cnp}"/>
+                <Entry x:Name="entCnp" Placeholder="{local:Translate Cnp}" ReturnType="Next" Keyboard="Numeric" />
+                <DatePicker x:Name="dpBirthDate" MinimumDate="01/01/1900" MaximumDate="{x:Static sys:DateTime.Now}" Date="06/21/2018" />
+                <Label x:Name ="lblPlaceOfBirth" Text="{local:Translate PlaceOfBirth}"/>
+                <Entry x:Name="entPlaceOfBirth" Placeholder="{local:Translate PlaceOfBirth}" ReturnType="Next" Keyboard="Text"/>
+                <Label x:Name ="lblAdress" Text="{local:Translate Address}"/>
+                <Entry x:Name="entAdress" Placeholder="{local:Translate Address}" ReturnType="Next" Keyboard="Text"/>
+                <Label x:Name="lblDoc" Text="{local:Translate ChooseDoctor}"/>
+                <Picker x:Name="pckDoctor" HorizontalOptions="FillAndExpand"  Title="{local:Translate ChooseDoctor}">
+                    <Picker.Items>
+                        <x:String>Medic1</x:String> 
+                        <x:String>Medic2</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Label x:Name="lblPassCheck" Text="pahfc" FontSize="Medium" TextColor="Black" />
+                <Label x:Name ="lblPassword" Text="{local:Translate Password}"/>
+                <Entry x:Name ="entPassword" Placeholder="{local:Translate Password}" ReturnType="Next" IsPassword="True" TextChanged="onTexChanged" />
+                <Label x:Name ="lblConfPass" Text="{local:Translate ConfPwd}"/>
+                <Entry x:Name ="entConfPwd" Placeholder="{local:Translate ConfPwd}" ReturnType="Next" IsPassword="True" />
+                <Button x:Name="btnRegister" Text="{local:Translate SingUp}" Clicked="btnRegister_Clicked" FontSize="Medium" />
+            </StackLayout>
+            <Label Grid.Row="2" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="EndAndExpand"/>
+    </Grid>
     </ScrollView>
 </ContentPage>

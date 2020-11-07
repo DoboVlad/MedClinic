@@ -88,6 +88,69 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You didn&apos;t introduce your birth day..
+        /// </summary>
+        internal static string AlertBirtday {
+            get {
+                return ResourceManager.GetString("AlertBirtday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Would you like to try again?.
+        /// </summary>
+        internal static string AlertChange {
+            get {
+                return ResourceManager.GetString("AlertChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You introduced an invalid personal identification number..
+        /// </summary>
+        internal static string AlertCnp {
+            get {
+                return ResourceManager.GetString("AlertCnp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your email is invalid..
+        /// </summary>
+        internal static string AlertEmail {
+            get {
+                return ResourceManager.GetString("AlertEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You didn&apos;t complete all the fields..
+        /// </summary>
+        internal static string AlertFillField {
+            get {
+                return ResourceManager.GetString("AlertFillField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your passwords don&apos;t match..
+        /// </summary>
+        internal static string AlertPwdMatch {
+            get {
+                return ResourceManager.GetString("AlertPwdMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password too short.It should be at least 6 characters long..
+        /// </summary>
+        internal static string AlertPwdShort {
+            get {
+                return ResourceManager.GetString("AlertPwdShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All.
         /// </summary>
         internal static string All {
@@ -214,6 +277,15 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No..
+        /// </summary>
+        internal static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         internal static string Password {
@@ -246,6 +318,42 @@ namespace mobile.Resources {
         internal static string Profile {
             get {
                 return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password strength is medium..
+        /// </summary>
+        internal static string PwdMedium {
+            get {
+                return ResourceManager.GetString("PwdMedium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password is strong..
+        /// </summary>
+        internal static string PwdStrong {
+            get {
+                return ResourceManager.GetString("PwdStrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password is very strong..
+        /// </summary>
+        internal static string PwdVeryStrong {
+            get {
+                return ResourceManager.GetString("PwdVeryStrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password is weak..
+        /// </summary>
+        internal static string PwdWeak {
+            get {
+                return ResourceManager.GetString("PwdWeak", resourceCulture);
             }
         }
         
@@ -291,6 +399,15 @@ namespace mobile.Resources {
         internal static string Username {
             get {
                 return ResourceManager.GetString("Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes..
+        /// </summary>
+        internal static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }
