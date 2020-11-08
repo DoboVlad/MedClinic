@@ -22,7 +22,7 @@ namespace mobile
         async private void btnMainPage_Clicked(object sender, EventArgs e)
         {
             Animations.Button_Scale_Clicked((Button)sender);
-            await this.Navigation.PushAsync(new LogInPage());
+            await this.Navigation.PushAsync(new MainPage());
         }
     }
 }

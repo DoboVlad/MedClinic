@@ -10,21 +10,20 @@
         <ResourceDictionary>
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="18"/>
-                <Setter Property="TextColor" Value="#000033"/>
+                <Setter Property="TextColor" Value="#0d4dd4"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
-            </Style>
-            <Style TargetType="Entry">
-                <Setter Property="TextColor" Value="#2D3589"/>
+                <Setter Property="Padding" Value="0, 20, 0,0 "/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     
     <ScrollView>
-    <Grid VerticalOptions="Center" Margin="20, 0">
+    <Grid VerticalOptions="Center" Margin="30, 0"  >
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
              <RowDefinition Height="13*"/>
-             <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1.1*"/>
         </Grid.RowDefinitions>
             <Image Source="{local:ImageResource mobile.Images.logo.png}" Grid.Row="0"/>
 
@@ -39,6 +38,7 @@
                 <Entry x:Name="entPhone" Placeholder="{local:Translate Phone}" ReturnType="Next" Keyboard="Telephone" />
                 <Label x:Name ="lblPCnp" Text="{local:Translate Cnp}"/>
                 <Entry x:Name="entCnp" Placeholder="{local:Translate Cnp}" ReturnType="Next" Keyboard="Numeric" />
+                <Label x:Name="lblBirthDay" Text="Birth day"/> <!--!!!!!!!!!!!!!!!!-->
                 <DatePicker x:Name="dpBirthDate" MinimumDate="01/01/1900" MaximumDate="{x:Static sys:DateTime.Now}" Date="06/21/2018" />
                 <Label x:Name ="lblPlaceOfBirth" Text="{local:Translate PlaceOfBirth}"/>
                 <Entry x:Name="entPlaceOfBirth" Placeholder="{local:Translate PlaceOfBirth}" ReturnType="Next" Keyboard="Text"/>
@@ -51,14 +51,19 @@
                         <x:String>Medic2</x:String>
                     </Picker.Items>
                 </Picker>
-                <Label x:Name="lblPassCheck" Text="pahfc" FontSize="Medium" TextColor="Black" />
+                <Label x:Name="lblPassCheck" FontSize="Medium" TextColor="Black"  IsVisible="false"/>
                 <Label x:Name ="lblPassword" Text="{local:Translate Password}"/>
                 <Entry x:Name ="entPassword" Placeholder="{local:Translate Password}" ReturnType="Next" IsPassword="True" TextChanged="onTexChanged" />
                 <Label x:Name ="lblConfPass" Text="{local:Translate ConfPwd}"/>
                 <Entry x:Name ="entConfPwd" Placeholder="{local:Translate ConfPwd}" ReturnType="Next" IsPassword="True" />
-                <Button x:Name="btnRegister" Text="{local:Translate SingUp}" Clicked="btnRegister_Clicked" FontSize="Medium" />
+                <Button x:Name="btnRegister" Text="{local:Translate SingUp}" Clicked="btnRegister_Clicked" FontSize="Medium" Margin="0,50,0,0" />
             </StackLayout>
-            <Label Grid.Row="2" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="EndAndExpand"/>
+            <Label Grid.Row="2" Text="Already have an account?"  HorizontalOptions="Center" TextColor="#5084F2" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Grid.Row="3" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="EndAndExpand" TextColor="#5084F2"/>
     </Grid>
     </ScrollView>
 </ContentPage>
