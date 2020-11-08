@@ -114,3 +114,29 @@
     border: 2px solid rgb(231, 231, 231);
     
 }
+
+footer:after {
+    text-align: center;
+    display: table;
+    clear: both;
+}
+
+footer .column {
+  float: left;
+  width: 33.33%;
+  padding-top: 10px;
+  height: auto;
+  text-align: center;
+  background-color: #D3D6F3;
+}
+
+footer .column p {
+  cursor: pointer;
+}
+
+footer .column .border {
+  border-style: groove;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
