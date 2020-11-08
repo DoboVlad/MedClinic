@@ -17,7 +17,13 @@
     <None Remove="Images\home.png" />
     <None Remove="Images\logo.png" />
     <None Remove="Images\man.png" />
+    <None Remove="Images\manWhite.png" />
     <None Remove="Images\profile.png" />
+    <None Remove="Images\romaniaFlagIcon.png" />
+    <None Remove="Images\ukFlagIcon.png" />
+    <None Remove="Images\userSettings.png" />
+    <None Remove="Images\woman.png" />
+    <None Remove="Images\womanWhite.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,7 +32,13 @@
     <EmbeddedResource Include="Images\home.png" />
     <EmbeddedResource Include="Images\logo.png" />
     <EmbeddedResource Include="Images\man.png" />
+    <EmbeddedResource Include="Images\manWhite.png" />
     <EmbeddedResource Include="Images\profile.png" />
+    <EmbeddedResource Include="Images\romaniaFlagIcon.png" />
+    <EmbeddedResource Include="Images\ukFlagIcon.png" />
+    <EmbeddedResource Include="Images\userSettings.png" />
+    <EmbeddedResource Include="Images\woman.png" />
+    <EmbeddedResource Include="Images\womanWhite.png" />
   </ItemGroup>
 
   <ItemGroup>
