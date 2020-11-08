@@ -9,5 +9,6 @@ namespace MedicProject.DTO
         
         public int role{get;set;}
         public string token{get;set;}
+        public int doctorId { get; set; }
     }
 }

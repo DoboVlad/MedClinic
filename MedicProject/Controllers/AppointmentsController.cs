@@ -71,11 +71,12 @@ namespace MedicProject.Controllers
 
         [HttpGet("historyAppointments")]
         // return all the appointments that have a date smaller than today
-        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getBackApp(){
+        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getBackApp(int Id){
             DateTime date = DateTime.Now;
             var appointments = await _context.APPOINTMENTS
             .Include(p => p.User)
             .Where(app => app.date < date)
+            .Where(p => p.User.Id == Id)
             .ToListAsync();
             
             var appToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
@@ -85,11 +86,44 @@ namespace MedicProject.Controllers
 
          [HttpGet("nextAppointments")]
         // return all the appointments that have a date bigger than today
-        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getNextApp(){
+        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getNextApp(int Id){
             DateTime date = DateTime.Now;
             var appointments = await _context.APPOINTMENTS
             .Include(p => p.User)
             .Where(p => p.date > date)
+            .Where(p => p.User.Id == Id)
+            .ToListAsync();
+
+            var appointementsToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
+
+            return Ok(appointementsToReturn);
+        }
+
+        [HttpGet("historyAppointmentsByMedic")]
+        // return all the appointments of all patients of a medic that have a date smaller than today
+        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getBackAppByMedic(int Id)
+        {
+            DateTime date = DateTime.Now;
+            var appointments = await _context.APPOINTMENTS
+            .Include(p => p.User)
+            .Where(app => app.date < date)
+            .Where(p => p.User.doctorId == Id)
+            .ToListAsync();
+
+            var appToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
+
+            return Ok(appToReturn);
+        }
+
+        [HttpGet("nextAppointmentsByMedic")]
+        // return all the appointments that have a date bigger than today
+        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getNextAppByMedic(int Id)
+        {
+            DateTime date = DateTime.Now;
+            var appointments = await _context.APPOINTMENTS
+            .Include(p => p.User)
+            .Where(p => p.date > date)
+            .Where(p => p.User.doctorId == Id)
             .ToListAsync();
 
             var appointementsToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
@@ -158,5 +192,22 @@ namespace MedicProject.Controllers
 
             return BadRequest("Appointment wasn't found");
         }
+
+        // return appointemntes using a date and medicId
+        [HttpGet("getMyAppointments")]
+        public async Task<ActionResult> getAppByDate(DateTime date, int id)
+        {
+            var app = await _context.APPOINTMENTS
+                .Where(x => x.date == date)
+                .Include(x => x.User)
+                .ToListAsync();
+
+            var filterAppById = app.Where(x => x.User.doctorId == id);
+            var appToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(filterAppById);
+
+            
+            return Ok(appToReturn);
+        }
+        // history and next app get by id
     }
 }

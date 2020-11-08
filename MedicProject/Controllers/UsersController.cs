@@ -54,7 +54,6 @@ namespace MedicProject.Controllers
         public async Task<PatientDTO> getUser(int id){
         var user = await _context.USERS.FindAsync(id);
         return  _mapper.Map<PatientDTO>(user);
-        
         }
 
         [HttpGet]
