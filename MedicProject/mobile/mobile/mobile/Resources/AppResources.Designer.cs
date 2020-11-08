@@ -88,6 +88,15 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address:.
+        /// </summary>
+        internal static string AddressProfile {
+            get {
+                return ResourceManager.GetString("AddressProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You didn&apos;t introduce your birth day..
         /// </summary>
         internal static string AlertBirtday {
@@ -187,6 +196,24 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BirthDate:.
+        /// </summary>
+        internal static string BirthDateProfile {
+            get {
+                return ResourceManager.GetString("BirthDateProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BirthPlace:.
+        /// </summary>
+        internal static string BirthPlaceProfile {
+            get {
+                return ResourceManager.GetString("BirthPlaceProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose a doctor.
         /// </summary>
         internal static string ChooseDoctor {
@@ -210,6 +237,15 @@ namespace mobile.Resources {
         internal static string ConfPwd {
             get {
                 return ResourceManager.GetString("ConfPwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email:.
+        /// </summary>
+        internal static string EmailProfile {
+            get {
+                return ResourceManager.GetString("EmailProfile", resourceCulture);
             }
         }
         
@@ -277,6 +313,15 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Log Out.
+        /// </summary>
+        internal static string LogOut {
+            get {
+                return ResourceManager.GetString("LogOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No..
         /// </summary>
         internal static string No {
@@ -300,6 +345,24 @@ namespace mobile.Resources {
         internal static string Phone {
             get {
                 return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone:.
+        /// </summary>
+        internal static string PhoneProfile {
+            get {
+                return ResourceManager.GetString("PhoneProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PIN:.
+        /// </summary>
+        internal static string PINProfile {
+            get {
+                return ResourceManager.GetString("PINProfile", resourceCulture);
             }
         }
         

@@ -32,5 +32,9 @@ namespace mobile
                 imgPatient.Source = ImageSource.FromResource("mobile.Images.womanWhite.png");
 
         }
+        async private void btnLogOut_Clicked(Object sender, EventArgs e)
+        {
+            await this.Navigation.PushAsync(new MainPage());
+        }
     }
 }

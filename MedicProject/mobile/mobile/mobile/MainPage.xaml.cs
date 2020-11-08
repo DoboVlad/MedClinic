@@ -12,11 +12,14 @@ namespace mobile
     public partial class MainPage : ContentPage
     {
         public MainPage()
-        {
+        { 
+            NavigationPage.SetHasBackButton(this, false);
             InitializeComponent();
+            
         }
-
-       async private void btnLogIn_Clicked(object sender, EventArgs e)
+        
+    
+        async private void btnLogIn_Clicked(object sender, EventArgs e)
         {
             Animations.Button_Scale_Clicked((Button)sender);
             await this.Navigation.PushAsync(new LogInPage());
@@ -34,5 +37,6 @@ namespace mobile
 
 
         }
+      // prevend user from going back after logged out
     }
 }
