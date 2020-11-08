@@ -126,6 +126,9 @@
   <data name="Address" xml:space="preserve">
     <value>Current address</value>
   </data>
+  <data name="AddressProfile" xml:space="preserve">
+    <value>Address:</value>
+  </data>
   <data name="AlertBirtday" xml:space="preserve">
     <value>You didn't introduce your birth day.</value>
   </data>
@@ -159,6 +162,12 @@
   <data name="AppointmentsShort" xml:space="preserve">
     <value>Appts</value>
   </data>
+  <data name="BirthDateProfile" xml:space="preserve">
+    <value>BirthDate:</value>
+  </data>
+  <data name="BirthPlaceProfile" xml:space="preserve">
+    <value>BirthPlace:</value>
+  </data>
   <data name="ChooseDoctor" xml:space="preserve">
     <value>Choose a doctor</value>
   </data>
@@ -167,6 +176,9 @@
   </data>
   <data name="ConfPwd" xml:space="preserve">
     <value>Confirm password</value>
+  </data>
+  <data name="EmailProfile" xml:space="preserve">
+    <value>Email:</value>
   </data>
   <data name="FirstName" xml:space="preserve">
     <value>First name</value>
@@ -189,6 +201,9 @@
   <data name="LogIn" xml:space="preserve">
     <value>Log in</value>
   </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>No.</value>
   </data>
@@ -197,6 +212,12 @@
   </data>
   <data name="Phone" xml:space="preserve">
     <value>Phone number</value>
+  </data>
+  <data name="PhoneProfile" xml:space="preserve">
+    <value>Phone:</value>
+  </data>
+  <data name="PINProfile" xml:space="preserve">
+    <value>PIN:</value>
   </data>
   <data name="PlaceOfBirth" xml:space="preserve">
     <value>Place of birth</value>

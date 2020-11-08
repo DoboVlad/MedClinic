@@ -23,7 +23,7 @@ namespace mobile
 
             // chose modal in order to prevent the navigation bar from the home screen. After logging in, the user shouldn't be able to get back to that screen
             // only if he logs out
-            await this.Navigation.PushModalAsync(new TabbedPageMain());
+            await this.Navigation.PushAsync(new TabbedPageMain());
         }
        
     }

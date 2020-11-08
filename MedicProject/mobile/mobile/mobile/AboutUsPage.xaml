@@ -18,12 +18,12 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="20">
+                        <StackLayout Padding="10">
                             <Image x:Name="imgDoctor" Source="{Binding Image}" Margin="0,0,0,10" WidthRequest="220" HeightRequest="220"/>
-                            <Label x:Name="lblFullName" Text="{Binding FullName}" Margin="0" FontSize="24" FontAttributes="Bold"/>
-                            <Label x:Name="lblJobTitle" Text="{Binding JobTitle}"/>
-                            <Label x:Name="lblEmail" Text="{Binding Email}"/>
-                            <Label x:Name="lblPhone" Text="{Binding Phone}"/>
+                            <Label x:Name="lblDoctorFullName" Text="{Binding FullName}" Margin="0" FontSize="24" FontAttributes="Bold"/>
+                            <Label x:Name="lblDoctorJobTitle" Text="{Binding JobTitle}"/>
+                            <Label x:Name="lblDoctorEmail" Text="{Binding Email}"/>
+                            <Label x:Name="lblDoctorPhone" Text="{Binding Phone}"/>
                             
                         </StackLayout>
                     </ViewCell>

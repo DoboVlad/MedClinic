@@ -8,11 +8,74 @@
              Title="{local:Translate Profile}" 
              IconImageSource="{local:ImageResource mobile.Images.profile.png}">
     <!--used ios namespace to ensure the tabbed page is not overlapping the status bar -->
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="#ffffff"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{local:Translate Profile}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+    
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <BoxView BackgroundColor="#5084F2" Grid.Row="0"/>
+
+            <StackLayout Grid.Row="0" Padding="10,10,10,5">
+                <!--Main stack for displaying all the data-->
+                
+                <StackLayout Orientation="Horizontal" >
+                    <!--Stack for image and some details-->
+                    <Image x:Name="imgPatient" WidthRequest="100" HeightRequest="100"/>
+                    <StackLayout>
+                        <!--Stack for details next to the image-->
+                        <Label x:Name="lblPatientFullName" Text="{Binding FullName}" HorizontalOptions="Center" FontSize="24" FontAttributes="Bold"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{local:Translate BirthDateProfile}" FontAttributes="Bold"/>
+                            <Label x:Name="lblPatientBirthDate" Text="{Binding BirthDate}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{local:Translate PINProfile}" FontAttributes="Bold"/>
+                            <Label x:Name="lblPatientPIN" Text="{Binding PIN}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{local:Translate AddressProfile}" FontAttributes="Bold"/>
+                    <Label x:Name="lblPatientAddress" Text="{Binding Address}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{local:Translate BirthPlaceProfile}" FontAttributes="Bold"/>
+                    <Label x:Name="lblPatientBirthPlace" Text="{Binding BirthPlace}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{local:Translate EmailProfile}" FontAttributes="Bold"/>
+                <Label x:Name="lblPatientEmail" Text="{Binding Email}" HorizontalOptions="End"/>
+                </StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <!--Grid for displaying last detail and settings image on same line-->
+                    <StackLayout Orientation="Horizontal">
+                    <Label Text="{local:Translate PhoneProfile}" FontAttributes="Bold"/>
+                    <Label x:Name="lblPatientPhone" Text="{Binding Phone}"/>
+                    </StackLayout>
+                    <Image Grid.Column="1" Source="{local:ImageResource mobile.Images.userSettings.png}" HeightRequest="35" WidthRequest="35" HorizontalOptions="End"/>
+                </Grid>
+            </StackLayout>
+            <StackLayout Grid.Row="1" Margin="0,50,0,0">
+                <!--Stack for showing both flags centered and next to each other-->
+                <Label Text="Choose your language:" HorizontalOptions="Center" TextColor="#5084f2"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Image Source="{local:ImageResource mobile.Images.romaniaFlagIcon.png}" HeightRequest="35" WidthRequest="35"/>
+                    <Image Source="{local:ImageResource mobile.Images.ukFlagIcon.png}" HeightRequest="41" WidthRequest="41"/>
+                </StackLayout>
+            </StackLayout>
+            <Button x:Name="btnLogOut" Text="{local:Translate LogOut}" Grid.Row="2" Margin="50,50,50,0" Clicked="btnLogOut_Clicked"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

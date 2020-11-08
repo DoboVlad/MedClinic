@@ -5,23 +5,35 @@
              x:Class="mobile.MainPage"
              Title="MedClinic"
              >
-    <Grid Padding="50,0,50,0">
+    <Grid>
         <Grid.RowDefinitions>
-
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="End" Padding="0,10,10,0">
+            <Image Source="{local:ImageResource mobile.Images.romaniaFlagIcon.png}" HeightRequest="35" WidthRequest="35"/>
+            <Image Source="{local:ImageResource mobile.Images.ukFlagIcon.png}" HeightRequest="41" WidthRequest="41"/>
+        </StackLayout>
+        
+        <Grid Padding="50,0,50,0" Grid.Row="1">
+            <Grid.RowDefinitions>
 
-        <Image Source="{local:ImageResource  mobile.Images.logo.png}"  Grid.Row="0"/>
-        <Button x:Name="btnRegister" Grid.Row="1" Text="{local:Translate Register}" Clicked="btnRegister_Clicked"/>
-        <Button x:Name="btnLogIn" Grid.Row="2" Text="{local:Translate LogIn}" Clicked="btnLogIn_Clicked"/>
-        <Button x:Name="btnAboutUs" Grid.Row="3" Text="{local:Translate AboutUs}" Clicked="btnAboutUs_Clicked"/>
-        <Label Grid.Row="4" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="EndAndExpand"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+           
+            <Image Source="{local:ImageResource  mobile.Images.logo.png}"  Grid.Row="1"/>
+            <Button x:Name="btnRegister" Grid.Row="2" Text="{local:Translate Register}" Clicked="btnRegister_Clicked"/>
+            <Button x:Name="btnLogIn" Grid.Row="3" Text="{local:Translate LogIn}" Clicked="btnLogIn_Clicked"/>
+            <Button x:Name="btnAboutUs" Grid.Row="4" Text="{local:Translate AboutUs}" Clicked="btnAboutUs_Clicked"/>
+            
 
+        </Grid>
+        <Label Grid.Row="2" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="EndAndExpand"/>
     </Grid>
-
-
 </ContentPage>
