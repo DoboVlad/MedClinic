@@ -28,7 +28,7 @@
        max-width: 100%;
        height: auto;
        margin-left: 100px;
-       
+       cursor: pointer;
 
 }
 .navbar .firstNavList{/*here I am editing the menu from the first part of the navbar*/

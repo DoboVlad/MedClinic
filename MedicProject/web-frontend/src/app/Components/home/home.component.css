@@ -1,12 +1,12 @@
 
 .imgDescription img{/*editing the image*/
-    height: 50px;
+
     width:600px;
-    /*float:right;*/
     margin-left: 10px auto;
-    margin-right: 10px auto;
+    margin-right: 10px auto; 
+    margin: auto;
     padding: 0 auto;
-    
+    display: block;
 }
 
 .minihelp{/*edit the container of minihelp*/
