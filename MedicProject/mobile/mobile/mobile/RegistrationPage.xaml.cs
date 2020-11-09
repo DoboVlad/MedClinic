@@ -2,6 +2,7 @@
 using mobile.Resources;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -19,6 +20,7 @@ namespace mobile
         public RegistrationPage()
         {
             InitializeComponent();
+
         }
         //regex for email validation
         Regex emailPattern = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
@@ -43,10 +45,11 @@ namespace mobile
                 await DisplayAlert(AppResources.AlertEmail, AppResources.AlertChange, AppResources.Yes, AppResources.No);
             }else if (!cnpCheck(entCnp.Text))
             {
-                await DisplayAlert(AppResources.AlertCnp, AppResources.AlertChange, AppResources.Yes, AppResources.No);
-            }else if(Equals(dpBirthDate, DateTime.Now))
+                await DisplayAlert("You inroduce an invalid persoanl identification numebr", "Would you like to try agai?", "Yes", "No");
+            }
+            else if(Equals(dpBirthDate, DateTime.Now))
             {
-                await DisplayAlert(AppResources.AlertBirthday, AppResources.AlertChange, AppResources.Yes, AppResources.No);
+                await DisplayAlert(AppResources.AlertBirtday, AppResources.AlertChange, AppResources.Yes, AppResources.No);
             }
             else if (Equals(entPassword.Text, entConfPwd.Text))
             {
@@ -64,64 +67,109 @@ namespace mobile
         //strong password check
         private void onTexChanged(object sender, TextChangedEventArgs e)
         {
-            int score = 0;
-            if (entPassword.Text.Length >= 6)
-                score++;
-            if (Regex.Match(entPassword.Text, @"/\d+/", RegexOptions.ECMAScript).Success) //contains 0-9
-                score++;
-            if (Regex.Match(entPassword.Text, @"/[a-z]/", RegexOptions.ECMAScript).Success && Regex.Match(entPassword.Text, @"/[A-Z]/", RegexOptions.ECMAScript).Success) //contains a-z || A-Z
-                score++;
-            if (Regex.Match(entPassword.Text, @"/.[!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]/", RegexOptions.ECMAScript).Success) //contains special characters
-                score++;
-            
-            if (score == 1)
+            if (entPassword.Text.Length < 6)
             {
-                lblPassCheck.Text = AppResources.PwdWeak;
+                lblPassCheck.IsVisible = true;
+                lblPassCheck.Text = "Your password is not long enough.";
                 lblPassCheck.TextColor = Color.Red;
+
             }
-            else if (score == 2)
+            else
             {
-                lblPassCheck.Text = AppResources.PwdMedium;
-                lblPassCheck.TextColor = Color.OrangeRed;
-            }
-            else if (score == 3)
-            {
-                lblPassCheck.Text = AppResources.PwdStrong;
-                lblPassCheck.TextColor = Color.Orange;
-            }
-            else if (score == 4)
-            {
-                lblPassCheck.Text = AppResources.PwdVeryStrong;
-                lblPassCheck.TextColor = Color.Green;
+                lblPassCheck.IsVisible = true;
+                if (!Regex.Match(entPassword.Text, "[a-z]", RegexOptions.ECMAScript).Success)
+                {
+                    lblPassCheck.Text = "Your password should contain at least one lowercase character.";
+                    lblPassCheck.TextColor = Color.DarkOrange;
+                }
+                else if (!Regex.Match(entPassword.Text, "[A-Z]", RegexOptions.ECMAScript).Success)
+                {
+                    lblPassCheck.Text = "Your password should contain at least one upper character.";
+                    lblPassCheck.TextColor = Color.OrangeRed;
+                }
+                else if (!Regex.Match(entPassword.Text, "[0-9]", RegexOptions.ECMAScript).Success)
+                {
+
+                    lblPassCheck.Text = "Your password should contain at least one digit.";
+                    lblPassCheck.TextColor = Color.Orange;
+                }
+                else
+                {
+                    lblPassCheck.Text = "Your password is super duper strong.";
+                    lblPassCheck.TextColor = Color.Green;
+                }
             }
         }
         //doesn't work don't know why yet
          private bool  cnpCheck( string cnp) {
+
             if (cnp.Length == 13)
             {
-                if (!Equals(cnp.Substring(0, 1), "1") || !Equals(cnp.Substring(0, 1), "2") || !Equals(cnp.Substring(0, 1), "5") || !Equals(cnp.Substring(0, 1), "6"))
-                {  
-                    int luna = Convert.ToInt32(cnp.Substring(3, 2));
-                    if (luna <= 12)
+                int gender = Convert.ToInt16(cnp.Substring(0, 1));
+                int year = Convert.ToInt16(cnp.Substring(1, 2));
+                int month = Convert.ToInt16(cnp.Substring(3, 2));
+                int day = Convert.ToInt16(cnp.Substring(5, 2));
+                int county = Convert.ToInt16(cnp.Substring(7, 2));
+                int rest = Convert.ToInt16(cnp.Substring(9, 3));
+                int check = Convert.ToInt32(cnp.Substring(cnp.Length - 1));
+                if ((gender == 1 || gender == 2 || (gender >=5 && gender <=8)) && (county < 56 || county == 51 || county ==  52) && rest != 0  && check == checkDigit(cnp))
+                {
+                    if ((month == 2))
                     {
-                        int zi = Convert.ToInt32(cnp.Substring(5, 2));
-                        if ((luna % 2 == 0 && zi == 30 && luna < 8) || (luna % 2 != 0 && zi == 31 && luna < 8) || (luna % 2 == 0 && zi == 31 && luna > 7) || (luna % 2 != 0 && zi == 30 && luna > 7))
+                        if(day <= 28)
                         {
                             return true;
                         }
+                        if (year > 0 && year % 4 == 0 && day == 29)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+
+                    }
+                    else if ((month <= 7 && month % 2 == 0 && day <= 30) || (month <= 7 && month % 2 != 0 && day <= 31) || (month >=8 && month % 2 == 0 && day <= 31) || (month <= 7 && month % 2 != 0 && day <= 30)) // luna >8
+                    {
+                        return true;
+                    }
+                    else
+                    {
                         return false;
                     }
+                }
+                else
+                {
                     return false;
                 }
+            }
+            else
+            {
                 return false;
             }
-            return false;
-        }
+         }
 
+        private int  checkDigit( string series)
+        {
+            long  cod = (Convert.ToInt64(series))/10;
+            List<int> checkNumber = new List<int>() {9,7,2,8,5,3,6,4,1,9,7,2};
+            long sum =0;
             
-         
-          
+            foreach(int element in checkNumber)
+            {
+                sum += element * (cod % 10);
+                cod = cod / 10;
+            }
+            int suma = (int)sum % 11;
+            return suma;
 
         }
+
+         async private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await this.Navigation.PushAsync(new LogInPage());
+        }
+    }
     }
 
