@@ -1,4 +1,4 @@
-.page-doctor{
+.doctor-page{
     display: flex;
     flex-direction: column;
 }
@@ -13,7 +13,7 @@
     width: inherit;
 
 }
-.nav-doctor form{
+.nav-doctor form1{
     float:right;
 }
 .show-doctor{
@@ -31,7 +31,7 @@
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
 }
-.show-doctor .form button {
+.show-doctor .form2 button {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
@@ -45,6 +45,6 @@
     transition: all 0.3 ease;
     cursor: pointer;
   }
- .show-doctor .form button:hover,.form button:active,.form button:focus {
+ .show-doctor .form2 button:hover,.form button:active,.form button:focus {
     background: #8aacf5;
   }
