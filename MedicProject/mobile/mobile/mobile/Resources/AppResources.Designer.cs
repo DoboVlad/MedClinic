@@ -97,11 +97,11 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You didn&apos;t introduce your birth day..
+        ///   Looks up a localized string similar to You didn&apos;t introduce your birthday..
         /// </summary>
-        internal static string AlertBirtday {
+        internal static string AlertBirthday {
             get {
-                return ResourceManager.GetString("AlertBirtday", resourceCulture);
+                return ResourceManager.GetString("AlertBirthday", resourceCulture);
             }
         }
         
@@ -151,7 +151,7 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password too short.It should be at least 6 characters long..
+        ///   Looks up a localized string similar to Password too short. It should be at least 6 characters long..
         /// </summary>
         internal static string AlertPwdShort {
             get {
@@ -259,11 +259,11 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgotten password?.
+        ///   Looks up a localized string similar to Forgot password?.
         /// </summary>
-        internal static string ForgottenPass {
+        internal static string ForgotPass {
             get {
-                return ResourceManager.GetString("ForgottenPass", resourceCulture);
+                return ResourceManager.GetString("ForgotPass", resourceCulture);
             }
         }
         
@@ -322,7 +322,7 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No..
+        ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string No {
             get {
@@ -466,7 +466,7 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yes..
+        ///   Looks up a localized string similar to Yes.
         /// </summary>
         internal static string Yes {
             get {

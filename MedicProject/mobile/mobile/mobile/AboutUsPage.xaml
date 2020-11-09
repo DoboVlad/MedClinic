@@ -14,12 +14,12 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ListView x:Name="doctorsList" RowHeight="390">
+        <ListView x:Name="doctorsList" RowHeight="360">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10">
-                            <Image x:Name="imgDoctor" Source="{Binding Image}" Margin="0,0,0,10" WidthRequest="220" HeightRequest="220"/>
+                            <Image x:Name="imgDoctor" Source="{Binding Image}" Margin="0,0,0,10" WidthRequest="200" HeightRequest="200"/>
                             <Label x:Name="lblDoctorFullName" Text="{Binding FullName}" Margin="0" FontSize="24" FontAttributes="Bold"/>
                             <Label x:Name="lblDoctorJobTitle" Text="{Binding JobTitle}"/>
                             <Label x:Name="lblDoctorEmail" Text="{Binding Email}"/>

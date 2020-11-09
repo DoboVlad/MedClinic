@@ -2,7 +2,6 @@
 using mobile.Resources;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -20,7 +19,6 @@ namespace mobile
         public RegistrationPage()
         {
             InitializeComponent();
-
         }
         //regex for email validation
         Regex emailPattern = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
@@ -45,11 +43,10 @@ namespace mobile
                 await DisplayAlert(AppResources.AlertEmail, AppResources.AlertChange, AppResources.Yes, AppResources.No);
             }else if (!cnpCheck(entCnp.Text))
             {
-                await DisplayAlert("You inroduce an invalid persoanl identification numebr", "Would you like to try agai?", "Yes", "No");
-            }
-            else if(Equals(dpBirthDate, DateTime.Now))
+                await DisplayAlert(AppResources.AlertCnp, AppResources.AlertChange, AppResources.Yes, AppResources.No);
+            }else if(Equals(dpBirthDate, DateTime.Now))
             {
-                await DisplayAlert(AppResources.AlertBirtday, AppResources.AlertChange, AppResources.Yes, AppResources.No);
+                await DisplayAlert(AppResources.AlertBirthday, AppResources.AlertChange, AppResources.Yes, AppResources.No);
             }
             else if (Equals(entPassword.Text, entConfPwd.Text))
             {
@@ -79,95 +76,52 @@ namespace mobile
             
             if (score == 1)
             {
-                lblPassCheck.IsVisible = true;
                 lblPassCheck.Text = AppResources.PwdWeak;
                 lblPassCheck.TextColor = Color.Red;
             }
-            if (score == 2)
+            else if (score == 2)
             {
-                lblPassCheck.IsVisible = true;
                 lblPassCheck.Text = AppResources.PwdMedium;
                 lblPassCheck.TextColor = Color.OrangeRed;
             }
-            if (score == 3)
+            else if (score == 3)
             {
-                lblPassCheck.IsVisible = true;
                 lblPassCheck.Text = AppResources.PwdStrong;
                 lblPassCheck.TextColor = Color.Orange;
             }
-            if (score == 4)
+            else if (score == 4)
             {
-                lblPassCheck.IsVisible = true;
                 lblPassCheck.Text = AppResources.PwdVeryStrong;
                 lblPassCheck.TextColor = Color.Green;
             }
         }
         //doesn't work don't know why yet
          private bool  cnpCheck( string cnp) {
-
             if (cnp.Length == 13)
             {
-                int gender = Convert.ToInt16(cnp.Substring(0, 1));
-                int year = Convert.ToInt16(cnp.Substring(1, 2));
-                int month = Convert.ToInt16(cnp.Substring(3, 2));
-                int day = Convert.ToInt16(cnp.Substring(5, 2));
-                int county = Convert.ToInt16(cnp.Substring(7, 2));
-                int rest = Convert.ToInt16(cnp.Substring(9, 3));
-                int check = Convert.ToInt32(cnp.Substring(cnp.Length - 1));
-                if ((gender == 1 || gender == 2 || (gender >=5 && gender <=8)) && (county < 56 || county == 51 || county ==  52) && rest != 0  && check == checkDigit(cnp))
-                {
-                    if ((month == 2))
+                if (!Equals(cnp.Substring(0, 1), "1") || !Equals(cnp.Substring(0, 1), "2") || !Equals(cnp.Substring(0, 1), "5") || !Equals(cnp.Substring(0, 1), "6"))
+                {  
+                    int luna = Convert.ToInt32(cnp.Substring(3, 2));
+                    if (luna <= 12)
                     {
-                        if (year > 0 && year % 4 == 0 && day == 29)
+                        int zi = Convert.ToInt32(cnp.Substring(5, 2));
+                        if ((luna % 2 == 0 && zi == 30 && luna < 8) || (luna % 2 != 0 && zi == 31 && luna < 8) || (luna % 2 == 0 && zi == 31 && luna > 7) || (luna % 2 != 0 && zi == 30 && luna > 7))
                         {
                             return true;
                         }
-                        else
-                        {
-                            return false;
-                        }
-
-                    }
-                    else if ((month <= 7 && month % 2 == 0 && day <= 30) || (month <= 7 && month % 2 != 0 && day <= 31)) // luna >8
-                    {
-                        return true;
-                    }
-                    else
-                    {
                         return false;
                     }
-                }
-                else
-                {
                     return false;
                 }
-            }
-            else
-            {
                 return false;
             }
-         }
+            return false;
+        }
 
-        private int  checkDigit( string series)
-        {
-            long  cod = (Convert.ToInt64(series))/10;
-            List<int> checkNumber = new List<int>() {9,7,2,8,5,3,6,4,1,9,7,2};
-            long sum =0;
             
-            foreach(int element in checkNumber)
-            {
-                sum += element * (cod % 10);
-                cod = cod / 10;
-            }
-            int suma = (int)sum % 11;
-            return suma;
+         
+          
 
         }
-
-         async private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            await this.Navigation.PushAsync(new LogInPage());
-        }
-    }
     }
 

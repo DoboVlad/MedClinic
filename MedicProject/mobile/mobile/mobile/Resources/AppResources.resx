@@ -129,8 +129,8 @@
   <data name="AddressProfile" xml:space="preserve">
     <value>Address:</value>
   </data>
-  <data name="AlertBirtday" xml:space="preserve">
-    <value>You didn't introduce your birth day.</value>
+  <data name="AlertBirthday" xml:space="preserve">
+    <value>You didn't introduce your birthday.</value>
   </data>
   <data name="AlertChange" xml:space="preserve">
     <value>Would you like to try again?</value>
@@ -148,7 +148,7 @@
     <value>Your passwords don't match.</value>
   </data>
   <data name="AlertPwdShort" xml:space="preserve">
-    <value>Password too short.It should be at least 6 characters long.</value>
+    <value>Password too short. It should be at least 6 characters long.</value>
   </data>
   <data name="All" xml:space="preserve">
     <value>All</value>
@@ -183,8 +183,8 @@
   <data name="FirstName" xml:space="preserve">
     <value>First name</value>
   </data>
-  <data name="ForgottenPass" xml:space="preserve">
-    <value>Forgotten password?</value>
+  <data name="ForgotPass" xml:space="preserve">
+    <value>Forgot password?</value>
   </data>
   <data name="GoMainPage" xml:space="preserve">
     <value>Click here to go to main page.</value>
@@ -205,7 +205,7 @@
     <value>Log Out</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>No.</value>
+    <value>No</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -253,6 +253,6 @@
     <value>Username</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Yes.</value>
+    <value>Yes</value>
   </data>
 </root>

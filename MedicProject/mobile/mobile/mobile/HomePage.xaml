@@ -21,13 +21,13 @@
             <Picker Title="{local:Translate Sort}" x:Name="pickerSort" Margin="320,10,10,5" TextColor="#5084F2">
               
             </Picker>
-            <ListView x:Name="appointmentsList" RowHeight="60">
+            <ListView x:Name="appointmentsList" RowHeight="90">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                    <StackLayout Orientation="Vertical">
+                    <StackLayout Orientation="Vertical" Padding="10">
 
-                        <Label x:Name="lblAppt" Text="{Binding AppointmentDate}" FontAttributes="Bold" Margin="10,0,0,2"/>
+                        <Label x:Name="lblAppt" Text="{Binding AppointmentDate}" FontAttributes="Bold" Margin="10,0,0,10"/>
 
                         <Grid>
                             <Grid.ColumnDefinitions>
