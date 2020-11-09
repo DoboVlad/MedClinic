@@ -67,39 +67,37 @@ namespace mobile
         //strong password check
         private void onTexChanged(object sender, TextChangedEventArgs e)
         {
-            int score = 0;
-            if (entPassword.Text.Length >= 6)
-                score++;
-            if (Regex.Match(entPassword.Text, @"/\d+/", RegexOptions.ECMAScript).Success) //contains 0-9
-                score++;
-            if (Regex.Match(entPassword.Text, @"/[a-z]/", RegexOptions.ECMAScript).Success && Regex.Match(entPassword.Text, @"/[A-Z]/", RegexOptions.ECMAScript).Success) //contains a-z || A-Z
-                score++;
-            if (Regex.Match(entPassword.Text, @"/.[!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]/", RegexOptions.ECMAScript).Success) //contains special characters
-                score++;
-            
-            if (score == 1)
+            if (entPassword.Text.Length < 6)
             {
                 lblPassCheck.IsVisible = true;
-                lblPassCheck.Text = AppResources.PwdWeak;
+                lblPassCheck.Text = "Your password is not long enough.";
                 lblPassCheck.TextColor = Color.Red;
+
             }
-            if (score == 2)
+            else
             {
                 lblPassCheck.IsVisible = true;
-                lblPassCheck.Text = AppResources.PwdMedium;
-                lblPassCheck.TextColor = Color.OrangeRed;
-            }
-            if (score == 3)
-            {
-                lblPassCheck.IsVisible = true;
-                lblPassCheck.Text = AppResources.PwdStrong;
-                lblPassCheck.TextColor = Color.Orange;
-            }
-            if (score == 4)
-            {
-                lblPassCheck.IsVisible = true;
-                lblPassCheck.Text = AppResources.PwdVeryStrong;
-                lblPassCheck.TextColor = Color.Green;
+                if (!Regex.Match(entPassword.Text, "[a-z]", RegexOptions.ECMAScript).Success)
+                {
+                    lblPassCheck.Text = "Your password should contain at least one lowercase character.";
+                    lblPassCheck.TextColor = Color.DarkOrange;
+                }
+                else if (!Regex.Match(entPassword.Text, "[A-Z]", RegexOptions.ECMAScript).Success)
+                {
+                    lblPassCheck.Text = "Your password should contain at least one upper character.";
+                    lblPassCheck.TextColor = Color.OrangeRed;
+                }
+                else if (!Regex.Match(entPassword.Text, "[0-9]", RegexOptions.ECMAScript).Success)
+                {
+
+                    lblPassCheck.Text = "Your password should contain at least one digit.";
+                    lblPassCheck.TextColor = Color.Orange;
+                }
+                else
+                {
+                    lblPassCheck.Text = "Your password is super duper strong.";
+                    lblPassCheck.TextColor = Color.Green;
+                }
             }
         }
         //doesn't work don't know why yet
@@ -118,6 +116,10 @@ namespace mobile
                 {
                     if ((month == 2))
                     {
+                        if(day <= 28)
+                        {
+                            return true;
+                        }
                         if (year > 0 && year % 4 == 0 && day == 29)
                         {
                             return true;
@@ -128,7 +130,7 @@ namespace mobile
                         }
 
                     }
-                    else if ((month <= 7 && month % 2 == 0 && day <= 30) || (month <= 7 && month % 2 != 0 && day <= 31)) // luna >8
+                    else if ((month <= 7 && month % 2 == 0 && day <= 30) || (month <= 7 && month % 2 != 0 && day <= 31) || (month >=8 && month % 2 == 0 && day <= 31) || (month <= 7 && month % 2 != 0 && day <= 30)) // luna >8
                     {
                         return true;
                     }
