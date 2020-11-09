@@ -17,6 +17,7 @@ namespace mobile
         {
             InitializeComponent();
             BindingContext = doctor;
+            // to show the name of the doctor
             Title = AppResources.About + " " + doctor.FullName;
         }
     }
