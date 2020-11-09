@@ -42,6 +42,6 @@ namespace mobile
             doctorsList.ItemTapped += OnItemTapped;
         }
         // any item tapped will open another page with more details about the doctor
-        async public void OnItemTapped(object sender, ItemTappedEventArgs e) => await Navigation.PushAsync(new AboutUsPageDetails((Doctor)e.Item));
+         public void OnItemTapped(object sender, ItemTappedEventArgs e) => Navigation.PushAsync(new AboutUsPageDetails((Doctor)e.Item));
     }
 }

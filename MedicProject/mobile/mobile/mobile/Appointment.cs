@@ -12,7 +12,22 @@ namespace mobile
         private string hour;
         private string status;
         private const string duration = "Duration: 30 min";
+        private string details;
+        // we have to implement a PacientModel for this
+        public bool IsVisible { get; set; }
 
+        public string Details
+        {
+            get
+            {
+                return details;
+            }
+            set
+            {
+                details = value;
+
+            }
+        }
         public string Date
         {
 
