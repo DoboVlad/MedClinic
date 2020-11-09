@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { User } from 'src/app/Models/UserModel';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-doctors',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./doctors.component.css']
 })
 export class DoctorsComponent implements OnInit {
-
-  constructor() { }
+  formSearch: FormGroup;
+  users: User[];
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.formSearch = new FormGroup({
+      "search": new FormControl(null)
+    });
   }
 
+  submit(){
+    const name =this.formSearch.get("search").value;
+    this.userService.searchDoctor(name).subscribe(users => {
+      this.users = users
+    });
+  }
 }
