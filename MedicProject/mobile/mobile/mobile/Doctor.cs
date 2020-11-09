@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace mobile
 {
-    class Doctor
+    public class Doctor
     {// this is a dummy class used to test the way about us page looks like
        
         private string firstName;
@@ -15,7 +15,19 @@ namespace mobile
         private const string jobTitle = "Family Doctor";
         private string phone;
         private ImageSource image = ImageSource.FromResource("mobile.Images.man.png");
+        private string description;
 
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+            }
+        }
         public ImageSource Image
         {
             get

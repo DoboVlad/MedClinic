@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile.AboutUsPageDetails" 
+             xmlns:local ="clr-namespace:mobile.Helpers"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+             >
+    <!--used ios namespace to ensure the tabbed page is not overlapping the status bar -->
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>     
+            <StackLayout Padding="10">
+            <Image x:Name="imgDoctor" Source="{Binding Image}" Margin="0,0,0,10" WidthRequest="200" HeightRequest="200"/>
+            <Label x:Name="lblDoctorFullName" Text="{Binding FullName}" Margin="0" FontSize="24" FontAttributes="Bold"/>
+            <Label x:Name="lblDoctorJobTitle" Text="{Binding JobTitle}"/>
+            <Label x:Name="lblDoctorEmail" Text="{Binding Email}"/>
+            <Label x:Name="lblDoctorPhone" Text="{Binding Phone}"/>
+            <Label x:Name="lblDoctorDescription" Text="{Binding Description}" />
+        </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

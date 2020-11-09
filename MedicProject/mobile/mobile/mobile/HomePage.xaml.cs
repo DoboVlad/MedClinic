@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace mobile
 
             // dummy data to see the functionality of the list view
             List<Appointment> aplist = new List<Appointment>();
-            aplist.Add(new Appointment {Date="10.10.2020",Hour="10:00",Status="Active" });
+            aplist.Add(new Appointment { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
             aplist.Add(new Appointment { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
             aplist.Add(new Appointment { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
             aplist.Add(new Appointment { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
@@ -35,9 +36,9 @@ namespace mobile
 
             appointmentsList.ItemsSource = aplist;
             // bind the picker to enable translation
-            pickerSort.ItemsSource = new List<string> { AppResources.Active, AppResources.Inactive, AppResources.All};
+            pickerSort.ItemsSource = new List<string> { AppResources.Active, AppResources.Inactive, AppResources.All };
 
-          
+
         }
     }
 }
