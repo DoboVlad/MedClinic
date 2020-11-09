@@ -10,25 +10,15 @@ namespace mobile
         private string firstName;
         private string lastName;
         private string email;
-        private string address;
+       
         private string birthDate;
         // Personal Identification Number
         private string pin;
-        private string birthPlace;
+       
         private string phone;
 
 
-        public string Address
-        {
-            get
-            {
-                return  address;
-            }
-            set
-            {
-                address = value;
-            }
-        }
+        
       
         public string PIN
         {
@@ -52,17 +42,7 @@ namespace mobile
                 birthDate = value;
             }
         }
-        public string BirthPlace
-        {
-            get
-            {
-                return  birthPlace;
-            }
-            set
-            {
-                birthPlace = value;
-            }
-        }
+       
         public string FullName
         {
             get

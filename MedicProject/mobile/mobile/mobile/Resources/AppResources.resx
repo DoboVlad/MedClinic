@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
   <data name="AboutUs" xml:space="preserve">
     <value>About Us</value>
   </data>
@@ -125,9 +128,6 @@
   </data>
   <data name="Address" xml:space="preserve">
     <value>Current address</value>
-  </data>
-  <data name="AddressProfile" xml:space="preserve">
-    <value>Address:</value>
   </data>
   <data name="AlertBirthday" xml:space="preserve">
     <value>You didn't introduce your birthday.</value>
@@ -164,9 +164,6 @@
   </data>
   <data name="BirthDateProfile" xml:space="preserve">
     <value>BirthDate:</value>
-  </data>
-  <data name="BirthPlaceProfile" xml:space="preserve">
-    <value>BirthPlace:</value>
   </data>
   <data name="ChooseDoctor" xml:space="preserve">
     <value>Choose a doctor</value>

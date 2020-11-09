@@ -61,6 +61,15 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        internal static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About Us.
         /// </summary>
         internal static string AboutUs {
@@ -84,15 +93,6 @@ namespace mobile.Resources {
         internal static string Address {
             get {
                 return ResourceManager.GetString("Address", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Address:.
-        /// </summary>
-        internal static string AddressProfile {
-            get {
-                return ResourceManager.GetString("AddressProfile", resourceCulture);
             }
         }
         
@@ -201,15 +201,6 @@ namespace mobile.Resources {
         internal static string BirthDateProfile {
             get {
                 return ResourceManager.GetString("BirthDateProfile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to BirthPlace:.
-        /// </summary>
-        internal static string BirthPlaceProfile {
-            get {
-                return ResourceManager.GetString("BirthPlaceProfile", resourceCulture);
             }
         }
         

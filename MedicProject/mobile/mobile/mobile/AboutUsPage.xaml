@@ -14,7 +14,7 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ListView x:Name="doctorsList" RowHeight="360">
+        <ListView x:Name="doctorsList" RowHeight="360" SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

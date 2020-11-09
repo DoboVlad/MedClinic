@@ -21,7 +21,7 @@
             <Picker Title="{local:Translate Sort}" x:Name="pickerSort" Margin="320,10,10,5" TextColor="#5084F2">
               
             </Picker>
-            <ListView x:Name="appointmentsList" RowHeight="90">
+            <ListView x:Name="appointmentsList" RowHeight="90" SelectionMode="None" IsPullToRefreshEnabled="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
