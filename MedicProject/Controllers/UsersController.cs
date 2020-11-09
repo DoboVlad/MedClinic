@@ -149,9 +149,10 @@ namespace MedicProject.Controllers
 
         [HttpGet]
         [Route("searchUser")]
-        public async Task<ActionResult<IEnumerable<PatientDTO>>> searchUser(string s,int id){
-           
-            var users = await _context.USERS.Where(p => p.firstName.Contains(s) || p.lastName.Contains(s) || Convert.ToString(p.firstName) +" "+ Convert.ToString(p.lastName) == s || Convert.ToString(p.lastName)+" "+ Convert.ToString(p.firstName) == s).Where(x => x.doctorId== id).Where(x => x.isMedic==0).ToListAsync();
+        public async Task<ActionResult<IEnumerable<PatientDTO>>> searchUser(string str,int id){
+
+            var s=str.ToLower();
+            var users = await _context.USERS.Where(p => p.firstName.ToLower().Contains(s) || p.lastName.ToLower().Contains(s) || Convert.ToString(p.firstName.ToLower()) +" "+ Convert.ToString(p.lastName.ToLower()) == s || Convert.ToString(p.lastName.ToLower())+" "+ Convert.ToString(p.firstName.ToLower()) == s).Where(x => x.doctorId== id).Where(x => x.isMedic==0).ToListAsync();
             var userstoreturn = _mapper.Map<IEnumerable<PatientDTO>>(users);
             return Ok(userstoreturn);
         
@@ -161,8 +162,9 @@ namespace MedicProject.Controllers
 
         [HttpGet]
         [Route("searchDoctor")]
-        public async Task<ActionResult<IEnumerable<DoctorDTO>>> searchDoctor(string s){
-        var users = await _context.USERS.Where(p => p.firstName.Contains(s) || p.lastName.Contains(s) || Convert.ToString(p.firstName) +" "+ Convert.ToString(p.lastName) == s || Convert.ToString(p.lastName)+" "+ Convert.ToString(p.firstName) == s).Where(x => x.isMedic==1).ToListAsync();
+        public async Task<ActionResult<IEnumerable<DoctorDTO>>> searchDoctor(string str){
+            var s = str.ToLower();
+        var users = await _context.USERS.Where(p => p.firstName.ToLower().Contains(s) || p.lastName.ToLower().Contains(s) || Convert.ToString(p.firstName.ToLower()) +" "+ Convert.ToString(p.lastName.ToLower()) == s || Convert.ToString(p.lastName.ToLower())+" "+ Convert.ToString(p.firstName.ToLower()) == s).Where(x => x.isMedic==1).ToListAsync();
         var userstoreturn = _mapper.Map<IEnumerable<DoctorDTO>>(users);
         return Ok(userstoreturn);
        }

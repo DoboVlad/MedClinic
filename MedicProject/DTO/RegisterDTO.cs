@@ -30,6 +30,7 @@ namespace MedicProject.DTO
         public string phoneNumber{get;set;}
 
         [Required(ErrorMessage="Please enter a password")]
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$",ErrorMessage="The password must be at least 8 characters long and it must contain at least one uppercase letter, one lowercase letter and one number")]
         public string password { get; set; }
 
         [Required(ErrorMessage="Please enter the password again")]
