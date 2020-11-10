@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
              x:Class="mobile.RegistrationPage"
              xmlns:local ="clr-namespace:mobile.Helpers"
              xmlns:sys="clr-namespace:System;assembly=mscorlib" 
@@ -40,11 +42,7 @@
                 <Label x:Name ="lblPCnp" Text="{local:Translate Cnp}"/>
                 <Entry x:Name="entCnp" Placeholder="{local:Translate Cnp}" ReturnType="Next" Keyboard="Numeric" />
                 <Label x:Name="lblBirthDay" Text="Birth day"/> <!--!!!!!!!!!!!!!!!!-->
-                <DatePicker x:Name="dpBirthDate" MinimumDate="01/01/1900" MaximumDate="{x:Static sys:DateTime.Now}" Date="06/21/2018" />
-                <Label x:Name ="lblPlaceOfBirth" Text="{local:Translate PlaceOfBirth}"/>
-                <Entry x:Name="entPlaceOfBirth" Placeholder="{local:Translate PlaceOfBirth}" ReturnType="Next" Keyboard="Text"/>
-                <Label x:Name ="lblAdress" Text="{local:Translate Address}"/>
-                <Entry x:Name="entAdress" Placeholder="{local:Translate Address}" ReturnType="Next" Keyboard="Text"/>
+                <DatePicker x:Name="dpBirthDate" MinimumDate="01/01/1900" MaximumDate="{x:Static sys:DateTime.Now}" Date="06/21/2018"/>
                 <Label x:Name="lblDoc" Text="{local:Translate ChooseDoctor}"/>
                 <Picker x:Name="pckDoctor" HorizontalOptions="FillAndExpand"  Title="{local:Translate ChooseDoctor}">
                     <Picker.Items>

@@ -20,6 +20,7 @@ namespace mobile
         public RegistrationPage()
         {
             InitializeComponent();
+            
 
         }
         //regex for email validation
@@ -32,7 +33,7 @@ namespace mobile
             int result = DateTime.Compare(dpBirthDate.Date, DateTime.Today);
 
             //verify if fiels are filled in
-            if (string.IsNullOrWhiteSpace(entFirstName.Text) || string.IsNullOrWhiteSpace(entLastName.Text) || string.IsNullOrWhiteSpace(entEmail.Text) || string.IsNullOrWhiteSpace(entPhone.Text) || string.IsNullOrWhiteSpace(entCnp.Text) || string.IsNullOrWhiteSpace(entAdress.Text) || string.IsNullOrWhiteSpace(entPassword.Text) || string.IsNullOrWhiteSpace(entConfPwd.Text))
+            if (string.IsNullOrWhiteSpace(entFirstName.Text) || string.IsNullOrWhiteSpace(entLastName.Text) || string.IsNullOrWhiteSpace(entEmail.Text) || string.IsNullOrWhiteSpace(entPhone.Text) || string.IsNullOrWhiteSpace(entCnp.Text)  || string.IsNullOrWhiteSpace(entPassword.Text) || string.IsNullOrWhiteSpace(entConfPwd.Text))
             {
                 await DisplayAlert(AppResources.AlertFillField, AppResources.AlertChange, AppResources.Yes, AppResources.No);
             }

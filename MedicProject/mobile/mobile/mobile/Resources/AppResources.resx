@@ -129,6 +129,9 @@
   <data name="Address" xml:space="preserve">
     <value>Current address</value>
   </data>
+  <data name="Age" xml:space="preserve">
+    <value>Age</value>
+  </data>
   <data name="AlertBirthday" xml:space="preserve">
     <value>You didn't introduce your birthday.</value>
   </data>
@@ -165,6 +168,9 @@
   <data name="BirthDateProfile" xml:space="preserve">
     <value>BirthDate:</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="ChooseDoctor" xml:space="preserve">
     <value>Choose a doctor</value>
   </data>
@@ -173,6 +179,15 @@
   </data>
   <data name="ConfPwd" xml:space="preserve">
     <value>Confirm password</value>
+  </data>
+  <data name="Doctor" xml:space="preserve">
+    <value>Doctor</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
   </data>
   <data name="EmailProfile" xml:space="preserve">
     <value>Email:</value>
@@ -213,6 +228,9 @@
   <data name="PhoneProfile" xml:space="preserve">
     <value>Phone:</value>
   </data>
+  <data name="PIN" xml:space="preserve">
+    <value>PIN</value>
+  </data>
   <data name="PINProfile" xml:space="preserve">
     <value>PIN:</value>
   </data>
@@ -240,11 +258,17 @@
   <data name="RegistrationSucceed" xml:space="preserve">
     <value>Your registration is successful. Please wait for the doctor to accept your request.</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Profile settings</value>
+  </data>
   <data name="SingUp" xml:space="preserve">
     <value>Sign up!</value>
   </data>
   <data name="Sort" xml:space="preserve">
     <value>Sort</value>
+  </data>
+  <data name="SucRegistration" xml:space="preserve">
+    <value>Successful registration</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>

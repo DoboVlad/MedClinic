@@ -57,7 +57,13 @@
                     <Label Text="{local:Translate PhoneProfile}" FontAttributes="Bold"/>
                     <Label x:Name="lblPatientPhone" Text="{Binding Phone}"/>
                     </StackLayout>
-                    <Image Grid.Column="1" Source="{local:ImageResource mobile.Images.userSettings.png}" HeightRequest="35" WidthRequest="35" HorizontalOptions="End" />
+                    <Image Grid.Column="1" Source="{local:ImageResource mobile.Images.userSettings.png}" HeightRequest="35" WidthRequest="35" HorizontalOptions="End" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="OnSettingsTapped"
+                                NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
                 </Grid>
             </StackLayout>
             <StackLayout Grid.Row="1" Margin="0,50,0,0">
