@@ -5,9 +5,12 @@
              x:Class="mobile.LogInPage"
              Title="{local:Translate LogIn}">
     <ContentPage.Content>
-        
         <Grid BackgroundColor="White" >
-            <StackLayout Padding="0" Margin="0, 50" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Padding="0" Margin="0, 50" Grid.Row="0">
                 <StackLayout>
                     <Image Source="{local:ImageResource  mobile.Images.logo.png}" WidthRequest="400" Margin="0,0,0,40"/>
                     <!--bind the image resource -->
@@ -26,7 +29,7 @@
                     </StackLayout>
                 </Frame>
             </StackLayout>
-            <Label Grid.Row="2" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="EndAndExpand"/>
+            <Label Grid.Row="1" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="End"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

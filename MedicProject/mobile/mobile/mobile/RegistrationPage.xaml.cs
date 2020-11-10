@@ -49,7 +49,7 @@ namespace mobile
             }
             else if(Equals(dpBirthDate, DateTime.Now))
             {
-                await DisplayAlert(AppResources.AlertBirtday, AppResources.AlertChange, AppResources.Yes, AppResources.No);
+                await DisplayAlert(AppResources.AlertBirthday, AppResources.AlertChange, AppResources.Yes, AppResources.No);
             }
             else if (Equals(entPassword.Text, entConfPwd.Text))
             {
@@ -170,6 +170,8 @@ namespace mobile
         {
             await this.Navigation.PushAsync(new LogInPage());
         }
+
+
     }
     }
 

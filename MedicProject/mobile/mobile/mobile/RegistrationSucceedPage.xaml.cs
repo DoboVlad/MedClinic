@@ -24,5 +24,10 @@ namespace mobile
             Animations.Button_Scale_Clicked((Button)sender);
             await this.Navigation.PushAsync(new MainPage());
         }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
+        }
     }
 }

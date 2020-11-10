@@ -60,7 +60,9 @@
                 <Button x:Name="btnRegister" Text="{local:Translate SingUp}" Clicked="btnRegister_Clicked" Margin="0,50,0,0" />
             </StackLayout>
             <Label Grid.Row="2" Text="Already have an account?"  HorizontalOptions="Center" TextColor="#5084F2" >
-           
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
             </Label>
             <Label Grid.Row="3" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="EndAndExpand" TextColor="#5084F2"/>
     </Grid>
