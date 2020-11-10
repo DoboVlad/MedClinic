@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using mobile.Resources;
+using mobile.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,7 +14,7 @@ namespace mobile
     public partial class AboutUsPageDetails : ContentPage
     {
         
-        public AboutUsPageDetails(Doctor doctor)
+        public AboutUsPageDetails(DoctorModel doctor)
         {
             InitializeComponent();
             BindingContext = doctor;

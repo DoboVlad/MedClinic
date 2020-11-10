@@ -35,7 +35,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Label x:Name="lblDuration" Text="{Binding Duration}" Style="{StaticResource secondaryLabels}"  Grid.Column="0" Margin="10,0,0,0"/>
-                            <Label x:Name="lblStatus" Text="{Binding Status}" Style="{StaticResource secondaryLabels}" FontSize="16" HorizontalOptions="End" Margin="0,0,10,0" Grid.Column="1"/>
+                            <Label x:Name="lblStatus" Text="{Binding IsActive}" Style="{StaticResource secondaryLabels}" FontSize="16" HorizontalOptions="End" Margin="0,0,10,0" Grid.Column="1"/>
                         </Grid>
                                 <Label x:Name="lblDetails" Text="{Binding Details}" IsVisible="{Binding IsVisible}"/>
                             </StackLayout>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using mobile.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,7 +15,7 @@ namespace mobile
         public ProfilePage()
         {
             InitializeComponent();
-            Patient Ionut = new Patient() 
+            PatientModel Ionut = new PatientModel() 
             {FirstName = "Ionut",
                 LastName="Iga",
                 Phone="1234567890",

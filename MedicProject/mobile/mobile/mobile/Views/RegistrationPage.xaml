@@ -5,7 +5,7 @@
              xmlns:local ="clr-namespace:mobile.Helpers"
              xmlns:sys="clr-namespace:System;assembly=mscorlib" 
              Title="{local:Translate Register}"
-             Padding="0,10,0,10">
+             Padding="0,10,0,0">
     <!--line6-to generate the sysdate-->
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -64,7 +64,7 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Label.GestureRecognizers>
             </Label>
-            <Label Grid.Row="3" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="EndAndExpand" TextColor="#5084F2"/>
+            <Label Grid.Row="3" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" FontAttributes="None" VerticalOptions="EndAndExpand" TextColor="#5084F2"/>
     </Grid>
     </ScrollView>
 </ContentPage>
