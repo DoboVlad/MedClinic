@@ -1,57 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Text;
+using Xamarin.Forms;
 
 namespace mobile
 {
-    // dummy class used to display the user profile.
-    class Patient
-    {
+    public class Doctor
+    {// this is a dummy class used to test the way about us page looks like
+       
         private string firstName;
         private string lastName;
         private string email;
-       
-        private string birthDate;
-        // Personal Identification Number
-        private string pin;
-       
+        private const string jobTitle = "Family Doctor";
         private string phone;
+        private ImageSource image = ImageSource.FromResource("mobile.Images.man.png");
+        private string description;
 
-
-        
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+            }
+        }
+        public ImageSource Image
+        {
+            get
+            {
+                return image;
+            }
+            set
+            {
+                image = value;
+            }
+        }
       
-        public string PIN
-        {
-            get
-            {
-                return pin;
-            }
-            set
-            {
-                pin = value;
-            }
-        }
-        public string BirthDate
-        {
-            get
-            {
-                return  birthDate;
-            }
-            set
-            {
-                birthDate = value;
-            }
-        }
-       
-        public string FullName
-        {
-            get
-            {
-
-                return firstName + " " + lastName;
-            }
-
-        }
 
         public string FirstName
         {
@@ -88,7 +76,13 @@ namespace mobile
                 email = value;
             }
         }
-       
+        public string JobTitle
+        {
+            get
+            {
+                return jobTitle;
+            }
+        }
         public string Phone
         {
             get

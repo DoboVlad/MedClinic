@@ -1,53 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
 using System.Text;
-using Xamarin.Forms;
 
 namespace mobile
 {
-    public class Doctor
-    {// this is a dummy class used to test the way about us page looks like
-       
+    // dummy class used to display the user profile.
+     class Patient
+    {
         private string firstName;
         private string lastName;
         private string email;
-        private const string jobTitle = "Family Doctor";
+       
+        private string birthDate;
+        // Personal Identification Number
+        private string pin;
+       
         private string phone;
-        private ImageSource image = ImageSource.FromResource("mobile.Images.man.png");
-        private string description;
 
-        public string Description
+
+        
+      
+        public string PIN
         {
             get
             {
-                return description;
+                return pin;
             }
             set
             {
-                description = value;
+                pin = value;
             }
         }
-        public ImageSource Image
+        public string BirthDate
         {
             get
             {
-                return image;
+                return  birthDate;
             }
             set
             {
-                image = value;
+                birthDate = value;
             }
         }
-        public string FullName
-        {
-            get
-            {
-                
-                return "Dr. " + firstName + " " + lastName;
-            }
-
-        }
+       
+        
 
         public string FirstName
         {
@@ -84,13 +80,7 @@ namespace mobile
                 email = value;
             }
         }
-        public string JobTitle
-        {
-            get
-            {
-                return jobTitle;
-            }
-        }
+       
         public string Phone
         {
             get

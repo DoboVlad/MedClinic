@@ -13,9 +13,7 @@ namespace mobile
         private string status;
         private const string duration = "Duration: 30 min";
         private string details;
-        // we have to implement a PacientModel for this
-        public bool IsVisible { get; set; }
-
+        
         public string Details
         {
             get
@@ -60,7 +58,7 @@ namespace mobile
         {
             get
             {
-                return "Status: " + status;
+                return status;
             }
 
             set
@@ -74,16 +72,7 @@ namespace mobile
 
             get { return duration; }
         }
-        public string AppointmentDate
-        {
-
-            get
-            {
-
-                return "APPOINTMENT AT " + hour + ", ON " + date;
-            }
-
-        }
+        
     }
 
 }

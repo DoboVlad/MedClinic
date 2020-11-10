@@ -26,7 +26,7 @@
                     </StackLayout>
                 </Frame>
             </StackLayout>
-            <Label Grid.Row="2" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="EndAndExpand"/>
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>
