@@ -5,6 +5,7 @@
     ios:Page.UseSafeArea="true"
              x:Class="mobile.HomePageDoctor"
              xmlns:local ="clr-namespace:mobile.Helpers"
+            
              Title ="{local:Translate Home}"
              IconImageSource="{local:ImageResource mobile.Images.home.png}">
     <!--used ios namespace to ensure the tabbed page is not overlapping the status bar -->
@@ -24,8 +25,8 @@
             <ListView x:Name="appointmentsList" RowHeight="90" SelectionMode="None" HasUnevenRows="True" >
                 <!--IsPullToRefreshEnabled="True"-->
                 <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
+                    <DataTemplate >
+                        <ViewCell >
                             <StackLayout Orientation="Vertical" Padding="10">
 
                                 <Label x:Name="lblAppt" Text="{Binding AppointmentDate}" FontAttributes="Bold" Margin="10,0,0,10"/>
@@ -38,7 +39,8 @@
                                     <Label x:Name="lblDuration" Text="{Binding Duration}" Style="{StaticResource secondaryLabels}"  Grid.Column="0" Margin="10,0,0,0"/>
                                     <Label x:Name="lblStatus" Text="{Binding IsActive}" Style="{StaticResource secondaryLabels}" FontSize="16" HorizontalOptions="End" Margin="0,0,10,0" Grid.Column="1"/>
                                 </Grid>
-                                <Label x:Name="lblDetails" Text="{Binding Details}" IsVisible="{Binding IsVisible}"/>
+                                <Label x:Name="lblDetails" Text="{Binding Details}" IsVisible="{Binding IsVisible}" Margin="0,0,0,5"/>
+                                <Button x:Name="btnDelete" Clicked="DeleteButton_Clicked"  Text="{local:Translate Delete}" TextColor="White" BackgroundColor="Red" IsVisible="{Binding IsVisible}" WidthRequest="100" HorizontalOptions="Center"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

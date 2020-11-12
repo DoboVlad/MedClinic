@@ -189,6 +189,9 @@
   <data name="ConfPwd" xml:space="preserve">
     <value>Confirm password</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="Doctor" xml:space="preserve">
     <value>Doctor</value>
   </data>

@@ -16,7 +16,7 @@ namespace mobile.ViewModels
         {
 
             aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", Details = "You were diagnosed with diarrhea... Sorry, mate!" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", Details = "You were diagnosed with diarrhea... Sorry, mate!" });
+            aplist.Add(new AppointmentModel { Date = "12.10.2018", Hour = "09:00", Status = "Inactive", Details = "You were diagnosed with diarrhea... Sorry, mate!" });
             aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
             aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
             aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
@@ -32,7 +32,7 @@ namespace mobile.ViewModels
         }
         public void HideOrShowAppointment(AppointmentModel a)
         {
-
+            
             if (oldAppointment == a)
             {
                 //click twice to hide the details
@@ -64,6 +64,18 @@ namespace mobile.ViewModels
             aplist.Insert(index, a);
         }
 
+        // this method is used to enable deleting of an appointment through the button shown on the UI
+        // did like this because I cannot access directly elements of the DataTemplate
+        public void OnDeleteButton(AppointmentModel app)
+        {
+
+            aplist.Remove(app);
+            // to make sure the Appointment deleted is no longer referenced
+            if (app == oldAppointment) oldAppointment = null;
+
+
+        }
+    
     }
 
 }
