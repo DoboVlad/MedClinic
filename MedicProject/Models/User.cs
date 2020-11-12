@@ -34,7 +34,12 @@ namespace MedicProject.Models
         public User doctor{get;set;}
         public int? doctorId { get; set; }
 
+        public string Token{get;set;}
+        public int validated{get;set;}
+
         public ICollection<User> Pacients{get;set;}
+       
+       
         public ICollection<Appointments> Appointments {get; set;}
 
         public int Getage(){

@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -149,6 +151,7 @@ namespace MedicProject.Controllers
 
         [HttpGet]
         [Route("searchUser")]
+        //search for patients of a specific doctor
         public async Task<ActionResult<IEnumerable<PatientDTO>>> searchUser(string str,int id){
 
             var s=str.ToLower();
@@ -162,6 +165,7 @@ namespace MedicProject.Controllers
 
         [HttpGet]
         [Route("searchDoctor")]
+        //search for doctors
         public async Task<ActionResult<IEnumerable<DoctorDTO>>> searchDoctor(string str){
             var s = str.ToLower();
         var users = await _context.USERS.Where(p => p.firstName.ToLower().Contains(s) || p.lastName.ToLower().Contains(s) || Convert.ToString(p.firstName.ToLower()) +" "+ Convert.ToString(p.lastName.ToLower()) == s || Convert.ToString(p.lastName.ToLower())+" "+ Convert.ToString(p.firstName.ToLower()) == s).Where(x => x.isMedic==1).ToListAsync();
@@ -174,6 +178,7 @@ namespace MedicProject.Controllers
         public async Task<ActionResult<User>> Register(RegisterDTO RegisterDTO){
             if ( await UserExists(RegisterDTO.email)) return BadRequest("There is already an existing account with this email");
             using var hmac=new HMACSHA512();
+            
             var user = new User{
                 firstName=RegisterDTO.firstName,
                 lastName=RegisterDTO.lastName,
@@ -185,12 +190,14 @@ namespace MedicProject.Controllers
                 PasswordSalt=hmac.Key,
                 isApproved=0,
                 isMedic=0,
-                doctorId=RegisterDTO.doctorId
+                validated=0,
+                doctorId=RegisterDTO.doctorId,
+                
             };
-            //daca doctorid nu e un medic? 
-            //daca cineva introduce un email random? poate ar trebui trimis email pt a-l valida ?
             _context.USERS.Add(user);
             await _context.SaveChangesAsync();
+            //send verification email
+            await EmailVerification(user.email);
             return user;
 
         }
@@ -209,9 +216,10 @@ namespace MedicProject.Controllers
                 for(int i=0;i<computedHash.Length;i++){
                     if(computedHash[i]!=user.PasswordHash[i]) return Unauthorized("Invalid credentials");
                 }
+               
               
-              if(user.isApproved==0) 
-              return Unauthorized("Your account have not been aproved yet.");
+              if(user.isApproved==0 || user.validated==0) 
+              return Unauthorized("Your account has not been aproved or validated yet!");
               
                return new UserDTO
             {
@@ -223,5 +231,141 @@ namespace MedicProject.Controllers
                 token=_tokenService.CreateToken(user)
             };
         }
+
+        [HttpGet]
+        [Route("ForgotPassword")]
+        //sends token to an email 
+        public async Task<ActionResult> ForgotPassword(string email)
+        {
+           
+
+                string resetCode = Guid.NewGuid().ToString();
+                var user = _context.USERS.Where(u => u.email == email.ToLower()).FirstOrDefault();
+                if (await UserExists(email))
+                {
+                    user.Token = resetCode;
+
+                   _context.USERS.Update(user);
+                    await  _context.SaveChangesAsync();
+
+                    var subject = "Password Reset Request";
+                    var body = "Hi " + user.firstName + ", <br/> You recently requested to reset your password for your account. Use the following token to confirm your identity. " +
+
+                         " <br/><br/>"+resetCode+"<br/><br/>" +
+                         "If you did not request a password reset, please ignore this email or reply to let us know.<br/><br/> Thank you";
+
+                    SendEmail(user.email, body, subject);  
+                }
+                else
+                {
+                    
+                    return BadRequest("User doesn't exists.");
+                }
+            
+
+              return Ok("Reset password link has been sent to your email id.");
+        }
+
+        private void SendEmail(string emailAddress, string body, string subject)
+        {
+            MailMessage mm = new MailMessage("medclinic121@gmail.com", emailAddress);
+            
+                mm.Subject = subject;
+                mm.Body = body;
+                mm.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.EnableSsl = true;
+                NetworkCredential NetworkCred = new NetworkCredential("medclinic121@gmail.com", "parolamedclinic");
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = NetworkCred;
+                smtp.Port = 587;
+                smtp.Send(mm);
+
+            
+        }
+
+        
+        [HttpPost]
+        [Route("ResetPassword")]
+        //resets a user's password if he correctly introduced
+          public async Task<ActionResult> ResetPassword(ResetPasswordDTO model)
+        {
+                    var user = await _context.USERS.Where(a => a.Token == model.resetCode).FirstOrDefaultAsync();
+                    if (user != null)
+                    {
+                        using var hmac=new HMACSHA512();
+                         user.PasswordHash=hmac.ComputeHash(Encoding.UTF8.GetBytes(model.newPassword));
+                         user.PasswordSalt=hmac.Key;
+                    
+                        
+                         user.Token = "";
+                        _context.USERS.Update(user);
+                        await  _context.SaveChangesAsync();
+                    }
+                
+            
+            else
+            {
+                return BadRequest("Token invalid");
+            }
+          
+            return Ok();
+        }
+        //sends verification token to an email
+       public async Task<ActionResult> EmailVerification(string email)
+        {
+           
+                string resetCode = Guid.NewGuid().ToString();
+                var user = _context.USERS.Where(u => u.email == email.ToLower()).FirstOrDefault();
+                if (await UserExists(email))
+                {
+                     user.Token = resetCode;
+
+                   _context.USERS.Update(user);
+                    await  _context.SaveChangesAsync();
+                    var subject = "Email verification";
+                    var body = "Hi " + user.firstName + ", <br/> You recently registered on our website. Use the following token to verify and activate your account. " +
+
+                         " <br/><br/>"+resetCode+"<br/><br/>" +
+                         "If you did registered on our website, please ignore this email or reply to let us know.<br/><br/> Thank you";
+
+                    SendEmail(user.email, body, subject);  
+                }
+                else
+                {
+                    
+                    return BadRequest("User doesn't exist.");
+                }
+            
+
+              return Ok("Verification code has been sent to your email");
+        }
+
+       [HttpPost]
+       [Route("VerifyAccount")]
+        //user has to introduce the validation string sent to him via email to verify his account and activate it 
+        public async Task<ActionResult> VerifyAccount(string token){
+            //find the user with the sent unique token
+             var user = await _context.USERS.Where(a => a.Token == token).FirstOrDefaultAsync();
+              //if a user is found his account is validated, now he can login
+              if (user != null)
+              {
+                  user.Token="";
+                  user.validated=1;
+                  _context.USERS.Update(user);
+                  await  _context.SaveChangesAsync();
+
+              }
+               else
+            {
+                return BadRequest("Token invalid");
+            }
+          
+            return Ok("Your account was verified");
+        }
+
+
+
 }
 }

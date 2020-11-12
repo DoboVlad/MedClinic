@@ -3,15 +3,17 @@ using System;
 using MedicProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 
 namespace MedicProject.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20201112111519_AddedToken")]
+    partial class AddedToken
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,9 +92,6 @@ namespace MedicProject.Migrations
 
                     b.Property<string>("photo")
                         .HasColumnType("NVARCHAR2(2000)");
-
-                    b.Property<int>("validated")
-                        .HasColumnType("NUMBER(10)");
 
                     b.HasKey("Id");
 
