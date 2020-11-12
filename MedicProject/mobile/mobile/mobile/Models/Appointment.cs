@@ -13,6 +13,16 @@ namespace mobile
         private string status;
         private const string duration = "Duration: 30 min";
         private string details;
+        private string patientName;
+
+        public string PatientName 
+        { 
+            get 
+            {
+                return patientName;
+            }
+            set { patientName = value; }
+        }
         
         public string Details
         {

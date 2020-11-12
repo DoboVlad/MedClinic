@@ -28,5 +28,15 @@ namespace mobile.ViewModels
             }
 
         }
+        // to get the name displayed as wanted, with the format Patient: FullName
+        public string PatientNameFormat
+        {
+            get
+            {
+                return "Patient: " + PatientName;
+            }
+            set { PatientName = value; }
+        }
+
     }
 }

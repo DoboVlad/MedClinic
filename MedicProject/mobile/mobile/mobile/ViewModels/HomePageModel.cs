@@ -15,19 +15,18 @@ namespace mobile.ViewModels
         public HomePageModel()
         {
 
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", Details = "You were diagnosed with diarrhea... Sorry, mate!" });
-            aplist.Add(new AppointmentModel { Date = "12.10.2018", Hour = "09:00", Status = "Inactive", Details = "You were diagnosed with diarrhea... Sorry, mate!" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" });
+            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", Details = "You were diagnosed with diarrhea... Sorry, mate!", PatientName="Ionut Iga"});
+            aplist.Add(new AppointmentModel { Date = "12.10.2018", Hour = "09:00", Status = "Inactive", Details = "You were diagnosed with diarrhea... Sorry, mate!", PatientName="Ionut Iga" });
+            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName ="Ionut Iga" });
+            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" , PatientName = "Ionut Iga" });
+            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
+            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
+            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
+            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
+            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
+            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
+            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
+            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
 
         }
         public void HideOrShowAppointment(AppointmentModel a)
