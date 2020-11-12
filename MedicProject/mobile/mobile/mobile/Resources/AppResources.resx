@@ -165,11 +165,20 @@
   <data name="AppointmentsShort" xml:space="preserve">
     <value>Appts</value>
   </data>
+  <data name="AvailableDate" xml:space="preserve">
+    <value>The date is available.</value>
+  </data>
   <data name="BirthDateProfile" xml:space="preserve">
     <value>BirthDate:</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="CheckAvailability" xml:space="preserve">
+    <value>Check availability</value>
+  </data>
+  <data name="ChooseDate" xml:space="preserve">
+    <value>Choose an appointmnet date</value>
   </data>
   <data name="ChooseDoctor" xml:space="preserve">
     <value>Choose a doctor</value>
@@ -269,6 +278,9 @@
   </data>
   <data name="SucRegistration" xml:space="preserve">
     <value>Successful registration</value>
+  </data>
+  <data name="UnavailableDate" xml:space="preserve">
+    <value>The date is not available. </value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>

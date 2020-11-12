@@ -205,6 +205,15 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The date is available..
+        /// </summary>
+        internal static string AvailableDate {
+            get {
+                return ResourceManager.GetString("AvailableDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BirthDate:.
         /// </summary>
         internal static string BirthDateProfile {
@@ -219,6 +228,24 @@ namespace mobile.Resources {
         internal static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check availability.
+        /// </summary>
+        internal static string CheckAvailability {
+            get {
+                return ResourceManager.GetString("CheckAvailability", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose an appointmnet date.
+        /// </summary>
+        internal static string ChooseDate {
+            get {
+                return ResourceManager.GetString("ChooseDate", resourceCulture);
             }
         }
         
@@ -516,6 +543,15 @@ namespace mobile.Resources {
         internal static string SucRegistration {
             get {
                 return ResourceManager.GetString("SucRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The date is not available. .
+        /// </summary>
+        internal static string UnavailableDate {
+            get {
+                return ResourceManager.GetString("UnavailableDate", resourceCulture);
             }
         }
         

@@ -6,13 +6,17 @@
     ios:Page.UseSafeArea="true"
              xmlns:local ="clr-namespace:mobile.Helpers"
              Title ="{local:Translate AppointmentsShort}"
-             IconImageSource="{local:ImageResource mobile.Images.appointment.png}">
+             IconImageSource="{local:ImageResource mobile.Images.appointment.png}"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--used ios namespace to ensure the tabbed page is not overlapping the status bar -->
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{local:Translate Appointments}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Spacing="30">
+            <Label x:Name="lblChooseDate" Text="{local:Translate ChooseDate}" FontSize="Large" TextColor="#5084F2" HorizontalOptions="Center"/>
+            <DatePicker x:Name="dpAppointment" MinimumDate="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}' }"/>
+            <TimePicker x:Name="tpAppointment" Time="11:00" Format="t"/>
+            <Label x:Name="lblAvailable" Text="{local:Translate AvailableDate}" IsVisible="false" TextColor="#5084F2" HorizontalOptions="Center"/>
+            <Label x:Name="lblUnavailable" Text="{local:Translate UnavailableDate}" IsVisible="false" TextColor="#5084F2" HorizontalOptions="Center"/>
+            <Button x:Name="btnCheck" Clicked="btnCheck_Clicked" Text="{local:Translate CheckAvailability}" BackgroundColor="#5084F2"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
