@@ -16,7 +16,31 @@ namespace mobile
         private string phone;
         private ImageSource image = ImageSource.FromResource("mobile.Images.man.png");
         private string description;
-
+        private string birthDate;
+        // Personal Identification Number
+        private string pin;
+        public string PIN
+        {
+            get
+            {
+                return pin;
+            }
+            set
+            {
+                pin = value;
+            }
+        }
+        public string BirthDate
+        {
+            get
+            {
+                return birthDate;
+            }
+            set
+            {
+                birthDate = value;
+            }
+        }
         public string Description
         {
             get

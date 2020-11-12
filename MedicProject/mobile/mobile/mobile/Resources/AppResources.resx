@@ -231,6 +231,9 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Patients" xml:space="preserve">
+    <value>Patients</value>
+  </data>
   <data name="Phone" xml:space="preserve">
     <value>Phone number</value>
   </data>
@@ -266,6 +269,9 @@
   </data>
   <data name="RegistrationSucceed" xml:space="preserve">
     <value>Your registration is successful. Please wait for the doctor to accept your request.</value>
+  </data>
+  <data name="Requests" xml:space="preserve">
+    <value>Requests</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Profile settings</value>

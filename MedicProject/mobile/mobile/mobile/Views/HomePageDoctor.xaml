@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+             x:Class="mobile.HomePageDoctor"
+             xmlns:local ="clr-namespace:mobile.Helpers"
+             Title ="{local:Translate Home}"
+             IconImageSource="{local:ImageResource mobile.Images.home.png}">
+    <!--used ios namespace to ensure the tabbed page is not overlapping the status bar -->
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="secondaryLabels">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextColor" Value="#8c8c8c"/>
+        </Style>
+    </ContentPage.Resources>
+    <!-- here is the template for the list view items of the home page, it has 3 labels about time, duration and status of each appointment-->
+    <ContentPage.Content>
+        <StackLayout>
+            <!--NEED TO SET THE PICKER FOR TRANSLATION-->
+            <Picker Title="{local:Translate Sort}" x:Name="pickerSort" Margin="320,10,10,5" TextColor="#5084F2">
+
+            </Picker>
+            <ListView x:Name="appointmentsList" RowHeight="90" SelectionMode="None" HasUnevenRows="True" >
+                <!--IsPullToRefreshEnabled="True"-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="10">
+
+                                <Label x:Name="lblAppt" Text="{Binding AppointmentDate}" FontAttributes="Bold" Margin="10,0,0,10"/>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label x:Name="lblDuration" Text="{Binding Duration}" Style="{StaticResource secondaryLabels}"  Grid.Column="0" Margin="10,0,0,0"/>
+                                    <Label x:Name="lblStatus" Text="{Binding IsActive}" Style="{StaticResource secondaryLabels}" FontSize="16" HorizontalOptions="End" Margin="0,0,10,0" Grid.Column="1"/>
+                                </Grid>
+                                <Label x:Name="lblDetails" Text="{Binding Details}" IsVisible="{Binding IsVisible}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

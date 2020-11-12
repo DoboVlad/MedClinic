@@ -403,6 +403,15 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Patients.
+        /// </summary>
+        internal static string Patients {
+            get {
+                return ResourceManager.GetString("Patients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phone number.
         /// </summary>
         internal static string Phone {
@@ -507,6 +516,15 @@ namespace mobile.Resources {
         internal static string RegistrationSucceed {
             get {
                 return ResourceManager.GetString("RegistrationSucceed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requests.
+        /// </summary>
+        internal static string Requests {
+            get {
+                return ResourceManager.GetString("Requests", resourceCulture);
             }
         }
         
