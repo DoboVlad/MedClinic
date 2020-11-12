@@ -17,10 +17,13 @@ namespace MedicProject.Services
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
         }
         public string CreateToken(User user)
-        {
+        {  
             var claims = new List<Claim>
+            
             {
-                new Claim(JwtRegisteredClaimNames.Email, user.email)
+               
+                new Claim(JwtRegisteredClaimNames.Email, user.email),
+                
             };
             var creds = new SigningCredentials(_key,SecurityAlgorithms.HmacSha512Signature);
 

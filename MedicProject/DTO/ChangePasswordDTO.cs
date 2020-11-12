@@ -3,8 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace MedicProject.DTO
 {
     public class ChangePasswordDTO
-    {   [Required]
-        public int Id{get;set;}
+    {   
 
         [Required]
         public string oldPassword { get; set; }
