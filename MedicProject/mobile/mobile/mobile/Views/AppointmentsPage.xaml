@@ -10,13 +10,14 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <!--used ios namespace to ensure the tabbed page is not overlapping the status bar -->
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Spacing="30">
+        <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Spacing="30" Margin="50, 0, 50, 0">
             <Label x:Name="lblChooseDate" Text="{local:Translate ChooseDate}" FontSize="Large" TextColor="#5084F2" HorizontalOptions="Center"/>
-            <DatePicker x:Name="dpAppointment" MinimumDate="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}' }"/>
+            <DatePicker x:Name="dpAppointment" MinimumDate="{Binding Source={x:Static sys:DateTime.Now}}" Format ='MMMM dd, yyyy'/>
             <TimePicker x:Name="tpAppointment" Time="11:00" Format="t"/>
-            <Label x:Name="lblAvailable" Text="{local:Translate AvailableDate}" IsVisible="false" TextColor="#5084F2" HorizontalOptions="Center"/>
-            <Label x:Name="lblUnavailable" Text="{local:Translate UnavailableDate}" IsVisible="false" TextColor="#5084F2" HorizontalOptions="Center"/>
+            <Label x:Name="lblAvailable"   IsVisible="false" TextColor="#5084F2" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             <Button x:Name="btnCheck" Clicked="btnCheck_Clicked" Text="{local:Translate CheckAvailability}" BackgroundColor="#5084F2"/>
+            <Button x:Name="btnMakeApt" Clicked="btnMake_Clicked" Text="Make appointment" BackgroundColor="#5084F2" IsVisible="False" />
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

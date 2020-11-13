@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile.Views.SettingsPageDoctor"
+             xmlns:local ="clr-namespace:mobile.Helpers"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
-             x:Class="mobile.SettingsPage"
-             xmlns:local ="clr-namespace:mobile.Helpers"
-             Title="{local:Translate Settings}" 
-             IconImageSource="{local:ImageResource mobile.Images.userSettings.png}">
+             Title="Settings">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
@@ -20,16 +19,18 @@
             <Style TargetType="Entry">
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
-                <Setter Property="WidthRequest" Value="150"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>  <!--app buttons-->
-                <RowDefinition Height="Auto"/> <!--image-->
-                <RowDefinition Height="Auto"/> <!--profile settingds-->
+                <RowDefinition Height="Auto"/>
+                <!--app buttons-->
+                <RowDefinition Height="Auto"/>
+                <!--image-->
+                <RowDefinition Height="Auto"/>
+                <!--profile settingds-->
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0" Orientation="Horizontal"  BackgroundColor="#5084F2">
                 <Label Text="{local:Translate Cancel}" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" TextColor="White" Margin="0, 0,0, 10 ">
@@ -53,13 +54,13 @@
                 <ScrollView>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
                         <StackLayout Grid.Row="0" Orientation="Horizontal">
@@ -79,21 +80,15 @@
                             <Entry x:Name="entEmail" Placeholder="Email" FontSize="16"  />
                         </StackLayout>
                         <StackLayout Grid.Row="4" Orientation="Horizontal">
-                            <Label x:Name="lblPin" Text="{local:Translate PIN}" />
-                            <Label x:Name="lblUserPin" Text="2990510256132" FontSize="16" HorizontalOptions="EndAndExpand" />
-                        </StackLayout>
-                        <StackLayout Grid.Row="5" Orientation="Horizontal">
                             <Label x:Name="lblAge" Text="{local:Translate Age}" />
                             <Label x:Name="lblUserAge" Text="29" FontSize="16" HorizontalOptions="EndAndExpand" />
                         </StackLayout>
-                        <StackLayout Grid.Row="6" Orientation="Horizontal">
-                            <Label x:Name="lblDoctor" Text="{local:Translate Doctor}"/>
-                            <Label x:Name="lblUserDoctor" Text="{local:Translate Doctor}" FontSize="16" HorizontalOptions="EndAndExpand"/>
-                        </StackLayout>
-                        <StackLayout Grid.Row="7" Orientation="Horizontal">
+                        <StackLayout Grid.Row="5" Orientation="Horizontal">
                             <Label x:Name="lblPassword" Text="{local:Translate Password}" HorizontalOptions="StartAndExpand"/>
                             <Label x:Name="lblUserPassword" Text="*********" FontSize="16" FontAttributes="None" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
+                        <Label x:Name="lblDoctor" Text="Descriere" Grid.Row="6"/>
+                        <Editor x:Name="entDocDescription" Text="salut, salut, salut, salut" HorizontalOptions="FillAndExpand" Grid.Row="7" IsSpellCheckEnabled="false" VerticalOptions="FillAndExpand" HeightRequest="100"/>
                     </Grid>
                 </ScrollView>
             </StackLayout>

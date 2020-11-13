@@ -241,7 +241,7 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose an appointmnet date.
+        ///   Looks up a localized string similar to Choose an appointment date.
         /// </summary>
         internal static string ChooseDate {
             get {
