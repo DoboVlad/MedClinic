@@ -186,8 +186,14 @@
   <data name="Cnp" xml:space="preserve">
     <value>Personal Identification Number</value>
   </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
   <data name="ConfPwd" xml:space="preserve">
     <value>Confirm password</value>
+  </data>
+  <data name="Decline" xml:space="preserve">
+    <value>Decline</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
@@ -209,6 +215,9 @@
   </data>
   <data name="ForgotPass" xml:space="preserve">
     <value>Forgot password?</value>
+  </data>
+  <data name="FullNameProfile" xml:space="preserve">
+    <value>FullName:</value>
   </data>
   <data name="GoMainPage" xml:space="preserve">
     <value>Click here to go to main page.</value>

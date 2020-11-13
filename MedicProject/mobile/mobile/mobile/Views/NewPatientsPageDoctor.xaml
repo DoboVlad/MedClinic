@@ -7,11 +7,52 @@
     ios:Page.UseSafeArea="true"
              Title="{local:Translate Requests}"
              IconImageSource="{local:ImageResource mobile.Images.requests.png}">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+
+
+    <ListView x:Name="listRequests" SelectionMode="None"  HasUnevenRows="True" >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Padding="0,0,0,5" Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                            <Label x:Name="lblPatientFullNameProfile" Text="{local:Translate FullNameProfile}"  FontAttributes="Bold"/>
+                            <Label x:Name="lblPatientFullName" Text="{Binding FullName}" />
+                        </StackLayout>
+                        <StackLayout Padding="0,0,0,5" Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                            <Label Text="{local:Translate BirthDateProfile}" FontAttributes="Bold"/>
+                            <Label x:Name="lblPatientBirthDate" Text="{Binding BirthDate}"/>
+                        </StackLayout>
+                        <StackLayout Padding="0,0,0,5" Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal">
+                            <Label Text="{local:Translate EmailProfile}" FontAttributes="Bold"/>
+                            <Label x:Name="lblPatientEmail" Text="{Binding Email}" HorizontalOptions="End"/>
+                        </StackLayout>
+                        <StackLayout Padding="0,0,0,5" Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                            <Label Text="{local:Translate PINProfile}" FontAttributes="Bold"/>
+                            <Label x:Name="lblPatientPIN" Text="{Binding PIN}"/>
+                        </StackLayout>
+                        <StackLayout Padding="0,0,0,5" Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                            <Label Text="{local:Translate PhoneProfile}" FontAttributes="Bold"/>
+                            <Label x:Name="lblPatientPhone" Text="{Binding Phone}"/>
+                        </StackLayout>
+
+                        <Button Grid.Row="3" Grid.Column="0" Text="{local:Translate Confirm}" IsVisible="{Binding IsVisible}" WidthRequest="100" TextColor="White" BackgroundColor="LightGreen"/>
+                        <Button Grid.Row="3" Grid.Column="1" Text="{local:Translate Decline}" IsVisible="{Binding IsVisible}"  WidthRequest="100" TextColor="White" BackgroundColor="Red"/>
+
+
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+</ListView>
 </ContentPage>

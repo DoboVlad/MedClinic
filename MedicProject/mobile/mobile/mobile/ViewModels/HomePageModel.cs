@@ -63,7 +63,7 @@ namespace mobile.ViewModels
             aplist.Insert(index, a);
         }
 
-        // this method is used to enable deleting of an appointment through the button shown on the UI
+        // this method is used to enable deleting of an appointment through the button shown on the UI, from doctor
         // did like this because I cannot access directly elements of the DataTemplate
         public void OnDeleteButton(AppointmentModel app)
         {
