@@ -15,6 +15,7 @@ using MedicProject.DTO;
 using MedicProject.Interfaces;
 using MedicProject.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,12 +29,15 @@ namespace MedicProject.Controllers
         private readonly DatabaseContext _context;
         private readonly ITokenService _tokenService;
         private readonly IMapper _mapper;
+        
+         private readonly IWebHostEnvironment _webHostEnvironment;
        
        //inject dependencies
-        public UsersController(DatabaseContext context,ITokenService tokenService,IMapper mapper){
+        public UsersController(DatabaseContext context,ITokenService tokenService,IMapper mapper,IWebHostEnvironment hostEnvironment){
             _context=context;
             _tokenService=tokenService;
             _mapper = mapper;
+            _webHostEnvironment = hostEnvironment;
         }
 
        
@@ -303,7 +307,9 @@ namespace MedicProject.Controllers
            //CHECK IF THE USER IS A doctor
            if(user.isMedic==1){
              
-           //photo implementation
+           //upload photo
+           
+           string uniqueFileName = UploadedFile(doctorDTO); 
 
            
            user.firstName=doctorDTO.firstName;
@@ -311,13 +317,41 @@ namespace MedicProject.Controllers
            user.phoneNumber=doctorDTO.phoneNumber;
            user.email=doctorDTO.email.ToLower();
            user.description=doctorDTO.description;
+           if (doctorDTO.photo != null)  
+            user.photo=uniqueFileName;
         
-            _context.USERS.Update(user);
+          _context.USERS.Update(user);
           await  _context.SaveChangesAsync();
           return Ok();
            }else return Unauthorized();
 
         }
+
+
+
+
+
+
+        private string UploadedFile(UpdateDoctorDTO doctorDTO)  
+        {  
+            string uniqueFileName = null;  
+  
+            if (doctorDTO.photo != null)  
+            {  //the path to the iamge folder (if the folder is after webroot)
+                string uploadFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");  
+               //random unique random+ uploaded filename for the filename stored in the app
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + doctorDTO.photo.FileName;  
+               //filePath -the path to the folder where the photo is saved + the filename
+                string filePath = Path.Combine(uploadFolder, uniqueFileName);  
+               //copy the content of the sent file in the filepath 
+                using (var fileStream = new FileStream(filePath, FileMode.Create))  
+                {  
+                    doctorDTO.photo.CopyTo(fileStream);  
+                }  
+            }  
+            return uniqueFileName;  
+        }  
+
 
 
 
