@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local ="clr-namespace:mobile.Helpers" 
+             Title="Password recovery"
+             x:Class="mobile.Views.ForgotPwdPage">
+    <ContentPage.Content>
+        <Grid BackgroundColor="White" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Padding="0" Margin="0, 50" Grid.Row="0">
+                <StackLayout>
+                    <Image Source="{local:ImageResource  mobile.Images.logo.png}" WidthRequest="400" Margin="0,0,0,40"/>
+                    <!--bind the image resource -->
+                </StackLayout>
+                <Frame HasShadow="True" Margin="20, 0" >
+                    <StackLayout>
+                        <StackLayout>
+                            <Label Text="Recovery password"  TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        </StackLayout>
+                        <StackLayout Margin="10, 0" VerticalOptions="CenterAndExpand" Spacing="10" >
+                            <Label x:Name="lblEmailMess" Text="Please check your inbox. An email with a code has been send to this adress. Write the code in the box below." TextColor="Gray" FontSize="16" IsVisible="False"/>
+                            <Entry x:Name="entEmail" Placeholder="{local:Translate Email}"  HorizontalOptions="FillAndExpand"/>
+                            <Entry x:Name="entCode" Placeholder="Enter code"  Keyboard="Numeric" HorizontalOptions="FillAndExpand" IsVisible="false"/>
+                            <Label x:Name="entTryAgain" Text="Send another email" TextColor="Black" HorizontalOptions="CenterAndExpand" IsVisible="false">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TryAgain_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Button x:Name="btnSentEmail" Clicked="btnSentEmail_Clicked" Text="Send email" BackgroundColor="#5084F2"/>
+                            <Button x:Name="btnVerifyCode" Clicked="btnVerifyCode_Clicked" Text="Verify code" BackgroundColor="#5084F2" IsVisible="false" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <Label Grid.Row="1" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="End"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

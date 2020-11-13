@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using mobile.ViewModels;
+using mobile.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -40,7 +41,9 @@ namespace mobile
 
         async private void OnSettingsTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SettingsPage());
+            Page page = new SettingsPageDoctor();
+            Navigation.PushAsync(page);
+            NavigationPage.SetHasNavigationBar(page, false);
         }
     }
 }

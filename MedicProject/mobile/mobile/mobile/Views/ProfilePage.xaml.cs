@@ -35,9 +35,12 @@ namespace mobile
             await this.Navigation.PushAsync(new MainPage());
         }
 
-        async private void  OnSettingsTapped(object sender, EventArgs e)
+         private void  OnSettingsTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SettingsPage());
+            Page page = new SettingsPage();
+            Navigation.PushAsync(page);
+            NavigationPage.SetHasNavigationBar(page, false);
+            //await Navigation.PushAsync(new SettingsPage());
         }
     }
 }

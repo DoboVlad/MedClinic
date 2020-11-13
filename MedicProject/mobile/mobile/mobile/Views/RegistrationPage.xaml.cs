@@ -25,6 +25,8 @@ namespace mobile
         }
         //regex for email validation
         Regex emailPattern = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
+        Regex passwordPattern = new Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$");
+        bool res;
         async private void btnRegister_Clicked(object sender, EventArgs e)
         {
             Animations.Button_Scale_Clicked((Button)sender);
@@ -35,22 +37,44 @@ namespace mobile
             //verify if fiels are filled in
             if (string.IsNullOrWhiteSpace(entFirstName.Text) || string.IsNullOrWhiteSpace(entLastName.Text) || string.IsNullOrWhiteSpace(entEmail.Text) || string.IsNullOrWhiteSpace(entPhone.Text) || string.IsNullOrWhiteSpace(entCnp.Text)  || string.IsNullOrWhiteSpace(entPassword.Text) || string.IsNullOrWhiteSpace(entConfPwd.Text))
             {
-                await DisplayAlert(AppResources.AlertFillField, AppResources.AlertChange, AppResources.Yes, AppResources.No);
+                res = await DisplayAlert(AppResources.AlertFillField, AppResources.AlertChange, AppResources.Yes, AppResources.No);
+                if( res == false)
+                {
+                    await this.Navigation.PushAsync(new MainPage());
+                }
+
             }
             else if (entPassword.Text != entConfPwd.Text)
             {
-                await DisplayAlert(AppResources.AlertPwdMatch, AppResources.AlertChange, AppResources.Yes, AppResources.No);
+                res = await DisplayAlert(AppResources.AlertPwdMatch, AppResources.AlertChange, AppResources.Yes, AppResources.No);
+                if (res == false)
+                {
+                    await this.Navigation.PushAsync(new MainPage());
+                }
             }
             else if (!emailPattern.IsMatch(entEmail.Text))
             {
-                await DisplayAlert(AppResources.AlertEmail, AppResources.AlertChange, AppResources.Yes, AppResources.No);
-            }else if (!cnpCheck(entCnp.Text))
+                res = await DisplayAlert(AppResources.AlertEmail, AppResources.AlertChange, AppResources.Yes, AppResources.No);
+                if (res == false)
+                {
+                    await this.Navigation.PushAsync(new MainPage());
+                }
+            }
+            else if (!cnpCheck(entCnp.Text))
             {
-                await DisplayAlert("You inroduce an invalid persoanl identification numebr", "Would you like to try agai?", "Yes", "No");
+                res= await DisplayAlert("You introduce an invalid personal identification number", "Would you like to try again?", "Yes", "No");
+                if (res == false)
+                {
+                    await this.Navigation.PushAsync(new MainPage());
+                }
             }
             else if(Equals(dpBirthDate, DateTime.Now))
             {
-                await DisplayAlert(AppResources.AlertBirthday, AppResources.AlertChange, AppResources.Yes, AppResources.No);
+                res= await DisplayAlert(AppResources.AlertBirthday, AppResources.AlertChange, AppResources.Yes, AppResources.No);
+                if (res == false)
+                {
+                    await this.Navigation.PushAsync(new MainPage());
+                }
             }
             else if (Equals(entPassword.Text, entConfPwd.Text))
             {
@@ -59,11 +83,20 @@ namespace mobile
                     lblPassCheck.Text = AppResources.AlertPwdShort;
                     lblPassCheck.TextColor = Color.Red;
                 }
-                await this.Navigation.PushAsync(new RegistrationSucceedPage());
+                if(passwordPattern.IsMatch(entPassword.Text))
+                {
+                    await this.Navigation.PushAsync(new RegistrationSucceedPage());
+                }
+                else
+                {
+                    res = await DisplayAlert("Your password is not strong enough", AppResources.AlertChange, AppResources.Yes, AppResources.No);
+                    if (res == false)
+                    {
+                        await this.Navigation.PushAsync(new MainPage());
+                    }
+                }
+                
             }
-
-            
-            
         }
         //strong password check
         private void onTexChanged(object sender, TextChangedEventArgs e)
@@ -171,8 +204,6 @@ namespace mobile
         {
             await this.Navigation.PushAsync(new LogInPage());
         }
-
-
     }
     }
 

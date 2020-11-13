@@ -1,5 +1,4 @@
 ﻿using mobile.Resources;
-using mobile.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +9,15 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace mobile
+namespace mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SettingsPage : ContentPage
+    public partial class SettingsPageDoctor : ContentPage
     {
-        public SettingsPage()
+        public SettingsPageDoctor()
         {
             InitializeComponent();
-
         }
-
         async private void TapGestureRecognizer_Cancel(object sender, EventArgs e)
         {
             await this.Navigation.PopAsync();
@@ -45,7 +42,7 @@ namespace mobile
             {
                 await this.Navigation.PopAsync();
             }
-        
+
         }
     }
 }

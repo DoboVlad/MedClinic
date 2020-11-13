@@ -31,6 +31,10 @@ namespace mobile
                 await Navigation.PushAsync(new TabbedMainPageDoctor());
             else await this.Navigation.PushAsync(new TabbedPageMain());
         }
-       
+
+        async private void ForgettenPwd_Tapped(object sender, EventArgs e)
+        {
+            await this.Navigation.PushAsync(new ForgotPwdPage());
+        }
     }
 }
