@@ -1,0 +1,116 @@
+.appointments-title{
+    text-align: center;
+    font-size: 35px;
+    color: #1c2d60;
+    padding-top: 3%;
+
+}
+
+.appointments-description {
+    text-align: center;
+    font-size: 25px;
+    color: #455172;
+    padding-top: 5%;
+    margin-top: 40px;
+}
+
+.appointments-history {
+    text-align: left;
+    font-size: 20px;
+    text-decoration: underline;
+    color: #455172;
+    padding-top: 10%;
+    margin-left: 12%;
+    margin-top: 40px;
+}
+
+.history{
+    float: left;
+    margin-top: 1%;
+    margin-left: 10%;
+}
+
+.date {
+    text-align: center;
+    margin: 40px 10px 10px 10px;
+    font-size: 20px;
+}
+
+/* Removes the clear button from date inputs */
+input[type="date"]::-webkit-clear-button, input[type="time"]::-webkit-clear-button {
+    display: none;
+}
+
+/* Removes the spin button */
+input[type="date"]::-webkit-inner-spin-button, input[type="time"]::-webkit-inner-spin-button  { 
+    display: none;
+}
+
+/* Always display the drop down caret */
+input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webkit-calendar-picker-indicator {
+    color: #2c3e50;
+}
+
+/* A few custom styles for date inputs */
+input[type="date"], input[type="time"]  {
+    appearance: none;
+    -webkit-appearance: none;
+    color: #95a5a6;
+    font-family: "Helvetica", arial, sans-serif;
+    font-size: 18px;
+    border:1px solid #ecf0f1;
+    background:#ecf0f1;
+    padding:7px;
+    display: inline-block !important;
+    visibility: visible !important;
+    cursor: pointer;
+}
+
+input[type="date"], input[type="time"], focus {
+    color: #95a5a6;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+
+input[type="submit"] {
+
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #5084F2;
+    width: 20%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    margin-top: 3%;
+}
+
+.form input[type="submit"]:hover {
+    background: #8aacf5;
+}
+  
+input[type="text"]{
+    margin-top: 1%;
+    position: relative;
+    float:left;
+    display: block;
+}
+
+.history input[type="text"] {
+    margin-top: 5%;
+    color: #5d6161;
+    font-family: "Helvetica", arial, sans-serif;
+    font-size: 15px;
+    border:1px solid #ecf0f1;
+    background:#ecf0f1;
+    padding:7px;
+}
+
+/* Hide AM/PM in input */
+input[type=time]::-webkit-datetime-edit-ampm-field {
+    display: none;
+}
