@@ -10,9 +10,10 @@ import { DoctorsComponent } from './Components/doctors/doctors.component';
 import { AppointmentsComponent } from './Components/appointments/appointments.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
+import { TermsComponent } from './Components/terms/terms.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {HttpClientModule} from '@angular/common/http';
     DoctorsComponent,
     AppointmentsComponent,
     ProfileComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,

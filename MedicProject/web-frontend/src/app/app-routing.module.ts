@@ -7,6 +7,7 @@ import { AppointmentsComponent } from './Components/appointments/appointments.co
 import { DoctorsComponent} from './Components/doctors/doctors.component';
 import { ProfileComponent} from './Components/profile/profile.component';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
+import {TermsComponent} from './Components/terms/terms.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent },
   {path: 'forgotpassword', component: ForgotPasswordComponent},
+  {path: 'terms', component: TermsComponent},
   {path: "**", component: HomeComponent}
 ];
 
