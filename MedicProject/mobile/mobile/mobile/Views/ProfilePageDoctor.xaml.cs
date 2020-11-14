@@ -42,7 +42,7 @@ namespace mobile
         async private void OnSettingsTapped(object sender, EventArgs e)
         {
             Page page = new SettingsPageDoctor();
-            Navigation.PushAsync(page);
+            await Navigation.PushAsync(page);
             NavigationPage.SetHasNavigationBar(page, false);
         }
     }

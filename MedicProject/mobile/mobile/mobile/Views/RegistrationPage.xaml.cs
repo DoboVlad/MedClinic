@@ -62,7 +62,7 @@ namespace mobile
             }
             else if (!cnpCheck(entCnp.Text))
             {
-                res= await DisplayAlert("You introduce an invalid personal identification number", "Would you like to try again?", "Yes", "No");
+                res= await DisplayAlert(AppResources.AlertPIN, AppResources.AlertChange, AppResources.Yes, AppResources.No);
                 if (res == false)
                 {
                     await this.Navigation.PushAsync(new MainPage());
@@ -89,10 +89,12 @@ namespace mobile
                 }
                 else
                 {
-                    res = await DisplayAlert("Your password is not strong enough", AppResources.AlertChange, AppResources.Yes, AppResources.No);
+                    res = await DisplayAlert(AppResources.AlertPwdNotStrong, AppResources.AlertChange, AppResources.Yes, AppResources.No);
                     if (res == false)
                     {
-                        await this.Navigation.PushAsync(new MainPage());
+                        Page page = new MainPage();
+                        await Navigation.PushAsync(page);
+                        NavigationPage.SetHasNavigationBar(page, false);
                     }
                 }
                 
@@ -104,7 +106,7 @@ namespace mobile
             if (entPassword.Text.Length < 6)
             {
                 lblPassCheck.IsVisible = true;
-                lblPassCheck.Text = "Your password is not long enough.";
+                lblPassCheck.Text = AppResources.AlertPwdShort;
                 lblPassCheck.TextColor = Color.Red;
 
             }
@@ -113,23 +115,23 @@ namespace mobile
                 lblPassCheck.IsVisible = true;
                 if (!Regex.Match(entPassword.Text, "[a-z]", RegexOptions.ECMAScript).Success)
                 {
-                    lblPassCheck.Text = "Your password should contain at least one lowercase character.";
+                    lblPassCheck.Text = AppResources.PwdLowerCharacter;
                     lblPassCheck.TextColor = Color.DarkOrange;
                 }
                 else if (!Regex.Match(entPassword.Text, "[A-Z]", RegexOptions.ECMAScript).Success)
                 {
-                    lblPassCheck.Text = "Your password should contain at least one upper character.";
+                    lblPassCheck.Text = AppResources.PwdUpperCharacter;
                     lblPassCheck.TextColor = Color.OrangeRed;
                 }
                 else if (!Regex.Match(entPassword.Text, "[0-9]", RegexOptions.ECMAScript).Success)
                 {
 
-                    lblPassCheck.Text = "Your password should contain at least one digit.";
+                    lblPassCheck.Text = AppResources.PwdDigit;
                     lblPassCheck.TextColor = Color.Orange;
                 }
                 else
                 {
-                    lblPassCheck.Text = "Your password is super duper strong.";
+                    lblPassCheck.Text = AppResources.PwdStrong;
                     lblPassCheck.TextColor = Color.Green;
                 }
             }
@@ -146,7 +148,7 @@ namespace mobile
                 int county = Convert.ToInt16(cnp.Substring(7, 2));
                 int rest = Convert.ToInt16(cnp.Substring(9, 3));
                 int check = Convert.ToInt32(cnp.Substring(cnp.Length - 1));
-                if ((gender == 1 || gender == 2 || (gender >=5 && gender <=8)) && (county < 56 || county == 51 || county ==  52) && rest != 0  && check == checkDigit(cnp))
+                if ((gender == 1 || gender == 2 || (gender >=5 && gender <=8)) && (county < 56 || county == 51 || county ==  52) && month <= 12 && day <= 31 &&  rest != 0  && check == checkDigit(cnp))
                 {
                     if ((month == 2))
                     {
@@ -164,7 +166,7 @@ namespace mobile
                         }
 
                     }
-                    else if ((month <= 7 && month % 2 == 0 && day <= 30) || (month <= 7 && month % 2 != 0 && day <= 31) || (month >=8 && month % 2 == 0 && day <= 31) || (month <= 7 && month % 2 != 0 && day <= 30)) // luna >8
+                    else if ((month <= 7 && month % 2 == 0 && day <= 30) || (month <= 7 && month % 2 != 0 && day <= 31) || (month >=8 && month % 2 == 0 && day <= 31) || (month >= 7 && month % 2 != 0 && day <= 30)) // luna >8
                     {
                         return true;
                     }

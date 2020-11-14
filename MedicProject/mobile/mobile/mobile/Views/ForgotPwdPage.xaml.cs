@@ -24,14 +24,14 @@ namespace mobile.Views
         {
             if (string.IsNullOrWhiteSpace(entEmail.Text))
             {
-                bool result = await DisplayAlert("You didn't introduce an email", "Do you want to exit?", AppResources.Yes, AppResources.No);
+                bool result = await DisplayAlert(AppResources.EmptyEmail, AppResources.Exit, AppResources.Yes, AppResources.No);
                 if (result)
                 {
                     await Navigation.PopAsync();
                 }
             }else if (!emailPattern.IsMatch(entEmail.Text))
             {
-                bool result = await DisplayAlert("You introduce an invalid email", "Would you like to try again?", AppResources.Yes, AppResources.No);
+                bool result = await DisplayAlert(AppResources.AlertEmail, AppResources.AlertChange, AppResources.Yes, AppResources.No);
                 if (result == false)
                 {
                     await this.Navigation.PushAsync(new MainPage());

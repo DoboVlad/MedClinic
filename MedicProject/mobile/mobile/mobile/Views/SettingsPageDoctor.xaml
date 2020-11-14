@@ -65,29 +65,29 @@
                         </Grid.RowDefinitions>
                         <StackLayout Grid.Row="0" Orientation="Horizontal">
                             <Label x:Name="lblFirst" Text="{local:Translate FirstName}" />
-                            <Label x:Name="entFirst" Text="First name" FontSize="16" HorizontalOptions="EndAndExpand"  />
+                            <Label x:Name="entFirst" Text="{local:Translate FirstName}" FontSize="16" HorizontalOptions="EndAndExpand" WidthRequest="150"  />
                         </StackLayout>
                         <StackLayout Grid.Row="1" Orientation="Horizontal">
                             <Label x:Name="lblLast" Text="{local:Translate LastName}"/>
-                            <Entry x:Name="entLast" Placeholder="LastName" FontSize="16" />
+                            <Entry x:Name="entLast" Placeholder="{local:Translate LastName}" FontSize="16"  WidthRequest="150"  />
                         </StackLayout>
                         <StackLayout Grid.Row="2" Orientation="Horizontal">
                             <Label x:Name="lblPhone" Text="{local:Translate Phone}"  />
-                            <Entry x:Name="entPhone" Placeholder=" PhoneNumber" FontSize="16" Keyboard="Numeric" />
+                            <Entry x:Name="entPhone" Placeholder="{local:Translate Phone}" FontSize="16" Keyboard="Numeric"  WidthRequest="150"  />
                         </StackLayout>
                         <StackLayout Grid.Row="3" Orientation="Horizontal">
                             <Label x:Name="lblEmail" Text="{local:Translate Email}" />
-                            <Entry x:Name="entEmail" Placeholder="Email" FontSize="16"  />
+                            <Entry x:Name="entEmail" Placeholder="{local:Translate Email}" FontSize="16"  WidthRequest="150"   />
                         </StackLayout>
                         <StackLayout Grid.Row="4" Orientation="Horizontal">
                             <Label x:Name="lblAge" Text="{local:Translate Age}" />
-                            <Label x:Name="lblUserAge" Text="29" FontSize="16" HorizontalOptions="EndAndExpand" />
+                            <Label x:Name="lblUserAge" Text="29" FontSize="16" HorizontalOptions="EndAndExpand"   WidthRequest="100" />
                         </StackLayout>
                         <StackLayout Grid.Row="5" Orientation="Horizontal">
                             <Label x:Name="lblPassword" Text="{local:Translate Password}" HorizontalOptions="StartAndExpand"/>
-                            <Label x:Name="lblUserPassword" Text="*********" FontSize="16" FontAttributes="None" HorizontalOptions="EndAndExpand"/>
+                            <Label x:Name="lblUserPassword" Text="*********" FontSize="16" FontAttributes="None" HorizontalOptions="EndAndExpand"  WidthRequest="150" />
                         </StackLayout>
-                        <Label x:Name="lblDoctor" Text="Descriere" Grid.Row="6"/>
+                        <Label x:Name="lblDoctor" Text="{local:Translate Description}" Grid.Row="6"/>
                         <Editor x:Name="entDocDescription" Text="salut, salut, salut, salut" HorizontalOptions="FillAndExpand" Grid.Row="7" IsSpellCheckEnabled="false" VerticalOptions="FillAndExpand" HeightRequest="100"/>
                     </Grid>
                 </ScrollView>

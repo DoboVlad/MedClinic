@@ -1,4 +1,5 @@
 ﻿using mobile.Resources;
+using mobile.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace mobile.Views
                  {
                      await DisplayAlert("Hei,", "Are you sure you want to save the changes?", AppResources.No, AppResources.Yes);
                  }*/
-            bool result = await DisplayAlert("Hei,", "Are you sure you want to save the changes?", AppResources.Yes, AppResources.No);
+            bool result = await DisplayAlert(AppResources.Hei, AppResources.SaveChanges, AppResources.Yes, AppResources.No);
             if (result)
             {
                 await this.Navigation.PopAsync();

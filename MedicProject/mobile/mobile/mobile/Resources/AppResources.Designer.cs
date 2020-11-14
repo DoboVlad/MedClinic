@@ -106,7 +106,7 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You didn&apos;t introduce your birthday..
+        ///   Looks up a localized string similar to You didn&apos;t introduced your birthday..
         /// </summary>
         internal static string AlertBirthday {
             get {
@@ -151,11 +151,29 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You introduced an invalid personal identification number.
+        /// </summary>
+        internal static string AlertPIN {
+            get {
+                return ResourceManager.GetString("AlertPIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your passwords don&apos;t match..
         /// </summary>
         internal static string AlertPwdMatch {
             get {
                 return ResourceManager.GetString("AlertPwdMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password is not strong enough.
+        /// </summary>
+        internal static string AlertPwdNotStrong {
+            get {
+                return ResourceManager.GetString("AlertPwdNotStrong", resourceCulture);
             }
         }
         
@@ -187,6 +205,15 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send another email.
+        /// </summary>
+        internal static string AnotherEmail {
+            get {
+                return ResourceManager.GetString("AnotherEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Appointments.
         /// </summary>
         internal static string Appointments {
@@ -205,6 +232,15 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your appointment has been saved for.
+        /// </summary>
+        internal static string AppSavedMess {
+            get {
+                return ResourceManager.GetString("AppSavedMess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The date is available..
         /// </summary>
         internal static string AvailableDate {
@@ -219,6 +255,15 @@ namespace mobile.Resources {
         internal static string BirthDateProfile {
             get {
                 return ResourceManager.GetString("BirthDateProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Birthday.
+        /// </summary>
+        internal static string Birthday {
+            get {
+                return ResourceManager.GetString("Birthday", resourceCulture);
             }
         }
         
@@ -268,6 +313,15 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please check your inbox. An email with a code has been send to this address. Write the code in the box below..
+        /// </summary>
+        internal static string CodeInstructions {
+            get {
+                return ResourceManager.GetString("CodeInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         internal static string Confirm {
@@ -300,6 +354,24 @@ namespace mobile.Resources {
         internal static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete pacient.
+        /// </summary>
+        internal static string DeletePacient {
+            get {
+                return ResourceManager.GetString("DeletePacient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         
@@ -340,6 +412,33 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You didn&apos;t introduced an email.
+        /// </summary>
+        internal static string EmptyEmail {
+            get {
+                return ResourceManager.GetString("EmptyEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter code.
+        /// </summary>
+        internal static string EnterCode {
+            get {
+                return ResourceManager.GetString("EnterCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to exit?.
+        /// </summary>
+        internal static string Exit {
+            get {
+                return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         internal static string FirstName {
@@ -367,11 +466,29 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click here to go to main page..
+        ///   Looks up a localized string similar to Click here to go to main page.
         /// </summary>
         internal static string GoMainPage {
             get {
                 return ResourceManager.GetString("GoMainPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Already have an account?.
+        /// </summary>
+        internal static string HasAccount {
+            get {
+                return ResourceManager.GetString("HasAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hei,.
+        /// </summary>
+        internal static string Hei {
+            get {
+                return ResourceManager.GetString("Hei", resourceCulture);
             }
         }
         
@@ -417,6 +534,15 @@ namespace mobile.Resources {
         internal static string LogOut {
             get {
                 return ResourceManager.GetString("LogOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make appointment.
+        /// </summary>
+        internal static string MakeAppointment {
+            get {
+                return ResourceManager.GetString("MakeAppointment", resourceCulture);
             }
         }
         
@@ -502,6 +628,24 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your password should contain at least one digit..
+        /// </summary>
+        internal static string PwdDigit {
+            get {
+                return ResourceManager.GetString("PwdDigit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your password should contain at least one lowercase character..
+        /// </summary>
+        internal static string PwdLowerCharacter {
+            get {
+                return ResourceManager.GetString("PwdLowerCharacter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your password strength is medium..
         /// </summary>
         internal static string PwdMedium {
@@ -520,6 +664,15 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your password should contain at least one upper character..
+        /// </summary>
+        internal static string PwdUpperCharacter {
+            get {
+                return ResourceManager.GetString("PwdUpperCharacter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your password is very strong..
         /// </summary>
         internal static string PwdVeryStrong {
@@ -534,6 +687,15 @@ namespace mobile.Resources {
         internal static string PwdWeak {
             get {
                 return ResourceManager.GetString("PwdWeak", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recovery password.
+        /// </summary>
+        internal static string RecoveryPwd {
+            get {
+                return ResourceManager.GetString("RecoveryPwd", resourceCulture);
             }
         }
         
@@ -561,6 +723,24 @@ namespace mobile.Resources {
         internal static string Requests {
             get {
                 return ResourceManager.GetString("Requests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to save the changes?.
+        /// </summary>
+        internal static string SaveChanges {
+            get {
+                return ResourceManager.GetString("SaveChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send email.
+        /// </summary>
+        internal static string SendEmail {
+            get {
+                return ResourceManager.GetString("SendEmail", resourceCulture);
             }
         }
         
@@ -615,6 +795,15 @@ namespace mobile.Resources {
         internal static string Username {
             get {
                 return ResourceManager.GetString("Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verify code.
+        /// </summary>
+        internal static string VerifyCode {
+            get {
+                return ResourceManager.GetString("VerifyCode", resourceCulture);
             }
         }
         

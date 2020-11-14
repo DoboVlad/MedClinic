@@ -32,13 +32,15 @@ namespace mobile
             }
             else
             {
+                btnMakeApt.IsVisible = false;
                 lblAvailable.IsVisible = true;
                 lblAvailable.Text = AppResources.UnavailableDate;
             }
         }
-        async private void btnMake_Clicked(object sender, EventArgs e)
+         private void btnMake_Clicked(object sender, EventArgs e)
         {
-            string aptSaved = "Your appointment has been saved for " + tpAppointment.Time.ToString("T") + " " + dpAppointment.Date.ToString("yyyy/MM/dd");
+            string aptSaved = AppResources.AppSavedMess +" " + tpAppointment.Time.ToString("t") + " " + dpAppointment.Date.ToString("yyyy/MM/dd");
+            btnMakeApt.IsVisible = false;
             lblAvailable.Text = aptSaved;
             lblAvailable.IsVisible = true;
             

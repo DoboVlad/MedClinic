@@ -40,7 +40,7 @@ namespace mobile
                  {
                      await DisplayAlert("Hei,", "Are you sure you want to save the changes?", AppResources.No, AppResources.Yes);
                  }*/
-            bool result = await DisplayAlert("Hei,", "Are you sure you want to save the changes?", AppResources.Yes, AppResources.No);
+            bool result = await DisplayAlert(AppResources.Hei, AppResources.SaveChanges, AppResources.Yes, AppResources.No);
             if (result)
             {
                 await this.Navigation.PopAsync();

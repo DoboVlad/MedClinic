@@ -35,13 +35,13 @@
                 <Entry x:Name="entFirstName" Placeholder="{local:Translate FirstName}" ReturnType="Next" Keyboard="Text"/>
                 <Label x:Name ="lblLastName" Text="{local:Translate LastName}"/>
                 <Entry x:Name="entLastName" Placeholder="{local:Translate LastName}" ReturnType="Next" Keyboard="Text" />
-                <Label x:Name ="lblEmail" Text="Email"/>
-                <Entry x:Name="entEmail" Placeholder="Email" ReturnType="Next" Keyboard="Email" />
+                <Label x:Name ="lblEmail" Text="{local:Translate Email}"/>
+                <Entry x:Name="entEmail" Placeholder="{local:Translate Email}" ReturnType="Next" Keyboard="Email" />
                 <Label x:Name ="lblPhone" Text="{local:Translate Phone}"/>
                 <Entry x:Name="entPhone" Placeholder="{local:Translate Phone}" ReturnType="Next" Keyboard="Telephone" />
                 <Label x:Name ="lblPCnp" Text="{local:Translate Cnp}"/>
                 <Entry x:Name="entCnp" Placeholder="{local:Translate Cnp}" ReturnType="Next" Keyboard="Numeric" />
-                <Label x:Name="lblBirthDay" Text="Birth day"/> <!--!!!!!!!!!!!!!!!!-->
+                <Label x:Name="lblBirthDay" Text="{local:Translate Birthday}"/> <!--!!!!!!!!!!!!!!!!-->
                 <DatePicker x:Name="dpBirthDate" MinimumDate="01/01/1900" MaximumDate="{x:Static sys:DateTime.Now}" Date="06/21/2018"/>
                 <Label x:Name="lblDoc" Text="{local:Translate ChooseDoctor}"/>
                 <Picker x:Name="pckDoctor" HorizontalOptions="FillAndExpand"  Title="{local:Translate ChooseDoctor}">
@@ -57,7 +57,7 @@
                 <Entry x:Name ="entConfPwd" Placeholder="{local:Translate ConfPwd}" ReturnType="Next" IsPassword="True" />
                 <Button x:Name="btnRegister" Text="{local:Translate SingUp}" Clicked="btnRegister_Clicked" Margin="0,50,0,0" />
             </StackLayout>
-            <Label Grid.Row="2" Text="Already have an account?"  HorizontalOptions="Center" TextColor="#5084F2" >
+            <Label Grid.Row="2" Text="{local:Translate HasAccount}"  HorizontalOptions="Center" TextColor="#5084F2" >
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Label.GestureRecognizers>

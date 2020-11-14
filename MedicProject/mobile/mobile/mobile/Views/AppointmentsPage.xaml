@@ -16,7 +16,7 @@
             <TimePicker x:Name="tpAppointment" Time="11:00" Format="t"/>
             <Label x:Name="lblAvailable"   IsVisible="false" TextColor="#5084F2" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             <Button x:Name="btnCheck" Clicked="btnCheck_Clicked" Text="{local:Translate CheckAvailability}" BackgroundColor="#5084F2"/>
-            <Button x:Name="btnMakeApt" Clicked="btnMake_Clicked" Text="Make appointment" BackgroundColor="#5084F2" IsVisible="False" />
+            <Button x:Name="btnMakeApt" Clicked="btnMake_Clicked" Text="{local:Translate MakeAppointment}" BackgroundColor="#5084F2" IsVisible="False" />
            
         </StackLayout>
     </ContentPage.Content>

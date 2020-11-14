@@ -90,6 +90,5 @@ namespace mobile.ViewModels
                 requests.Insert(index, a);
             }
         }
-
     }
 }
