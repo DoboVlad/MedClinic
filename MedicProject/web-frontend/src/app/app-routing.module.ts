@@ -8,14 +8,15 @@ import { DoctorsComponent} from './Components/doctors/doctors.component';
 import { ProfileComponent} from './Components/profile/profile.component';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import {TermsComponent} from './Components/terms/terms.component';
+import {AuthGuard} from './Services/auth.guard';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'appointments', component: AppointmentsComponent},
-  {path: 'doctors', component: DoctorsComponent},
+  {path: 'appointments', component: AppointmentsComponent, canActivate: [AuthGuard]},
+  {path: 'doctors', component: DoctorsComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'profile', component: ProfileComponent },
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'forgotpassword', component: ForgotPasswordComponent},
   {path: 'terms', component: TermsComponent},
   {path: "**", component: HomeComponent}
@@ -23,6 +24,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

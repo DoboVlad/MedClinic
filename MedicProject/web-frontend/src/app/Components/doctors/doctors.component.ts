@@ -17,6 +17,9 @@ export class DoctorsComponent implements OnInit {
     this.formSearch = new FormGroup({
       "search": new FormControl(null)
     });
+    this.userService.getDoctors().subscribe(users => {
+      this.users = users;
+    });
   }
 
   submit(){

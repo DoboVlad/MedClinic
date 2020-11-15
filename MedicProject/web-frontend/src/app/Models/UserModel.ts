@@ -4,7 +4,9 @@ export class User{
   email?: String;
   password?: String;
   confirm?: String;
+  description?: string;
   age?: number;
   phone?: String;
-  token?: String;
+  token?: string;
+  doctor?: number;
 }

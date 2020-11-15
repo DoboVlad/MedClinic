@@ -10,18 +10,19 @@ export class UserService {
   constructor(private http: HttpClient) { }
   user: User;
   token: string;
-  id: number;
   //use post method to login the user
   //call the base url using /login endpoint
   logInUser(user: User){
-    this.http.post(this.baseUrl + "/login", user).subscribe(user => {
+    this.http.post<User>(this.baseUrl + "/api/users/login", user).subscribe(user => {
       this.user = user;
+      this.saveAuthData(user.token);
     });
   }
 
   registerUser(user: User){
-    this.http.post(this.baseUrl + "/register", user).subscribe(user =>{
+    this.http.post(this.baseUrl + "/api/users/register", user).subscribe(user =>{
       this.user = user;
+      console.log(user);
     });
   }
 
@@ -29,31 +30,32 @@ export class UserService {
     const authInfo = this.getAuthData();
   }
 
-  saveAuthData(token: string, id: number){
+  saveAuthData(token: string){
     localStorage.setItem('token', token);
-    localStorage.setItem('id', id.toString());
   }
 
   clearAuthData(){
     localStorage.removeItem("token");
-    localStorage.removeItem("id");
   }
 
   getAuthData(){
     const token = localStorage.getItem("token");
-    const id = localStorage.getItem("id");
-    if(token && id){
+    if(token){
       return;
     }
     return{
       token: token,
-      id: id
     }
+  }
+
+  //get all doctors from database
+  getDoctors(){
+    return this.http.get<User[]>(this.baseUrl + "/api/users/getDoctors");
   }
 
   //search a doctor by it's name
   searchDoctor(name: string){
-    const params = new HttpParams().set("name", name);
+    const params = new HttpParams().set("str", name);
     console.log(this.baseUrl + "api/users/searchDoctor" + params);
     return this.http.get<User[]>(this.baseUrl + "/api/users/searchDoctor?",{params});
   }
