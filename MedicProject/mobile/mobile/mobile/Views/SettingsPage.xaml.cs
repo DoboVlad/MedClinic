@@ -18,7 +18,6 @@ namespace mobile
         public SettingsPage()
         {
             InitializeComponent();
-
         }
 
         async private void TapGestureRecognizer_Cancel(object sender, EventArgs e)

@@ -35,7 +35,7 @@ namespace mobile
             int result = DateTime.Compare(dpBirthDate.Date, DateTime.Today);
 
             //verify if fiels are filled in
-            if (string.IsNullOrWhiteSpace(entFirstName.Text) || string.IsNullOrWhiteSpace(entLastName.Text) || string.IsNullOrWhiteSpace(entEmail.Text) || string.IsNullOrWhiteSpace(entPhone.Text) || string.IsNullOrWhiteSpace(entCnp.Text)  || string.IsNullOrWhiteSpace(entPassword.Text) || string.IsNullOrWhiteSpace(entConfPwd.Text))
+            if (string.IsNullOrWhiteSpace(entFirstName.Text.Trim()) || string.IsNullOrWhiteSpace(entLastName.Text.Trim()) || string.IsNullOrWhiteSpace(entEmail.Text.Trim()) || string.IsNullOrWhiteSpace(entPhone.Text.Trim()) || string.IsNullOrWhiteSpace(entCnp.Text.Trim())  || string.IsNullOrWhiteSpace(entPassword.Text.Trim()) || string.IsNullOrWhiteSpace(entConfPwd.Text.Trim()))
             {
                 res = await DisplayAlert(AppResources.AlertFillField, AppResources.AlertChange, AppResources.Yes, AppResources.No);
                 if( res == false)
@@ -44,7 +44,7 @@ namespace mobile
                 }
 
             }
-            else if (entPassword.Text != entConfPwd.Text)
+            else if (entPassword.Text.Trim() != entConfPwd.Text.Trim())
             {
                 res = await DisplayAlert(AppResources.AlertPwdMatch, AppResources.AlertChange, AppResources.Yes, AppResources.No);
                 if (res == false)
@@ -52,7 +52,7 @@ namespace mobile
                     await this.Navigation.PushAsync(new MainPage());
                 }
             }
-            else if (!emailPattern.IsMatch(entEmail.Text))
+            else if (!emailPattern.IsMatch(entEmail.Text.Trim()))
             {
                 res = await DisplayAlert(AppResources.AlertEmail, AppResources.AlertChange, AppResources.Yes, AppResources.No);
                 if (res == false)
@@ -60,7 +60,7 @@ namespace mobile
                     await this.Navigation.PushAsync(new MainPage());
                 }
             }
-            else if (!cnpCheck(entCnp.Text))
+            else if (!cnpCheck(entCnp.Text.Trim()))
             {
                 res= await DisplayAlert(AppResources.AlertPIN, AppResources.AlertChange, AppResources.Yes, AppResources.No);
                 if (res == false)
@@ -76,16 +76,18 @@ namespace mobile
                     await this.Navigation.PushAsync(new MainPage());
                 }
             }
-            else if (Equals(entPassword.Text, entConfPwd.Text))
+            else if (Equals(entPassword.Text.Trim(), entConfPwd.Text.Trim()))
             {
-                if (entPassword.Text.Length < 6)
+                if (entPassword.Text.Trim().Length < 8)
                 {
                     lblPassCheck.Text = AppResources.AlertPwdShort;
                     lblPassCheck.TextColor = Color.Red;
                 }
-                if(passwordPattern.IsMatch(entPassword.Text))
+                if(passwordPattern.IsMatch(entPassword.Text.Trim()))
                 {
-                    await this.Navigation.PushAsync(new RegistrationSucceedPage());
+                    Page page = new RegistrationSucceedPage();
+                    await this.Navigation.PushAsync(page);
+                    NavigationPage.SetHasNavigationBar(page, false);
                 }
                 else
                 {
@@ -94,7 +96,6 @@ namespace mobile
                     {
                         Page page = new MainPage();
                         await Navigation.PushAsync(page);
-                        NavigationPage.SetHasNavigationBar(page, false);
                     }
                 }
                 
@@ -103,7 +104,7 @@ namespace mobile
         //strong password check
         private void onTexChanged(object sender, TextChangedEventArgs e)
         {
-            if (entPassword.Text.Length < 6)
+            if (entPassword.Text.Trim().Length < 6)
             {
                 lblPassCheck.IsVisible = true;
                 lblPassCheck.Text = AppResources.AlertPwdShort;

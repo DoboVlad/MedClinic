@@ -12,16 +12,19 @@ namespace mobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage
     {
+        PatientModel Ionut = new PatientModel()
+        {
+            FirstName = "Ionut",
+            LastName = "Iga",
+            Phone = "1234567890",
+            PIN = "1992753857251",
+            BirthDate = "25.09.1999",
+            Email = "ionut.iga@yahoo.com"
+        };
         public ProfilePage()
         {
             InitializeComponent();
-            PatientModel Ionut = new PatientModel() 
-            {FirstName = "Ionut",
-                LastName="Iga",
-                Phone="1234567890",
-                PIN="1992753857251" ,
-                BirthDate="25.09.1999",
-                Email="ionut.iga@yahoo.com" };
+
 
             BindingContext = Ionut;
             if (int.Parse(Ionut.PIN.Substring(0, 1)) % 2 != 0)
