@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { User } from '../Models/UserModel';
 import {HttpClient, HttpParams} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   baseUrl: String = "https://localhost:5001";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
   user: User;
   token: string;
   //use post method to login the user
@@ -16,6 +17,7 @@ export class UserService {
     this.http.post<User>(this.baseUrl + "/api/users/login", user).subscribe(user => {
       this.user = user;
       this.saveAuthData(user.token);
+      this.router.navigate(["/profile"]);
     });
   }
 
@@ -23,6 +25,7 @@ export class UserService {
     this.http.post(this.baseUrl + "/api/users/register", user).subscribe(user =>{
       this.user = user;
       console.log(user);
+      this.router.navigate(["/home"]);
     });
   }
 

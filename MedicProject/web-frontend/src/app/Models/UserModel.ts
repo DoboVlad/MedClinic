@@ -1,12 +1,14 @@
 export class User{
+  id? : number;
   firstName?: String;
   lastName?: String;
   email?: String;
   password?: String;
-  confirm?: String;
+  repeatPassword?: String;
   description?: string;
+  dateOfBirth?: Date;
   age?: number;
-  phone?: String;
+  phoneNumber?: String;
   token?: string;
-  doctor?: number;
+  doctorId?: number;
 }

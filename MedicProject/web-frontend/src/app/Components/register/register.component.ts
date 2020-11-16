@@ -11,19 +11,23 @@ import { UserService } from 'src/app/Services/user.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   user: User;
+  doctors: User[];
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getDoctors().subscribe(doctors => {
+      this.doctors = doctors;
+    });
     this.registerForm = new FormGroup({
       "firstName": new FormControl(null, Validators.required),
       "lastName": new FormControl(null, Validators.required),
       "cnp": new FormControl(null, Validators.required),
-      "birthday": new FormControl(null, Validators.required),
+      "dateOfBirth": new FormControl(null, Validators.required),
       "email": new FormControl(null, Validators.required),
-      "phone": new FormControl(null, Validators.required),
+      "phoneNumber": new FormControl(null, Validators.required),
       "password": new FormControl(null, Validators.required),
-      "confirm": new FormControl(null, Validators.required),
-      "doctor": new FormControl(null, Validators.required)
+      "repeatPassword": new FormControl(null, Validators.required),
+      "doctorId": new FormControl(null, Validators.required)
     });
   }
 
