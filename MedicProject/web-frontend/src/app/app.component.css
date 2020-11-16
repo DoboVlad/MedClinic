@@ -114,6 +114,7 @@
     height: 125%;
     scroll-behavior: auto;
     border: 2px solid rgb(231, 231, 231);
+    overflow: auto;
     
 }
 
@@ -134,6 +135,7 @@ footer .column {
 
 footer .column p {
   cursor: pointer;
+  font-size: 16px;
 }
 
 footer .column .border {
