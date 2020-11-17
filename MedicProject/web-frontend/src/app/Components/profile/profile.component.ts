@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Models/UserModel';
+import { Appointment } from 'src/app/Models/AppointmentModel';
 import { UserService } from 'src/app/Services/user.service';
-
+import { AppointmentService } from 'src/app/Services/appointment.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -9,7 +10,8 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class ProfileComponent implements OnInit {
   user: User;
-  constructor(private userService: UserService) { }
+  appointments: Appointment[];
+  constructor(private userService: UserService, private appService: AppointmentService) { }
 
   ngOnInit(): void {
     this.userService.myAccount().subscribe(user => {
@@ -19,6 +21,10 @@ export class ProfileComponent implements OnInit {
       }else {
         this.user.gender = "Female";
       }
+    });
+
+    this.appService.getPastAppointments().subscribe(appointments => {
+        this.appointments = appointments;
     });
   }
 }

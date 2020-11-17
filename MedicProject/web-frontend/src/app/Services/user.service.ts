@@ -11,15 +11,16 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) { }
   user: User;
   token: string;
-  isUserLoggedIn: boolean = false;
+  isUserLoggedIn: boolean;
   //use post method to login the user
   //call the base url using /login endpoint
   logInUser(user: User){
     this.http.post<User>(this.baseUrl + "/api/users/login", user).subscribe(user => {
       this.user = user;
       this.saveAuthData(user.token);
-      this.isUserLoggedIn = !this.isUserLoggedIn;
+      this.isUserLoggedIn = true;
     });
+    this.router.navigate(["/profile"]);
   }
 
   registerUser(user: User){
@@ -33,7 +34,7 @@ export class UserService {
     const authInfo = this.getAuthData();
     if(authInfo!= null){
       this.token = authInfo.token;
-      this.isUserLoggedIn = !this.isUserLoggedIn;
+      this.isUserLoggedIn = true;
     }
   }
 
@@ -43,6 +44,7 @@ export class UserService {
 
   clearAuthData(){
     localStorage.removeItem("token");
+    this.isUserLoggedIn = false;
   }
 
   getAuthData(){

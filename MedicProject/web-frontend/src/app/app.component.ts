@@ -13,9 +13,10 @@ export class AppComponent implements OnInit{
   ngOnInit(){
    this.userService.autoAuthUser();
    console.log(this.userService.isUserLoggedIn);
-   if(this.userService.token){ // check if we have data in local storage
-    this.userService.isUserLoggedIn = !this.userService.isUserLoggedIn;
+   if(this.userService.token == null){ // check if we have data in local storage
+    this.userService.isUserLoggedIn = false;
+  } else {
+    this.userService.isUserLoggedIn = true;
   }
-   console.log(this.userService.isUserLoggedIn);
   }
 }

@@ -48,8 +48,7 @@
             <div class="info_data">
                 <div class="data">
                     <h4>Recent date:</h4>
-                    <input type="text" name="information" value="20.10.2020" readonly>
-                    <input type="text" name="information" value="11.07.2020" readonly>
+                    <p *ngFor="let app of appointments">{{app.date | date: 'MMM d, y'}} | Hour: {{app.hour}}</p>
                 </div>
             </div>
         </div>
