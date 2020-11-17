@@ -7,7 +7,7 @@
         </p>
         <ul class="firstNavList">
             <!-- <li>NUME</li> -->
-            <li routerLink="/login">CONT</li>
+            <li routerLink="/login" *ngIf= "this.userService.isUserLoggedIn == false">CONT</li>
             <li class="dropdown">
                 <a class="dropbtn">LIMBA</a>
                 <div class="dropdown-content">
@@ -21,7 +21,7 @@
         <ul class="secondNavList">
             <li routerLink="/home">ACASA</li>
             <li routerLink="/doctors">MEDICI</li>
-            <li routerLink="/appointments">PROGRAMARE ONLINE</li>
+            <li routerLink="/appointments" *ngIf = "this.userService.isUserLoggedIn  == true">PROGRAMARE ONLINE</li>
             <a href="#footer"><li >CONTACT</li></a>
         </ul>
     </div>
@@ -39,8 +39,8 @@
         <div class="column">
             <p routerLink="/home">About</p>
             <p routerLink="/terms">Terms and Conditions</p>
-            <p routerLink="/terms">Privacy</p>   
-            <p class="border">.</p>         
+            <p routerLink="/terms">Privacy</p>
+            <p class="border">.</p>
         </div>
         <div class="column">
             <p>Address: Cluj-Napoca, Dorobantilor 48</p>

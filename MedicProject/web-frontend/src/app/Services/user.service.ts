@@ -11,13 +11,14 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) { }
   user: User;
   token: string;
+  isUserLoggedIn: boolean = false;
   //use post method to login the user
   //call the base url using /login endpoint
   logInUser(user: User){
     this.http.post<User>(this.baseUrl + "/api/users/login", user).subscribe(user => {
       this.user = user;
       this.saveAuthData(user.token);
-      this.router.navigate(["/profile"]);
+      this.isUserLoggedIn = !this.isUserLoggedIn;
     });
   }
 
@@ -30,7 +31,10 @@ export class UserService {
 
   autoAuthUser(){
     const authInfo = this.getAuthData();
-    this.token = authInfo.token;
+    if(authInfo!= null){
+      this.token = authInfo.token;
+      this.isUserLoggedIn = !this.isUserLoggedIn;
+    }
   }
 
   saveAuthData(token: string){
@@ -65,7 +69,6 @@ export class UserService {
 
   // get a single user from api
   myAccount(){
-    console.log(this.token);
     return this.http.get<User>(this.baseUrl + "/api/users/MyAccount", {
       headers: {
         'Authorization' : 'Bearer ' + this.token

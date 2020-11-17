@@ -8,10 +8,14 @@ import { UserService } from './Services/user.service';
 })
 export class AppComponent implements OnInit{
   title = 'frontend';
-
-  constructor(private userService: UserService){}
+  constructor(public userService: UserService){}
 
   ngOnInit(){
    this.userService.autoAuthUser();
+   console.log(this.userService.isUserLoggedIn);
+   if(this.userService.token){ // check if we have data in local storage
+    this.userService.isUserLoggedIn = !this.userService.isUserLoggedIn;
+  }
+   console.log(this.userService.isUserLoggedIn);
   }
 }
