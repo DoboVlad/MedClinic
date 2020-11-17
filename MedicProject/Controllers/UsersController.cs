@@ -436,7 +436,6 @@ namespace MedicProject.Controllers
 
 
 
-
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult<User>> Register(RegisterDTO RegisterDTO){
@@ -492,7 +491,7 @@ namespace MedicProject.Controllers
                
               
              // if(user.isApproved==0 || user.validated==0) 
-              //return Unauthorized("Your account has not been aproved or validated yet!");
+             //return Unauthorized("Your account has not been aproved or validated yet!");
               
                return new UserDTO
             {

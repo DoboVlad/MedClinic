@@ -24,13 +24,13 @@ export class UserService {
   registerUser(user: User){
     this.http.post(this.baseUrl + "/api/users/register", user).subscribe(user =>{
       this.user = user;
-      console.log(user);
       this.router.navigate(["/home"]);
     });
   }
 
   autoAuthUser(){
     const authInfo = this.getAuthData();
+    this.token = authInfo.token;
   }
 
   saveAuthData(token: string){
@@ -43,11 +43,11 @@ export class UserService {
 
   getAuthData(){
     const token = localStorage.getItem("token");
-    if(token){
+    if(!token){
       return;
     }
     return{
-      token: token,
+      token: token
     }
   }
 
@@ -65,7 +65,11 @@ export class UserService {
 
   // get a single user from api
   myAccount(){
-    const params = new HttpParams().set("id", name);
-    return this.http.get<User>(this.baseUrl + "/api/users/getUser", {params});
+    console.log(this.token);
+    return this.http.get<User>(this.baseUrl + "/api/users/MyAccount", {
+      headers: {
+        'Authorization' : 'Bearer ' + this.token
+      }
+    });
   }
 }
