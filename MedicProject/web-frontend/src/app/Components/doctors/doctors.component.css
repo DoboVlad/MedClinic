@@ -18,25 +18,30 @@
  /*   position: relative;
     z-index: 1;*/
     background: #FFFFFF;
-    max-width: 700px;
+    max-width: 500px;
     margin: 0 auto 0px;
-    padding: 45px;
-    text-align: right;
+    padding: 25px;
+    text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
 
 }
-.nav-doctor .form{
+/* .nav-doctor .form{
     float:right;
     padding: 0 auto;
 
-}
+} */
+
 .form input{
     height:40px;
+    width: 80%;
     padding-right: 10px;
 
 }
 .form button{
     height:40px;
+    margin-left:2%;
+    padding-left:2%;
+    padding-right:2%;
     background: #5084F2;
     color: #FFFFFF;
     transition: all 0.3 ease;
