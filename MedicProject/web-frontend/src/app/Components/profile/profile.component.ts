@@ -11,9 +11,8 @@ import { AppointmentService } from 'src/app/Services/appointment.service';
 export class ProfileComponent implements OnInit {
   user: User;
   appointments: Appointment[];
-  constructor(private userService: UserService, private appService: AppointmentService) { }
-
-  ngOnInit(): void {
+  constructor(public userService: UserService, private appService: AppointmentService) {
+    this.userService.isFetching = true;
     this.userService.myAccount().subscribe(user => {
       this.user = user;
       if(parseInt(this.user.cnp.substr(0,1)) == 1 || parseInt(this.user.cnp.substr(0,1)) == 5){
@@ -21,10 +20,15 @@ export class ProfileComponent implements OnInit {
       }else {
         this.user.gender = "Female";
       }
+      this.userService.isFetching = false;
     });
 
     this.appService.getPastAppointments().subscribe(appointments => {
         this.appointments = appointments;
     });
+   }
+
+  ngOnInit(): void {
+
   }
 }

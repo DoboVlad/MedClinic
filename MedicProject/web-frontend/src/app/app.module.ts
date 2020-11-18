@@ -14,6 +14,7 @@ import { TermsComponent } from './Components/terms/terms.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SpinnerComponent } from './Components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppointmentsComponent,
     ProfileComponent,
     ForgotPasswordComponent,
-    TermsComponent
+    TermsComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

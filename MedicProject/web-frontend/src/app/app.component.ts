@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from './Services/user.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UserService } from './Services/user.service';
 })
 export class AppComponent implements OnInit{
   title = 'frontend';
-  constructor(public userService: UserService){}
+  constructor(public userService: UserService, private router: Router){}
 
   ngOnInit(){
    this.userService.autoAuthUser();
@@ -18,5 +19,10 @@ export class AppComponent implements OnInit{
   } else {
     this.userService.isUserLoggedIn = true;
   }
+  }
+
+  logout(){
+    this.userService.clearAuthData();
+    this.router.navigate(["/home"]);
   }
 }

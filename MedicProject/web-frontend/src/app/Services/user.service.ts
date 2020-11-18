@@ -12,6 +12,7 @@ export class UserService {
   user: User;
   token: string;
   isUserLoggedIn: boolean;
+  isFetching: boolean;
   //use post method to login the user
   //call the base url using /login endpoint
   logInUser(user: User){
@@ -19,8 +20,9 @@ export class UserService {
       this.user = user;
       this.saveAuthData(user.token);
       this.isUserLoggedIn = true;
+      this.router.navigateByUrl("/profile");
     });
-    this.router.navigate(["/profile"]);
+
   }
 
   registerUser(user: User){
