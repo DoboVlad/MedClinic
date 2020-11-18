@@ -6,7 +6,7 @@
             <img src="assets/img/logo.png">
         </p>
         <ul class="firstNavList">
-            <!-- <li>NUME</li> -->
+            <li routeLink="/home">Logout</li>
             <li routerLink="/login" *ngIf= "this.userService.isUserLoggedIn == false">CONT</li>
             <li class="dropdown">
                 <a class="dropbtn">LIMBA</a>
