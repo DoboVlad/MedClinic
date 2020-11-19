@@ -36,19 +36,25 @@
   margin-bottom: 10px;
 }
 
-.container .left .buttons input {
+.container .left .buttons {
+  position: absolute;
+  bottom: 0%;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.container .left .button input {
   width: auto ;
   height: auto;
-  margin: 7%;
+  margin: 20px;
   padding: 6px;
   border-radius: 7px;
   border: none;
   position: relative;
   float:left;
   cursor: pointer;
-  display: block;
-  top: 14em;
-
+  bottom:0;                          
 }
 
 .container .right{
