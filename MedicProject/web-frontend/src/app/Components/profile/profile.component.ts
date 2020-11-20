@@ -11,7 +11,9 @@ import { AppointmentService } from 'src/app/Services/appointment.service';
 export class ProfileComponent implements OnInit {
   user: User;
   appointments: Appointment[];
-  constructor(public userService: UserService, private appService: AppointmentService) {
+  constructor(public userService: UserService, private appService: AppointmentService) {}
+
+  ngOnInit(): void {
     this.userService.isFetching = true;
     this.userService.myAccount().subscribe(user => {
       this.user = user;
@@ -26,9 +28,5 @@ export class ProfileComponent implements OnInit {
     this.appService.getPastAppointments().subscribe(appointments => {
         this.appointments = appointments;
     });
-   }
-
-  ngOnInit(): void {
-
   }
 }

@@ -152,10 +152,12 @@ namespace MedicProject.Controllers
         [HttpGet]
         [Route("getMedicInfo")]
         //returns a doctor's data (for doctor MoreInfo page)
-        public async Task<ActionResult<DoctorDTO>> getDoctorInfo(int id){
+        public async Task<ActionResult<DoctorDTO>> getDoctorInfo(){
             //get the doctor with the requested id
-             var user = await _context.USERS.Where(d => d.isMedic == 1 && d.Id==id).FirstOrDefaultAsync();
-             return  Ok(_mapper.Map<DoctorDTO>(user));
+             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+             var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+             var medic = await _context.USERS.Where(d => d.isMedic == 1 && d.Id==user.doctorId).FirstOrDefaultAsync();
+             return  Ok(_mapper.Map<DoctorDTO>(medic));
            //if the user is not a doctor then he is unauthorized to do this action       
         }
 

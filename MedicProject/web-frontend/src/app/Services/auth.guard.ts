@@ -10,14 +10,9 @@ export class AuthGuard implements CanActivate{
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
 
     const isAuth = this.userService.getAuthData();
-    const isApproved = this.userService.isApproved;
     if(isAuth != null){
-      console.log(isApproved);
-      if(isApproved == false){
-        this.router.navigate(["/waiting"]);
-        return false;
-      }
+        return true;
     }
-    return true;
+    return false;
   }
 }

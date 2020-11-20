@@ -20,13 +20,18 @@ export class UserService {
     this.http.post<User>(this.baseUrl + "/api/users/login", user).subscribe(user => {
       this.user = user;
       this.saveAuthData(user.token);
-      this.isUserLoggedIn = true;
       console.log(this.user.isApproved);
+      this.isFetching = true;
       if(this.user.isApproved == 1){
         this.isApproved = true;
+        this.isUserLoggedIn = true;
         this.router.navigateByUrl("/profile");
       }
-      else this.isApproved = false;
+      else {
+         this.isApproved = false;
+         this.isUserLoggedIn = true;
+         this.router.navigate(["/waiting"]);
+      }
     });
 
   }
@@ -87,7 +92,7 @@ export class UserService {
   }
 
   medicAccount(){
-    return this.http.get<User>(this.baseUrl + '/api/users/MyAccountMedic', {
+    return this.http.get<User>(this.baseUrl + '/api/users/getMedicInfo', {
       headers: {
         'Authorization' : 'Bearer ' + this.token
       }

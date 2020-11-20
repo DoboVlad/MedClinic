@@ -10,14 +10,15 @@ import { ForgotPasswordComponent } from './Components/forgot-password/forgot-pas
 import {TermsComponent} from './Components/terms/terms.component';
 import {AuthGuard} from './Services/auth.guard';
 import { WaitingComponent } from './Components/waiting/waiting.component';
+import {ApproveGuard} from './Services/approve.guard';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'appointments', component: AppointmentsComponent, canActivate: [AuthGuard]},
+  {path: 'appointments', component: AppointmentsComponent, canActivate: [AuthGuard, ApproveGuard]},
   {path: 'doctors', component: DoctorsComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard, ApproveGuard]},
   {path: 'forgotpassword', component: ForgotPasswordComponent},
   {path: 'terms', component: TermsComponent},
   {path: 'waiting', component: WaitingComponent},
@@ -27,6 +28,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard]
+  providers: [AuthGuard, ApproveGuard]
 })
 export class AppRoutingModule { }
