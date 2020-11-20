@@ -9,6 +9,7 @@ import { ProfileComponent} from './Components/profile/profile.component';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import {TermsComponent} from './Components/terms/terms.component';
 import {AuthGuard} from './Services/auth.guard';
+import { WaitingComponent } from './Components/waiting/waiting.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'forgotpassword', component: ForgotPasswordComponent},
   {path: 'terms', component: TermsComponent},
+  {path: 'waiting', component: WaitingComponent},
   {path: "**", component: HomeComponent}
 ];
 

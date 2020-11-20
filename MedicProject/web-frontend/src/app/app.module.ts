@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './Components/spinner/spinner.component';
+import { WaitingComponent } from './Components/waiting/waiting.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SpinnerComponent } from './Components/spinner/spinner.component';
     ProfileComponent,
     ForgotPasswordComponent,
     TermsComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    WaitingComponent
   ],
   imports: [
     BrowserModule,

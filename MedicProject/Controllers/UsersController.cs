@@ -114,10 +114,7 @@ namespace MedicProject.Controllers
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
            //verify if the user is a doctor
-           if(user.isMedic==1)
              return  Ok(_mapper.Map<DoctorDTO>(user));
-           //if the user is not a doctor then he is unauthorized to do this action
-           else return Unauthorized();
         }
 
       
@@ -500,6 +497,7 @@ namespace MedicProject.Controllers
                 firstName=user.firstName,
                 lastName=user.lastName,
                 role=user.isMedic,
+                isApproved = user.isApproved,
                 token=_tokenService.CreateToken(user)
             };
         }

@@ -13,6 +13,7 @@ export class User{
   cnp?: string;
   age?: number;
   phoneNumber?: String;
+  isApproved?: number;
   token?: string;
   doctorId?: number;
   doctor?: Doctor;

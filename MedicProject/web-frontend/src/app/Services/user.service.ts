@@ -13,6 +13,7 @@ export class UserService {
   token: string;
   isUserLoggedIn: boolean;
   isFetching: boolean;
+  isApproved: boolean;
   //use post method to login the user
   //call the base url using /login endpoint
   logInUser(user: User){
@@ -20,7 +21,12 @@ export class UserService {
       this.user = user;
       this.saveAuthData(user.token);
       this.isUserLoggedIn = true;
-      this.router.navigateByUrl("/profile");
+      console.log(this.user.isApproved);
+      if(this.user.isApproved == 1){
+        this.isApproved = true;
+        this.router.navigateByUrl("/profile");
+      }
+      else this.isApproved = false;
     });
 
   }
@@ -79,4 +85,12 @@ export class UserService {
       }
     });
   }
+
+  medicAccount(){
+    return this.http.get<User>(this.baseUrl + '/api/users/MyAccountMedic', {
+      headers: {
+        'Authorization' : 'Bearer ' + this.token
+      }
+    });
+    }
 }
