@@ -47,7 +47,7 @@
                 <Label x:Name ="lblPCnp" Text="{local:Translate Cnp}"/>
                 <Entry x:Name="entCnp" Placeholder="{local:Translate Cnp}" ReturnType="Next" Keyboard="Numeric" Text="{Binding cnp}" />
                 <Label x:Name="lblBirthDay" Text="{local:Translate Birthday}"/> <!--!!!!!!!!!!!!!!!!-->
-                <DatePicker x:Name="dpBirthDate" MinimumDate="01/01/1900" MaximumDate="{x:Static sys:DateTime.Now}"  Date="{Binding dateOfBirth}" />
+                <DatePicker x:Name="dpBirthDate" MinimumDate="01/01/1900" MaximumDate="{x:Static sys:DateTime.Now}"   Date="{Binding dateOfBirth}" />
                 <Label x:Name="lblDoc" Text="{local:Translate ChooseDoctor}"/>
                 <Picker x:Name="pckDoctor" HorizontalOptions="FillAndExpand"  Title="{local:Translate ChooseDoctor}" SelectedItem="{Binding doctorId}" >
                 </Picker>
@@ -56,7 +56,7 @@
                 <Entry x:Name ="entPassword" Placeholder="{local:Translate Password}" ReturnType="Next" IsPassword="True" TextChanged="onTexChanged" />
                 <Label x:Name ="lblConfPass" Text="{local:Translate ConfPwd}"/>
                 <Entry x:Name ="entConfPwd" Placeholder="{local:Translate ConfPwd}" ReturnType="Next" IsPassword="True" />
-                <Button x:Name="btnRegister" Text="{local:Translate SingUp}" Clicked="btnRegister_Clicked" Command="{Binding RegisterCommand}" Margin="0,50,0,0" />
+                <Button x:Name="btnRegister" Text="{local:Translate SingUp}"  Command="{Binding RegisterCommand}" Margin="0,50,0,0" />
                 <Label x:Name="lblMessage" Text="{Binding Message}"/>
             </StackLayout>
             <Label Grid.Row="2" Text="{local:Translate HasAccount}"  HorizontalOptions="Center" TextColor="#5084F2" >

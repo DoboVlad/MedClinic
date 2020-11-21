@@ -64,10 +64,9 @@ namespace MedicProject
             app.UseRouting();
             
             app.UseCors(policy => {
-                policy
+                policy.AllowAnyOrigin()
                 .AllowAnyHeader()
-                .AllowAnyMethod()
-                .WithOrigins("http://localhost:4200");
+                .AllowAnyMethod();
             });
 
             

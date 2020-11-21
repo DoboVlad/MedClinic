@@ -37,12 +37,12 @@ namespace mobile.ViewModels
                 {
                    var isSuccess = await _apiServices.RegisterAsync(firstName, lastName, email, cnp, dateOfBirth, phoneNumber, password, repeatPassword, doctorId);
                     if (isSuccess)
-                    {
-                        Message = "regiser a functionat";
+
+                    { Console.WriteLine("A MERS!");
                     }
                     else
                     {
-                        Message = "register nu a functionat";
+                        Console.WriteLine("Nu a mers");
                     }
                 } 
                 );
