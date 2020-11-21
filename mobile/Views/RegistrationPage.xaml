@@ -6,9 +6,14 @@
              x:Class="mobile.RegistrationPage"
              xmlns:local ="clr-namespace:mobile.Helpers"
              xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+             xmlns:viewModel ="clr-namespace:mobile.ViewModels"
              Title="{local:Translate Register}"
              Padding="0,10,0,0">
     <!--line6-to generate the sysdate-->
+    <ContentPage.BindingContext>
+        <viewModel:RegisterModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
@@ -32,30 +37,27 @@
 
             <StackLayout Grid.Row="1" Margin="0, 20">
                 <Label x:Name ="lblFirstName" Text="{local:Translate FirstName}"/>
-                <Entry x:Name="entFirstName" Placeholder="{local:Translate FirstName}" ReturnType="Next" Keyboard="Text"/>
+                <Entry x:Name="entFirstName" Placeholder="{local:Translate FirstName}" ReturnType="Next" Keyboard="Text" Text="{Binding firstName}"/>
                 <Label x:Name ="lblLastName" Text="{local:Translate LastName}"/>
-                <Entry x:Name="entLastName" Placeholder="{local:Translate LastName}" ReturnType="Next" Keyboard="Text" />
+                <Entry x:Name="entLastName" Placeholder="{local:Translate LastName}" ReturnType="Next" Keyboard="Text" Text="{Binding lastName}"/>
                 <Label x:Name ="lblEmail" Text="{local:Translate Email}"/>
-                <Entry x:Name="entEmail" Placeholder="{local:Translate Email}" ReturnType="Next" Keyboard="Email" />
+                <Entry x:Name="entEmail" Placeholder="{local:Translate Email}" ReturnType="Next" Keyboard="Email" Text="{Binding email}" />
                 <Label x:Name ="lblPhone" Text="{local:Translate Phone}"/>
-                <Entry x:Name="entPhone" Placeholder="{local:Translate Phone}" ReturnType="Next" Keyboard="Telephone" />
+                <Entry x:Name="entPhone" Placeholder="{local:Translate Phone}" ReturnType="Next" Keyboard="Telephone" Text="{Binding phoneNumber}" />
                 <Label x:Name ="lblPCnp" Text="{local:Translate Cnp}"/>
-                <Entry x:Name="entCnp" Placeholder="{local:Translate Cnp}" ReturnType="Next" Keyboard="Numeric" />
+                <Entry x:Name="entCnp" Placeholder="{local:Translate Cnp}" ReturnType="Next" Keyboard="Numeric" Text="{Binding cnp}" />
                 <Label x:Name="lblBirthDay" Text="{local:Translate Birthday}"/> <!--!!!!!!!!!!!!!!!!-->
-                <DatePicker x:Name="dpBirthDate" MinimumDate="01/01/1900" MaximumDate="{x:Static sys:DateTime.Now}" Date="06/21/2018"/>
+                <DatePicker x:Name="dpBirthDate" MinimumDate="01/01/1900" MaximumDate="{x:Static sys:DateTime.Now}"  Date="{Binding dateOfBirth}" />
                 <Label x:Name="lblDoc" Text="{local:Translate ChooseDoctor}"/>
-                <Picker x:Name="pckDoctor" HorizontalOptions="FillAndExpand"  Title="{local:Translate ChooseDoctor}">
-                    <Picker.Items>
-                        <x:String>Medic1</x:String> 
-                        <x:String>Medic2</x:String>
-                    </Picker.Items>
+                <Picker x:Name="pckDoctor" HorizontalOptions="FillAndExpand"  Title="{local:Translate ChooseDoctor}" SelectedItem="{Binding doctorId}" >
                 </Picker>
                 <Label x:Name="lblPassCheck" FontSize="Medium" TextColor="Black"  IsVisible="false"/>
                 <Label x:Name ="lblPassword" Text="{local:Translate Password}"/>
                 <Entry x:Name ="entPassword" Placeholder="{local:Translate Password}" ReturnType="Next" IsPassword="True" TextChanged="onTexChanged" />
                 <Label x:Name ="lblConfPass" Text="{local:Translate ConfPwd}"/>
                 <Entry x:Name ="entConfPwd" Placeholder="{local:Translate ConfPwd}" ReturnType="Next" IsPassword="True" />
-                <Button x:Name="btnRegister" Text="{local:Translate SingUp}" Clicked="btnRegister_Clicked" Margin="0,50,0,0" />
+                <Button x:Name="btnRegister" Text="{local:Translate SingUp}" Clicked="btnRegister_Clicked" Command="{Binding RegisterCommand}" Margin="0,50,0,0" />
+                <Label x:Name="lblMessage" Text="{Binding Message}"/>
             </StackLayout>
             <Label Grid.Row="2" Text="{local:Translate HasAccount}"  HorizontalOptions="Center" TextColor="#5084F2" >
                 <Label.GestureRecognizers>

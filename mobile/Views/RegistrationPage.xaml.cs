@@ -2,6 +2,7 @@
 using mobile.Resources;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,14 @@ namespace mobile
     public partial class RegistrationPage : ContentPage
     {
 
+
         public RegistrationPage()
         {
             InitializeComponent();
-            
-
+            pckDoctor.ItemsSource = new ObservableCollection<Int32>()
+            {
+                1, 2
+            };
         }
         //regex for email validation
         Regex emailPattern = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
