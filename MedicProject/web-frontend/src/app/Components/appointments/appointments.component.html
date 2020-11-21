@@ -1,7 +1,9 @@
 <div class="appointments-title">
      <p>Make an appointment online</p>
 </div>
-
+<div class="message" *ngIf="this.appService.isSuccesfully == true;">
+  Your appointment have been registered succesfully! Thank you
+</div>
 <div class="appointments-description">
     <p>Choose an available date and hour:</p><br>
 </div>

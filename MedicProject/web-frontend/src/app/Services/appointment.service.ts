@@ -10,7 +10,7 @@ export class AppointmentService {
   baseUrl: string = "https://localhost:5001/api/appointments";
   constructor(private http: HttpClient, private userService: UserService) { }
 
-
+  isSuccesfully: boolean;
   createAppointment(appointment: Appointment){
     this.http.post(this.baseUrl + "/createApp", appointment, {
       headers: {
@@ -18,6 +18,7 @@ export class AppointmentService {
       }
     }).subscribe(app => {
       console.log(app);
+      this.isSuccesfully = true;
     })
   }
 

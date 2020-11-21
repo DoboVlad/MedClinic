@@ -22,10 +22,13 @@ export class ProfileComponent implements OnInit {
       }else {
         this.user.gender = "Female";
       }
-      this.userService.isFetching = false;
+      if(user.isApproved == 1) {
+        this.userService.isApproved = true;
+      }
     });
 
     this.appService.getPastAppointments().subscribe(appointments => {
+      this.userService.isFetching = false;
         this.appointments = appointments;
     });
   }

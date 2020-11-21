@@ -15,6 +15,8 @@ namespace MedicProject.DTO
 
         public int age { get; set; }
 
+        public int isApproved { get; set; }
+
         public int? doctorId { get; set; }
 
         public MedicDTO doctor { get; set; }

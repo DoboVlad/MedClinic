@@ -11,7 +11,8 @@ import { AppointmentService } from 'src/app/Services/appointment.service';
 export class AppointmentsComponent implements OnInit {
   appForm: FormGroup;
   app: Appointment
-  constructor(private appService: AppointmentService) { }
+
+  constructor(public appService: AppointmentService) { }
 
   ngOnInit(): void {
     this.appForm = new FormGroup({
@@ -23,5 +24,6 @@ export class AppointmentsComponent implements OnInit {
   onSubmit(){
     this.app = {...this.appForm.value};
     this.appService.createAppointment(this.app);
+
   }
 }
