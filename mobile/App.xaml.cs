@@ -6,6 +6,7 @@ namespace mobile
 {
     public partial class App : Application
     {
+        public string Ion;
         public App()
         {
             InitializeComponent();

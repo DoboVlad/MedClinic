@@ -53,10 +53,10 @@
                 </Picker>
                 <Label x:Name="lblPassCheck" FontSize="Medium" TextColor="Black"  IsVisible="false"/>
                 <Label x:Name ="lblPassword" Text="{local:Translate Password}"/>
-                <Entry x:Name ="entPassword" Placeholder="{local:Translate Password}" ReturnType="Next" IsPassword="True" TextChanged="onTexChanged" />
+                <Entry x:Name ="entPassword" Placeholder="{local:Translate Password}" ReturnType="Next" IsPassword="True" Text="{Binding password}" TextChanged="onTexChanged" />
                 <Label x:Name ="lblConfPass" Text="{local:Translate ConfPwd}"/>
-                <Entry x:Name ="entConfPwd" Placeholder="{local:Translate ConfPwd}" ReturnType="Next" IsPassword="True" />
-                <Button x:Name="btnRegister" Text="{local:Translate SingUp}"  Command="{Binding RegisterCommand}" Margin="0,50,0,0" />
+                <Entry x:Name ="entConfPwd" Placeholder="{local:Translate ConfPwd}" ReturnType="Next" Text="{Binding repeatPassword}" IsPassword="True" />
+                <Button x:Name="btnRegister" Text="{local:Translate SingUp}" Clicked="btnRegister_Clicked" Command="{Binding RegisterCommand}" Margin="0,50,0,0" />
                 <Label x:Name="lblMessage" Text="{Binding Message}"/>
             </StackLayout>
             <Label Grid.Row="2" Text="{local:Translate HasAccount}"  HorizontalOptions="Center" TextColor="#5084F2" >
