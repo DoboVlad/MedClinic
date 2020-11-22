@@ -9,7 +9,7 @@ namespace mobile.ViewModels
 {
     class RegisterModel
     {
-        ApiServices _apiServices= new ApiServices();
+      
         public string firstName { get; set; }
 
         public string lastName { get; set; }
@@ -35,7 +35,7 @@ namespace mobile.ViewModels
             {
                 return new Command(async () =>
                 {
-                   var isSuccess = await _apiServices.RegisterAsync(firstName, lastName, email, cnp, dateOfBirth, phoneNumber, password, repeatPassword, doctorId);
+                   var isSuccess = await App.apiServicesManager.Register(firstName, lastName, email, cnp, dateOfBirth, phoneNumber, password, repeatPassword, doctorId);
                     if (isSuccess)
 
                     { Console.WriteLine("A MERS!");

@@ -1,4 +1,5 @@
 ﻿using System;
+using mobile.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -6,11 +7,12 @@ namespace mobile
 {
     public partial class App : Application
     {
-        public string Ion;
+        public static ApiServicesManager apiServicesManager { get; private set; }
         public App()
         {
             InitializeComponent();
 
+            apiServicesManager = new ApiServicesManager(new ApiServices());
             MainPage = new NavigationPage(new MainPage());
         }
 

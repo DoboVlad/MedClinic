@@ -9,27 +9,30 @@ using Newtonsoft.Json;
 using Xamarin.Forms;
 namespace mobile.Services
 {
-    class ApiServices
+    class ApiServices : IApiServices
     {
-       
+
+        HttpClient client;
+
         public static string BaseAddress =
     Device.RuntimePlatform == Device.Android ? "https://10.0.2.2:5001" : "https://localhost:5001";
         public static string registerUrl = $"{BaseAddress}/api/users/register";
 
-       
-
+        // Pass the handler to httpclient(from you are calling api) only in debug mode we have to pass the ssl, in release we dont
+        public ApiServices()
+        {
+#if DEBUG
+            client = new HttpClient(DependencyService.Get<IHttpClientHandlerService>().GetInsecureHandler());
+#else
+         client = new HttpClient();
+#endif
+        }
         public async Task<bool> RegisterAsync(string firstName, string lastName, string email, string cnp, DateTime dateOfBirth, string phoneNumber, string password, string repeatPassword, int doctorId)
         {
 
             //Console.WriteLine(firstName + ' ' + lastName + ' ' + email + ' ' + cnp + ' ' + dateOfBirth.ToString() + ' ' + phoneNumber + ' ' + password + ' ' + repeatPassword + ' ' + doctorId);
 
-            // Pass the handler to httpclient(from you are calling api)
-            HttpClient client;
-#if DEBUG
-            client = new HttpClient(DependencyService.Get<IHttpClientHandlerService>().GetInsecureHandler());
-#else
-            client = new HttpClient();
-#endif
+            
             var model = new RegisterBindingModel
             {
                 firstName = firstName,
