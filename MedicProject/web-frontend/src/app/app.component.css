@@ -7,50 +7,47 @@
 }
 
 .navbar{ /* here are the characteristics of the entire navbar*/
-    background-color: blue;
-    
-    width:100%;
-   
-    display: flex;
-    flex-direction: column;
-    border: 2px solid rgb(231, 231, 231);
-
+  background-color: blue;  
+  width:100%; 
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgb(231, 231, 231);
 }
+
 .navbar .firstnav{ /*here I am putting the characteristics for the first part of the navbar*/
-    background-color: white;
-   height:20%;
-   
+  background-color: white;
+  height:20%; 
 }
+
 .navbar .firstnav .logo{/*here I am editing the logo */
-       float:left;
-       display: flex;
-       flex-direction: row;
-       max-width: 100%;
-       height: auto;
-       margin-left: 100px;
-       cursor: pointer;
-
+  float:left;
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  height: auto;
+  margin-left: 100px;
+  cursor: pointer;
 }
+
 .navbar .firstNavList{/*here I am editing the menu from the first part of the navbar*/
-    text-align: right;
-    font-size: 12px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: right;
-    float:right;
-    display: flex;
-    flex-direction: row;
-    text-decoration: none;
-    padding-top:20px;
-    
-    padding-right: 40px;
-     cursor: pointer;
-
+  text-align: right;
+  font-size: 12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: right;
+  float:right;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  padding-top:20px;
+  padding-right: 20px;
+  cursor: pointer;
 }
+
 .firstNavList li{/*the elements of the first menu*/
   color:rgb(128, 128, 128);
   background-color:#fefeff;
   padding:10px 20px;
-  font-size:17px;
+  font-size:15px;
   text-decoration:none;
   letter-spacing:2px;
   text-transform:uppercase;
@@ -62,16 +59,15 @@
   background-color:  #b9cdfa;;
   padding:7px 17px;
   font-size:19px;
-  color: #fcf7f7;
-  
+  color: #fcf7f7;  
 }
 
 
 .navbar .secondnav{/*the second part of the navbar*/
   background-color: #5084F2;
   padding-bottom: 3px;
-  
 }
+
 .navbar .secondNavList{/*second menu*/
   height: 20%;
   background-color: #5084F2;
@@ -102,26 +98,26 @@
   color: #fcf9f9;
   
 }
+
 .secondNavList a {
   text-decoration: none;
 }
 
 .container{
-    background-color: white;
-    margin: 0 auto;
-    padding:0  auto;
-    width: 70%;
-    height: 125%;
-    scroll-behavior: auto;
-    border: 2px solid rgb(231, 231, 231);
-    overflow: auto;
-    
+  background-color: white;
+  margin: 0 auto;
+  padding:0  auto;
+  width: 70%;
+  height: 125%;
+  scroll-behavior: auto;
+  border: 2px solid rgb(231, 231, 231);
+  overflow: auto;  
 }
 
 footer:after {
-    text-align: center;
-    display: table;
-    clear: both;
+  text-align: center;
+  display: table;
+  clear: both;
 }
 
 footer .column {
@@ -180,7 +176,7 @@ li.dropdown {
 }
 
 .dropdown-content a:hover {
-    background-color: #8aacf5;
+  background-color: #8aacf5;
 }
 
 .dropdown:hover .dropdown-content {

@@ -33,11 +33,9 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     list-style-type: none;
     display: flex;
-  flex-direction: row;
- padding-left: 10px ;
- padding-right: 10px ;
- 
-
+    flex-direction: row;
+    padding-left: 10px ;
+    padding-right: 10px ;
 }
 
 .minihelp .step {/*edit each step of the guid*/
@@ -61,9 +59,9 @@
 
 .column{
     float: left;
-  width: 33.33%;
-  padding-top: 10px;
-  height: auto;
-  text-align: left;
-  background-color: #ffffff;
+     width: 33.33%;
+    padding-top: 10px;
+    height: auto;
+    text-align: left;
+    background-color: #ffffff;
 }
