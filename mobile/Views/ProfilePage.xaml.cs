@@ -32,6 +32,13 @@ namespace mobile
         }
         async private void btnLogOut_Clicked(Object sender, EventArgs e)
         {
+            App.user.id = -1 ;
+            App.user.email = "";
+            App.user.firstName = "";
+            App.user.lastName = "";
+            App.user.role = -1 ;
+            App.user.token = "";
+            App.user.doctorId = -1;
             await this.Navigation.PushAsync(new MainPage());
         }
 

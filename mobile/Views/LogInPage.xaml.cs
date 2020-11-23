@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using mobile.Resources;
 using mobile.Views;
 using Xamarin.Forms;
+using mobile.Models;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -13,10 +14,12 @@ namespace mobile
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LogInPage : ContentPage
-    {
+    { Login login = new Login();
         public LogInPage()
         {
             InitializeComponent();
+           
+            BindingContext = login;
             
             
         }
@@ -27,10 +30,13 @@ namespace mobile
 
             // chose modal in order to prevent the navigation bar from the home screen. After logging in, the user shouldn't be able to get back to that screen
             // only if he logs out
-            if (entUsername.Text == "0")
-                await Navigation.PushAsync(new TabbedMainPageDoctor());
-            else await this.Navigation.PushAsync(new TabbedPageMain());
-        }
+            if (login.IsLogged == true)
+            {
+                if (App.user.role == 1)
+                    await Navigation.PushAsync(new TabbedMainPageDoctor());
+                else await this.Navigation.PushAsync(new TabbedPageMain());
+            }
+            }
 
         async private void ForgettenPwd_Tapped(object sender, EventArgs e)
         {

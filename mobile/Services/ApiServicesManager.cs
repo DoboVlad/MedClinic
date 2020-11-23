@@ -16,5 +16,9 @@ namespace mobile.Services
 
             return apiS.RegisterAsync( firstName,  lastName,  email,  cnp,  dateOfBirth,  phoneNumber,  password,  repeatPassword,  doctorId);
         }
+        public async Task<bool> LoginAsync(string UserName, string Password)
+        {
+            return await apiS.LoginAsync(UserName, Password);
+        }
     }
 }
