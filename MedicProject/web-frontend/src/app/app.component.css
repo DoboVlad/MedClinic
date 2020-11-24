@@ -7,7 +7,7 @@
 }
 
 .navbar{ /* here are the characteristics of the entire navbar*/
-  background-color: blue;  
+  background-color: white;  
   width:100%; 
   display: flex;
   flex-direction: column;
@@ -15,8 +15,7 @@
 }
 
 .navbar .firstnav{ /*here I am putting the characteristics for the first part of the navbar*/
-  background-color: white;
-  height:20%; 
+  background-color: white; 
 }
 
 .navbar .firstnav .logo{/*here I am editing the logo */
@@ -45,7 +44,6 @@
 
 .firstNavList li{/*the elements of the first menu*/
   color:rgb(128, 128, 128);
-  background-color:#fefeff;
   padding:10px 20px;
   font-size:15px;
   text-decoration:none;

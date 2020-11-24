@@ -16,6 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './Components/spinner/spinner.component';
 import { WaitingComponent } from './Components/waiting/waiting.component';
+import { DoctorAppointmentsComponent } from './Components/doctor-appointments/doctor-appointments.component';
+import { RequestsComponent } from './Components/requests/requests.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { WaitingComponent } from './Components/waiting/waiting.component';
     ForgotPasswordComponent,
     TermsComponent,
     SpinnerComponent,
-    WaitingComponent
+    WaitingComponent,
+    DoctorAppointmentsComponent,
+    RequestsComponent
   ],
   imports: [
     BrowserModule,

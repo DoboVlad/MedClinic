@@ -11,6 +11,8 @@ import {TermsComponent} from './Components/terms/terms.component';
 import {AuthGuard} from './Services/auth.guard';
 import { WaitingComponent } from './Components/waiting/waiting.component';
 import {ApproveGuard} from './Services/approve.guard';
+import {DoctorAppointmentsComponent} from './Components/doctor-appointments/doctor-appointments.component';
+import {RequestsComponent} from './Components/requests/requests.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -22,6 +24,8 @@ const routes: Routes = [
   {path: 'forgotpassword', component: ForgotPasswordComponent},
   {path: 'terms', component: TermsComponent},
   {path: 'waiting', component: WaitingComponent},
+  {path: 'doctorappointments', component: DoctorAppointmentsComponent},
+  {path: 'requests', component: RequestsComponent},
   {path: "**", component: HomeComponent}
 ];
 
