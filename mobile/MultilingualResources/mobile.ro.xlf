@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en" target-language="ro" original="MOBILE/RESOURCES/APPRESOURCES.RESX" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6916.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="MOBILE/RESOURCES/APPRESOURCES.RESX" datatype="resx">
+        <trans-unit id="About" translate="yes" xml:space="preserve">
+          <source>About</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Despre</target>
+        </trans-unit>
+        <trans-unit id="AboutUs" translate="yes" xml:space="preserve">
+          <source>About Us</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Despre noi</target>
+        </trans-unit>
+        <trans-unit id="Active" translate="yes" xml:space="preserve">
+          <source>Active</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Activ</target>
+        </trans-unit>
+        <trans-unit id="Address" translate="yes" xml:space="preserve">
+          <source>Current address</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Adresa curentă:</target>
+        </trans-unit>
+        <trans-unit id="Age" translate="yes" xml:space="preserve">
+          <source>Age</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Vârstă</target>
+        </trans-unit>
+        <trans-unit id="AlertBirthday" translate="yes" xml:space="preserve">
+          <source>You didn't introduced your birthday.</source>
+          <target state="new">You didn't introduced your birthday.</target>
+        </trans-unit>
+        <trans-unit id="AlertChange" translate="yes" xml:space="preserve">
+          <source>Would you like to try again?</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Doriți să încercați din nou?</target>
+        </trans-unit>
+        <trans-unit id="AlertCnp" translate="yes" xml:space="preserve">
+          <source>You introduced an invalid personal identification number.</source>
+          <target state="new">You introduced an invalid personal identification number.</target>
+        </trans-unit>
+        <trans-unit id="AlertEmail" translate="yes" xml:space="preserve">
+          <source>Your email is invalid.</source>
+          <target state="new">Your email is invalid.</target>
+        </trans-unit>
+        <trans-unit id="AlertFillField" translate="yes" xml:space="preserve">
+          <source>You didn't complete all the fields.</source>
+          <target state="new">You didn't complete all the fields.</target>
+        </trans-unit>
+        <trans-unit id="AlertPIN" translate="yes" xml:space="preserve">
+          <source>You introduced an invalid personal identification number</source>
+          <target state="new">You introduced an invalid personal identification number</target>
+        </trans-unit>
+        <trans-unit id="AlertPwdMatch" translate="yes" xml:space="preserve">
+          <source>Your passwords don't match.</source>
+          <target state="new">Your passwords don't match.</target>
+        </trans-unit>
+        <trans-unit id="AlertPwdNotStrong" translate="yes" xml:space="preserve">
+          <source>Your password is not strong enough</source>
+          <target state="new">Your password is not strong enough</target>
+        </trans-unit>
+        <trans-unit id="AlertPwdShort" translate="yes" xml:space="preserve">
+          <source>Password too short. It should be at least 6 characters long.</source>
+          <target state="new">Password too short. It should be at least 6 characters long.</target>
+        </trans-unit>
+        <trans-unit id="All" translate="yes" xml:space="preserve">
+          <source>All</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Tot</target>
+        </trans-unit>
+        <trans-unit id="AllRightsRes" translate="yes" xml:space="preserve">
+          <source>All Rights Reserved.</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Toate drepturile rezervate</target>
+        </trans-unit>
+        <trans-unit id="AnotherEmail" translate="yes" xml:space="preserve">
+          <source>Send another email</source>
+          <target state="new">Send another email</target>
+        </trans-unit>
+        <trans-unit id="Appointments" translate="yes" xml:space="preserve">
+          <source>Appointments</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Rezervări</target>
+        </trans-unit>
+        <trans-unit id="AppointmentsShort" translate="yes" xml:space="preserve">
+          <source>Appts</source>
+          <target state="new">Appts</target>
+        </trans-unit>
+        <trans-unit id="AppSavedMess" translate="yes" xml:space="preserve">
+          <source>Your appointment has been saved for</source>
+          <target state="new">Your appointment has been saved for</target>
+        </trans-unit>
+        <trans-unit id="AvailableDate" translate="yes" xml:space="preserve">
+          <source>The date is available.</source>
+          <target state="new">The date is available.</target>
+        </trans-unit>
+        <trans-unit id="BirthDateProfile" translate="yes" xml:space="preserve">
+          <source>BirthDate:</source>
+          <target state="new">BirthDate:</target>
+        </trans-unit>
+        <trans-unit id="Birthday" translate="yes" xml:space="preserve">
+          <source>Birthday</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Zi de naștere</target>
+        </trans-unit>
+        <trans-unit id="Cancel" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Anulare</target>
+        </trans-unit>
+        <trans-unit id="CheckAvailability" translate="yes" xml:space="preserve">
+          <source>Check availability</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Verificați disponibilitatea</target>
+        </trans-unit>
+        <trans-unit id="ChooseDate" translate="yes" xml:space="preserve">
+          <source>Choose an appointment date</source>
+          <target state="new">Choose an appointment date</target>
+        </trans-unit>
+        <trans-unit id="ChooseDoctor" translate="yes" xml:space="preserve">
+          <source>Choose a doctor</source>
+          <target state="new">Choose a doctor</target>
+        </trans-unit>
+        <trans-unit id="Cnp" translate="yes" xml:space="preserve">
+          <source>Personal Identification Number</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Cod de identificare personală</target>
+        </trans-unit>
+        <trans-unit id="CodeInstructions" translate="yes" xml:space="preserve">
+          <source>Please check your inbox. An email with a code has been send to this address. Write the code in the box below.</source>
+          <target state="new">Please check your inbox. An email with a code has been send to this address. Write the code in the box below.</target>
+        </trans-unit>
+        <trans-unit id="Confirm" translate="yes" xml:space="preserve">
+          <source>Confirm</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Confirmare</target>
+        </trans-unit>
+        <trans-unit id="ConfPwd" translate="yes" xml:space="preserve">
+          <source>Confirm password</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Confirmați parola</target>
+        </trans-unit>
+        <trans-unit id="Decline" translate="yes" xml:space="preserve">
+          <source>Decline</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Refuz</target>
+        </trans-unit>
+        <trans-unit id="Delete" translate="yes" xml:space="preserve">
+          <source>Delete</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Ștergere</target>
+        </trans-unit>
+        <trans-unit id="DeletePacient" translate="yes" xml:space="preserve">
+          <source>Delete pacient</source>
+          <target state="new">Delete pacient</target>
+        </trans-unit>
+        <trans-unit id="Description" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Descriere</target>
+        </trans-unit>
+        <trans-unit id="Doctor" translate="yes" xml:space="preserve">
+          <source>Doctor</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Doctor</target>
+        </trans-unit>
+        <trans-unit id="Done" translate="yes" xml:space="preserve">
+          <source>Done</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Gata</target>
+        </trans-unit>
+        <trans-unit id="Email" translate="yes" xml:space="preserve">
+          <source>Email</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">E-mail</target>
+        </trans-unit>
+        <trans-unit id="EmailProfile" translate="yes" xml:space="preserve">
+          <source>Email:</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">E-mail</target>
+        </trans-unit>
+        <trans-unit id="EmptyEmail" translate="yes" xml:space="preserve">
+          <source>You didn't introduced an email</source>
+          <target state="new">You didn't introduced an email</target>
+        </trans-unit>
+        <trans-unit id="EnterCode" translate="yes" xml:space="preserve">
+          <source>Enter code</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Introduceți codul</target>
+        </trans-unit>
+        <trans-unit id="Exit" translate="yes" xml:space="preserve">
+          <source>Do you want to exit?</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Doriți să ieșiți?</target>
+        </trans-unit>
+        <trans-unit id="FirstName" translate="yes" xml:space="preserve">
+          <source>First name</source>
+          <target state="new">First name</target>
+        </trans-unit>
+        <trans-unit id="ForgotPass" translate="yes" xml:space="preserve">
+          <source>Forgot password?</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Ați uitat parola?</target>
+        </trans-unit>
+        <trans-unit id="FullNameProfile" translate="yes" xml:space="preserve">
+          <source>FullName:</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">NumeComplet</target>
+        </trans-unit>
+        <trans-unit id="GoMainPage" translate="yes" xml:space="preserve">
+          <source>Click here to go to main page</source>
+          <target state="new">Click pentru a va intoarce pe pagina principala</target>
+        </trans-unit>
+        <trans-unit id="HasAccount" translate="yes" xml:space="preserve">
+          <source>Already have an account?</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Aveți deja un cont?</target>
+        </trans-unit>
+        <trans-unit id="Hei" translate="yes" xml:space="preserve">
+          <source>Hei,</source>
+          <target state="new">Hei,</target>
+        </trans-unit>
+        <trans-unit id="Home" translate="yes" xml:space="preserve">
+          <source>Home</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Pornire</target>
+        </trans-unit>
+        <trans-unit id="Inactive" translate="yes" xml:space="preserve">
+          <source>Inactive</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Inactiv</target>
+        </trans-unit>
+        <trans-unit id="LastName" translate="yes" xml:space="preserve">
+          <source>Last name</source>
+          <target state="new">Last name</target>
+        </trans-unit>
+        <trans-unit id="LogIn" translate="yes" xml:space="preserve">
+          <source>Log in</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Conectare</target>
+        </trans-unit>
+        <trans-unit id="LogOut" translate="yes" xml:space="preserve">
+          <source>Log Out</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Deconectare</target>
+        </trans-unit>
+        <trans-unit id="MakeAppointment" translate="yes" xml:space="preserve">
+          <source>Make appointment</source>
+          <target state="new">Make appointment</target>
+        </trans-unit>
+        <trans-unit id="No" translate="yes" xml:space="preserve">
+          <source>No</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Nu</target>
+        </trans-unit>
+        <trans-unit id="Password" translate="yes" xml:space="preserve">
+          <source>Password</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Parolă</target>
+        </trans-unit>
+        <trans-unit id="Patients" translate="yes" xml:space="preserve">
+          <source>Patients</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Pacienți</target>
+        </trans-unit>
+        <trans-unit id="Phone" translate="yes" xml:space="preserve">
+          <source>Phone number</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Numărul de telefon</target>
+        </trans-unit>
+        <trans-unit id="PhoneProfile" translate="yes" xml:space="preserve">
+          <source>Phone:</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Telefon</target>
+        </trans-unit>
+        <trans-unit id="PIN" translate="yes" xml:space="preserve">
+          <source>PIN</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Cod PIN</target>
+        </trans-unit>
+        <trans-unit id="PINProfile" translate="yes" xml:space="preserve">
+          <source>PIN:</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">PIN</target>
+        </trans-unit>
+        <trans-unit id="PlaceOfBirth" translate="yes" xml:space="preserve">
+          <source>Place of birth</source>
+          <target state="new">Place of birth</target>
+        </trans-unit>
+        <trans-unit id="Profile" translate="yes" xml:space="preserve">
+          <source>Profile</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Profil</target>
+        </trans-unit>
+        <trans-unit id="PwdDigit" translate="yes" xml:space="preserve">
+          <source>Your password should contain at least one digit.</source>
+          <target state="new">Your password should contain at least one digit.</target>
+        </trans-unit>
+        <trans-unit id="PwdLowerCharacter" translate="yes" xml:space="preserve">
+          <source>Your password should contain at least one lowercase character.</source>
+          <target state="new">Your password should contain at least one lowercase character.</target>
+        </trans-unit>
+        <trans-unit id="PwdMedium" translate="yes" xml:space="preserve">
+          <source>Your password strength is medium.</source>
+          <target state="new">Your password strength is medium.</target>
+        </trans-unit>
+        <trans-unit id="PwdStrong" translate="yes" xml:space="preserve">
+          <source>Your password is strong.</source>
+          <target state="new">Your password is strong.</target>
+        </trans-unit>
+        <trans-unit id="PwdUpperCharacter" translate="yes" xml:space="preserve">
+          <source>Your password should contain at least one upper character.</source>
+          <target state="new">Your password should contain at least one upper character.</target>
+        </trans-unit>
+        <trans-unit id="PwdVeryStrong" translate="yes" xml:space="preserve">
+          <source>Your password is very strong.</source>
+          <target state="new">Your password is very strong.</target>
+        </trans-unit>
+        <trans-unit id="PwdWeak" translate="yes" xml:space="preserve">
+          <source>Your password is weak.</source>
+          <target state="new">Your password is weak.</target>
+        </trans-unit>
+        <trans-unit id="RecoveryPwd" translate="yes" xml:space="preserve">
+          <source>Recovery password</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Parola de recuperare</target>
+        </trans-unit>
+        <trans-unit id="Register" translate="yes" xml:space="preserve">
+          <source>Register</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Înregistrare</target>
+        </trans-unit>
+        <trans-unit id="RegistrationSucceed" translate="yes" xml:space="preserve">
+          <source>Your registration is successful. Please wait for the doctor to accept your request.</source>
+          <target state="new">Your registration is successful. Please wait for the doctor to accept your request.</target>
+        </trans-unit>
+        <trans-unit id="Requests" translate="yes" xml:space="preserve">
+          <source>Requests</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Solicitări</target>
+        </trans-unit>
+        <trans-unit id="SaveChanges" translate="yes" xml:space="preserve">
+          <source>Are you sure you want to save the changes?</source>
+          <target state="new">Are you sure you want to save the changes?</target>
+        </trans-unit>
+        <trans-unit id="SendEmail" translate="yes" xml:space="preserve">
+          <source>Send email</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Trimitere e-mail</target>
+        </trans-unit>
+        <trans-unit id="Settings" translate="yes" xml:space="preserve">
+          <source>Profile settings</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Setări de profil</target>
+        </trans-unit>
+        <trans-unit id="SingUp" translate="yes" xml:space="preserve">
+          <source>Sign up!</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Înregistrare</target>
+        </trans-unit>
+        <trans-unit id="Sort" translate="yes" xml:space="preserve">
+          <source>Sort</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Sortare</target>
+        </trans-unit>
+        <trans-unit id="SucRegistration" translate="yes" xml:space="preserve">
+          <source>Successful registration</source>
+          <target state="new">Successful registration</target>
+        </trans-unit>
+        <trans-unit id="UnavailableDate" translate="yes" xml:space="preserve">
+          <source>The date is not available. </source>
+          <target state="new">The date is not available. </target>
+        </trans-unit>
+        <trans-unit id="Username" translate="yes" xml:space="preserve">
+          <source>Username</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Nume de utilizator</target>
+        </trans-unit>
+        <trans-unit id="VerifyCode" translate="yes" xml:space="preserve">
+          <source>Verify code</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Verificați codul</target>
+        </trans-unit>
+        <trans-unit id="Yes" translate="yes" xml:space="preserve">
+          <source>Yes</source>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Da</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

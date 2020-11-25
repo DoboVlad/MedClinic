@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Despre</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>Despre noi</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Activ</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresa curentă:</value>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>Vârstă</value>
+  </data>
+  <data name="AlertChange" xml:space="preserve">
+    <value>Doriți să încercați din nou?</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Tot</value>
+  </data>
+  <data name="AllRightsRes" xml:space="preserve">
+    <value>Toate drepturile rezervate</value>
+  </data>
+  <data name="Appointments" xml:space="preserve">
+    <value>Rezervări</value>
+  </data>
+  <data name="Birthday" xml:space="preserve">
+    <value>Zi de naștere</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anulare</value>
+  </data>
+  <data name="CheckAvailability" xml:space="preserve">
+    <value>Verificați disponibilitatea</value>
+  </data>
+  <data name="Cnp" xml:space="preserve">
+    <value>Cod de identificare personală</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmare</value>
+  </data>
+  <data name="ConfPwd" xml:space="preserve">
+    <value>Confirmați parola</value>
+  </data>
+  <data name="Decline" xml:space="preserve">
+    <value>Refuz</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Ștergere</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descriere</value>
+  </data>
+  <data name="Doctor" xml:space="preserve">
+    <value>Doctor</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Gata</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="EmailProfile" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="EnterCode" xml:space="preserve">
+    <value>Introduceți codul</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Doriți să ieșiți?</value>
+  </data>
+  <data name="ForgotPass" xml:space="preserve">
+    <value>Ați uitat parola?</value>
+  </data>
+  <data name="FullNameProfile" xml:space="preserve">
+    <value>NumeComplet</value>
+  </data>
+  <data name="HasAccount" xml:space="preserve">
+    <value>Aveți deja un cont?</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Pornire</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>Inactiv</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Conectare</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Deconectare</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nu</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Parolă</value>
+  </data>
+  <data name="Patients" xml:space="preserve">
+    <value>Pacienți</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Numărul de telefon</value>
+  </data>
+  <data name="PhoneProfile" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="PIN" xml:space="preserve">
+    <value>Cod PIN</value>
+  </data>
+  <data name="PINProfile" xml:space="preserve">
+    <value>PIN</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="RecoveryPwd" xml:space="preserve">
+    <value>Parola de recuperare</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Înregistrare</value>
+  </data>
+  <data name="Requests" xml:space="preserve">
+    <value>Solicitări</value>
+  </data>
+  <data name="SendEmail" xml:space="preserve">
+    <value>Trimitere e-mail</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Setări de profil</value>
+  </data>
+  <data name="SingUp" xml:space="preserve">
+    <value>Înregistrare</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Sortare</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Nume de utilizator</value>
+  </data>
+  <data name="VerifyCode" xml:space="preserve">
+    <value>Verificați codul</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Da</value>
+  </data>
+</root>
