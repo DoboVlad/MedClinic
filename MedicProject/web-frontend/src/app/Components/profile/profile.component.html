@@ -1,12 +1,16 @@
-<div class="container">
+<app-spinner *ngIf="this.userService.isFetching  == true"></app-spinner>
+<div class="container" *ngIf="this.userService.isFetching == false">
+
     <div class="left">
         <img src="https://img.icons8.com/cotton/128/000000/user-male--v1.png" alt="user" width="140">
-        <h2>Daniel Coroian</h2>
+        <h2>{{user.firstName}} {{user.lastName}}</h2>
         <div class="buttons">
-            <input type="submit" value="Change doctor" routerLink="/change-doctor">  <!--non-existent right now --> 
-        </div>
-        <div class="buttons">
-            <input type="submit" value="Appointment" routerLink="/appointments">   
+            <div class="button">
+                <input type="submit" value="Change doctor" routerLink="/change-doctor">  <!--non-existent right now -->
+            </div>
+            <div class="button">
+                <input type="submit" value="Appointment" routerLink="/appointments">
+            </div>
         </div>
     </div>
     <div class="right">
@@ -15,31 +19,31 @@
             <div class="info_data">
                 <div class="data">
                    <h4>Email</h4>
-                   <input type="text" name="mail" value="dani@gmail.com" readonly> 
+                  <input type="text" name="mail" [value]="user.email" readonly>
                 </div>
                 <div class="data">
                    <h4>Phone</h4>
-                   <input type="text" name="phone" value="0755678908" readonly>
+                   <input type="text" name="phone" [value]="user.phoneNumber" readonly>
                 </div>
             </div><br>
             <div class="info_data">
                 <div class="data">
                    <h4>Sex</h4>
-                   <input type="text" name="sex" value="Male" readonly>
+                   <input type="text" name="sex" [value]="user.gender" readonly>
                 </div>
                 <div class="data">
-                    <h4>Date of bird</h4>
-                    <input type="text" name="birthday" value="25.10.1998" readonly>
+                    <h4>Age</h4>
+                    <input type="text" name="birthday" [value]="user.age" readonly>
                 </div>
             </div><br>
             <div class="info_data">
                 <div class="data">
-                    <h4>CNP</h4>
-                    <input type="text" name="cnp" value="1981028675622" readonly>
+                    <h4>Social Security Number</h4>
+                    <input type="text" name="cnp" [value]="user.cnp" readonly>
                 </div>
                 <div class="data">
                     <h4>Doctor</h4>
-                    <input type="text" name="doctor" value="Liana Costan" readonly>
+                    <input type="text" name="doctor" [value]="user.doctor.firstName + ' ' + user.doctor.lastName" readonly>
                 </div>
             </div>
         </div>
@@ -48,8 +52,7 @@
             <div class="info_data">
                 <div class="data">
                     <h4>Recent date:</h4>
-                    <input type="text" name="information" value="20.10.2020" readonly>
-                    <input type="text" name="information" value="11.07.2020" readonly>
+                    <p *ngFor="let app of appointments">{{app.date | date: 'MMM d, y'}} | Hour: {{app.hour}}</p>
                 </div>
             </div>
         </div>

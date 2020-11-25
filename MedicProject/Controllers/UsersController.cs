@@ -88,13 +88,13 @@ namespace MedicProject.Controllers
         [HttpGet]
         [Route("MyAccount")]
         //returns one specific user from the database (for user Myaccount and fordoctors to see the selected pacient's data)
-        public async Task<ActionResult<PatientDTO>> getUser(){
+        public async Task<ActionResult<AccountDTO>> getUser(){
          //get the current loged in user
          var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-         var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+         var user = await _context.USERS.Include(p => p.doctor).Where(p => p.email==useremail).FirstAsync();
         //verify if the user is a patient
         if(user.isMedic==0)
-            return Ok(_mapper.Map<PatientDTO>(user));
+            return Ok(_mapper.Map<AccountDTO>(user));
         //if the user is not a patient he is unauthorized
         else return Unauthorized();
         }
@@ -114,10 +114,7 @@ namespace MedicProject.Controllers
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
            //verify if the user is a doctor
-           if(user.isMedic==1)
              return  Ok(_mapper.Map<DoctorDTO>(user));
-           //if the user is not a doctor then he is unauthorized to do this action
-           else return Unauthorized();
         }
 
       
@@ -155,10 +152,12 @@ namespace MedicProject.Controllers
         [HttpGet]
         [Route("getMedicInfo")]
         //returns a doctor's data (for doctor MoreInfo page)
-        public async Task<ActionResult<DoctorDTO>> getDoctorInfo(int id){
+        public async Task<ActionResult<DoctorDTO>> getDoctorInfo(){
             //get the doctor with the requested id
-             var user = await _context.USERS.Where(d => d.isMedic == 1 && d.Id==id).FirstOrDefaultAsync();
-             return  Ok(_mapper.Map<DoctorDTO>(user));
+             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+             var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+             var medic = await _context.USERS.Where(d => d.isMedic == 1 && d.Id==user.doctorId).FirstOrDefaultAsync();
+             return  Ok(_mapper.Map<DoctorDTO>(medic));
            //if the user is not a doctor then he is unauthorized to do this action       
         }
 
@@ -436,7 +435,6 @@ namespace MedicProject.Controllers
 
 
 
-
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult<User>> Register(RegisterDTO RegisterDTO){
@@ -492,7 +490,7 @@ namespace MedicProject.Controllers
                
               
              // if(user.isApproved==0 || user.validated==0) 
-              //return Unauthorized("Your account has not been aproved or validated yet!");
+             //return Unauthorized("Your account has not been aproved or validated yet!");
               
                return new UserDTO
             {
@@ -501,6 +499,7 @@ namespace MedicProject.Controllers
                 firstName=user.firstName,
                 lastName=user.lastName,
                 role=user.isMedic,
+                isApproved = user.isApproved,
                 token=_tokenService.CreateToken(user)
             };
         }

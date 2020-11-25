@@ -9,6 +9,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MedicProject.Controllers
@@ -36,17 +37,20 @@ namespace MedicProject.Controllers
                     return BadRequest("This date is already used!");
                 }
             }
+            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+
             var Appointment = new Appointments
             {
                 date = app.date,
                 hour = app.hour,
-                UserId = app.UserId
+                UserId = user.Id
             };
             
             _context.APPOINTMENTS.Add(Appointment);
             await _context.SaveChangesAsync();
-
-            return Appointment;
+            
+            return Ok(_mapper.Map<ReturnAppointmentsDTO>(Appointment));
         }
 
         //verify if the date is already used in the database
@@ -69,14 +73,18 @@ namespace MedicProject.Controllers
             return appointments;
         }
 
+        [Authorize]
         [HttpGet("historyAppointments")]
         // return all the appointments that have a date smaller than today
-        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getBackApp(int Id){
+        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getBackApp(){
             DateTime date = DateTime.Now;
+
+            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
             var appointments = await _context.APPOINTMENTS
             .Include(p => p.User)
             .Where(app => app.date < date)
-            .Where(p => p.User.Id == Id)
+            .Where(p => p.User.Id == user.Id)
             .ToListAsync();
             
             var appToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
@@ -86,12 +94,16 @@ namespace MedicProject.Controllers
 
          [HttpGet("nextAppointments")]
         // return all the appointments that have a date bigger than today
-        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getNextApp(int Id){
+        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getNextApp(){
             DateTime date = DateTime.Now;
+
+            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+
             var appointments = await _context.APPOINTMENTS
             .Include(p => p.User)
             .Where(p => p.date > date)
-            .Where(p => p.User.Id == Id)
+            .Where(p => p.User.Id == user.Id)
             .ToListAsync();
 
             var appointementsToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);

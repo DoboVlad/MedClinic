@@ -14,7 +14,5 @@ namespace MedicProject.DTO
 
         [Required]
         public string hour { get; set; }
-
-        public int UserId { get; set; }
     }
 }

@@ -11,26 +11,44 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) { }
   user: User;
   token: string;
+  isUserLoggedIn: boolean;
+  isFetching: boolean;
+  isApproved: boolean;
   //use post method to login the user
   //call the base url using /login endpoint
   logInUser(user: User){
     this.http.post<User>(this.baseUrl + "/api/users/login", user).subscribe(user => {
       this.user = user;
       this.saveAuthData(user.token);
-      this.router.navigate(["/profile"]);
+      console.log(this.user.isApproved);
+      this.isFetching = true;
+      if(this.user.isApproved == 1){
+        this.isApproved = true;
+        this.isUserLoggedIn = true;
+        this.router.navigateByUrl("/profile");
+      }
+      else {
+         this.isApproved = false;
+         this.isUserLoggedIn = true;
+         this.router.navigate(["/waiting"]);
+      }
     });
+
   }
 
   registerUser(user: User){
     this.http.post(this.baseUrl + "/api/users/register", user).subscribe(user =>{
       this.user = user;
-      console.log(user);
       this.router.navigate(["/home"]);
     });
   }
 
   autoAuthUser(){
     const authInfo = this.getAuthData();
+    if(authInfo!= null){
+      this.token = authInfo.token;
+      this.isUserLoggedIn = true;
+    }
   }
 
   saveAuthData(token: string){
@@ -39,15 +57,16 @@ export class UserService {
 
   clearAuthData(){
     localStorage.removeItem("token");
+    this.isUserLoggedIn = false;
   }
 
   getAuthData(){
     const token = localStorage.getItem("token");
-    if(token){
+    if(!token){
       return;
     }
     return{
-      token: token,
+      token: token
     }
   }
 
@@ -65,7 +84,18 @@ export class UserService {
 
   // get a single user from api
   myAccount(){
-    const params = new HttpParams().set("id", name);
-    return this.http.get<User>(this.baseUrl + "/api/users/getUser", {params});
+    return this.http.get<User>(this.baseUrl + "/api/users/MyAccount", {
+      headers: {
+        'Authorization' : 'Bearer ' + this.token
+      }
+    });
   }
+
+  medicAccount(){
+    return this.http.get<User>(this.baseUrl + '/api/users/getMedicInfo', {
+      headers: {
+        'Authorization' : 'Bearer ' + this.token
+      }
+    });
+    }
 }

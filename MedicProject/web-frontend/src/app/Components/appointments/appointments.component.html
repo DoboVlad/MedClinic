@@ -1,18 +1,22 @@
 <div class="appointments-title">
      <p>Make an appointment online</p>
 </div>
-
+<div class="message" *ngIf="this.appService.isSuccesfully == true;">
+  Your appointment have been registered succesfully! Thank you
+</div>
 <div class="appointments-description">
-    <p>Choose an available date and hour:</p>
+    <p>Choose an available date and hour:</p><br>
 </div>
 
-<div class="date">
-    <form [formGroup]="">
-        <!-- for min=sysdate and for max=sysdate + 30 days for example -->
-        Date: <input type="date" min="2017-08-15" max="2018-08-26"><br><br>
-        Hour: <input type="time" step="60"><br>
-        <input type="submit" value="Submit">
-    </form>
+<div class="form">
+    <div class="date">
+        <form [formGroup]="appForm" (ngSubmit)="onSubmit()">
+            <!-- for min=sysdate and for max=sysdate + 30 days for example -->
+            Date: <input type="date" min="2017-08-15" max="2018-08-26" formControlName="date"><br><br>
+            Hour: <input type="time" step="60" formControlName="hour"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </div>
 
 <div class="appointments-history">

@@ -30,7 +30,6 @@ namespace MedicProject.DTO
       [Required(ErrorMessage="Please enter your phone number.")]
         [Phone(ErrorMessage="Invalid phone number format")]
         public string phoneNumber{get;set;}
-
     }
 }
 //modifica doctorul 

@@ -6,17 +6,24 @@
             <img src="assets/img/logo.png">
         </p>
         <ul class="firstNavList">
-            <!-- <li>NUME</li> -->
-            <li routerLink="/login">CONT</li>
-            <li>LIMBA</li>
+            <li routeLink="/home" *ngIf = "this.userService.isUserLoggedIn  == true" (click)="logout()">Logout</li>
+            <li routerLink="/profile" *ngIf="this.userService.isUserLoggedIn == true && this.userService.isApproved == true">Profile</li>
+            <li routerLink="/login" *ngIf= "this.userService.isUserLoggedIn == false">ACCOUNT</li>
+            <li class="dropdown">
+                <a class="dropbtn">LENGUAGE</a>
+                <div class="dropdown-content">
+                  <a routerLink="/home">English</a>
+                  <a routerLink="/acasa">Romanian</a>
+                </div>
+            </li>
         </ul>
     </div>
     <div class="secondnav">
         <ul class="secondNavList">
-            <li routerLink="/home">ACASA</li>
-            <li routerLink="/doctors">MEDICI</li>
-            <li routerLink="/appointments">PROGRAMARE ONLINE</li>
-            <a href="#footer"><li >CONTACT</li></a>
+            <li routerLink="/home">HOME</li>
+            <li routerLink="/doctors">DOCTORS</li>
+            <li routerLink="/appointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true">APPOINTMENTS</li>
+            <a href="#footer"><li>CONTACT</li></a>
         </ul>
     </div>
 </nav>
@@ -33,8 +40,8 @@
         <div class="column">
             <p routerLink="/home">About</p>
             <p routerLink="/terms">Terms and Conditions</p>
-            <p routerLink="/terms">Privacy</p>   
-            <p class="border">.</p>         
+            <p routerLink="/terms">Privacy</p>
+            <p class="border">.</p>
         </div>
         <div class="column">
             <p>Address: Cluj-Napoca, Dorobantilor 48</p>
