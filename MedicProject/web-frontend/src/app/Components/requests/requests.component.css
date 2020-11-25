@@ -41,3 +41,7 @@
     cursor: pointer;
     border: none;
 }
+
+.doctor-requests button:hover {
+    background: #7ca0ee;
+}
