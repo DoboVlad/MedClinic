@@ -11,32 +11,34 @@
     float: none;
 
 }
-.nav-doctor{
+/*.nav-doctor{
    /* height: 20px;*/
     
 
  /*   position: relative;
-    z-index: 1;*/
+    z-index: 1;
     background: #FFFFFF;
     max-width: 700px;
     margin: 0 auto 0px;
     padding: 45px;
     text-align: right;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
+   /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
 
-}
+}*/
 .nav-doctor .form{
     float:right;
     padding: 0 auto;
 
 }
 .form input{
-    height:40px;
+    height:80px;
+    width: 300px;
     padding-right: 10px;
 
 }
 .form button{
-    height:40px;
+    height:80px;
+    width: 80px;
     background: #5084F2;
     color: #FFFFFF;
     transition: all 0.3 ease;
