@@ -26,9 +26,8 @@ export class LoginComponent implements OnInit {
   //when the form is submitted, this method apply
   onSubmit(){
     this.user = {...this.loginForm.value};
-    console.log(this.user);
     this.userService.logInUser(this.user);
-    this.router.navigate(["/home"]);
+    this.router.navigateByUrl("/profile");
   }
 
 }

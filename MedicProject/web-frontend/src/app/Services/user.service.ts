@@ -20,11 +20,12 @@ export class UserService {
     this.http.post<User>(this.baseUrl + "/api/users/login", user).subscribe(user => {
       this.user = user;
       this.saveAuthData(user.token);
-      console.log(this.user.isApproved);
+      this.token = user.token;
       this.isFetching = true;
       if(this.user.isApproved == 1){
         this.isApproved = true;
         this.isUserLoggedIn = true;
+        this.isFetching = false;
         this.router.navigateByUrl("/profile");
       }
       else {
@@ -33,7 +34,6 @@ export class UserService {
          this.router.navigate(["/waiting"]);
       }
     });
-
   }
 
   registerUser(user: User){

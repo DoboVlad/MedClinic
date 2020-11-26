@@ -28,9 +28,9 @@ export class ProfileComponent implements OnInit {
       }
     });
 
-    this.appService.getPastAppointments().subscribe(appointments => {
-      this.userService.isFetching = false;
-        this.appointments = appointments;
-    });
+    // this.appService.getPastAppointments().subscribe(appointments => {
+    //   this.userService.isFetching = false;
+    //     this.appointments = appointments;
+    // });
   }
 }
