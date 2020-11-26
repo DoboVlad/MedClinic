@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32.SafeHandles;
 using mobile.Resources;
+using mobile.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,7 +18,7 @@ namespace mobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegistrationPage : ContentPage
     {
-
+        RegisterModel register = new RegisterModel();
 
         public RegistrationPage()
         {
@@ -26,6 +27,7 @@ namespace mobile
             {
                 1, 2
             };
+            BindingContext = register;
         }
         //regex for email validation
         Regex emailPattern = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
@@ -89,7 +91,8 @@ namespace mobile
                 }
                 if(passwordPattern.IsMatch(entPassword.Text))
                 {
-                    await this.Navigation.PushAsync(new RegistrationSucceedPage());
+                       register.RegisterCommand.Execute(null);
+                       await this.Navigation.PushAsync(new RegistrationSucceedPage());
                 }
                 else
                 {

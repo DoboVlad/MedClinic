@@ -62,8 +62,9 @@ namespace mobile.Services
 
                 email = UserName,
                 password = Password
+                
             };
-
+            
             var json = JsonConvert.SerializeObject(model);
             HttpContent httpContent = new StringContent(json);
             httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");

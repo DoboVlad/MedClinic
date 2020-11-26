@@ -8,7 +8,7 @@ namespace mobile
 {
     public partial class App : Application
     {
-        public static ApiServicesManager apiServicesManager { get; private set; }
+        public static  ApiServicesManager apiServicesManager { get; private set; }
         public static User user { get; set; }
         public App()
         {
