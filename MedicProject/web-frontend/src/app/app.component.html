@@ -10,7 +10,7 @@
             <li routerLink="/profile" *ngIf="this.userService.isUserLoggedIn == true && this.userService.isApproved == true">Profile</li>
             <li routerLink="/login" *ngIf= "this.userService.isUserLoggedIn == false">ACCOUNT</li>
             <li class="dropdown">
-                <a class="dropbtn">LENGUAGE</a>
+                <a class="dropbtn">LANGUAGE</a>
                 <div class="dropdown-content">
                   <a routerLink="/home">English</a>
                   <a routerLink="/acasa">Romanian</a>

@@ -19,6 +19,8 @@ import { WaitingComponent } from './Components/waiting/waiting.component';
 import { DoctorAppointmentsComponent } from './Components/doctor-appointments/doctor-appointments.component';
 import { RequestsComponent } from './Components/requests/requests.component';
 
+import { DoctorPatientsComponent } from './Components/doctor-patients/doctor-patients.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,9 @@ import { RequestsComponent } from './Components/requests/requests.component';
     SpinnerComponent,
     WaitingComponent,
     DoctorAppointmentsComponent,
-    RequestsComponent
+    RequestsComponent,
+   
+    DoctorPatientsComponent
   ],
   imports: [
     BrowserModule,

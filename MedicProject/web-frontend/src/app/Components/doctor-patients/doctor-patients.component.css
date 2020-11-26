@@ -1,16 +1,12 @@
-.page-doctor{
-    display: flex;
-    flex-direction: column;
-}
-.page-doctor-title{
+.title{
     text-align: center;
-    font-size: 30px;
+    font-size: 35px;
     color: #1c2d60;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    float: none;
+    padding-top: 3%;
+    padding-bottom: 4%;
 
 }
+
 .nav-doctor{
  
     background: #FFFFFF;
@@ -39,36 +35,40 @@
     cursor: pointer;
   
 }
-.show-doctor{
+.doctor-patients{
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     padding-top: 20px;
 }
-.doctor{
+.patients{
     position: relative;
     z-index: 1;
     background: #FFFFFF;
     max-width: 360px;
     margin: 0 auto 100px;
     padding: 45px;
-    text-align: center;
+    text-align: left;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
 }
-.show-doctor .form2 button {
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    outline: 0;
-    background: #5084F2;
-    width: 100%;
-    border: 0;
-    padding: 15px;
-    color: #FFFFFF;
-    font-size: 14px;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
+
+.doctor-patients span{
+    height: 40px;
+    width: 50%;
+    padding-right: 10px;
+    margin-bottom: 5%;
+    border: none;
+    font-size: 19px;
+    color: #1c2d60;
+    text-align: left;
+    font-weight: 500;
+}
+.doctor-patients span.name{
+    font-size: 25px;
+    
+}
+.doctor-patients span.name:hover{
     cursor: pointer;
-  }
- .show-doctor .form2 button:hover,.form2 button:active,.form2 button:focus {
-    background: #8aacf5;
-  }
+}
+
