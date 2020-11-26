@@ -17,7 +17,7 @@ import {RequestsComponent} from './Components/requests/requests.component';
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'appointments', component: AppointmentsComponent, canActivate: [AuthGuard, ApproveGuard]},
-  {path: 'doctors', component: DoctorsComponent, canActivate: [AuthGuard]},
+  {path: 'doctors', component: DoctorsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard, ApproveGuard]},

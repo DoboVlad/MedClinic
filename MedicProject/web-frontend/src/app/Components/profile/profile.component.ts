@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
       }
       if(user.isApproved == 1) {
         this.userService.isApproved = true;
+        this.userService.isFetching = false;
       }
     });
 
