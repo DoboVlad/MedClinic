@@ -34,12 +34,18 @@
     margin-left: 2%;
     padding-left: 2%;
     padding-right: 2%;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
+    margin-top: 3%;
+
     background: #5084F2;
     color: #FFFFFF;
     transition: all 0.3 ease;
     cursor: pointer;
     border: none;
+}
+
+.requests{
+    border-style: inset;
 }
 
 .doctor-requests button:hover {
