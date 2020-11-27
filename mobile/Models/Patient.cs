@@ -17,10 +17,10 @@ namespace mobile
        
         private string phone;
 
+        public int age { get; set; }
 
-        
-      
-        public string PIN
+        public int Id { get; set; }
+        public string cnp
         {
             get
             {

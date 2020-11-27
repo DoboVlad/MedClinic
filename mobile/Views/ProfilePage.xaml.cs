@@ -19,12 +19,12 @@ namespace mobile
             {FirstName = "Ionut",
                 LastName="Iga",
                 Phone="1234567890",
-                PIN="1992753857251" ,
+                cnp="1992753857251" ,
                 BirthDate="25.09.1999",
                 Email="ionut.iga@yahoo.com" };
 
             BindingContext = Ionut;
-            if (int.Parse(Ionut.PIN.Substring(0, 1)) % 2 != 0)
+            if (int.Parse(Ionut.cnp.Substring(0, 1)) % 2 != 0)
                 imgPatient.Source = ImageSource.FromResource("mobile.Images.manWhite.png");
             else
                 imgPatient.Source = ImageSource.FromResource("mobile.Images.womanWhite.png");
@@ -32,13 +32,9 @@ namespace mobile
         }
         async private void btnLogOut_Clicked(Object sender, EventArgs e)
         {
-            App.user.id = -1 ;
-            App.user.email = "";
-            App.user.firstName = "";
-            App.user.lastName = "";
-            App.user.role = -1 ;
+           
             App.user.token = "";
-            App.user.doctorId = -1;
+
             await this.Navigation.PushAsync(new MainPage());
         }
 

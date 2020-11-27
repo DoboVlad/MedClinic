@@ -6,7 +6,8 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="true"
              Title="{local:Translate AboutUs}"
-             IconImageSource="{local:ImageResource mobile.Images.aboutUs.png}">
+             IconImageSource="{local:ImageResource mobile.Images.aboutUs.png}"
+             >
     <!--used ios namespace to ensure the tabbed page is not overlapping the status bar -->
     <ContentPage.Resources>
         <Style TargetType="Label">
@@ -14,7 +15,7 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ListView x:Name="doctorsList" RowHeight="360" SelectionMode="None">
+        <ListView x:Name="doctorsList" RowHeight="360" SelectionMode="None" RefreshCommand="{Binding command}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

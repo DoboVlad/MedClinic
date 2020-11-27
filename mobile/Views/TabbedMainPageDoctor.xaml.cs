@@ -15,6 +15,7 @@ namespace mobile.Views
         public TabbedMainPageDoctor()
         {
             InitializeComponent();
+           
             Children.Add(new NewPatientsPageDoctor());
             Children.Add(new HomePageDoctor());
             Children.Add(new ProfilePageDoctor());

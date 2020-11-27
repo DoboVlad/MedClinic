@@ -40,7 +40,7 @@
                         </StackLayout>
                         <StackLayout Padding="0,0,0,5" Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                             <Label Text="{local:Translate PINProfile}" FontAttributes="Bold"/>
-                            <Label x:Name="lblPatientPIN" Text="{Binding PIN}"/>
+                            <Label x:Name="lblPatientPIN" Text="{Binding cnp}"/>
                         </StackLayout>
                         <StackLayout Padding="0,0,0,5" Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
                             <Label Text="{local:Translate PhoneProfile}" FontAttributes="Bold"/>

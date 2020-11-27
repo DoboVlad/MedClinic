@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using mobile.Resources;
+using mobile.ViewModels;
 using Xamarin.Forms;
 
 namespace mobile
@@ -33,6 +34,7 @@ namespace mobile
         async private void btnAboutUs_Clicked(object sender, EventArgs e)
         {
             Animations.Button_Scale_Clicked((Button)sender);
+
             await this.Navigation.PushAsync(new AboutUsPage());
 
 

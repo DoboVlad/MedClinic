@@ -13,18 +13,7 @@ namespace mobile.ViewModels
        public ObservableCollection<PatientModel> requests = new ObservableCollection<PatientModel>();
         private PatientModel oldPatient;
         private PatientModel oldRequest;
-      public PatientListModel()  {
-            requests.Add(new PatientModel { FirstName = "Alex", LastName = "Matei", Email = "alex.matei@yahoo.com", BirthDate = "25.03.1990", PIN = "1936435134263", Phone = "1234567890" });
-            requests.Add(new PatientModel { FirstName = "Calin", LastName = "Mezei", Email = "calin.mezei@yahoo.com", BirthDate = "23.02.1985", PIN = "1936435134263", Phone = "1234567890" });
-            requests.Add(new PatientModel { FirstName = "Ionut", LastName = "Iga", Email = "ionut.iga@yahoo.com", BirthDate = "25.09.1999", PIN = "1936435134263", Phone = "1234567890" });
-            requests.Add(new PatientModel { FirstName = "Ionut", LastName = "Iga", Email = "ionut.iga@yahoo.com", BirthDate = "25.09.1999", PIN = "1936435134263", Phone = "1234567890" });
-            
-            patients.Add(new PatientModel { FirstName = "Iga", LastName = "Vasile-Ionut-Remus", Email = "alex.matei@yahoo.com", BirthDate = "25.03.1990", PIN = "1936435134263", Phone = "1234567890" });
-            patients.Add(new PatientModel { FirstName = "Calin", LastName = "Mezei", Email = "calin.mezei@yahoo.com", BirthDate = "23.02.1985", PIN = "1936435134263", Phone = "1234567890" });
-            patients.Add(new PatientModel { FirstName = "Ionut", LastName = "Iga", Email = "ionut.iga@yahoo.com", BirthDate = "25.09.1999", PIN = "1936435134263", Phone = "1234567890" });
-            patients.Add(new PatientModel { FirstName = "Ionut", LastName = "Iga", Email = "ionut.iga@yahoo.com", BirthDate = "25.09.1999", PIN = "1936435134263", Phone = "1234567890" });
-
-        }
+        public PatientListModel() => _ =  App.apiServicesManager.getUnapprovedUsers();
 
         // use l as an indicator of which list you want to update, use "R" for requests and "P" for patients
         public void HideOrShowPatient(PatientModel a, string l)

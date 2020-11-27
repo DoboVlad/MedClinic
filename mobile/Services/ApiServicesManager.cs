@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using mobile.ViewModels;
 
 namespace mobile.Services
 {
@@ -19,6 +20,12 @@ namespace mobile.Services
         public async Task<bool> LoginAsync(string UserName, string Password)
         {
             return await apiS.LoginAsync(UserName, Password);
+        }
+        public async Task<bool> getUnapprovedUsers() {
+            return await apiS.GetUnapprovedPatientsAsync();
+        }
+        public async Task<List<DoctorModel>> GetAboutUsDoctorsAsync() {
+            return await apiS.GetAboutUsDoctorsAsync();
         }
     }
 }

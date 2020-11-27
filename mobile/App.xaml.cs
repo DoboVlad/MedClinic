@@ -1,6 +1,7 @@
 ﻿using System;
 using mobile.Models;
 using mobile.Services;
+using mobile.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,12 +11,14 @@ namespace mobile
     {
         public static  ApiServicesManager apiServicesManager { get; private set; }
         public static User user { get; set; }
+        public static AboutUsModel aum;
         public App()
         {
             InitializeComponent();
 
             apiServicesManager = new ApiServicesManager(new ApiServices());
             user = new User();
+            aum = new AboutUsModel();
             MainPage = new NavigationPage(new MainPage());
         }
 

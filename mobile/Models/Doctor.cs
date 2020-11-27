@@ -14,33 +14,13 @@ namespace mobile
         private string email;
         private const string jobTitle = "Family Doctor";
         private string phone;
-        private ImageSource image = ImageSource.FromResource("mobile.Images.man.png");
+        private ImageSource image;
         private string description;
-        private string birthDate;
-        // Personal Identification Number
-        private string pin;
-        public string PIN
-        {
-            get
-            {
-                return pin;
-            }
-            set
-            {
-                pin = value;
-            }
-        }
-        public string BirthDate
-        {
-            get
-            {
-                return birthDate;
-            }
-            set
-            {
-                birthDate = value;
-            }
-        }
+
+
+        public int Id { get; set; }
+
+      
         public string Description
         {
             get

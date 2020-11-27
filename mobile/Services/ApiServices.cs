@@ -9,6 +9,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 using Microsoft.CSharp.RuntimeBinder;
+using mobile.ViewModels;
+
 namespace mobile.Services
 {
     class ApiServices : IApiServices
@@ -20,6 +22,8 @@ namespace mobile.Services
     Device.RuntimePlatform == Device.Android ? "https://10.0.2.2:5001" : "https://localhost:5001";
         public static string registerUrl = $"{BaseAddress}/api/users/register";
         public static string loginUrl = $"{BaseAddress}/api/users/login";
+        public static string getUnapprovedUsersUrl = $"{BaseAddress}/api/users/getUnapprovedUsers";
+        public static string getAboutUsDoctorsUrl = $"{BaseAddress}/api/users/getDoctors";
 
         // Pass the handler to httpclient(from you are calling api) only in debug mode we have to pass the ssl, in release we dont
         public ApiServices()
@@ -61,7 +65,8 @@ namespace mobile.Services
             {
 
                 email = UserName,
-                password = Password
+                password = Password,
+                
                 
             };
             
@@ -74,16 +79,45 @@ namespace mobile.Services
             if (response.IsSuccessStatusCode)
             {
                 JObject userDynamic = JsonConvert.DeserializeObject<dynamic>(usr);
-                App.user.id = userDynamic.Value<int>("id");
-                App.user.email = userDynamic.Value<string>("email");
-                App.user.firstName = userDynamic.Value<string>("firstName");
-                App.user.lastName = userDynamic.Value<string>("lastName");
-                App.user.role = userDynamic.Value<int>("role");
+
                 App.user.token = userDynamic.Value<string>("token");
-                App.user.doctorId = userDynamic.Value<int>("doctorId");
+                App.user.role = userDynamic.Value<int>("role");
                 return true;
             }
             return false;
+        }
+
+        public async Task<bool> GetUnapprovedPatientsAsync() {
+
+
+           var response = await client.GetAsync(getUnapprovedUsersUrl);
+            var usr = await response.Content.ReadAsStringAsync();
+            JObject userDynamic = JsonConvert.DeserializeObject<dynamic>(usr);
+            return true;
+
+        }
+        public async Task<List<DoctorModel>> GetAboutUsDoctorsAsync()
+        {
+            List<DoctorModel> doctors = new List<DoctorModel>();
+
+            var response = await client.GetAsync(getAboutUsDoctorsUrl);
+            var usr = await response.Content.ReadAsStringAsync();
+            JArray userDynamic = JsonConvert.DeserializeObject<dynamic>(usr);
+
+            foreach (JObject d in userDynamic)
+            {
+                doctors.Add(new DoctorModel
+                {
+                    Id = d.Value<int>("id"),
+                    FirstName = d.Value<string>("firstName"),
+                    LastName = d.Value<string>("lastName"),
+                    Email = d.Value<string>("email"),
+                    Phone = d.Value<string>("phoneNumber"),
+                    Description = d.Value<string>("Description"),
+                    Image = d.Value<string>("photo")
+                }); ;
+            }
+            return doctors;
         }
     }
 }
