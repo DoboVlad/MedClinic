@@ -17,10 +17,18 @@ export class AppComponent implements OnInit{
     this.userService.isUserLoggedIn = false;
   } else {
     this.userService.isUserLoggedIn = true;
+    this.userService.isApproved = true;
+    console.log("is Appproved: " + this.userService.isApproved);
   }
   }
 
+  setLanguage(lang: number){
+    this.userService.language = lang;
+    console.log(this.userService.language);
+  }
+
   logout(){
+    this.userService.role = 0;
     this.userService.clearAuthData();
     this.router.navigate(["/home"]);
   }

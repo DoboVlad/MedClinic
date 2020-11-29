@@ -1,6 +1,6 @@
 <!-- create -->
 
-<nav class="navbar">
+<nav class="navbar" *ngIf = "this.userService.language == 0">
     <div class="firstnav">
         <p class="logo"  routerLink="/home">
             <img src="assets/img/logo.png">
@@ -12,8 +12,8 @@
             <li class="dropdown">
                 <a class="dropbtn">LANGUAGE</a>
                 <div class="dropdown-content">
-                  <a routerLink="/home">English</a>
-                  <a routerLink="/acasa">Romanian</a>
+                  <a (click) = "setLanguage(0)">English</a>
+                  <a (click) = "setLanguage(1)">Romanian</a>
                 </div>
             </li>
         </ul>
@@ -21,21 +21,22 @@
     <div class="secondnav">
         <ul class="secondNavList">
             <li routerLink="/home">HOME</li>
-            <li routerLink="/doctors">DOCTORS</li>
-            <li routerLink="/appointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true">APPOINTMENTS</li>
+            <li routerLink="/doctors" *ngIf = "this.userService.role  == 0">DOCTORS</li>
+            <li routerLink="/appointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">APPOINTMENTS</li>
+            <li routerLink="/doctorappointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">APPOINTMENTS</li>
             <a href="#footer"><li>CONTACT</li></a>
         </ul>
     </div>
 </nav>
 
 
-<div class="container">
+<div class="container" *ngIf = "this.userService.language == 0">
     <router-outlet></router-outlet>
 </div>
 
 
 <!-- footer -->
-<footer>
+<footer *ngIf = "this.userService.language == 0">
     <div id="footer">
         <div class="column">
             <p routerLink="/home">About</p>
@@ -56,4 +57,66 @@
             <p class="border">.</p>
         </div>
     </div>
+</footer>
+
+
+<!-- ROMANA -->
+
+<nav class="navbar" *ngIf = "this.userService.language == 1">
+  <div class="firstnav">
+      <p class="logo"  routerLink="/home">
+          <img src="assets/img/logo.png">
+      </p>
+      <ul class="firstNavList">
+          <li routeLink="/home" *ngIf = "this.userService.isUserLoggedIn  == true" (click)="logout()">DECONECTARE</li>
+          <li routerLink="/profile" *ngIf="this.userService.isUserLoggedIn == true && this.userService.isApproved == true">PROFIL</li>
+          <li routerLink="/login" *ngIf= "this.userService.isUserLoggedIn == false">CONT</li>
+          <li class="dropdown">
+              <a class="dropbtn">LIMBA</a>
+              <div class="dropdown-content">
+                <a (click) = "setLanguage(0)">ENGLEZA</a>
+                <a (click) = "setLanguage(1)">ROMANA</a>
+              </div>
+          </li>
+      </ul>
+  </div>
+  <div class="secondnav">
+      <ul class="secondNavList">
+          <li routerLink="/home">ACASA</li>
+          <li routerLink="/doctors" *ngIf = "this.userService.role  == 0">DOCTORI</li>
+          <li routerLink="/appointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">APPOINTMENTS</li>
+          <li routerLink="/doctorappointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">APPOINTMENTS</li>
+          <a href="#footer"><li>CONTACT</li></a>
+      </ul>
+  </div>
+</nav>
+
+
+<div class="container" *ngIf = "this.userService.language == 1">
+  <router-outlet></router-outlet>
+</div>
+
+
+<!-- footer -->
+<footer>
+  <div id="footer" *ngIf = "this.userService.language == 1">
+      <div class="column">
+          <p routerLink="/home">Despre</p>
+          <p routerLink="/terms">Termeni si conditii</p>
+          <p routerLink="/terms">Privacy</p>
+          <p class="border">.</p>
+      </div>
+      <div class="column">
+          <p>Address: Cluj-Napoca, Dorobantilor 48</p>
+          <p>Phone number: 0755851417</p>
+          <p style="visibility:hidden">.</p>
+          <p class="border">Copyright &#169;</p>
+      </div>
+      <div class="column">
+          <p routerLink="/doctors">Doctori</p>
+          <p routerLink="/appointments">Programari</p>
+          <p routerLink="/login">Contul meu</p>
+          <p class="border">.</p>
+      </div>
+  </div>
 </footer>

@@ -11,8 +11,10 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) { }
   user: User;
   token: string;
+  role: number = 0;
   isUserLoggedIn: boolean;
   isFetching: boolean;
+  language: number = 0;
   isApproved: boolean;
   //use post method to login the user
   //call the base url using /login endpoint
@@ -22,6 +24,7 @@ export class UserService {
       this.saveAuthData(user.token);
       this.token = user.token;
       this.isFetching = true;
+      this.role = user.role;
       if(this.user.isApproved == 1){
         this.isApproved = true;
         this.isUserLoggedIn = true;

@@ -17,4 +17,5 @@ export class User{
   token?: string;
   doctorId?: number;
   doctor?: Doctor;
+  role?: number;
 }
