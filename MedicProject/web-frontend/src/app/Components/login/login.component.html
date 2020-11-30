@@ -1,4 +1,4 @@
-<div class="login-page">
+<div class="login-page" *ngIf = "this.userService.language == 0">
   <div class="form">
      <form class="login-form" [formGroup] = "loginForm" (ngSubmit) = "onSubmit()"> <!-- Bind the form to the loginForm -->
       <div class="log">Login</div><br>
@@ -10,3 +10,17 @@
     </form>
   </div>
 </div>
+
+<div class="login-page" *ngIf = "this.userService.language == 1">
+  <div class="form">
+     <form class="login-form" [formGroup] = "loginForm" (ngSubmit) = "onSubmit()"> <!-- Bind the form to the loginForm -->
+      <div class="log">Login</div><br>
+      <input type="text" placeholder="email" formControlName="email" required/>
+      <input type="password" placeholder="password" formControlName="password" required/>
+      <button type="submit">login</button>
+      <p class="message">Not registered? <a routerLink="/register">Creaza un cont</a></p>
+      <p class="message">Forgot <a href="/forgotpassword"> parola </a></p>
+    </form>
+  </div>
+</div>
+
