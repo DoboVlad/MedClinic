@@ -1,4 +1,4 @@
-p{
+/*p{
   text-align: center;
   font-size: 16px;
 }
@@ -11,4 +11,39 @@ h2{
   display: flex;
   justify-content: space-evenly;
 
+}/*
+/*.waitingText{
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}*/
+.info{
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 100px auto 100px;
+  padding: 45px;
+  text-align: left;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
+}
+.info p{
+  height: 40px;
+  padding-right: 10px;
+  margin-bottom: 5%;
+  border: none;
+  font-size: 19px;
+  color: #1c2d60;
+  text-align: left;
+  font-weight: 500;
+}
+.notaccepted{
+  color: red;
+  font-size: 25px;
+}
+
+.contactdoctor{
+  font-size: 20px;
 }

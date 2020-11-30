@@ -9,6 +9,11 @@
             <li routeLink="/home" *ngIf = "this.userService.isUserLoggedIn  == true" (click)="logout()">Logout</li>
             <li routerLink="/profile" *ngIf="this.userService.isUserLoggedIn == true && this.userService.isApproved == true">Profile</li>
             <li routerLink="/login" *ngIf= "this.userService.isUserLoggedIn == false">ACCOUNT</li>
+            <li routerLink="/requests">
+                <span title="requests" class="material-icons">
+                notification_important
+                </span>
+            </li>
             <li class="dropdown">
                 <a class="dropbtn">LANGUAGE</a>
                 <div class="dropdown-content">
@@ -71,6 +76,10 @@
           <li routeLink="/home" *ngIf = "this.userService.isUserLoggedIn  == true" (click)="logout()">DECONECTARE</li>
           <li routerLink="/profile" *ngIf="this.userService.isUserLoggedIn == true && this.userService.isApproved == true">PROFIL</li>
           <li routerLink="/login" *ngIf= "this.userService.isUserLoggedIn == false">CONT</li>
+          <li routerLink="/requests"><span title="cereri" class="material-icons">
+            notification_important
+            </span>
+        </li>
           <li class="dropdown">
               <a class="dropbtn">LIMBA</a>
               <div class="dropdown-content">
@@ -84,8 +93,8 @@
       <ul class="secondNavList">
           <li routerLink="/home">ACASA</li>
           <li routerLink="/doctors" *ngIf = "this.userService.role  == 0">DOCTORI</li>
-          <li routerLink="/appointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">APPOINTMENTS</li>
-          <li routerLink="/doctorappointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">APPOINTMENTS</li>
+          <li routerLink="/appointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">PROGRAMARI</li>
+          <li routerLink="/doctorappointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">PROGRAMARI</li>
           <a href="#footer"><li>CONTACT</li></a>
       </ul>
   </div>
@@ -107,8 +116,8 @@
           <p class="border">.</p>
       </div>
       <div class="column">
-          <p>Address: Cluj-Napoca, Dorobantilor 48</p>
-          <p>Phone number: 0755851417</p>
+          <p>Adresa: Cluj-Napoca, Dorobantilor 48</p>
+          <p>Numar de telefon: 0755851417</p>
           <p style="visibility:hidden">.</p>
           <p class="border">Copyright &#169;</p>
       </div>
