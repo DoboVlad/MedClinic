@@ -9,8 +9,8 @@
             <li routeLink="/home" *ngIf = "this.userService.isUserLoggedIn  == true" (click)="logout()">Logout</li>
             <li routerLink="/profile" *ngIf="this.userService.isUserLoggedIn == true && this.userService.isApproved == true">Profile</li>
             <li routerLink="/login" *ngIf= "this.userService.isUserLoggedIn == false">ACCOUNT</li>
-            <li routerLink="/requests">
-                <span title="requests" class="material-icons">
+            <li routerLink="/requests" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">
+                <span title="requests" class="material-icons" >
                 notification_important
                 </span>
             </li>

@@ -146,7 +146,6 @@ namespace MedicProject.Controllers
         //return all the appointements of a medic
         [HttpGet("allDoctorApp/{id}")]
         public async Task<ActionResult<IList>> getAllUsers(int id){
-
             //get all users from db
             var users =  await _context.USERS.ToListAsync();
 
@@ -176,12 +175,12 @@ namespace MedicProject.Controllers
                 keyFromMedic => keyFromMedic.doctorId,
                 (medic, appointments) => new {
                     MedicId = medic.Id,
-                    pactientFirstName = appointments.pactientFirstName,
-                    pacientLastName = appointments.pacientLastName,
+                    firstName = appointments.pactientFirstName,
+                    lastName = appointments.pacientLastName,
                     phone = appointments.phone,
                     email = appointments.email,
-                    DateOfApp = appointments.DateOfApp,
-                    HourOfApp = appointments.HourOfApp
+                    date = appointments.DateOfApp,
+                    hour = appointments.HourOfApp
                 }
             );
 

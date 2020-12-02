@@ -24,6 +24,10 @@ namespace MedicProject.DTO
       
       [Required]
         public string description { get; set; }
+
+        public int isApproved { get; set; }
+
+        public int age { get; set; }
     
        public string photo {get;set;}
 

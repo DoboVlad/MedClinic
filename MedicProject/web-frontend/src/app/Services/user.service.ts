@@ -100,7 +100,7 @@ export class UserService {
   }
 
   medicAccount(){
-    return this.http.get<User>(this.baseUrl + '/api/users/getMedicInfo', {
+    return this.http.get<User>(this.baseUrl + '/api/users/MyAccountMedic', {
       headers: {
         'Authorization' : 'Bearer ' + this.token
       }

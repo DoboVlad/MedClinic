@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Appointment } from 'src/app/Models/AppointmentModel';
 import { AppointmentService } from 'src/app/Services/appointment.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-appointments',
@@ -12,7 +13,7 @@ export class AppointmentsComponent implements OnInit {
   appForm: FormGroup;
   app: Appointment
 
-  constructor(public appService: AppointmentService) { }
+  constructor(public appService: AppointmentService, public userService: UserService) { }
 
   ngOnInit(): void {
     this.appForm = new FormGroup({

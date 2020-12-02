@@ -29,4 +29,12 @@ export class AppointmentService {
       }
     });
   }
+
+  getAllMedicAppointments(){
+    return this.http.get<Appointment[]>(this.baseUrl + "/allDoctorApp/221",{
+      headers: {
+        "Authorization": "Bearer " + this.userService.token
+      }
+    });
+  }
 }

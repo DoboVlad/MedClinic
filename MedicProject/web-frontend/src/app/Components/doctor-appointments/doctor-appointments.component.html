@@ -4,9 +4,9 @@
 </div>
 
 <div class="doctor-appointments" *ngIf = "this.userService.language == 0">
-    <div class="appointments">
-            <span class="name">Coroian Daniel :</span>
-            <span class="date">Jan 12, 2020 | Hour: 13:00</span>
+    <div class="appointments" *ngFor = "let app of appointments">
+            <span class="name">{{app.user.firstName}} :</span>
+            <span class="date">{{app.date}}</span>
     </div>
 </div>
 

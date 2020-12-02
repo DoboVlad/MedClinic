@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Appointment } from 'src/app/Models/AppointmentModel';
+import { AppointmentService } from 'src/app/Services/appointment.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-doctor-appointments',
@@ -6,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./doctor-appointments.component.css']
 })
 export class DoctorAppointmentsComponent implements OnInit {
-
-  constructor() { }
+  appointments: Appointment[];
+  constructor(public userService: UserService, private appService: AppointmentService) { }
 
   ngOnInit(): void {
+    this.appService.getAllMedicAppointments().subscribe(appointments => {
+      this.appointments = appointments;
+     this.appointments.forEach(app => {
+      console.log(app.date);
+      })
+    });
   }
-
 }
