@@ -21,7 +21,7 @@ export class UserService {
   logInUser(user: User){
     this.http.post<User>(this.baseUrl + "/api/users/login", user).subscribe(user => {
       this.user = user;
-      this.saveAuthData(user.token);
+      this.saveAuthData(user.token, user.role);
       this.token = user.token;
       this.isFetching = true;
       this.role = user.role;
@@ -50,26 +50,31 @@ export class UserService {
     const authInfo = this.getAuthData();
     if(authInfo!= null){
       this.token = authInfo.token;
+      this.role = +authInfo.role;
       this.isUserLoggedIn = true;
     }
   }
 
-  saveAuthData(token: string){
+  saveAuthData(token: string, role: number){
     localStorage.setItem('token', token);
+    localStorage.setItem('role', role.toString());
   }
 
   clearAuthData(){
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
     this.isUserLoggedIn = false;
   }
 
   getAuthData(){
     const token = localStorage.getItem("token");
+    const role = localStorage.getItem("role");
     if(!token){
       return;
     }
     return{
-      token: token
+      token: token,
+      role: role
     }
   }
 

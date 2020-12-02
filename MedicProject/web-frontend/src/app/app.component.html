@@ -26,6 +26,7 @@
     <div class="secondnav">
         <ul class="secondNavList">
             <li routerLink="/home">HOME</li>
+            <li routerLink="/doctorpatients" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">PATIENTS</li>
             <li routerLink="/doctors" *ngIf = "this.userService.role  == 0">DOCTORS</li>
             <li routerLink="/appointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">APPOINTMENTS</li>
             <li routerLink="/doctorappointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">APPOINTMENTS</li>
