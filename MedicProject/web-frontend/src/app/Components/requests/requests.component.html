@@ -1,11 +1,24 @@
-<div class="title">
+<!--engleza-->
+<div class="title" *ngIf = "this.userService.language == 0">
     <p>Pending requests</p>
 </div>
 
-<div class="doctor-requests">
+<div class="doctor-requests" *ngIf = "this.userService.language == 0">
     <div class="requests">
             <input type="text" value="Coroian Daniel">
             <button type="submit" name="accept" value="Accept">Accept</button>
             <button type="submit" name="refuse" value="Refuse">Refuse</button>  
+    </div>
+</div>
+<!--romana-->
+<div class="title" *ngIf = "this.userService.language == 1">
+    <p>Cereri in asteptare</p>
+</div>
+
+<div class="doctor-requests" *ngIf = "this.userService.language == 1">
+    <div class="requests">
+            <input type="text" value="Coroian Daniel">
+            <button type="submit" name="accept" value="Accept">Accept</button>
+            <button type="submit" name="refuse" value="Refuse">Refuz</button>  
     </div>
 </div>

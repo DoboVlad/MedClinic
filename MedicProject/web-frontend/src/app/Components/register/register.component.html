@@ -1,4 +1,5 @@
-<div class="register-page">
+<!--engleza-->
+<div class="register-page" *ngIf = "this.userService.language == 0">
     <div class="form">
       <form class="register-form" [formGroup] = "registerForm" (ngSubmit) = "onSubmit()">
         <div class="reg">Sign Up</div><br>
@@ -20,4 +21,28 @@
         <p class="message">Already registered? <a routerLink="/login">Login</a></p>
       </form>
     </div>
+</div>
+<!--romana-->
+<div class="register-page" *ngIf = "this.userService.language == 1">
+  <div class="form">
+    <form class="register-form" [formGroup] = "registerForm" (ngSubmit) = "onSubmit()">
+      <div class="reg">Inregistreaza-te</div><br>
+      <input type="text" placeholder="Prenume" formControlName = "firstName" required/>
+      <input type="text" placeholder="Nume de familie" formControlName = "lastName" required/>
+      <input type="text" placeholder=" Cod Numeric Personal" formControlName ="cnp" required/>
+      <div class="data">Ziua de nastere:</div>
+      <input type="date" placeholder="Ziua de nastere" formControlName = "dateOfBirth" required/>
+      <input type="email" placeholder="Email" formControlName = "email" required/>
+      <input type="text" placeholder="Numar telefon" formControlName = "phoneNumber" required/>
+      <input type="password" placeholder="Parola" formControlName = "password" required/>
+      <input type="password" placeholder="Confirmare parola" formControlName = "repeatPassword" required/>
+      <div class="doctors">Alege un doctor:</div>
+        <select name="doctors" id="doctors" formControlName = "doctorId" required>
+          <option value="" disabled selected></option>
+          <option *ngFor="let doctor of doctors" [ngValue]="doctor.id">{{doctor.firstName}} {{doctor.lastName}}</option>
+        </select><br><br>
+      <button>Inregistreaza-te</button>
+      <p class="message">Esti deja inregistrat? <a routerLink="/login">Autentificare</a></p>
+    </form>
+  </div>
 </div>

@@ -1,8 +1,9 @@
-<div class="imgDescription">
+<!--engleza-->
+<div class="imgDescription"  *ngIf = "this.userService.language == 0">
     <img src="assets/img/doctor3eng.png" >
     <!--<p>Programeaz&#259;-te la medicul de familie dorit pentru servicii medicale.</p>-->
 </div>
-<div class="minihelp">
+<div class="minihelp"  *ngIf = "this.userService.language == 0">
     <p class="guide-title">A little guide to the application</p>
     <ul class="guide-steps">
         <div class="column">
@@ -37,6 +38,52 @@
         </p>
             <ul class="bullets-step">
                 <li >No additional fees are included.
+                </li>
+            </ul>
+        </li>
+    </div>
+    </ul>
+</div>
+<!--romana-->
+<div class="imgDescription"  *ngIf = "this.userService.language == 1">
+    <img src="assets/img/doctor3eng.png" >
+    <!--<p>Programeaz&#259;-te la medicul de familie dorit pentru servicii medicale.</p>-->
+</div>
+<div class="minihelp"  *ngIf = "this.userService.language == 1">
+    <p class="guide-title">Un mic ghid al aplicatiei</p>
+    <ul class="guide-steps">
+        <div class="column">
+        <li ><p class="step">Gaseste doctorul</p>
+            <ul class="bullets-step">
+                <li >Intra in aplicatie.
+                </li>
+                <li >Introdu datele personale.
+                </li>
+                <li >Alegeti doctorul de familie.
+                </li>
+                <li>Asteapta ca doctorul sa iti accepte cererea.</li>
+            </ul>
+        </li>
+        </div>
+        <div class="column">
+        <li ><p class="step">Programeaza usor
+        </p>
+            <ul class="bullets-step">
+                <li>Dupa ce medicul dumneavoastra v-a acceptat cererea, puteti face o programare .</li>
+                <li >Intra in sectiunea PROGRAMARI.
+                </li>
+                <li >Alege data dorita.
+                </li>
+                <li >Alege intervalul de timp.
+                </li>
+            </ul>
+        </li>
+        </div>
+        <div class="column">
+        <li ><p class="step">Fara costuri suplimentare
+        </p>
+            <ul class="bullets-step">
+                <li >Nu sunt incluse taxe suplimentare.
                 </li>
             </ul>
         </li>

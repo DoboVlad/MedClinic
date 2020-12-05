@@ -1,8 +1,18 @@
-<div class="waitingText">
+<!--engleza-->
+<div class="waitingText" *ngIf = "this.userService.language == 0">
   <div class="info">
 <p class="notaccepted" style="color: red; font-size: 25px; text-align: justify;">Your medic hasn't accepted you yet!</p><br>
 <p class="contactdoctor">Send him/her an email and ask why</p><br>
 <p class="email"><b>Medic email:</b> {{medic.email}}</p><br>
 <p class="phone"><b>Medic phone number:</b> {{medic.phoneNumber}}</p>
+</div>
+</div>
+<!--romana-->
+<div class="waitingText" *ngIf = "this.userService.language == 1">
+  <div class="info">
+<p class="notaccepted" style="color: red; font-size: 25px; text-align: justify;">Medicul tau nu te a acceptat inca!</p><br>
+<p class="contactdoctor">Trimite-i un email si intreaba-l de ce:</p><br>
+<p class="email"><b>Medic email:</b> {{medic.email}}</p><br>
+<p class="phone"><b>Medic nr. telefon:</b> {{medic.phoneNumber}}</p>
 </div>
 </div>
