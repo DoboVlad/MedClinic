@@ -12,5 +12,6 @@ namespace mobile.Services
         Task<bool> LoginAsync(string UserName, string Password);
         public Task<bool> GetUnapprovedPatientsAsync();
         public  Task<List<DoctorModel>> GetAboutUsDoctorsAsync();
+        public Task<dynamic> GetPatientProfileAsync(string token);
     }
 }

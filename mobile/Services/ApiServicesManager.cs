@@ -27,5 +27,9 @@ namespace mobile.Services
         public async Task<List<DoctorModel>> GetAboutUsDoctorsAsync() {
             return await apiS.GetAboutUsDoctorsAsync();
         }
+        public async Task<dynamic> GetPatientProfileAsync(string token)
+        {
+            return await apiS.GetPatientProfileAsync(token);
+        }
     }
 }

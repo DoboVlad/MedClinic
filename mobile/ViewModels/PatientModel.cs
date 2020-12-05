@@ -4,7 +4,7 @@ using System.Text;
 
 namespace mobile.ViewModels
 {
-    class PatientModel : Patient
+    public class PatientModel : Patient
     {
 
         // testing the visibility of the details

@@ -10,6 +10,7 @@ using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 using Microsoft.CSharp.RuntimeBinder;
 using mobile.ViewModels;
+using System.Net.Http.Headers;
 
 namespace mobile.Services
 {
@@ -24,6 +25,7 @@ namespace mobile.Services
         public static string loginUrl = $"{BaseAddress}/api/users/login";
         public static string getUnapprovedUsersUrl = $"{BaseAddress}/api/users/getUnapprovedUsers";
         public static string getAboutUsDoctorsUrl = $"{BaseAddress}/api/users/getDoctors";
+        public static string getPatientInfoUrl = $"{BaseAddress}/api/users/MyAccount";
 
         // Pass the handler to httpclient(from you are calling api) only in debug mode we have to pass the ssl, in release we dont
         public ApiServices()
@@ -99,7 +101,6 @@ namespace mobile.Services
         public async Task<List<DoctorModel>> GetAboutUsDoctorsAsync()
         {
             List<DoctorModel> doctors = new List<DoctorModel>();
-
             var response = await client.GetAsync(getAboutUsDoctorsUrl);
             var usr = await response.Content.ReadAsStringAsync();
             JArray userDynamic = JsonConvert.DeserializeObject<dynamic>(usr);
@@ -118,6 +119,15 @@ namespace mobile.Services
                 }); ;
             }
             return doctors;
+        }
+        public async Task<dynamic> GetPatientProfileAsync(string token)
+        {
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var response = await client.GetAsync(getPatientInfoUrl);
+            string usr = await response.Content.ReadAsStringAsync();
+            JObject userDynamic = JsonConvert.DeserializeObject<dynamic>(usr);
+            return 1;
         }
     }
 }

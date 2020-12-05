@@ -5,7 +5,7 @@ using System.Text;
 namespace mobile
 {
     // dummy class used to display the user profile.
-     class Patient
+     public class Patient
     {
         private string firstName;
         private string lastName;
