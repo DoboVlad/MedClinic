@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using mobile.ViewModels;
@@ -10,16 +12,21 @@ using Xamarin.Forms.Xaml;
 namespace mobile
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProfilePage : ContentPage
+    public partial class ProfilePage : ContentPage, INotifyPropertyChanged
     {
-        ProfileModel profileModel = new ProfileModel();
+         ProfileModel profileModel = new ProfileModel();
+
         public ProfilePage()
         {
             InitializeComponent();
-            var patient = profileModel.patient;
-
+            
+            Patient patient2 = profileModel.patient;
+            Task.Delay(5000).Wait();
+            BindingContext = patient2;
         }
-        async private void btnLogOut_Clicked(Object sender, EventArgs e)
+        
+
+            async private void btnLogOut_Clicked(Object sender, EventArgs e)
         {
            
             App.user.token = "";

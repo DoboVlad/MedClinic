@@ -142,9 +142,10 @@ namespace mobile.Services
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             var response = await client.GetAsync(getPatientInfoUrl);
-            string usr = await response.Content.ReadAsStringAsync();
-            JObject userDynamic = JsonConvert.DeserializeObject<dynamic>(usr);
-            return 1;
+            var usr = await response.Content.ReadAsStringAsync();
+            JObject userDynamic =  JsonConvert.DeserializeObject<dynamic>(usr.ToString());
+            Patient patient = JsonConvert.DeserializeObject<PatientModel>(userDynamic.ToString());
+            return patient;
         }
         public async Task<bool> DeleteUserAsync(string token, int id)
         {
