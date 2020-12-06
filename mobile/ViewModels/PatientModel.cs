@@ -9,7 +9,6 @@ namespace mobile.ViewModels
 
         // testing the visibility of the details
         public bool IsVisible { get; set; }
-
         public string FullName
         {
             get

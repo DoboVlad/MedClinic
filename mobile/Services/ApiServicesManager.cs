@@ -31,8 +31,8 @@ namespace mobile.Services
         {
             return await apiS.GetPatientProfileAsync(token);
         }
-        public async Task<bool> ApproveUserASync(string token, int id) {
-            return await apiS.ApproveUserASync(token, id);
+        public async Task<bool> ApproveUserASync(string token, PatientModel patient) {
+            return await apiS.ApproveUserASync(token, patient);
         }
         public async Task<bool> DeleteUserAsync(string token, int id)
         {

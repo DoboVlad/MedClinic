@@ -15,6 +15,6 @@ namespace mobile.Services
         public Task<dynamic> GetPatientProfileAsync(string token);
 
         public  Task<bool> DeleteUserAsync(string token, int id);
-        public  Task<bool> ApproveUserASync(string token, int id);
+        public  Task<bool> ApproveUserASync(string token, PatientModel patient);
     }
 }

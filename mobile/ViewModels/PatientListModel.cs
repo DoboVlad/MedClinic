@@ -129,25 +129,23 @@ namespace mobile.ViewModels
             else if (l.Equals("R"))
             {
                 var index = _requests.IndexOf(a);
-                _requests.Remove(a);
-                _requests.Insert(index, a);
-                var _requests2 = new List<PatientModel>();
-                foreach (PatientModel p in _requests)
-                    _requests2.Add(p);
-                Requests = _requests2;
+                if (index >= 0)
+                {
+                    _requests.Remove(a);
+                    _requests.Insert(index, a);
+                    var _requests3 = new List<PatientModel>();
+                    foreach (PatientModel p in _requests)
+                        _requests3.Add(p);
+                    Requests = _requests3;
+                }
+                
             }
         }
         public async void ApproveUser() {
 
-            await App.apiServicesManager.ApproveUserASync(App.user.token, oldRequest.Id);
-            var _requests2 = new List<PatientModel>();
-            foreach (PatientModel p in _requests)
-            {
-                if (p.Id == oldRequest.Id)
-                    _requests.Remove(p);
-                else _requests2.Add(p);
-            }
-            Requests = _requests2;
+            await App.apiServicesManager.ApproveUserASync(App.user.token, oldRequest);
+            getPatients();
+           
 
 
         }
@@ -155,15 +153,7 @@ namespace mobile.ViewModels
         {
 
             await App.apiServicesManager.DeleteUserAsync(App.user.token, oldRequest.Id);
-            var _requests2 = new List<PatientModel>();
-            foreach (PatientModel p in _requests)
-
-            {
-                if (p.Id == oldRequest.Id)
-                    _requests.Remove(p);
-                else _requests2.Add(p);
-            }
-            Requests = _requests2;
+            getPatients();
 
 
         }

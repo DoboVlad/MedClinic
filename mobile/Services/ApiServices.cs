@@ -150,23 +150,22 @@ namespace mobile.Services
         {
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-            var json = JsonConvert.SerializeObject(id);
-            HttpContent content = new StringContent(json);
-            content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             var response = await client.DeleteAsync(deleteUser + "?id=" + id);
             if (response.IsSuccessStatusCode)
                 return true;
             else return false;
 
         }
-        public async Task<bool> ApproveUserASync(string token, int id)
+        public async Task<bool> ApproveUserASync(string token, PatientModel patient)
         {
+           
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-            var json = JsonConvert.SerializeObject(id);
+            var json = JsonConvert.SerializeObject(patient.Id);
             HttpContent content = new StringContent(json);
+            
             content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-            var response = await client.PutAsync(approveUser + "?id=" + id, content);
+            var response = await client.PutAsync(approveUser + "?id=" + patient.Id, content);
             if (response.IsSuccessStatusCode)
                 return true;
             else return false;

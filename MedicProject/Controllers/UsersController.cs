@@ -249,7 +249,7 @@ namespace MedicProject.Controllers
             //check if the user is a patient of the loged in doctor
             if(patient.doctorId==user.Id)
            {//approve the user's account
-               user.isApproved=1;
+               patient.isApproved=1;
                _context.USERS.Update(patient);
                await  _context.SaveChangesAsync();
            }
