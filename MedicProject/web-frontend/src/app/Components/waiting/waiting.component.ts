@@ -9,7 +9,7 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class WaitingComponent implements OnInit {
   medic: User;
-  constructor(private userService: UserService) { }
+  constructor(public userService: UserService) { }
 
   ngOnInit(): void {
     this.userService.medicAccount().subscribe(medic => {

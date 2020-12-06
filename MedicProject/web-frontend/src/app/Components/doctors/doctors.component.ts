@@ -11,7 +11,7 @@ import { UserService } from 'src/app/Services/user.service';
 export class DoctorsComponent implements OnInit {
   formSearch: FormGroup;
   users: User[];
-  constructor(private userService: UserService) { }
+  constructor(public userService: UserService) { }
 
   ngOnInit(): void {
     this.formSearch = new FormGroup({
