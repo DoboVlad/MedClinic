@@ -21,8 +21,8 @@ namespace mobile.Services
         {
             return await apiS.LoginAsync(UserName, Password);
         }
-        public async Task<bool> getUnapprovedUsers() {
-            return await apiS.GetUnapprovedPatientsAsync();
+        public async Task<List<PatientModel>> getUnapprovedUsers(string token) {
+            return await apiS.GetUnapprovedPatientsAsync(token);
         }
         public async Task<List<DoctorModel>> GetAboutUsDoctorsAsync() {
             return await apiS.GetAboutUsDoctorsAsync();
@@ -30,6 +30,13 @@ namespace mobile.Services
         public async Task<dynamic> GetPatientProfileAsync(string token)
         {
             return await apiS.GetPatientProfileAsync(token);
+        }
+        public async Task<bool> ApproveUserASync(string token, int id) {
+            return await apiS.ApproveUserASync(token, id);
+        }
+        public async Task<bool> DeleteUserAsync(string token, int id)
+        {
+            return await apiS.DeleteUserAsync(token, id);
         }
     }
 }

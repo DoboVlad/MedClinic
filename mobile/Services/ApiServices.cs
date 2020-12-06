@@ -26,6 +26,8 @@ namespace mobile.Services
         public static string getUnapprovedUsersUrl = $"{BaseAddress}/api/users/getUnapprovedUsers";
         public static string getAboutUsDoctorsUrl = $"{BaseAddress}/api/users/getDoctors";
         public static string getPatientInfoUrl = $"{BaseAddress}/api/users/MyAccount";
+        public static string deleteUser = $"{BaseAddress}/api/users/DeletePatient";
+        public static string approveUser = $"{BaseAddress}/api/users/ApproveUser";
 
         // Pass the handler to httpclient(from you are calling api) only in debug mode we have to pass the ssl, in release we dont
         public ApiServices()
@@ -89,13 +91,28 @@ namespace mobile.Services
             return false;
         }
 
-        public async Task<bool> GetUnapprovedPatientsAsync() {
+        public async Task<List<PatientModel>> GetUnapprovedPatientsAsync(string token) {
 
-
-           var response = await client.GetAsync(getUnapprovedUsersUrl);
+            List<PatientModel> patients = new List<PatientModel>();
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var response = await client.GetAsync(getUnapprovedUsersUrl);
             var usr = await response.Content.ReadAsStringAsync();
-            JObject userDynamic = JsonConvert.DeserializeObject<dynamic>(usr);
-            return true;
+            JArray userDynamic = JsonConvert.DeserializeObject<dynamic>(usr);
+            foreach (JObject p in userDynamic)
+            {
+                patients.Add(new PatientModel
+                {
+                    Id = p.Value<int>("id"),
+                    FirstName = p.Value<string>("firstName"),
+                    LastName = p.Value<string>("lastName"),
+                    Email = p.Value<string>("email"),
+                    cnp = p.Value<string>("cnp"),
+                    Phone = p.Value<string>("phoneNumber")
+
+                }) ;
+            }
+            return patients;
 
         }
         public async Task<List<DoctorModel>> GetAboutUsDoctorsAsync()
@@ -116,7 +133,7 @@ namespace mobile.Services
                     Phone = d.Value<string>("phoneNumber"),
                     Description = d.Value<string>("Description"),
                     Image = d.Value<string>("photo")
-                }); ;
+                });
             }
             return doctors;
         }
@@ -129,5 +146,32 @@ namespace mobile.Services
             JObject userDynamic = JsonConvert.DeserializeObject<dynamic>(usr);
             return 1;
         }
+        public async Task<bool> DeleteUserAsync(string token, int id)
+        {
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var json = JsonConvert.SerializeObject(id);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var response = await client.DeleteAsync(deleteUser + "?id=" + id);
+            if (response.IsSuccessStatusCode)
+                return true;
+            else return false;
+
+        }
+        public async Task<bool> ApproveUserASync(string token, int id)
+        {
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var json = JsonConvert.SerializeObject(id);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var response = await client.PutAsync(approveUser + "?id=" + id, content);
+            if (response.IsSuccessStatusCode)
+                return true;
+            else return false;
+
+        }
+
     }
 }

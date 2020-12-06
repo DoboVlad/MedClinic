@@ -13,13 +13,16 @@ namespace mobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewPatientsPageDoctor : ContentPage
     {
-        private PatientListModel plm = new PatientListModel();
+    
+       
+
         public NewPatientsPageDoctor()
         {
             InitializeComponent();
-            listRequests.ItemsSource = plm.requests;
+            App.plm = new PatientListModel();
+            BindingContext = App.plm;
             listRequests.ItemTapped += OnItemTapped;
-       
+           
         
         }
 
@@ -27,9 +30,10 @@ namespace mobile
         private void OnItemTapped(Object sender, ItemTappedEventArgs e)
         {
             var patient = e.Item as PatientModel; // conversion
-            plm.HideOrShowPatient(patient,"R");
+           App.plm.HideOrShowPatient(patient,"R");
 
         }
+        
 
     }
 }

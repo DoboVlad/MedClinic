@@ -37,7 +37,7 @@
     <value>Toate drepturile rezervate</value>
   </data>
   <data name="Appointments" xml:space="preserve">
-    <value>Rezervări</value>
+    <value>Programări</value>
   </data>
   <data name="Birthday" xml:space="preserve">
     <value>Zi de naștere</value>
@@ -49,7 +49,7 @@
     <value>Verificați disponibilitatea</value>
   </data>
   <data name="Cnp" xml:space="preserve">
-    <value>Cod de identificare personală</value>
+    <value>Cod numeric personal</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirmare</value>
@@ -76,7 +76,7 @@
     <value>E-mail</value>
   </data>
   <data name="EmailProfile" xml:space="preserve">
-    <value>E-mail</value>
+    <value>E-mail:</value>
   </data>
   <data name="EnterCode" xml:space="preserve">
     <value>Introduceți codul</value>
@@ -94,7 +94,7 @@
     <value>Aveți deja un cont?</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Pornire</value>
+    <value>Acasă</value>
   </data>
   <data name="Inactive" xml:space="preserve">
     <value>Inactiv</value>
@@ -121,10 +121,10 @@
     <value>Telefon</value>
   </data>
   <data name="PIN" xml:space="preserve">
-    <value>Cod PIN</value>
+    <value>CNP</value>
   </data>
   <data name="PINProfile" xml:space="preserve">
-    <value>PIN</value>
+    <value>CNP</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profil</value>

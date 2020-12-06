@@ -27,7 +27,10 @@ namespace mobile.Models
                     if (IsLogged == true)
                     {
                         if (App.user.role == 1)
+                        {
+                      
                             await Application.Current.MainPage.Navigation.PushAsync(new TabbedMainPageDoctor());
+                        }
                         else await Application.Current.MainPage.Navigation.PushAsync(new TabbedPageMain());
                     }
 

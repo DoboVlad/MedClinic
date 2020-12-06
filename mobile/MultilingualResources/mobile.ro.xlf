@@ -28,7 +28,7 @@
         </trans-unit>
         <trans-unit id="AlertBirthday" translate="yes" xml:space="preserve">
           <source>You didn't introduced your birthday.</source>
-          <target state="new">You didn't introduced your birthday.</target>
+          <target state="new">Nu v-ați introdus data nașterii.</target>
         </trans-unit>
         <trans-unit id="AlertChange" translate="yes" xml:space="preserve">
           <source>Would you like to try again?</source>
@@ -36,31 +36,31 @@
         </trans-unit>
         <trans-unit id="AlertCnp" translate="yes" xml:space="preserve">
           <source>You introduced an invalid personal identification number.</source>
-          <target state="new">You introduced an invalid personal identification number.</target>
+          <target state="new">Ați introdus un cod numeric personal invalid.</target>
         </trans-unit>
         <trans-unit id="AlertEmail" translate="yes" xml:space="preserve">
           <source>Your email is invalid.</source>
-          <target state="new">Your email is invalid.</target>
+          <target state="new">Emailul dumneavoastră este invalid.</target>
         </trans-unit>
         <trans-unit id="AlertFillField" translate="yes" xml:space="preserve">
           <source>You didn't complete all the fields.</source>
-          <target state="new">You didn't complete all the fields.</target>
+          <target state="new">Nu ați completat toate rândurile.</target>
         </trans-unit>
         <trans-unit id="AlertPIN" translate="yes" xml:space="preserve">
           <source>You introduced an invalid personal identification number</source>
-          <target state="new">You introduced an invalid personal identification number</target>
+          <target state="new">Ați introdus un cod numeric personal invalid.</target>
         </trans-unit>
         <trans-unit id="AlertPwdMatch" translate="yes" xml:space="preserve">
           <source>Your passwords don't match.</source>
-          <target state="new">Your passwords don't match.</target>
+          <target state="new">Parolele dumneavoastră nu sunt aceleași.</target>
         </trans-unit>
         <trans-unit id="AlertPwdNotStrong" translate="yes" xml:space="preserve">
           <source>Your password is not strong enough</source>
-          <target state="new">Your password is not strong enough</target>
+          <target state="new">Parola dumneavoastră nu este destul de puternică</target>
         </trans-unit>
         <trans-unit id="AlertPwdShort" translate="yes" xml:space="preserve">
           <source>Password too short. It should be at least 6 characters long.</source>
-          <target state="new">Password too short. It should be at least 6 characters long.</target>
+          <target state="new">Parola este prea scurtă. Lungimea minimă este de 6 caractere.</target>
         </trans-unit>
         <trans-unit id="All" translate="yes" xml:space="preserve">
           <source>All</source>
@@ -72,27 +72,27 @@
         </trans-unit>
         <trans-unit id="AnotherEmail" translate="yes" xml:space="preserve">
           <source>Send another email</source>
-          <target state="new">Send another email</target>
+          <target state="new">Trimite un alt email</target>
         </trans-unit>
         <trans-unit id="Appointments" translate="yes" xml:space="preserve">
           <source>Appointments</source>
-          <target state="needs-review-translation" state-qualifier="tm-suggestion">Rezervări</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Programări</target>
         </trans-unit>
         <trans-unit id="AppointmentsShort" translate="yes" xml:space="preserve">
           <source>Appts</source>
-          <target state="new">Appts</target>
+          <target state="new">Programări</target>
         </trans-unit>
         <trans-unit id="AppSavedMess" translate="yes" xml:space="preserve">
           <source>Your appointment has been saved for</source>
-          <target state="new">Your appointment has been saved for</target>
+          <target state="new">Programarea a fost salvată pentru</target>
         </trans-unit>
         <trans-unit id="AvailableDate" translate="yes" xml:space="preserve">
           <source>The date is available.</source>
-          <target state="new">The date is available.</target>
+          <target state="new">Data este disponibilă.</target>
         </trans-unit>
         <trans-unit id="BirthDateProfile" translate="yes" xml:space="preserve">
           <source>BirthDate:</source>
-          <target state="new">BirthDate:</target>
+          <target state="new">Data nașterii:</target>
         </trans-unit>
         <trans-unit id="Birthday" translate="yes" xml:space="preserve">
           <source>Birthday</source>
@@ -108,19 +108,19 @@
         </trans-unit>
         <trans-unit id="ChooseDate" translate="yes" xml:space="preserve">
           <source>Choose an appointment date</source>
-          <target state="new">Choose an appointment date</target>
+          <target state="new">Alegeți o dată</target>
         </trans-unit>
         <trans-unit id="ChooseDoctor" translate="yes" xml:space="preserve">
           <source>Choose a doctor</source>
-          <target state="new">Choose a doctor</target>
+          <target state="new">Alegeți doctorul</target>
         </trans-unit>
         <trans-unit id="Cnp" translate="yes" xml:space="preserve">
           <source>Personal Identification Number</source>
-          <target state="needs-review-translation" state-qualifier="tm-suggestion">Cod de identificare personală</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Cod numeric personal</target>
         </trans-unit>
         <trans-unit id="CodeInstructions" translate="yes" xml:space="preserve">
           <source>Please check your inbox. An email with a code has been send to this address. Write the code in the box below.</source>
-          <target state="new">Please check your inbox. An email with a code has been send to this address. Write the code in the box below.</target>
+          <target state="new">Vă rugăm verificați-vă cutia de email-uri. Un email cu un cod a fost trimis la această adresă. Scrieți codul in cutia alăturată.</target>
         </trans-unit>
         <trans-unit id="Confirm" translate="yes" xml:space="preserve">
           <source>Confirm</source>
@@ -140,7 +140,7 @@
         </trans-unit>
         <trans-unit id="DeletePacient" translate="yes" xml:space="preserve">
           <source>Delete pacient</source>
-          <target state="new">Delete pacient</target>
+          <target state="new">Stergeți pacient</target>
         </trans-unit>
         <trans-unit id="Description" translate="yes" xml:space="preserve">
           <source>Description</source>
@@ -160,11 +160,11 @@
         </trans-unit>
         <trans-unit id="EmailProfile" translate="yes" xml:space="preserve">
           <source>Email:</source>
-          <target state="needs-review-translation" state-qualifier="tm-suggestion">E-mail</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">E-mail:</target>
         </trans-unit>
         <trans-unit id="EmptyEmail" translate="yes" xml:space="preserve">
           <source>You didn't introduced an email</source>
-          <target state="new">You didn't introduced an email</target>
+          <target state="new">Nu ați introdus adresă de email</target>
         </trans-unit>
         <trans-unit id="EnterCode" translate="yes" xml:space="preserve">
           <source>Enter code</source>
@@ -176,7 +176,7 @@
         </trans-unit>
         <trans-unit id="FirstName" translate="yes" xml:space="preserve">
           <source>First name</source>
-          <target state="new">First name</target>
+          <target state="new">Nume</target>
         </trans-unit>
         <trans-unit id="ForgotPass" translate="yes" xml:space="preserve">
           <source>Forgot password?</source>
@@ -188,7 +188,7 @@
         </trans-unit>
         <trans-unit id="GoMainPage" translate="yes" xml:space="preserve">
           <source>Click here to go to main page</source>
-          <target state="new">Click pentru a va intoarce pe pagina principala</target>
+          <target state="new">Click pentru a vă întoarce pe pagina principală</target>
         </trans-unit>
         <trans-unit id="HasAccount" translate="yes" xml:space="preserve">
           <source>Already have an account?</source>
@@ -200,7 +200,7 @@
         </trans-unit>
         <trans-unit id="Home" translate="yes" xml:space="preserve">
           <source>Home</source>
-          <target state="needs-review-translation" state-qualifier="tm-suggestion">Pornire</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">Acasă</target>
         </trans-unit>
         <trans-unit id="Inactive" translate="yes" xml:space="preserve">
           <source>Inactive</source>
@@ -208,7 +208,7 @@
         </trans-unit>
         <trans-unit id="LastName" translate="yes" xml:space="preserve">
           <source>Last name</source>
-          <target state="new">Last name</target>
+          <target state="new">Prenume</target>
         </trans-unit>
         <trans-unit id="LogIn" translate="yes" xml:space="preserve">
           <source>Log in</source>
@@ -220,7 +220,7 @@
         </trans-unit>
         <trans-unit id="MakeAppointment" translate="yes" xml:space="preserve">
           <source>Make appointment</source>
-          <target state="new">Make appointment</target>
+          <target state="new">Programează-mă</target>
         </trans-unit>
         <trans-unit id="No" translate="yes" xml:space="preserve">
           <source>No</source>
@@ -244,15 +244,15 @@
         </trans-unit>
         <trans-unit id="PIN" translate="yes" xml:space="preserve">
           <source>PIN</source>
-          <target state="needs-review-translation" state-qualifier="tm-suggestion">Cod PIN</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">CNP</target>
         </trans-unit>
         <trans-unit id="PINProfile" translate="yes" xml:space="preserve">
           <source>PIN:</source>
-          <target state="needs-review-translation" state-qualifier="tm-suggestion">PIN</target>
+          <target state="needs-review-translation" state-qualifier="tm-suggestion">CNP</target>
         </trans-unit>
         <trans-unit id="PlaceOfBirth" translate="yes" xml:space="preserve">
           <source>Place of birth</source>
-          <target state="new">Place of birth</target>
+          <target state="new">Locul nașterii</target>
         </trans-unit>
         <trans-unit id="Profile" translate="yes" xml:space="preserve">
           <source>Profile</source>
@@ -260,23 +260,23 @@
         </trans-unit>
         <trans-unit id="PwdDigit" translate="yes" xml:space="preserve">
           <source>Your password should contain at least one digit.</source>
-          <target state="new">Your password should contain at least one digit.</target>
+          <target state="new">Parola trebuie să conțină minim o cifră.</target>
         </trans-unit>
         <trans-unit id="PwdLowerCharacter" translate="yes" xml:space="preserve">
           <source>Your password should contain at least one lowercase character.</source>
-          <target state="new">Your password should contain at least one lowercase character.</target>
+          <target state="new">Parola trebuie să conțină minim o literă mică.</target>
         </trans-unit>
         <trans-unit id="PwdMedium" translate="yes" xml:space="preserve">
           <source>Your password strength is medium.</source>
-          <target state="new">Your password strength is medium.</target>
+          <target state="new">Parola dumneavoastră este medie.</target>
         </trans-unit>
         <trans-unit id="PwdStrong" translate="yes" xml:space="preserve">
           <source>Your password is strong.</source>
-          <target state="new">Your password is strong.</target>
+          <target state="new">Parola dumneavoastră este puternică.</target>
         </trans-unit>
         <trans-unit id="PwdUpperCharacter" translate="yes" xml:space="preserve">
           <source>Your password should contain at least one upper character.</source>
-          <target state="new">Your password should contain at least one upper character.</target>
+          <target state="new">Parola dumneavoastră trebuie să conțină minim o literă mare.</target>
         </trans-unit>
         <trans-unit id="PwdVeryStrong" translate="yes" xml:space="preserve">
           <source>Your password is very strong.</source>
@@ -284,7 +284,7 @@
         </trans-unit>
         <trans-unit id="PwdWeak" translate="yes" xml:space="preserve">
           <source>Your password is weak.</source>
-          <target state="new">Your password is weak.</target>
+          <target state="new">Parola dumneavoastră este slabă.</target>
         </trans-unit>
         <trans-unit id="RecoveryPwd" translate="yes" xml:space="preserve">
           <source>Recovery password</source>
@@ -296,7 +296,7 @@
         </trans-unit>
         <trans-unit id="RegistrationSucceed" translate="yes" xml:space="preserve">
           <source>Your registration is successful. Please wait for the doctor to accept your request.</source>
-          <target state="new">Your registration is successful. Please wait for the doctor to accept your request.</target>
+          <target state="new">Înregistrare cu succes. Vă rugăm așteptați confirmarea medicului.</target>
         </trans-unit>
         <trans-unit id="Requests" translate="yes" xml:space="preserve">
           <source>Requests</source>
@@ -304,7 +304,7 @@
         </trans-unit>
         <trans-unit id="SaveChanges" translate="yes" xml:space="preserve">
           <source>Are you sure you want to save the changes?</source>
-          <target state="new">Are you sure you want to save the changes?</target>
+          <target state="new">Ești sigur/ă că vrei să salvezi schimbările?</target>
         </trans-unit>
         <trans-unit id="SendEmail" translate="yes" xml:space="preserve">
           <source>Send email</source>
@@ -324,11 +324,11 @@
         </trans-unit>
         <trans-unit id="SucRegistration" translate="yes" xml:space="preserve">
           <source>Successful registration</source>
-          <target state="new">Successful registration</target>
+          <target state="new">Înregistrare cu succes.</target>
         </trans-unit>
         <trans-unit id="UnavailableDate" translate="yes" xml:space="preserve">
           <source>The date is not available. </source>
-          <target state="new">The date is not available. </target>
+          <target state="new">Data nu este disponibilă. </target>
         </trans-unit>
         <trans-unit id="Username" translate="yes" xml:space="preserve">
           <source>Username</source>

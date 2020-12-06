@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace mobile.ViewModels
 {
@@ -18,6 +18,28 @@ namespace mobile.ViewModels
                 return FirstName + " " + LastName;
             }
 
+        }
+        public ICommand AcceptPatientCommand
+
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    App.plm.ApproveUser();
+                });
+            }
+        }
+        public ICommand DeletePatientCommand
+
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    App.plm.DeleteUser();
+                });
+            }
         }
     }
 }

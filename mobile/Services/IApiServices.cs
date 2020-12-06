@@ -10,8 +10,11 @@ namespace mobile.Services
     {
         Task<bool> RegisterAsync(string firstName, string lastName, string email, string cnp, DateTime dateOfBirth, string phoneNumber, string password, string repeatPassword, int doctorId);
         Task<bool> LoginAsync(string UserName, string Password);
-        public Task<bool> GetUnapprovedPatientsAsync();
+        public Task<List<PatientModel>> GetUnapprovedPatientsAsync(string token);
         public  Task<List<DoctorModel>> GetAboutUsDoctorsAsync();
         public Task<dynamic> GetPatientProfileAsync(string token);
+
+        public  Task<bool> DeleteUserAsync(string token, int id);
+        public  Task<bool> ApproveUserASync(string token, int id);
     }
 }

@@ -1,19 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 
 // this class is used to provide functionality for both patients list and new requests list
 namespace mobile.ViewModels
 {
-    class PatientListModel
+    public class PatientListModel : INotifyPropertyChanged
     {
-       public ObservableCollection<PatientModel> patients = new ObservableCollection<PatientModel>();
-       public ObservableCollection<PatientModel> requests = new ObservableCollection<PatientModel>();
+
+        public ICommand PatientsCommand
+
+        {
+            get
+            {
+                return new Command( () =>
+                {
+                    getPatients();
+                });
+            }
+        }
+  
+        public List<PatientModel> Requests
+        {
+            get
+            {
+                return _requests;
+            }
+            set
+            {
+                _requests = value;
+                OnPropertyChanged();
+
+
+            }
+        }
+        private List<PatientModel> _requests = new List<PatientModel>();
+        public ObservableCollection<PatientModel> patients = new ObservableCollection<PatientModel>();
         private PatientModel oldPatient;
         private PatientModel oldRequest;
-        public PatientListModel() => _ =  App.apiServicesManager.getUnapprovedUsers();
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        
+        public PatientListModel()
+        {
+            getPatients();
+        }
+        public async void getPatients()
+        {
+            Requests = await App.apiServicesManager.getUnapprovedUsers(App.user.token);
+
+        }
+        protected virtual void OnPropertyChanged([CallerMemberName] string
+            propertyName = null)
+
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         // use l as an indicator of which list you want to update, use "R" for requests and "P" for patients
         public void HideOrShowPatient(PatientModel a, string l)
@@ -24,7 +73,7 @@ namespace mobile.ViewModels
                 {
                     //click twice to hide the details
                     a.IsVisible = !a.IsVisible;
-                    UpdateList(a,l);
+                    UpdateList(a, l);
 
                 }
                 else
@@ -33,11 +82,11 @@ namespace mobile.ViewModels
                     {
                         // hide the old selected item details
                         oldPatient.IsVisible = false;
-                        UpdateList(oldPatient,l);
+                        UpdateList(oldPatient, l);
                     }
                     // show selected item details
                     a.IsVisible = true;
-                    UpdateList(a,l);
+                    UpdateList(a, l);
 
                 }
                 oldPatient = a;
@@ -49,7 +98,7 @@ namespace mobile.ViewModels
                 {
                     //click twice to hide the details
                     a.IsVisible = !a.IsVisible;
-                    UpdateList(a,l);
+                    UpdateList(a, l);
 
                 }
                 else
@@ -58,11 +107,11 @@ namespace mobile.ViewModels
                     {
                         // hide the old selected item details
                         oldRequest.IsVisible = false;
-                        UpdateList(oldRequest,l);
+                        UpdateList(oldRequest, l);
                     }
                     // show selected item details
                     a.IsVisible = true;
-                    UpdateList(a,l);
+                    UpdateList(a, l);
 
                 }
                 oldRequest = a;
@@ -79,10 +128,44 @@ namespace mobile.ViewModels
             }
             else if (l.Equals("R"))
             {
-                var index = requests.IndexOf(a);
-                requests.Remove(a);
-                requests.Insert(index, a);
+                var index = _requests.IndexOf(a);
+                _requests.Remove(a);
+                _requests.Insert(index, a);
+                var _requests2 = new List<PatientModel>();
+                foreach (PatientModel p in _requests)
+                    _requests2.Add(p);
+                Requests = _requests2;
             }
+        }
+        public async void ApproveUser() {
+
+            await App.apiServicesManager.ApproveUserASync(App.user.token, oldRequest.Id);
+            var _requests2 = new List<PatientModel>();
+            foreach (PatientModel p in _requests)
+            {
+                if (p.Id == oldRequest.Id)
+                    _requests.Remove(p);
+                else _requests2.Add(p);
+            }
+            Requests = _requests2;
+
+
+        }
+        public async void DeleteUser()
+        {
+
+            await App.apiServicesManager.DeleteUserAsync(App.user.token, oldRequest.Id);
+            var _requests2 = new List<PatientModel>();
+            foreach (PatientModel p in _requests)
+
+            {
+                if (p.Id == oldRequest.Id)
+                    _requests.Remove(p);
+                else _requests2.Add(p);
+            }
+            Requests = _requests2;
+
+
         }
     }
 }

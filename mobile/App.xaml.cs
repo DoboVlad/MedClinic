@@ -12,6 +12,8 @@ namespace mobile
         public static  ApiServicesManager apiServicesManager { get; private set; }
         public static User user { get; set; }
         public static AboutUsModel aum;
+        public static PatientListModel plm;
+     
         public App()
         {
             InitializeComponent();
@@ -20,6 +22,7 @@ namespace mobile
             user = new User();
             aum = new AboutUsModel();
             MainPage = new NavigationPage(new MainPage());
+          
         }
 
         protected override void OnStart()
