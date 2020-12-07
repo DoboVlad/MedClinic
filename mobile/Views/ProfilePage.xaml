@@ -38,7 +38,7 @@
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{local:Translate PINProfile}" FontAttributes="Bold"/>
-                            <Label x:Name="lblPatientPIN" Text="{Binding PIN}"/>
+                            <Label x:Name="lblPatientPIN" Text="{Binding cnp}"/>
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>

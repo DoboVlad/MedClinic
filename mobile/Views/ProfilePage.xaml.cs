@@ -14,19 +14,27 @@ namespace mobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage, INotifyPropertyChanged
     {
+        
          ProfileModel profileModel = new ProfileModel();
 
         public ProfilePage()
         {
             InitializeComponent();
-            
-            Patient patient2 = profileModel.patient;
-            Task.Delay(5000).Wait();
-            BindingContext = patient2;
+           
+           // Patient patient2 = profileModel.patient;
+         //   Task.Delay(5000).Wait();
+         //   BindingContext = patient2;
         }
-        
 
-            async private void btnLogOut_Clicked(Object sender, EventArgs e)
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            BindingContext = profileModel.patient;
+        }
+
+
+        async private void btnLogOut_Clicked(Object sender, EventArgs e)
         {
            
             App.user.token = "";
