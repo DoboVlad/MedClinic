@@ -1,104 +1,102 @@
 <!--engleza-->
-<div *ngIf = "this.userService.language == 0">
 <app-spinner *ngIf="this.userService.isFetching  == true"></app-spinner>
-<div class="container" *ngIf="this.userService.isFetching == false">
-
-    <div class="left" *ngIf = "this.userService.role == 0">
-        <img src="https://img.icons8.com/cotton/128/000000/user-male--v1.png" alt="user" width="140">
-        <h2>{{user.firstName}} {{user.lastName}}</h2>
-        <div class="buttons">
-            <div class="button">
-                <input type="submit" value="Change doctor" routerLink="/change-doctor">  <!--non-existent right now -->
-            </div>
-            <div class="button">
-                <input type="submit" value="Appointment" routerLink="/appointments">
-            </div>
-        </div>
-    </div>
-    <div class="right" *ngIf = "this.userService.role == 0">
-        <div class="info">
-            <h3>Information</h3>
-            <div class="info_data">
-                <div class="data">
-                   <h4>Email</h4>
-                  <input type="text" name="mail" [value]="user.email" readonly>
+<div *ngIf = "this.userService.language == 0">
+    <div class="container" *ngIf="this.userService.isFetching == false">
+        <div class="left" *ngIf = "this.userService.role == 0">
+            <img src="https://img.icons8.com/cotton/128/000000/user-male--v1.png" alt="user" width="140">
+            <h2>{{user.firstName}} {{user.lastName}}</h2>
+            <div class="buttons">
+                <div class="button">
+                    <input type="submit" value="Change doctor" routerLink="/change-doctor">  <!--non-existent right now -->
                 </div>
-                <div class="data">
-                   <h4>Phone</h4>
-                   <input type="text" name="phone" [value]="user.phoneNumber" readonly>
-                </div>
-            </div><br>
-            <div class="info_data">
-                <div class="data">
-                   <h4>Sex</h4>
-                   <input type="text" name="sex" [value]="user.gender" readonly>
-                </div>
-                <div class="data">
-                    <h4>Age</h4>
-                    <input type="text" name="birthday" [value]="user.age" readonly>
-                </div>
-            </div><br>
-            <div class="info_data">
-                <div class="data">
-                    <h4>Social Security Number</h4>
-                    <input type="text" name="cnp" [value]="user.cnp" readonly>
-                </div>
-                <div class="data">
-                    <h4>Doctor</h4>
-                    <input type="text" name="doctor" [value]="user.doctor.firstName + ' ' + user.doctor.lastName" readonly>
+                <div class="button">
+                    <input type="submit" value="Appointment" routerLink="/appointments">
                 </div>
             </div>
         </div>
-    </div>
+        <div class="right" *ngIf = "this.userService.role == 0">
+            <div class="info">
+                <h3>Information</h3>
+                <div class="info_data">
+                    <div class="data">
+                        <h4>Email</h4>
+                        <input type="text" name="mail" [value]="user.email" readonly>
+                    </div>
+                    <div class="data">
+                        <h4>Phone</h4>
+                        <input type="text" name="phone" [value]="user.phoneNumber" readonly>
+                    </div>
+                </div><br>
+                <div class="info_data">
+                    <div class="data">
+                        <h4>Sex</h4>
+                        <input type="text" name="sex" [value]="user.gender" readonly>
+                    </div>
+                    <div class="data">
+                        <h4>Age</h4>
+                        <input type="text" name="birthday" [value]="user.age" readonly>
+                    </div>
+                </div><br>
+                <div class="info_data">
+                    <div class="data">
+                        <h4>Social Security Number</h4>
+                        <input type="text" name="cnp" [value]="user.cnp" readonly>
+                    </div>
+                    <div class="data">
+                        <h4>Doctor</h4>
+                        <input type="text" name="doctor" [value]="user.doctor.firstName + ' ' + user.doctor.lastName" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
     <!-- MEDIC PROFILE -->
     <div class="container" *ngIf="this.userService.isFetching == false">
-     <div *ngIf = "this.userService.language == 0">
-    <div class="left" *ngIf = "this.userService.role == 1">
-      <img src="https://img.icons8.com/cotton/128/000000/user-male--v1.png" alt="user" width="140">
-      <h2>{{user.firstName}} {{user.lastName}}</h2>
-      <div class="buttons">
-          <div class="button">
-              <input type="submit" value="Appointment" routerLink="/appointments">
-          </div>
-      </div>
-    </div>
-     <div class="right" *ngIf = "this.userService.role == 1">
-        <div class="info">
-            <h3>Information</h3>
-            <div class="info_data">
-                <div class="data">
-                   <h4>Email</h4>
-                  <input type="text" name="mail" [value]="user.email" readonly>
+        <div class="left" *ngIf = "this.userService.role == 1">
+            <img src="https://img.icons8.com/cotton/128/000000/user-male--v1.png" alt="user" width="140">
+            <h2>{{user.firstName}} {{user.lastName}}</h2>
+            <div class="buttons">
+                <div class="button">
+                    <input type="submit" value="Appointment" routerLink="/appointments">
                 </div>
-                <div class="data">
-                   <h4>Phone</h4>
-                   <input type="text" name="phone" [value]="user.phoneNumber" readonly>
-                </div>
-            </div><br>
-            <div class="info_data">
-                <div class="data">
-                    <h4>Age</h4>
-                    <input type="text" name="birthday" [value]="user.age" readonly>
-                </div>
-                <div class="data">
-                  <h4>Sex</h4>
-                  <input type="text" name="birthday" value="M" readonly>
-              </div>
             </div>
-            <div class="info_data">
-              <p>{{user.description}}</p>
-            </div>
+        </div>
+        <div class="right" *ngIf = "this.userService.role == 1">
+            <div class="info">
+                <h3>Information</h3>
+                <div class="info_data">
+                    <div class="data">
+                        <h4>Email</h4>
+                        <input type="text" name="mail" [value]="user.email" readonly>
+                    </div>
+                    <div class="data">
+                        <h4>Phone</h4>
+                        <input type="text" name="phone" [value]="user.phoneNumber" readonly>
+                    </div>
+                </div><br>
+                <div class="info_data">
+                    <div class="data">
+                        <h4>Age</h4>
+                        <input type="text" name="birthday" [value]="user.age" readonly>
+                    </div>
+                    <div class="data">
+                        <h4>Sex</h4>
+                        <input type="text" name="birthday" value="M" readonly>
+                    </div>
+                </div>
+                <div class="info_data">
+                    <p>{{user.description}}</p>
+                    </div>
+                </div>
         </div>
     </div>
 </div>
-</div>
 
 <!--romana-->
+<app-spinner *ngIf="this.userService.isFetching  == true"></app-spinner>
 <div *ngIf = "this.userService.language == 1">
-    <app-spinner *ngIf="this.userService.isFetching  == true"></app-spinner>
     <div class="container" *ngIf="this.userService.isFetching == false">
 
         <div class="left" *ngIf = "this.userService.role == 0">
@@ -148,27 +146,25 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
 
         <!-- MEDIC PROFILE -->
-         <div *ngIf = "this.userService.language == 1">
-        <div class="left" *ngIf = "this.userService.role == 1">
-          <img src="https://img.icons8.com/cotton/128/000000/user-male--v1.png" alt="user" width="140">
-          <h2>{{user.firstName}} {{user.lastName}}</h2>
-          <div class="buttons">
-              <div class="button">
-                  <input type="submit" value="Appointment" routerLink="/appointments">
-              </div>
-          </div>
+    <div class="left" *ngIf = "this.userService.role == 1">
+        <img src="https://img.icons8.com/cotton/128/000000/user-male--v1.png" alt="user" width="140">
+        <h2>{{user.firstName}} {{user.lastName}}</h2>
+        <div class="buttons">
+            <div class="button">
+                <input type="submit" value="Appointment" routerLink="/appointments">
+            </div>
         </div>
-         <div class="right" *ngIf = "this.userService.role == 1">
+        <div class="right" *ngIf = "this.userService.role == 1">
             <div class="info">
                 <h3>Informatii</h3>
                 <div class="info_data">
                     <div class="data">
                        <h4>Email</h4>
-                      <input type="text" name="mail" [value]="user.email" readonly>
+                       <input type="text" name="mail" [value]="user.email" readonly>
                     </div>
                     <div class="data">
                        <h4>Nr tel</h4>
@@ -186,9 +182,9 @@
                   </div>
                 </div>
                 <div class="info_data">
-                  <p>{{user.description}}</p>
+                    <p>{{user.description}}</p>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+</div>
