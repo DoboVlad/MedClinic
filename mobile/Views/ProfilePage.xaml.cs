@@ -44,7 +44,7 @@ namespace mobile
 
          private void  OnSettingsTapped(object sender, EventArgs e)
         {
-            Page page = new SettingsPage();
+            Page page = new SettingsPage(profileModel.patient);
             Navigation.PushAsync(page);
             NavigationPage.SetHasNavigationBar(page, false);
             //await Navigation.PushAsync(new SettingsPage());

@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -6,7 +7,6 @@ namespace mobile.ViewModels
 {
     public class PatientModel : Patient
     {
-
         // testing the visibility of the details
         public bool IsVisible { get; set; }
         public string FullName
@@ -38,6 +38,26 @@ namespace mobile.ViewModels
                 {
                     App.plm.DeleteUser();
                 });
+            }
+        }
+        public ICommand UpdateCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    var isSuccess = await App.apiServicesManager.UpdateUserAsync(FirstName, LastName, Phone, Email, App.user.token);
+                    if (isSuccess)
+                    {
+                        Console.WriteLine("cu suces");
+                    }
+                    else
+                    {
+                        Console.WriteLine("fara suces");
+                    }
+                });
+
+
             }
         }
     }

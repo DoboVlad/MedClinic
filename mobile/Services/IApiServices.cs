@@ -16,5 +16,6 @@ namespace mobile.Services
 
         public  Task<bool> DeleteUserAsync(string token, int id);
         public  Task<bool> ApproveUserASync(string token, PatientModel patient);
+        public Task<bool> UpdateUserAsync(string firstName, string lastName, string phoneNumber, string email, string token);
     }
 }

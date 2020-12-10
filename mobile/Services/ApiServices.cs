@@ -28,6 +28,7 @@ namespace mobile.Services
         public static string getPatientInfoUrl = $"{BaseAddress}/api/users/MyAccount";
         public static string deleteUser = $"{BaseAddress}/api/users/DeletePatient";
         public static string approveUser = $"{BaseAddress}/api/users/ApproveUser";
+        public static string updatePatient = $"{BaseAddress}/api/users/updateUser";
 
         // Pass the handler to httpclient(from you are calling api) only in debug mode we have to pass the ssl, in release we dont
         public ApiServices()
@@ -142,9 +143,18 @@ namespace mobile.Services
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             var response = await client.GetAsync(getPatientInfoUrl);
-            var usr = await response.Content.ReadAsStringAsync();
-            JObject userDynamic =  JsonConvert.DeserializeObject<dynamic>(usr.ToString());
-            Patient patient = JsonConvert.DeserializeObject<PatientModel>(userDynamic.ToString());
+            var content = await response.Content.ReadAsStringAsync();
+            JObject userData =  JsonConvert.DeserializeObject<dynamic>(content.ToString());
+            PatientModel patient = new PatientModel
+            {
+                Id = userData.Value<int>("id"),
+                FirstName = userData.Value<string>("firstName"),
+                LastName = userData.Value<string>("lastName"),
+                Email = userData.Value<string>("email"),
+                Phone = userData.Value<string>("phoneNumber"),
+                cnp = userData.Value<string>("cnp"),
+                age = userData.Value<int>("age")
+            };
             return patient;
         }
         public async Task<bool> DeleteUserAsync(string token, int id)
@@ -172,6 +182,22 @@ namespace mobile.Services
             else return false;
 
         }
-
+        public async Task<bool> UpdateUserAsync(string firstName, string lastName, string phoneNumber, string email, string token)
+        {
+            UpdatePatient updateModel = new UpdatePatient
+            {
+                firstName = firstName,
+                lastName = lastName,
+                email= email,
+                phoneNumber = phoneNumber
+            };
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var jsonPatient = JsonConvert.SerializeObject(updateModel);
+            HttpContent content = new StringContent(jsonPatient);
+            content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var respons = await client.PutAsync(updatePatient, content);
+            return respons.IsSuccessStatusCode;
+        }
     }
 }

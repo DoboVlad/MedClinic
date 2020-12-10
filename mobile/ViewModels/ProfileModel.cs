@@ -8,8 +8,8 @@ namespace mobile.ViewModels
 {
     class ProfileModel: INotifyPropertyChanged
     {
-        public Patient _patient = new Patient();
-        public Patient patient
+        public PatientModel _patient = new PatientModel();
+        public PatientModel patient
         {
             get
             {
@@ -17,7 +17,7 @@ namespace mobile.ViewModels
             }
             set
             {
-                _patient = value;
+                _patient = value;                
                 OnPropertyChanged();
             }
         }
@@ -38,5 +38,6 @@ namespace mobile.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
     }
 }

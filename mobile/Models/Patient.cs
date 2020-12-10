@@ -16,6 +16,7 @@ namespace mobile
         private string pin;
        
         private string phone;
+        private string idDoctor;
 
         public int age { get; set; }
 

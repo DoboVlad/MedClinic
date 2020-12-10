@@ -38,5 +38,9 @@ namespace mobile.Services
         {
             return await apiS.DeleteUserAsync(token, id);
         }
+        public async Task<bool> UpdateUserAsync(string firstName, string lastName, string phoneNumber, string email, string token)
+        {
+            return await apiS.UpdateUserAsync(firstName, lastName, phoneNumber, email, token);
+        }
     }
 }

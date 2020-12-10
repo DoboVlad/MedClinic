@@ -64,31 +64,31 @@
                         </Grid.RowDefinitions>
                         <StackLayout Grid.Row="0" Orientation="Horizontal">
                             <Label x:Name="lblFirst" Text="{local:Translate FirstName}" />
-                            <Label x:Name="entFirst" Text="First name" FontSize="16" HorizontalOptions="EndAndExpand"  />
+                            <Label x:Name="entFirst" Text="{Binding FirstName}" FontSize="16" HorizontalOptions="EndAndExpand"  />
                         </StackLayout>
                         <StackLayout Grid.Row="1" Orientation="Horizontal">
                             <Label x:Name="lblLast" Text="{local:Translate LastName}"/>
-                            <Entry x:Name="entLast" Placeholder="LastName" FontSize="16" />
+                            <Entry x:Name="entLast"  Text="{Binding LastName}" FontSize="16" />
                         </StackLayout>
                         <StackLayout Grid.Row="2" Orientation="Horizontal">
                             <Label x:Name="lblPhone" Text="{local:Translate Phone}"  />
-                            <Entry x:Name="entPhone" Placeholder=" PhoneNumber" FontSize="16" Keyboard="Numeric" />
+                            <Entry x:Name="entPhone" Text="{Binding Phone}" FontSize="16" Keyboard="Numeric" />
                         </StackLayout>
                         <StackLayout Grid.Row="3" Orientation="Horizontal">
                             <Label x:Name="lblEmail" Text="{local:Translate Email}" />
-                            <Entry x:Name="entEmail" Placeholder="Email" FontSize="16"  />
+                            <Entry x:Name="entEmail" Text="{Binding Email}" FontSize="16"  />
                         </StackLayout>
                         <StackLayout Grid.Row="4" Orientation="Horizontal">
                             <Label x:Name="lblPin" Text="{local:Translate PIN}" />
-                            <Label x:Name="lblUserPin" Text="2990510256132" FontSize="16" HorizontalOptions="EndAndExpand" />
+                            <Label x:Name="lblUserPin" Text="{Binding cnp}" FontSize="16" HorizontalOptions="EndAndExpand" />
                         </StackLayout>
                         <StackLayout Grid.Row="5" Orientation="Horizontal">
                             <Label x:Name="lblAge" Text="{local:Translate Age}" />
-                            <Label x:Name="lblUserAge" Text="29" FontSize="16" HorizontalOptions="EndAndExpand" />
+                            <Label x:Name="lblUserAge" Text="{Binding age}" FontSize="16" HorizontalOptions="EndAndExpand" />
                         </StackLayout>
                         <StackLayout Grid.Row="6" Orientation="Horizontal">
                             <Label x:Name="lblDoctor" Text="{local:Translate Doctor}"/>
-                            <Label x:Name="lblUserDoctor" Text="{local:Translate Doctor}" FontSize="16" HorizontalOptions="EndAndExpand"/>
+                            <Label x:Name="lblUserDoctor" Text="{Binding IdDoctor}" FontSize="16" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                         <StackLayout Grid.Row="7" Orientation="Horizontal">
                             <Label x:Name="lblPassword" Text="{local:Translate Password}" HorizontalOptions="StartAndExpand"/>
