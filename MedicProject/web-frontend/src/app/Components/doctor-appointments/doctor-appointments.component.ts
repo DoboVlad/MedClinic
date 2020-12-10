@@ -15,9 +15,7 @@ export class DoctorAppointmentsComponent implements OnInit {
   ngOnInit(): void {
     this.appService.getAllMedicAppointments().subscribe(appointments => {
       this.appointments = appointments;
-     this.appointments.forEach(app => {
-      console.log(app.date);
-      })
+      console.log(appointments);
     });
   }
 }

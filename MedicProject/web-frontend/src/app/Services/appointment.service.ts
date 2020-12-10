@@ -31,7 +31,7 @@ export class AppointmentService {
   }
 
   getAllMedicAppointments(){
-    return this.http.get<Appointment[]>(this.baseUrl + "/allDoctorApp/221",{
+    return this.http.get<Appointment[]>(this.baseUrl + "/allDoctorApp/1",{
       headers: {
         "Authorization": "Bearer " + this.userService.token
       }

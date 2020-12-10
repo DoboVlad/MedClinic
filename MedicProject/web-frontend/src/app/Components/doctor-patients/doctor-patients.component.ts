@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/Models/UserModel';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -7,10 +8,13 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./doctor-patients.component.css']
 })
 export class DoctorPatientsComponent implements OnInit {
-
+  patients: User[];
   constructor(public userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getAllPatients().subscribe(patients => {
+      this.patients = patients
+    })
   }
 
 }

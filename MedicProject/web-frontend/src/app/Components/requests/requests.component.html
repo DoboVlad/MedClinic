@@ -4,10 +4,10 @@
 </div>
 
 <div class="doctor-requests" *ngIf = "this.userService.language == 0">
-    <div class="requests">
-            <input type="text" value="Coroian Daniel">
-            <button type="submit" name="accept" value="Accept">Accept</button>
-            <button type="submit" name="refuse" value="Refuse">Refuse</button>  
+    <div class="requests" *ngFor = "let user of users">
+            <input type="text" value="{{user.firstName}} {{user.lastName}}">
+            <button type="submit" name="accept" (click) = "acceptUser(user.id)" value="Accept">Accept</button>
+            <button type="submit" name="refuse" value="Refuse">Refuse</button>
     </div>
 </div>
 <!--romana-->
@@ -16,9 +16,9 @@
 </div>
 
 <div class="doctor-requests" *ngIf = "this.userService.language == 1">
-    <div class="requests">
-            <input type="text" value="Coroian Daniel">
-            <button type="submit" name="accept" value="Accept">Accept</button>
-            <button type="submit" name="refuse" value="Refuse">Refuz</button>  
-    </div>
+  <div class="requests" *ngFor = "let user of users">
+    <input type="text" value="{{user.firstName}} {{user.lastName}}">
+    <button type="submit" name="accept" (click) = "acceptUser(user.id)" value="Accept">Accept</button>
+    <button type="submit" name="refuse" value="Refuse">Refuse</button>
+</div>
 </div>

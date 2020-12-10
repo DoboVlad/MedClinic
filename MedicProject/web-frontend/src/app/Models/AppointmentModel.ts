@@ -5,4 +5,6 @@ export class Appointment{
   hour?: string;
   date?: Date;
   user?: User;
+  firstName? : string;
+  lastName? : string;
 }

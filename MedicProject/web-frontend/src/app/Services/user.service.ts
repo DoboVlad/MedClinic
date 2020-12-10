@@ -106,4 +106,30 @@ export class UserService {
       }
     });
     }
+
+    getAllPatients(){
+      return this.http.get<User[]>(this.baseUrl + '/api/users/getPatients', {
+        headers: {
+          'Authorization': 'Bearer ' + this.token
+        }
+      });
+    }
+
+    getUnapprovedUsers(){
+      return this.http.get<User[]>(this.baseUrl + '/api/users/getUnapprovedUsers', {
+        headers: {
+          'Authorization': 'Bearer ' + this.token
+        }
+      });
+    }
+
+    approveUser(id: number){
+        this.http.put(this.baseUrl + '/api/users/ApproveUser?id=' + id, id, {
+          headers: {
+            'Authorization': 'Bearer ' + this.token
+          }
+        }).subscribe(user => {
+          this.router.navigate(["/home"]);
+        });
+    }
 }

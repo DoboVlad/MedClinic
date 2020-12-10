@@ -16,12 +16,12 @@
     </div>
 </div>
 <div class="doctor-patients" *ngIf = "this.userService.language == 0">
-    <div class="patients">
-            <span class="name"> Maria Filoftea:</span><br><br>
-            <span class="sex">Sex: Female</span>&nbsp;&nbsp;<span class="varsta">Age: 21</span><br>
-            <span class="cnp"> CNP: 1999999999999</span><br>
-            <span class="email">Email: maria.filoftea@gmail.com</span><br>
-            <span class="phone">Phone: 0700000000</span>
+    <div class="patients" *ngFor= "let user of patients">
+            <span class="name"> {{user.firstName}} {{user.lastName}}</span><br><br>
+            <span class="sex">Sex: Female</span>&nbsp;&nbsp;<span class="varsta">Age: {{user.age}}</span><br>
+            <span class="cnp"> CNP: {{user.cnp}}</span><br>
+            <span class="email">Email: {{user.email}}</span><br>
+            <span class="phone">Phone: {{user.phoneNumber}}</span>
 
     </div>
 </div>
@@ -43,12 +43,12 @@
     </div>
 </div>
 <div class="doctor-patients" *ngIf = "this.userService.language == 1">
-    <div class="patients">
-            <span class="name"> Maria Filoftea:</span><br><br>
-            <span class="sex">Sex: Female</span>&nbsp;&nbsp;<span class="varsta">Varsta: 21</span><br>
-            <span class="cnp"> CNP: 1999999999999</span><br>
-            <span class="email">Email: maria.filoftea@gmail.com</span><br>
-            <span class="phone">Nr. tel: 0700000000</span>
+  <div class="patients" *ngFor= "let user of patients">
+    <span class="name"> {{user.firstName}} {{user.lastName}}</span><br><br>
+    <span class="sex">Sex: Female</span>&nbsp;&nbsp;<span class="varsta">Age: {{user.age}}</span><br>
+    <span class="cnp"> CNP: {{user.cnp}}</span><br>
+    <span class="email">Email: {{user.email}}</span><br>
+    <span class="phone">Phone: {{user.phoneNumber}}</span>
 
-    </div>
+</div>
 </div>
