@@ -55,11 +55,11 @@
     <!-- MEDIC PROFILE -->
     <div class="container" *ngIf="this.userService.isFetching == false">
         <div class="left" *ngIf = "this.userService.role == 1">
-            <img src="https://img.icons8.com/cotton/128/000000/user-male--v1.png" alt="user" width="140">
+            <img src="{{user.photo}}" alt="user" height="180px">
             <h2>{{user.firstName}} {{user.lastName}}</h2>
             <div class="buttons">
                 <div class="button">
-                    <input type="submit" value="Appointment" routerLink="/appointments">
+                    <input type="submit" value="Appointment" routerLink="/doctorappointments">
                 </div>
             </div>
         </div>
@@ -98,7 +98,6 @@
 <app-spinner *ngIf="this.userService.isFetching  == true"></app-spinner>
 <div *ngIf = "this.userService.language == 1">
     <div class="container" *ngIf="this.userService.isFetching == false">
-
         <div class="left" *ngIf = "this.userService.role == 0">
             <img src="https://img.icons8.com/cotton/128/000000/user-male--v1.png" alt="user" width="140">
             <h2>{{user.firstName}} {{user.lastName}}</h2>
@@ -116,18 +115,18 @@
                 <h3>Informatii</h3>
                 <div class="info_data">
                     <div class="data">
-                       <h4>Email</h4>
-                      <input type="text" name="mail" [value]="user.email" readonly>
+                        <h4>Email</h4>
+                        <input type="text" name="mail" [value]="user.email" readonly>
                     </div>
                     <div class="data">
-                       <h4>Nr. tel</h4>
-                       <input type="text" name="phone" [value]="user.phoneNumber" readonly>
+                        <h4>Telefon</h4>
+                        <input type="text" name="phone" [value]="user.phoneNumber" readonly>
                     </div>
                 </div><br>
                 <div class="info_data">
                     <div class="data">
-                       <h4>Sex</h4>
-                       <input type="text" name="sex" [value]="user.gender" readonly>
+                        <h4>Sex</h4>
+                        <input type="text" name="sex" [value]="user.gender" readonly>
                     </div>
                     <div class="data">
                         <h4>Varsta</h4>
@@ -136,7 +135,7 @@
                 </div><br>
                 <div class="info_data">
                     <div class="data">
-                        <h4>Cod numeric personal</h4>
+                        <h4>Social Security Number</h4>
                         <input type="text" name="cnp" [value]="user.cnp" readonly>
                     </div>
                     <div class="data">
@@ -149,44 +148,44 @@
     </div>
 
 
-        <!-- MEDIC PROFILE -->
+    <!-- MEDIC PROFILE -->
     <div class="container" *ngIf="this.userService.isFetching == false">
         <div class="left" *ngIf = "this.userService.role == 1">
-            <img src="https://img.icons8.com/cotton/128/000000/user-male--v1.png" alt="user" width="140">
+          <img src="{{user.photo}}" alt="user" height="180px">
             <h2>{{user.firstName}} {{user.lastName}}</h2>
             <div class="buttons">
                 <div class="button">
-                    <input type="submit" value="Appointment" routerLink="/appointments">
+                    <input type="submit" value="Appointment" routerLink="/doctorappointments">
                 </div>
             </div>
-            <div class="right" *ngIf = "this.userService.role == 1">
-                <div class="info">
-                    <h3>Informatii</h3>
-                    <div class="info_data">
-                        <div class="data">
-                        <h4>Email</h4>
+        </div>
+        <div class="right" *ngIf = "this.userService.role == 1">
+            <div class="info">
+                <h3>Informatii</h3>
+                <div class="info_data">
+                    <div class="data">
+                        <h4>Adresa de email</h4>
                         <input type="text" name="mail" [value]="user.email" readonly>
-                        </div>
-                        <div class="data">
-                        <h4>Nr tel</h4>
+                    </div>
+                    <div class="data">
+                        <h4>Telefon</h4>
                         <input type="text" name="phone" [value]="user.phoneNumber" readonly>
-                        </div>
-                    </div><br>
-                    <div class="info_data">
-                        <div class="data">
-                            <h4>Varsta</h4>
-                            <input type="text" name="birthday" [value]="user.age" readonly>
-                        </div>
-                        <div class="data">
+                    </div>
+                </div><br>
+                <div class="info_data">
+                    <div class="data">
+                        <h4>Varsta</h4>
+                        <input type="text" name="birthday" [value]="user.age" readonly>
+                    </div>
+                    <div class="data">
                         <h4>Sex</h4>
                         <input type="text" name="birthday" value="M" readonly>
                     </div>
-                    </div>
-                    <div class="info_data">
-                        <p>{{user.description}}</p>
+                </div>
+                <div class="info_data">
+                    <p>{{user.description}}</p>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>

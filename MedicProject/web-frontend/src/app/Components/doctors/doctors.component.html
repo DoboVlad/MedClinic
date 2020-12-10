@@ -17,7 +17,7 @@
     <br>
     <div class="show-doctor" *ngIf = "this.userService.language == 0">
         <div class="doctor" *ngFor = "let medic of users">
-            <img src="/assets/icon-doctor.png">
+            <img src="{{medic.photo}}" width="200px">
             <p class="doctor-name">{{medic.firstName}} {{medic.lastName}}</p>
             <p class="doctor-description">{{medic.description}}</p>
             <div class="form2">

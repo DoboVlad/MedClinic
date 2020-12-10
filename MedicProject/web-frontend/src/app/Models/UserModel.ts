@@ -11,6 +11,7 @@ export class User{
   dateOfBirth?: Date;
   gender?: string;
   cnp?: string;
+  photo?: string;
   age?: number;
   phoneNumber?: String;
   isApproved?: number;

@@ -77,7 +77,7 @@
           <li routeLink="/home" *ngIf = "this.userService.isUserLoggedIn  == true" (click)="logout()">DECONECTARE</li>
           <li routerLink="/profile" *ngIf="this.userService.isUserLoggedIn == true && this.userService.isApproved == true">PROFIL</li>
           <li routerLink="/login" *ngIf= "this.userService.isUserLoggedIn == false">CONT</li>
-          <li routerLink="/requests"><span title="cereri" class="material-icons">
+          <li routerLink="/requests" *ngIf= "this.userService.isUserLoggedIn == true && this.userService.isApproved == true && this.userService.role  == 1"><span title="cereri" class="material-icons">
             notification_important
             </span>
         </li>
@@ -94,6 +94,7 @@
       <ul class="secondNavList">
           <li routerLink="/home">ACASA</li>
           <li routerLink="/doctors" *ngIf = "this.userService.role  == 0">DOCTORI</li>
+          <li routerLink="/doctorpatients" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">PACIENTI</li>
           <li routerLink="/appointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">PROGRAMARI</li>
           <li routerLink="/doctorappointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">PROGRAMARI</li>
           <a href="#footer"><li>CONTACT</li></a>
