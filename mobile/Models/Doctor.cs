@@ -14,13 +14,24 @@ namespace mobile
         private string email;
         private const string jobTitle = "Family Doctor";
         private string phone;
+        private int age;
         private ImageSource image;
         private string description;
 
 
         public int Id { get; set; }
 
-      
+        public int Age
+        {
+            get
+            {
+                return age;
+            }
+            set
+            {
+                age = value;
+            }
+        } 
         public string Description
         {
             get

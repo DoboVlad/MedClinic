@@ -14,8 +14,8 @@ namespace mobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage, INotifyPropertyChanged
     {
-        
-         ProfileModel profileModel = new ProfileModel();
+
+        public ProfileModel profileModel = new ProfileModel();
 
         public ProfilePage()
         {

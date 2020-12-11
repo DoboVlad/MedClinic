@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using mobile.ViewModels;
+using Xamarin.Forms;
 
 namespace mobile.Services
 {
@@ -31,6 +32,10 @@ namespace mobile.Services
         {
             return await apiS.GetPatientProfileAsync(token);
         }
+        public async Task<dynamic> GetDoctorProfileAsync(string token)
+        {
+            return await apiS.GetDoctorProfileAsync(token);
+        }
         public async Task<bool> ApproveUserASync(string token, PatientModel patient) {
             return await apiS.ApproveUserASync(token, patient);
         }
@@ -41,6 +46,10 @@ namespace mobile.Services
         public async Task<bool> UpdateUserAsync(string firstName, string lastName, string phoneNumber, string email, string token)
         {
             return await apiS.UpdateUserAsync(firstName, lastName, phoneNumber, email, token);
+        }
+        public async Task<bool> UpdateDoctorAsync(string firstName, string lastName, string phoneNumber, string email, string description, ImageSource photo, string token)
+        {
+            return await apiS.UpdateDoctorAsync(firstName, lastName, phoneNumber, email, description, photo, token);
         }
     }
 }
