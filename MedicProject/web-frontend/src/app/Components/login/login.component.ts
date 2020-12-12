@@ -17,8 +17,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     //initialize the reactive form
+    this.userService.error = null;
     this.loginForm = new FormGroup({
-      "email": new FormControl(null,Validators.required),
+      "email": new FormControl(null,[Validators.required, Validators.email]),
       "password": new FormControl(null, Validators.required)
     });
   }
@@ -30,4 +31,12 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl("/profile");
   }
 
+  error(){
+    if(this.userService.error != null){
+      return true;
+    }else {
+      return false;
+    }
+
+  }
 }

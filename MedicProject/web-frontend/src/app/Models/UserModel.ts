@@ -19,4 +19,5 @@ export class User{
   doctorId?: number;
   doctor?: Doctor;
   role?: number;
+  status?: any;
 }

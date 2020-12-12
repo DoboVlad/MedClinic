@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class UserService {
   baseUrl: String = "https://localhost:5001";
+  error: any;
   constructor(private http: HttpClient, private router: Router) { }
   user: User;
   token: string;
@@ -21,6 +22,7 @@ export class UserService {
   logInUser(user: User){
     this.http.post<User>(this.baseUrl + "/api/users/login", user).subscribe(user => {
       this.user = user;
+      console.log(user.status) + 'status';
       this.saveAuthData(user.token, user.role);
       this.token = user.token;
       this.isFetching = true;
@@ -36,6 +38,8 @@ export class UserService {
          this.isUserLoggedIn = true;
          this.router.navigate(["/waiting"]);
       }
+    }, error => {
+      this.error = error.status;
     });
   }
 

@@ -4,7 +4,20 @@
      <form class="login-form" [formGroup] = "loginForm" (ngSubmit) = "onSubmit()"> <!-- Bind the form to the loginForm -->
       <div class="log">Login</div><br>
       <input type="text" placeholder="email" formControlName="email" required/>
+      <span *ngIf = "!loginForm.get('email').valid && loginForm.get('email').touched">
+        <p class="red">Email is required</p>
+      </span>
+
+      <!-- <span *ngIf = "error">
+        <p class="red">Wrong email or password</p>
+      </span> -->
       <input type="password" placeholder="password" formControlName="password" required/>
+      <span *ngIf = "!loginForm.get('password').valid && loginForm.get('password').touched">
+        <p class="red">Password is required</p>
+      </span>
+      <span *ngIf = "error()">
+        <p class="red">Invalid credentials</p>
+      </span>
       <button type="submit">login</button>
       <p class="message">Not registered? <a routerLink="/register">Create an account</a></p>
       <p class="message">Forgot <a href="/forgotpassword"> password </a></p>
