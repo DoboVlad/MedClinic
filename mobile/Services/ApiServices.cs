@@ -31,7 +31,7 @@ namespace mobile.Services
         public static string approveUser = $"{BaseAddress}/api/users/ApproveUser";
         public static string updatePatient = $"{BaseAddress}/api/users/updateUser"; 
         public static string updateDoctor = $"{BaseAddress}/api/users/updateMedic";
-        public static string getAppts = $"{BaseAddress}/api/appointments/";
+        public static string getAppts = $"{BaseAddress}/api/appointments/myAppointments";
         // Pass the handler to httpclient(from you are calling api) only in debug mode we have to pass the ssl, in release we dont
         public ApiServices()
         {
@@ -138,6 +138,13 @@ namespace mobile.Services
                     Image = d.Value<string>("photo")
                 });
             }
+            foreach (DoctorModel dm in doctors)
+            {
+                int start = dm.Image.IndexOf("img");
+                
+                dm.Image = dm.Image.Substring(start + 4);
+                
+            }
             return doctors;
         }
         public async Task<dynamic> GetPatientProfileAsync(string token)
@@ -243,10 +250,10 @@ namespace mobile.Services
             var respons = await client.PutAsync(updateDoctor, content);
             return respons.IsSuccessStatusCode;
         }
-        public async Task<bool> getApptsAsync(int userId, string token) {
+        public async Task<bool> getApptsAsync(string token) {
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-            var response = await client.GetAsync(getAppts + userId);
+            var response = await client.GetAsync(getAppts);
             if (response.IsSuccessStatusCode)
                 return true;
             return false;

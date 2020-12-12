@@ -15,7 +15,7 @@ namespace mobile
         private const string jobTitle = "Family Doctor";
         private string phone;
         private int age;
-        private ImageSource image;
+        private string image;
         private string description;
 
 
@@ -43,7 +43,7 @@ namespace mobile
                 description = value;
             }
         }
-        public ImageSource Image
+        public string Image
         {
             get
             {
@@ -54,7 +54,16 @@ namespace mobile
                 image = value;
             }
         }
-      
+        public ImageSource Photo
+        {
+            get
+            {
+                return ImageSource.FromResource("mobile.assets.img." + Image);
+            }
+          
+        }
+
+
 
         public string FirstName
         {

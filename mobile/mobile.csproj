@@ -20,6 +20,9 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
+    <None Remove="assets\img\doctor2.png" />
+    <None Remove="assets\img\doctor3.png" />
+    <None Remove="assets\img\doctor4.png" />
     <None Remove="Images\aboutUs.png" />
     <None Remove="Images\appointment.png" />
     <None Remove="Images\home.png" />
@@ -36,6 +39,9 @@
     <None Remove="Images\womanWhite.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="assets\img\doctor2.png" />
+    <EmbeddedResource Include="assets\img\doctor3.png" />
+    <EmbeddedResource Include="assets\img\doctor4.png" />
     <EmbeddedResource Include="Images\aboutUs.png" />
     <EmbeddedResource Include="Images\appointment.png" />
     <EmbeddedResource Include="Images\home.png" />

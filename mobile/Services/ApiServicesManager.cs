@@ -51,9 +51,9 @@ namespace mobile.Services
         {
             return await apiS.UpdateDoctorAsync(firstName, lastName, phoneNumber, email, description, photo, token);
         }
-        public async Task<bool> getApptsAsync(int userId, string token) {
+        public async Task<bool> getApptsAsync(string token) {
 
-          return await apiS.getApptsAsync(userId, token);
+          return await apiS.getApptsAsync(token);
         }
     }
 }

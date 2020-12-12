@@ -32,7 +32,7 @@ namespace mobile.ViewModels
 
         }
         private async void getAppts() {
-          bool isResoinse = await App.apiServicesManager.getApptsAsync(App.user.id, App.user.token);
+          bool isResoinse = await App.apiServicesManager.getApptsAsync(App.user.token);
         }
         public void HideOrShowAppointment(AppointmentModel a)
         {
