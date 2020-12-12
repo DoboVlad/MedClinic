@@ -199,5 +199,23 @@ namespace mobile.Services
             var respons = await client.PutAsync(updatePatient, content);
             return respons.IsSuccessStatusCode;
         }
+        public async Task<bool> TestMethod(string firstName, string lastName, string phoneNumber, string email, string token)
+    {
+        UpdatePatient updateModel = new UpdatePatient
+        {
+            firstName = firstName,
+            lastName = lastName,
+            email = email,
+            phoneNumber = phoneNumber
+        };
+        client.DefaultRequestHeaders.Clear();
+        client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+        var jsonPatient = JsonConvert.SerializeObject(updateModel);
+        HttpContent content = new StringContent(jsonPatient);
+        content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+        var respons = await client.PutAsync(updatePatient, content);
+        return respons.IsSuccessStatusCode;
     }
+    }
+
 }
