@@ -15,6 +15,8 @@ namespace mobile.ViewModels
         public HomePageModel()
         {
 
+
+            getAppts();
             aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", Details = "You were diagnosed with diarrhea... Sorry, mate!", PatientName="Ionut Iga"});
             aplist.Add(new AppointmentModel { Date = "12.10.2018", Hour = "09:00", Status = "Inactive", Details = "You were diagnosed with diarrhea... Sorry, mate!", PatientName="Ionut Iga" });
             aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName ="Ionut Iga" });
@@ -28,6 +30,9 @@ namespace mobile.ViewModels
             aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
             aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
 
+        }
+        private async void getAppts() {
+          bool isResoinse = await App.apiServicesManager.getApptsAsync(App.user.id, App.user.token);
         }
         public void HideOrShowAppointment(AppointmentModel a)
         {

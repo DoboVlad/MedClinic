@@ -24,13 +24,19 @@ namespace mobile
 
             
 
-            appointmentsList.ItemsSource = hpm.aplist;
+    
             // bind the picker to enable translation
             pickerSort.ItemsSource = new List<string> { AppResources.Active, AppResources.Inactive, AppResources.All };
 
             appointmentsList.ItemTapped += OnItemTapped;
 
 
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            BindingContext = hpm.aplist;
         }
         private void OnItemTapped(Object sender, ItemTappedEventArgs e)
         {
