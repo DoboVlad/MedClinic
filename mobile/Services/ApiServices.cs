@@ -29,7 +29,7 @@ namespace mobile.Services
         public static string deleteUser = $"{BaseAddress}/api/users/DeletePatient";
         public static string approveUser = $"{BaseAddress}/api/users/ApproveUser";
         public static string updatePatient = $"{BaseAddress}/api/users/updateUser";
-
+        public static string getAppts = $"{BaseAddress}/api/appointments/";
         // Pass the handler to httpclient(from you are calling api) only in debug mode we have to pass the ssl, in release we dont
         public ApiServices()
         {

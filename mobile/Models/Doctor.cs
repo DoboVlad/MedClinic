@@ -14,7 +14,7 @@ namespace mobile
         private string email;
         private const string jobTitle = "Family Doctor";
         private string phone;
-        private ImageSource image;
+        private string image;
         private string description;
 
 
@@ -32,7 +32,16 @@ namespace mobile
                 description = value;
             }
         }
-        public ImageSource Image
+        public ImageSource Photo
+        {
+            get {
+                Uri uri = new Uri("https://10.0.2.2:5001/" + image);
+
+                return ImageSource.FromUri(uri);
+            }
+   
+        }
+        public string Image
         {
             get
             {
