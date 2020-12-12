@@ -1,0 +1,23 @@
+<!--engleza-->
+<div class="title" *ngIf = "this.userService.language == 0">
+    <p>All your past appointments</p>
+</div>
+
+
+<div class="doctor-appointments" *ngIf = "this.userService.language == 0">
+    <div class="appointments">
+            <span class="date">Jul 25, 2019, 13:00 AM</span>
+    </div>
+</div>
+
+
+<!--romana-->
+<div class="title" *ngIf = "this.userService.language == 1">
+    <p>Programarile dumneavoastra anterioare</p>
+</div>
+
+<div class="doctor-appointments" *ngIf = "this.userService.language == 1">
+    <div class="appointments">
+        <span class="date">Jul 25, 2019, 13:00 AM</span>
+    </div>
+</div>

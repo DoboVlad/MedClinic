@@ -18,8 +18,8 @@ import { SpinnerComponent } from './Components/spinner/spinner.component';
 import { WaitingComponent } from './Components/waiting/waiting.component';
 import { DoctorAppointmentsComponent } from './Components/doctor-appointments/doctor-appointments.component';
 import { RequestsComponent } from './Components/requests/requests.component';
-
 import { DoctorPatientsComponent } from './Components/doctor-patients/doctor-patients.component';
+import { HistoricComponent } from './Components/historic/historic.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +36,8 @@ import { DoctorPatientsComponent } from './Components/doctor-patients/doctor-pat
     WaitingComponent,
     DoctorAppointmentsComponent,
     RequestsComponent,
-   
-    DoctorPatientsComponent
+    DoctorPatientsComponent,
+    HistoricComponent
   ],
   imports: [
     BrowserModule,

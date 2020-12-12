@@ -30,6 +30,7 @@
             <li routerLink="/doctors" *ngIf = "this.userService.role  == 0">DOCTORS</li>
             <li routerLink="/appointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">APPOINTMENTS</li>
             <li routerLink="/doctorappointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">APPOINTMENTS</li>
+            <li routerLink="/historic" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">PAST APPOINTMENTS</li>
             <a href="#footer"><li>CONTACT</li></a>
         </ul>
     </div>
@@ -97,6 +98,7 @@
           <li routerLink="/doctorpatients" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">PACIENTI</li>
           <li routerLink="/appointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">PROGRAMARI</li>
           <li routerLink="/doctorappointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">PROGRAMARI</li>
+          <li routerLink="/historic" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">PROGRAMARI-ANTERIOARE</li>
           <a href="#footer"><li>CONTACT</li></a>
       </ul>
   </div>

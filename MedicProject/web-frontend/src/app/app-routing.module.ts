@@ -14,6 +14,7 @@ import {ApproveGuard} from './Services/approve.guard';
 import {DoctorAppointmentsComponent} from './Components/doctor-appointments/doctor-appointments.component';
 import {RequestsComponent} from './Components/requests/requests.component';
 import {DoctorPatientsComponent} from './Components/doctor-patients/doctor-patients.component';
+import {HistoricComponent} from './Components/historic/historic.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'doctorappointments', component: DoctorAppointmentsComponent},
   {path: 'requests', component: RequestsComponent},
   {path: 'doctorpatients', component: DoctorPatientsComponent},
+  {path: 'historic', component: HistoricComponent},
   {path: "**", component: HomeComponent}
 ];
 

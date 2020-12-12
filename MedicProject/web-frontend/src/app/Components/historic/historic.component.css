@@ -1,0 +1,42 @@
+.title{
+    text-align: center;
+    font-size: 35px;
+    color: #1c2d60;
+    padding-top: 3%;
+    padding-bottom: 4%;
+
+}
+
+
+.doctor-appointments{
+
+    background: #FFFFFF;
+    max-width: 700px;
+    margin: 0 auto 0px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
+}
+
+.appointments {
+    margin-bottom: 5%;
+    margin-top: 4%;
+    margin-left: 15%;
+    margin-right: 15%;
+    border-style: inset;
+    padding: 1%;
+    width: 70%;
+}
+
+.doctor-appointments span{
+    height: 40px;
+    width: 50%;
+    padding-right: 10px;
+    margin-bottom: 5%;
+    border: none;
+    font-size: 19px;
+    color: #484bec;
+    text-align: center;
+    font-weight: 500;
+}
+
