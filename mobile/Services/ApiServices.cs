@@ -173,6 +173,7 @@ namespace mobile.Services
                 LastName = userData.Value<string>("lastName"),
                 Email = userData.Value<string>("email"),
                 Phone = userData.Value<string>("phoneNumber"),
+                Description = userData.Value<string>("description")
             };
             return doctor;
         }
