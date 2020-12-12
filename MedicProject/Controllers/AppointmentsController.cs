@@ -9,6 +9,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MedicProject.Controllers
@@ -61,24 +62,29 @@ namespace MedicProject.Controllers
 
         // return all the appointements made by a user
         // TODO: Find a way to make this method asynchronous
-        [HttpGet("{userId}")]
-        public async Task<ActionResult<IList<Appointments>>> getAppointments(int userId){
+        [HttpGet("myAppointments")]
+        public async Task<ActionResult<IList<Appointments>>> getAppointments(){
             // SELECT * FROM APPOINTMENTS a
             // WHERE a.userId = userId
-            var appointments = await _context.APPOINTMENTS.Where(p => p.UserId == userId).ToListAsync();
-            return appointments;
+            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = await _context.USERS.Where(x => x.email == useremail).FirstOrDefaultAsync();
+            var appointments = await _context.APPOINTMENTS.Where(p => p.UserId == user.Id).ToListAsync();
+            var myApp = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
+            return Ok(myApp);
         }
 
         [HttpGet("historyAppointments")]
         // return all the appointments that have a date smaller than today
         public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getBackApp(int Id){
             DateTime date = DateTime.Now;
+            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = await _context.USERS.Where(p => p.email == useremail).FirstAsync();
             var appointments = await _context.APPOINTMENTS
             .Include(p => p.User)
             .Where(app => app.date < date)
-            .Where(p => p.User.Id == Id)
+            .Where(p => p.User.Id == user.Id)
             .ToListAsync();
-            
+
             var appToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
 
             return Ok(appToReturn);
@@ -88,10 +94,13 @@ namespace MedicProject.Controllers
         // return all the appointments that have a date bigger than today
         public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getNextApp(int Id){
             DateTime date = DateTime.Now;
+            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = await _context.USERS.Where(p => p.email == useremail).FirstAsync();
+
             var appointments = await _context.APPOINTMENTS
             .Include(p => p.User)
             .Where(p => p.date > date)
-            .Where(p => p.User.Id == Id)
+            .Where(p => p.User.Id == user.Id)
             .ToListAsync();
 
             var appointementsToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
@@ -101,13 +110,15 @@ namespace MedicProject.Controllers
 
         [HttpGet("historyAppointmentsByMedic")]
         // return all the appointments of all patients of a medic that have a date smaller than today
-        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getBackAppByMedic(int Id)
+        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getBackAppByMedic()
         {
             DateTime date = DateTime.Now;
+            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = await _context.USERS.Where(p => p.email == useremail).FirstAsync();
             var appointments = await _context.APPOINTMENTS
             .Include(p => p.User)
             .Where(app => app.date < date)
-            .Where(p => p.User.doctorId == Id)
+            .Where(p => p.User.email == useremail)
             .ToListAsync();
 
             var appToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
@@ -120,10 +131,12 @@ namespace MedicProject.Controllers
         public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getNextAppByMedic(int Id)
         {
             DateTime date = DateTime.Now;
+            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = await _context.USERS.Where(p => p.email == useremail).FirstAsync();
             var appointments = await _context.APPOINTMENTS
             .Include(p => p.User)
-            .Where(p => p.date > date)
-            .Where(p => p.User.doctorId == Id)
+            .Where(app => app.date > date)
+            .Where(p => p.User.email == useremail)
             .ToListAsync();
 
             var appointementsToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
