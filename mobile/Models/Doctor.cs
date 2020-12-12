@@ -14,13 +14,24 @@ namespace mobile
         private string email;
         private const string jobTitle = "Family Doctor";
         private string phone;
-        private string image;
+        private int age;
+        private ImageSource image;
         private string description;
 
 
         public int Id { get; set; }
 
-      
+        public int Age
+        {
+            get
+            {
+                return age;
+            }
+            set
+            {
+                age = value;
+            }
+        } 
         public string Description
         {
             get
@@ -32,16 +43,7 @@ namespace mobile
                 description = value;
             }
         }
-        public ImageSource Photo
-        {
-            get {
-                Uri uri = new Uri("https://10.0.2.2:5001/" + image);
-
-                return ImageSource.FromUri(uri);
-            }
-   
-        }
-        public string Image
+        public ImageSource Image
         {
             get
             {

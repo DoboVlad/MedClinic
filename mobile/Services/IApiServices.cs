@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using mobile.ViewModels;
+using Xamarin.Forms;
 
 namespace mobile.Services
 {
@@ -13,9 +14,10 @@ namespace mobile.Services
         public Task<List<PatientModel>> GetUnapprovedPatientsAsync(string token);
         public  Task<List<DoctorModel>> GetAboutUsDoctorsAsync();
         public Task<dynamic> GetPatientProfileAsync(string token);
-
+        public Task<dynamic> GetDoctorProfileAsync(string token);
         public  Task<bool> DeleteUserAsync(string token, int id);
         public  Task<bool> ApproveUserASync(string token, PatientModel patient);
         public Task<bool> UpdateUserAsync(string firstName, string lastName, string phoneNumber, string email, string token);
+        public Task<bool> UpdateDoctorAsync(string firstName, string lastName, string phoneNumber, string email, string description, ImageSource photo, string token);
     }
 }

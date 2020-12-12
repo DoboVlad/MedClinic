@@ -22,7 +22,7 @@ namespace mobile
         {
             InitializeComponent();
             patientModel = patient;
-            BindingContext =patient;
+            BindingContext = patientModel;
         }
 
         async private void TapGestureRecognizer_Cancel(object sender, EventArgs e)
