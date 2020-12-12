@@ -200,9 +200,13 @@ namespace mobile.Services
             var response = await client.PutAsync(approveUser + "?id=" + patient.Id, content);
             if (response.IsSuccessStatusCode)
                 return true;
-            else return false;
+            else
+            {
+                return false;
+                Console.Write("ala bala");
+            }
 
-        }
+            }
         public async Task<bool> UpdateUserAsync(string firstName, string lastName, string phoneNumber, string email, string token)
         {
             UpdatePatient updateModel = new UpdatePatient
@@ -228,8 +232,7 @@ namespace mobile.Services
                 lastName = lastName,
                 email = email,
                 phoneNumber = phoneNumber,
-                description = description,
-                photo = photo
+                description = description
             };
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
