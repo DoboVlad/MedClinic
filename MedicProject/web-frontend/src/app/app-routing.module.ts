@@ -15,6 +15,7 @@ import {DoctorAppointmentsComponent} from './Components/doctor-appointments/doct
 import {RequestsComponent} from './Components/requests/requests.component';
 import {DoctorPatientsComponent} from './Components/doctor-patients/doctor-patients.component';
 import {HistoricComponent} from './Components/historic/historic.component';
+import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: 'requests', component: RequestsComponent},
   {path: 'doctorpatients', component: DoctorPatientsComponent},
   {path: 'historic', component: HistoricComponent},
+  {path: 'change-doctor', component: ChangeDoctorComponent},
   {path: "**", component: HomeComponent}
 ];
 

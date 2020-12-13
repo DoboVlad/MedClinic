@@ -20,6 +20,7 @@ import { DoctorAppointmentsComponent } from './Components/doctor-appointments/do
 import { RequestsComponent } from './Components/requests/requests.component';
 import { DoctorPatientsComponent } from './Components/doctor-patients/doctor-patients.component';
 import { HistoricComponent } from './Components/historic/historic.component';
+import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HistoricComponent } from './Components/historic/historic.component';
     DoctorAppointmentsComponent,
     RequestsComponent,
     DoctorPatientsComponent,
-    HistoricComponent
+    HistoricComponent,
+    ChangeDoctorComponent
   ],
   imports: [
     BrowserModule,

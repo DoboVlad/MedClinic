@@ -1,14 +1,14 @@
 <!--engleza-->
 <div *ngIf = "this.userService.language == 0">
     <div class="appointments-title" >
-     <p>Make an appointment online</p>
-</div>
-<div class="message" *ngIf="this.appService.isSuccesfully == true;" >
-  Your appointment have been registered succesfully! Thank you
-</div>
-<div class="appointments-description">
-    <p>Choose an available date and hour:</p><br>
-</div>
+         <p>Make an appointment online</p>
+    </div>
+    <div class="message" *ngIf="this.appService.isSuccesfully == true;" >
+        Your appointment have been registered succesfully! Thank you
+    </div>
+    <div class="appointments-description">
+        <p>Choose an available date and hour:</p><br>
+    </div>
 </div>
 
 <div class="form" *ngIf = "this.userService.language == 0">
@@ -22,15 +22,6 @@
     </div>
 </div>
 
-<div class="appointments-history" *ngIf = "this.userService.language == 0">
-    Appointments-history:
-</div>
-
-<div class="history" *ngIf = "this.userService.language == 0">
-    <input type="text" name="date1" value="12/04/2020" readonly><br>
-    <input type="text" name="date2" value="2/08/2020" readonly><br>
-    <input type="text" name="date2" value="29/10/2020" readonly>
-</div>
 
 <!--romana-->
 <div *ngIf = "this.userService.language == 1"> 
@@ -55,16 +46,3 @@
        </form>
    </div>
 </div>
-<div *ngIf = "this.userService.language == 1">
-<div class="appointments-history" >
-   Istoric programari:
-</div>
-
-<div class="history" >
-   <input type="text" name="date1" value="12/04/2020" readonly><br>
-   <input type="text" name="date2" value="2/08/2020" readonly><br>
-   <input type="text" name="date2" value="29/10/2020" readonly>
-</div>
-</div>
-
-

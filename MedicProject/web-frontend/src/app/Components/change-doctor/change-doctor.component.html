@@ -1,0 +1,46 @@
+<!--engleza-->
+<div *ngIf = "this.userService.language == 0">
+    <div class="appointments-title" >
+         <p>Change your doctor</p>
+    </div>
+    <div class="appointments-description">
+        <p>Choose another doctor:</p><br>
+    </div>
+</div>
+
+<div class="form" *ngIf = "this.userService.language == 0">
+    <div class="doctor">
+        <form [formGroup]="">
+            Doctors:<br><br>
+            <select name="doctors" id="doctors" formControlName = "doctorId" required>
+                <option value="" disabled selected></option>
+                <option *ngFor="let doctor of doctors" [ngValue]="doctor.id">{{doctor.firstName}} {{doctor.lastName}}</option>
+            </select><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+
+<!--romana-->
+<div *ngIf = "this.userService.language == 1">
+    <div class="appointments-title" >
+         <p>Schimbă-ti doctorul</p>
+    </div>
+    <div class="appointments-description">
+        <p>Alege alt doctor:</p><br>
+    </div>
+</div>
+
+<div class="form" *ngIf = "this.userService.language == 1">
+    <div class="doctor">
+        <form [formGroup]="">
+            Doctori disponibili:<br><br>
+            <select name="doctors" id="doctors" formControlName = "doctorId" required>
+                <option value="" disabled selected></option>
+                <option *ngFor="let doctor of doctors" [ngValue]="doctor.id">{{doctor.firstName}} {{doctor.lastName}}</option>
+            </select><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>

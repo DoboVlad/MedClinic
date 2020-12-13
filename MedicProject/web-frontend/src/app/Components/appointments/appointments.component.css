@@ -27,21 +27,6 @@
     margin-top: 40px;
 }
 
-.appointments-history {
-    text-align: left;
-    font-size: 20px;
-    text-decoration: underline;
-    color: #455172;
-    padding-top: 10%;
-    margin-left: 12%;
-    margin-top: 40px;
-}
-
-.history{
-    float: left;
-    margin-top: 1%;
-    margin-left: 10%;
-}
 
 .date {
     text-align: center;
@@ -114,15 +99,6 @@ input[type="text"]{
     display: block;
 }
 
-.history input[type="text"] {
-    margin-top: 5%;
-    color: #5d6161;
-    font-family: "Helvetica", arial, sans-serif;
-    font-size: 15px;
-    border:1px solid #ecf0f1;
-    background:#ecf0f1;
-    padding:7px;
-}
 
 /* Hide AM/PM in input */
 input[type=time]::-webkit-datetime-edit-ampm-field {
