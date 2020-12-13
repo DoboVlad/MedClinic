@@ -11,28 +11,14 @@ namespace mobile.ViewModels
     {
         // used for the tapped event, to close the most recent opened item in the list
         private AppointmentModel oldAppointment;
-        public ObservableCollection<AppointmentModel> aplist = new ObservableCollection<AppointmentModel>();
+        public List<AppointmentModel> aplist = new List<AppointmentModel>();
         public HomePageModel()
         {
-
-
             getAppts();
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", Details = "You were diagnosed with diarrhea... Sorry, mate!", PatientName="Ionut Iga"});
-            aplist.Add(new AppointmentModel { Date = "12.10.2018", Hour = "09:00", Status = "Inactive", Details = "You were diagnosed with diarrhea... Sorry, mate!", PatientName="Ionut Iga" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName ="Ionut Iga" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active" , PatientName = "Ionut Iga" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
-            aplist.Add(new AppointmentModel { Date = "10.10.2020", Hour = "10:00", Status = "Active", PatientName = "Ionut Iga" });
-
         }
-        private async void getAppts() {
-          bool isResoinse = await App.apiServicesManager.getApptsAsync(App.user.token);
+      
+        public async void getAppts() {
+          aplist = await App.apiServicesManager.GetApptsAsync(App.user.token);
         }
         public void HideOrShowAppointment(AppointmentModel a)
         {

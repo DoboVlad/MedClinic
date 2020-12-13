@@ -4,7 +4,7 @@ using System.Text;
 
 namespace mobile.ViewModels
 {
-    class AppointmentModel : Appointment
+    public class AppointmentModel : Appointment
     {
         // testing the visibility of the details
         public bool IsVisible { get; set; }
@@ -15,7 +15,7 @@ namespace mobile.ViewModels
             get
             {
 
-                return "APPOINTMENT AT " + Hour + ", ON " + Date;
+                return "APPOINTMENT AT " + Hour + ", ON " + DateString;
             }
 
         }
@@ -34,9 +34,8 @@ namespace mobile.ViewModels
             get
             {
                 return "Patient: " + PatientName;
-            }
-            set { PatientName = value; }
-        }
 
+            }
+        }
     }
 }

@@ -1,29 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using mobile.ViewModels;
 
 namespace mobile
 {
     // for the moment, this is a dummy class used to load data for the list view in home page
-    class Appointment
+    public class Appointment
     {
-
-        private string date;
+        private int id;
+        private DateTime date;
         private string hour;
         private string status;
         private const string duration = "Duration: 30 min";
         private string details;
+        private PatientModel patient;
         private string patientName;
 
-        public string PatientName 
+        public PatientModel Patient 
         { 
             get 
             {
-                return patientName;
+                return patient;
             }
-            set { patientName = value; }
+            set { patient = value; }
         }
-        
+        public string PatientName
+        {
+            get
+            {
+                return patient.FullName;
+            }
+         
+        }
         public string Details
         {
             get
@@ -36,7 +45,7 @@ namespace mobile
 
             }
         }
-        public string Date
+        public DateTime Date
         {
 
             get
@@ -47,7 +56,17 @@ namespace mobile
             }
             set
             {
-                date = value.ToString();
+                date = value;
+            }
+        }
+        public string DateString
+        {
+
+            get
+            {
+
+                return date.ToString();
+
             }
         }
 
@@ -62,6 +81,19 @@ namespace mobile
             {
 
                 hour = value.ToString();
+            }
+        }
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+
+                id = value;
             }
         }
         public string Status

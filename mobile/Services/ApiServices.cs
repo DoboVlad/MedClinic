@@ -250,13 +250,31 @@ namespace mobile.Services
             var respons = await client.PutAsync(updateDoctor, content);
             return respons.IsSuccessStatusCode;
         }
-        public async Task<bool> getApptsAsync(string token) {
+        public async Task<List<AppointmentModel>> GetApptsAsync(string token) {
+            List<AppointmentModel> list = new List<AppointmentModel>();
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             var response = await client.GetAsync(getAppts);
             if (response.IsSuccessStatusCode)
-                return true;
-            return false;
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                JArray userData = JsonConvert.DeserializeObject<dynamic>(content.ToString());
+                foreach (JObject obj in userData)
+                {
+                    list.Add(new AppointmentModel {
+                    Id = obj.Value<int>("Id"),
+                    Hour = obj.Value<string>("hour"),
+                    Date = obj.Value<DateTime>("date"),
+                    Patient = obj.Value<PatientModel>("user")
+
+                    }
+                        
+                        
+                        );
+                }
+            }
+                return list;
+           
         }
     }
 }
