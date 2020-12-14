@@ -7,7 +7,7 @@
              xmlns:local ="clr-namespace:mobile.Helpers"
              Title ="{local:Translate Patients}"
              IconImageSource="{local:ImageResource mobile.Images.patients.png}">
-    <ListView x:Name="listPacients" SelectionMode="None" HasUnevenRows="True" >
+    <ListView x:Name="listPacients" SelectionMode="None" HasUnevenRows="True">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
@@ -29,7 +29,7 @@
                         </StackLayout>
                         <StackLayout Padding="0,0,0,5" Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
                             <Label Text="{local:Translate BirthDateProfile}" FontAttributes="Bold"/>
-                            <Label x:Name="lblPatientBirthDate" Text="{Binding BirthDate}"/>
+                            <Label x:Name="lblPatientBirthDate" Text="{Binding age}"/>
                         </StackLayout>
                         <StackLayout Padding="0,0,0,5" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
                             <Label Text="{local:Translate EmailProfile}" FontAttributes="Bold"/>
@@ -37,13 +37,13 @@
                         </StackLayout>
                         <StackLayout Padding="0,0,0,5" Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                             <Label Text="{local:Translate PINProfile}" FontAttributes="Bold"/>
-                            <Label x:Name="lblPatientPIN" Text="{Binding PIN}"/>
+                            <Label x:Name="lblPatientPIN" Text="{Binding cnp}"/>
                         </StackLayout>
                         <StackLayout Padding="0,0,0,5" Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
                             <Label Text="{local:Translate PhoneProfile}" FontAttributes="Bold"/>
                             <Label x:Name="lblPatientPhone" Text="{Binding Phone}"/>
                         </StackLayout>
-                        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  Text="{local:Translate DeletePacient}" IsVisible="{Binding IsVisible}"  TextColor="White" BackgroundColor="Red"/>
+                        <Button x:Name="btnRemove" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding DeleteItemCommand}"  Text="{local:Translate DeletePacient}" IsVisible="{Binding IsVisible}"  TextColor="White" BackgroundColor="Red"/>
                     </Grid>
                 </ViewCell>
             </DataTemplate>

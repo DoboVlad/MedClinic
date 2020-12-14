@@ -24,6 +24,7 @@ namespace mobile.Services
         public static string registerUrl = $"{BaseAddress}/api/users/register";
         public static string loginUrl = $"{BaseAddress}/api/users/login";
         public static string getUnapprovedUsersUrl = $"{BaseAddress}/api/users/getUnapprovedUsers";
+        public static string getApprovedUsersUrl = $"{BaseAddress}/api/users/getPatients";
         public static string getAboutUsDoctorsUrl = $"{BaseAddress}/api/users/getDoctors";
         public static string getPatientInfoUrl = $"{BaseAddress}/api/users/MyAccount";
         public static string getDoctorInfoUrl = $"{BaseAddress}/api/users/MyAccountMedic";
@@ -31,7 +32,7 @@ namespace mobile.Services
         public static string approveUser = $"{BaseAddress}/api/users/ApproveUser";
         public static string updatePatient = $"{BaseAddress}/api/users/updateUser"; 
         public static string updateDoctor = $"{BaseAddress}/api/users/updateMedic";
-        public static string getAppts = $"{BaseAddress}/api/appointments/myAppointments";
+        public static string getAppts = $"{BaseAddress}/api/appointments/myAppointments"; 
         // Pass the handler to httpclient(from you are calling api) only in debug mode we have to pass the ssl, in release we dont
         public ApiServices()
         {
@@ -117,6 +118,31 @@ namespace mobile.Services
             }
             return patients;
 
+        }
+        public async Task<List<PatientModel>> getApprovedUsers(string token)
+        {
+
+            List<PatientModel> patients = new List<PatientModel>();
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var response = await client.GetAsync(getApprovedUsersUrl);
+            var usr = await response.Content.ReadAsStringAsync();
+            JArray userDynamic = JsonConvert.DeserializeObject<dynamic>(usr);
+            foreach (JObject p in userDynamic)
+            {
+                patients.Add(new PatientModel
+                {
+                    Id = p.Value<int>("id"),
+                    FirstName = p.Value<string>("firstName"),
+                    LastName = p.Value<string>("lastName"),
+                    Email = p.Value<string>("email"),
+                    cnp = p.Value<string>("cnp"),
+                    Phone = p.Value<string>("phoneNumber"),
+                    age = p.Value<int>("age")
+
+                });
+            }
+            return patients;
         }
         public async Task<List<DoctorModel>> GetAboutUsDoctorsAsync()
         {

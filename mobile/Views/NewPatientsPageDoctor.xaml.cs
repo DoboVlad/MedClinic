@@ -19,7 +19,7 @@ namespace mobile
         public NewPatientsPageDoctor()
         {
             InitializeComponent();
-            App.plm = new PatientListModel();
+            App.plm = new PatientListModel("R");
             BindingContext = App.plm;
             listRequests.ItemTapped += OnItemTapped;
            

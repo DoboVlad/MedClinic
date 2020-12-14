@@ -12,11 +12,11 @@ namespace mobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PacientsPageDoctor : ContentPage
     {
-        private PatientListModel plm = new PatientListModel();
+        private PatientListModel plm = new PatientListModel("P");
         public PacientsPageDoctor()
         {
            InitializeComponent();
-            listPacients.ItemsSource = plm.patients;
+            listPacients.ItemsSource = plm.patients; ;
             listPacients.ItemTapped += OnItemTapped;
         }
         private void OnItemTapped(object sender, ItemTappedEventArgs e)
