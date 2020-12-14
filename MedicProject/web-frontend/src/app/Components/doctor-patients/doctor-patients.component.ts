@@ -12,8 +12,10 @@ export class DoctorPatientsComponent implements OnInit {
   constructor(public userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.isFetching = true;
     this.userService.getAllPatients().subscribe(patients => {
       this.patients = patients
+      this.userService.isFetching = false;
     })
   }
 

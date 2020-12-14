@@ -12,8 +12,10 @@ export class RequestsComponent implements OnInit {
   constructor(public userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.isFetching = true;
     this.userService.getUnapprovedUsers().subscribe(users => {
       this.users = users;
+      this.userService.isFetching = false;
     })
   }
   acceptUser(id: number){

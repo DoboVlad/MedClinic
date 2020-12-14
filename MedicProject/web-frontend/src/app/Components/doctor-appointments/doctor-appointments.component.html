@@ -2,8 +2,8 @@
 <div class="title" *ngIf = "this.userService.language == 0">
     <p>All your appointments</p>
 </div>
-
-<div class="doctor-appointments" *ngIf = "this.userService.language == 0">
+<app-spinner *ngIf="this.userService.isFetching  == true && this.userService.language == 0"></app-spinner>
+<div class="doctor-appointments" *ngIf = "this.userService.language == 0 && this.userService.isFetching == false">
     <div class="appointments" *ngFor = "let app of appointments">
             <span class="name">{{app.firstName}} {{app.lastName}} :</span>
             <span class="date">{{app.date | date: 'medium' }}</span>
@@ -14,7 +14,7 @@
 <div class="title" *ngIf = "this.userService.language == 1">
     <p>Programarile dumneavoastra</p>
 </div>
-
+<app-spinner *ngIf="this.userService.isFetching  == true && this.userService.language == 1"></app-spinner>
 <div class="doctor-appointments" *ngIf = "this.userService.language == 1">
     <div class="appointments" *ngFor = "let app of appointments">
         <span class="name">{{app.firstName}} {{app.lastName}} :</span>

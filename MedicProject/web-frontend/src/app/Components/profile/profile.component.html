@@ -1,6 +1,6 @@
 <!--engleza-->
-<app-spinner *ngIf="this.userService.isFetching  == true"></app-spinner>
-<div *ngIf = "this.userService.language == 0">
+<app-spinner *ngIf="this.userService.isFetching  == true && this.userService.language == 0"></app-spinner>
+<div *ngIf = "this.userService.language == 0 && this.userService.isFetching  == false">
     <div class="container" *ngIf="this.userService.isFetching == false">
         <div class="left" *ngIf = "this.userService.role == 0">
             <img src="https://img.icons8.com/cotton/128/000000/user-male--v1.png" alt="user" width="140">
@@ -95,7 +95,7 @@
 </div>
 
 <!--romana-->
-<app-spinner *ngIf="this.userService.isFetching  == true"></app-spinner>
+<app-spinner *ngIf="this.userService.isFetching  == true && this.userService.language == 1"></app-spinner>
 <div *ngIf = "this.userService.language == 1">
     <div class="container" *ngIf="this.userService.isFetching == false">
         <div class="left" *ngIf = "this.userService.role == 0">

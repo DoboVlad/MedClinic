@@ -13,9 +13,11 @@ export class DoctorAppointmentsComponent implements OnInit {
   constructor(public userService: UserService, private appService: AppointmentService) { }
 
   ngOnInit(): void {
+    this.userService.isFetching = true;
     this.appService.getAllMedicAppointments().subscribe(appointments => {
       this.appointments = appointments;
       console.log(appointments);
+      this.userService.isFetching = false;
     });
   }
 }
