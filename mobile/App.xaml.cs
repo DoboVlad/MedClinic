@@ -13,6 +13,7 @@ namespace mobile
         public static User user { get; set; }
         public static AboutUsModel aum;
         public static PatientListModel plm;
+        public static HomePageModel hpm;
      
         public App()
         {

@@ -78,7 +78,7 @@ namespace mobile.ViewModels
             }
             else
             {
-                Patients = await App.apiServicesManager.getApprovedUsers(App.user.token);
+                Patients = await App.apiServicesManager.GetApprovedUsers(App.user.token);
                 foreach(var item in Patients)
                 {
                     patients.Add(item);

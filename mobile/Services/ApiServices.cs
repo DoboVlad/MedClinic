@@ -119,7 +119,7 @@ namespace mobile.Services
             return patients;
 
         }
-        public async Task<List<PatientModel>> getApprovedUsers(string token)
+        public async Task<List<PatientModel>> GetApprovedUsers(string token)
         {
 
             List<PatientModel> patients = new List<PatientModel>();

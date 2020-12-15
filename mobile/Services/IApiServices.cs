@@ -12,7 +12,7 @@ namespace mobile.Services
         Task<bool> RegisterAsync(string firstName, string lastName, string email, string cnp, DateTime dateOfBirth, string phoneNumber, string password, string repeatPassword, int doctorId);
         Task<bool> LoginAsync(string UserName, string Password);
         public Task<List<PatientModel>> GetUnapprovedPatientsAsync(string token);
-        public Task<List<PatientModel>> getApprovedUsers(string token);
+        public Task<List<PatientModel>> GetApprovedUsers(string token);
         public  Task<List<DoctorModel>> GetAboutUsDoctorsAsync();
         public Task<dynamic> GetPatientProfileAsync(string token);
         public Task<dynamic> GetDoctorProfileAsync(string token);

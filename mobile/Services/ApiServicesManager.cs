@@ -25,9 +25,9 @@ namespace mobile.Services
         public async Task<List<PatientModel>> getUnapprovedUsers(string token) {
             return await apiS.GetUnapprovedPatientsAsync(token);
         }
-        public async Task<List<PatientModel>> getApprovedUsers(string token)
+        public async Task<List<PatientModel>> GetApprovedUsers(string token)
         {
-            return await apiS.getApprovedUsers(token);
+            return await apiS.GetApprovedUsers(token);
         }
         public async Task<List<DoctorModel>> GetAboutUsDoctorsAsync() {
             return await apiS.GetAboutUsDoctorsAsync();
