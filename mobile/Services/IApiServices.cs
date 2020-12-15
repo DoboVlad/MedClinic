@@ -21,5 +21,10 @@ namespace mobile.Services
         public Task<bool> UpdateUserAsync(string firstName, string lastName, string phoneNumber, string email, string token);
         public Task<bool> UpdateDoctorAsync(string firstName, string lastName, string phoneNumber, string email, string description, ImageSource photo, string token);
         public Task<List<AppointmentModel>> GetApptsAsync( string token);
+        public Task<bool> DeleteApptAsync(int id);
+        public Task<List<AppointmentModel>> GetNextApptsAsync(string token);
+        public Task<List<AppointmentModel>> GetBackApptsAsync(string token);
+        public  Task<List<AppointmentModel>> GetAllApptsAsync(int id);
+
     }
 }

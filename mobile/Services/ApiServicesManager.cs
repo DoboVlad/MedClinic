@@ -59,5 +59,17 @@ namespace mobile.Services
 
           return await apiS.GetApptsAsync(token);
         }
+        public async Task<bool> DeleteApptAsync(int id) {
+            return await apiS.DeleteApptAsync(id);
+        }
+        public async Task<List<AppointmentModel>> GetNextApptsAsync(string token) {
+            return await apiS.GetNextApptsAsync(token);
+        }
+        public async Task<List<AppointmentModel>> GetBackApptsAsync(string token) {
+            return await apiS.GetBackApptsAsync(token);
+        }
+        public async Task<List<AppointmentModel>> GetAllApptsAsync(int id) {
+            return await apiS.GetAllApptsAsync(id);
+        }
     }
 }

@@ -32,7 +32,11 @@ namespace mobile.Services
         public static string approveUser = $"{BaseAddress}/api/users/ApproveUser";
         public static string updatePatient = $"{BaseAddress}/api/users/updateUser"; 
         public static string updateDoctor = $"{BaseAddress}/api/users/updateMedic";
-        public static string getAppts = $"{BaseAddress}/api/appointments/myAppointments"; 
+        public static string getAppts = $"{BaseAddress}/api/appointments/myAppointments";
+        public static string getNextAppts = $"{BaseAddress}/api/appointments/historyAppointmentsByMedic";
+        public static string getBackAppts = $"{BaseAddress}/api/appointments/nextAppointmentsByMedic";
+        public static string deleteAppt = $"{BaseAddress}/api/appointments/delete";
+        public static string getAllAppts = $"{BaseAddress}/api/allDoctorApp/";
         // Pass the handler to httpclient(from you are calling api) only in debug mode we have to pass the ssl, in release we dont
         public ApiServices()
         {
@@ -223,6 +227,15 @@ namespace mobile.Services
             else return false;
 
         }
+        public async Task<bool> DeleteApptAsync( int id)
+        {
+        
+            var response = await client.DeleteAsync(deleteAppt + "/" + id);
+            if (response.IsSuccessStatusCode)
+                return true;
+            else return false;
+
+        }
         public async Task<bool> ApproveUserASync(string token, PatientModel patient)
         {
            
@@ -294,7 +307,7 @@ namespace mobile.Services
                     User usr = JsonConvert.DeserializeObject<User>(user.ToString());
                     list.Add(new AppointmentModel
                     {
-                        Id = obj.Value<int>("Id"),
+                        Id = obj.Value<int>("id"),
                         Hour = obj.Value<string>("hour"),
                         Date = obj.Value<DateTime>("date"),
                         Patient = usr
@@ -312,6 +325,116 @@ namespace mobile.Services
             }
                 return list;
            
+        }
+        public async Task<List<AppointmentModel>> GetNextApptsAsync(string token)
+        {
+            List<AppointmentModel> list = new List<AppointmentModel>();
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var response = await client.GetAsync(getNextAppts);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                JArray userData = JsonConvert.DeserializeObject<dynamic>(content.ToString());
+                foreach (JObject obj in userData)
+                {
+
+
+                    JObject user = obj.Value<JObject>("user");
+                    User usr = JsonConvert.DeserializeObject<User>(user.ToString());
+                    list.Add(new AppointmentModel
+                    {
+                        Id = obj.Value<int>("id"),
+                        Hour = obj.Value<string>("hour"),
+                        Date = obj.Value<DateTime>("date"),
+                        Patient = usr
+
+                    });
+
+                    foreach (AppointmentModel am in list)
+                    {
+                        if (am.Date < DateTime.Now)
+                            am.Status = "inactive";
+                    }
+
+
+                }
+            }
+            return list;
+
+        }
+        public async Task<List<AppointmentModel>> GetBackApptsAsync(string token)
+        {
+            List<AppointmentModel> list = new List<AppointmentModel>();
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var response = await client.GetAsync(getBackAppts);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                JArray userData = JsonConvert.DeserializeObject<dynamic>(content.ToString());
+                foreach (JObject obj in userData)
+                {
+
+
+                    JObject user = obj.Value<JObject>("user");
+                    User usr = JsonConvert.DeserializeObject<User>(user.ToString());
+                    list.Add(new AppointmentModel
+                    {
+                        Id = obj.Value<int>("id"),
+                        Hour = obj.Value<string>("hour"),
+                        Date = obj.Value<DateTime>("date"),
+                        Patient = usr
+
+                    });
+
+                    foreach (AppointmentModel am in list)
+                    {
+                        if (am.Date < DateTime.Now)
+                            am.Status = "inactive";
+                    }
+
+
+                }
+            }
+            return list;
+
+        }
+        public async Task<List<AppointmentModel>> GetAllApptsAsync(int id)
+        {
+            List<AppointmentModel> list = new List<AppointmentModel>();
+          
+            var response = await client.GetAsync(getAllAppts + "1");
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                JArray userData = JsonConvert.DeserializeObject<dynamic>(content.ToString());
+                foreach (JObject obj in userData)
+                {
+
+
+                    JObject user = obj.Value<JObject>("user");
+                    User usr = JsonConvert.DeserializeObject<User>(user.ToString());
+                    list.Add(new AppointmentModel
+                    {
+                        Id = obj.Value<int>("id"),
+                        Hour = obj.Value<string>("hour"),
+                        Date = obj.Value<DateTime>("date"),
+                        Patient = usr
+
+                    });
+
+                    foreach (AppointmentModel am in list)
+                    {
+                        if (am.Date < DateTime.Now)
+                            am.Status = "inactive";
+                    }
+
+
+                }
+            }
+            return list;
+
         }
     }
 }

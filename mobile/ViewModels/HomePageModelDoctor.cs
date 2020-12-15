@@ -9,7 +9,7 @@ using mobile.ViewModels;
 namespace mobile.ViewModels
 {
     // viewModel used to do all the work needed for the HomePage
-    public class HomePageModel : INotifyPropertyChanged
+    public class HomePageModelDoctor : INotifyPropertyChanged
     {
         // used for the tapped event, to close the most recent opened item in the list
         private AppointmentModel oldAppointment;
@@ -33,14 +33,14 @@ namespace mobile.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public HomePageModel()
+        public HomePageModelDoctor()
         {
             getAppts();
         }
 
         public async void getAppts()
         {
-            Aplist = await App.apiServicesManager.GetApptsAsync(App.user.token);
+            Aplist = await App.apiServicesManager.GetAllApptsAsync(App.user.id);
         }
         public void HideOrShowAppointment(AppointmentModel a)
         {
@@ -90,8 +90,8 @@ namespace mobile.ViewModels
 
             await App.apiServicesManager.DeleteApptAsync(oldAppointment.Id);
             getAppts();
-           
-            
+
+
 
 
         }

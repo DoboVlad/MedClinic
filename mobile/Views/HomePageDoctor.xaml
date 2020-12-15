@@ -22,7 +22,7 @@
             <Picker Title="{local:Translate Sort}" x:Name="pickerSort" Margin="320,10,10,5" TextColor="#5084F2">
 
             </Picker>
-            <ListView x:Name="appointmentsList" RowHeight="90" SelectionMode="None" HasUnevenRows="True" >
+            <ListView x:Name="appointmentsList" ItemsSource="{Binding Aplist}" RowHeight="90" SelectionMode="None" HasUnevenRows="True" >
                 <!--IsPullToRefreshEnabled="True"-->
                 <ListView.ItemTemplate>
                     <DataTemplate >
@@ -40,7 +40,7 @@
                                     <Label x:Name="lblStatus" Text="{Binding IsActive}" Style="{StaticResource secondaryLabels}" HorizontalOptions="End" Margin="0,0,10,0" Grid.Column="1"/>
                                 </Grid>
                                 <Label x:Name="lblDetails" Text="{Binding Details}" IsVisible="{Binding IsVisible}" Margin="0,0,0,5"/>
-                                <Button x:Name="btnDelete" Clicked="DeleteButton_Clicked"  Text="{local:Translate Delete}" TextColor="White" BackgroundColor="Red" IsVisible="{Binding IsVisible}" WidthRequest="100" HorizontalOptions="Center"/>
+                                <Button Text="{local:Translate Delete}" IsVisible="{Binding IsVisible}" Command="{Binding DeleteApptCommand}"  WidthRequest="100" TextColor="White" BackgroundColor="Red"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

@@ -128,7 +128,7 @@ namespace MedicProject.Controllers
 
         [HttpGet("nextAppointmentsByMedic")]
         // return all the appointments that have a date bigger than today
-        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getNextAppByMedic(int Id)
+        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getNextAppByMedic()
         {
             DateTime date = DateTime.Now;
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;

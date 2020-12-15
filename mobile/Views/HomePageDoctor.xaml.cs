@@ -17,15 +17,14 @@ namespace mobile
     public partial class HomePageDoctor : ContentPage
     {
         // for enabling deletion, saving the last itemTapped 
-        private AppointmentModel appTapped;
-        private HomePageModel hpm = new HomePageModel();
+        private HomePageModelDoctor hpmd = new HomePageModelDoctor();
         public HomePageDoctor()
         {
             InitializeComponent();
 
            
             
-            appointmentsList.ItemsSource = hpm.Aplist;
+          BindingContext = hpmd;
             // bind the picker to enable translation
             pickerSort.ItemsSource = new List<string> { AppResources.Active, AppResources.Inactive, AppResources.All };
 
@@ -37,18 +36,13 @@ namespace mobile
         private void OnItemTapped(Object sender, ItemTappedEventArgs e)
         {
             var appointment = e.Item as AppointmentModel; // conversion
-            hpm.HideOrShowAppointment(appointment);
-            appTapped = appointment;
+            hpmd.HideOrShowAppointment(appointment);
 
         }
 
         // did like this because I cannot access directly elements of the DataTemplate
         // I am using my hpm and the last Item Tapped to enable its deletion
-        private void DeleteButton_Clicked(Object sender, EventArgs e)
-        {
-
-            hpm.OnDeleteButton(appTapped);
-        }
+       
 
       
     }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace mobile.ViewModels
 {
@@ -35,6 +37,17 @@ namespace mobile.ViewModels
             {
                 return "Patient: " + PatientName;
 
+            }
+        }
+        public ICommand DeleteApptCommand
+
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    App.hpm.DeleteAppt();
+                });
             }
         }
     }
