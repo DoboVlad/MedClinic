@@ -180,6 +180,7 @@ namespace mobile.Services
             var response = await client.GetAsync(getPatientInfoUrl);
             var content = await response.Content.ReadAsStringAsync();
             JObject userData =  JsonConvert.DeserializeObject<dynamic>(content.ToString());
+            Console.WriteLine(userData);
             PatientModel patient = new PatientModel
             {
                 Id = userData.Value<int>("id"),
