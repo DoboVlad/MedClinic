@@ -89,14 +89,13 @@ namespace MedicProject.Controllers
         [Route("MyAccount")]
         //returns one specific user from the database (for user Myaccount and fordoctors to see the selected pacient's data)
         public async Task<ActionResult<PatientDTO>> getUser(){
-         //get the current loged in user
-         var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-         var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
-        //verify if the user is a patient
-        if(user.isMedic==0)
-            return Ok(_mapper.Map<PatientDTO>(user));
-        //if the user is not a patient he is unauthorized
-        else return Unauthorized();
+            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = await _context.USERS.Include(p => p.doctor).Where(p => p.email == useremail).FirstAsync();
+            //verify if the user is a patient
+            if (user.isMedic == 0)
+                return Ok(_mapper.Map<AccountDTO>(user));
+            //if the user is not a patient he is unauthorized
+            else return Unauthorized();
         }
 
         

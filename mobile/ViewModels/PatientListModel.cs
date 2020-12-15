@@ -22,7 +22,7 @@ namespace mobile.ViewModels
             {
                 return new Command( () =>
                 {
-                    getPatients();
+                    getPatients(("R"));
                 });
             }
         }
@@ -41,20 +41,51 @@ namespace mobile.ViewModels
 
             }
         }
+        public ObservableCollection<PatientModel> patients
+        {
+            get
+            {
+                return _patients;
+            }
+            set
+            {
+                _patients = value;
+                OnPropertyChanged();
+
+
+            }
+        }
+        public ICommand DeleteItemCommand { get; }
         private List<PatientModel> _requests = new List<PatientModel>();
-        public ObservableCollection<PatientModel> patients = new ObservableCollection<PatientModel>();
+        public List<PatientModel> Patients = new List<PatientModel>();
+        private ObservableCollection<PatientModel> _patients = new ObservableCollection<PatientModel>();
         private PatientModel oldPatient;
         private PatientModel oldRequest;
 
         public event PropertyChangedEventHandler PropertyChanged;
         
-        public PatientListModel()
+        public PatientListModel(string l)
         {
-            getPatients();
+                getPatients(l);
+                DeleteItemCommand = new Command(DeleteUser);
         }
-        public async void getPatients()
+
+        public async void getPatients(string l)
         {
-            Requests = await App.apiServicesManager.getUnapprovedUsers(App.user.token);
+            if (l.Equals("R"))
+            {
+                Requests = await App.apiServicesManager.getUnapprovedUsers(App.user.token);
+            }
+            else
+            {
+                Patients = await App.apiServicesManager.getApprovedUsers(App.user.token);
+                foreach(var item in Patients)
+                {
+                    patients.Add(item);
+                }
+
+            }
+
 
         }
         protected virtual void OnPropertyChanged([CallerMemberName] string
@@ -144,7 +175,7 @@ namespace mobile.ViewModels
         public async void ApproveUser() {
 
             await App.apiServicesManager.ApproveUserASync(App.user.token, oldRequest);
-            getPatients();
+            getPatients("R");
            
 
 
@@ -153,9 +184,19 @@ namespace mobile.ViewModels
         {
 
             await App.apiServicesManager.DeleteUserAsync(App.user.token, oldRequest.Id);
-            getPatients();
+            getPatients("R");
 
 
+        }
+        public Command<PatientListModel> DeleteListPatientCommand
+        {
+            get
+            {
+                return new Command<PatientListModel>((PatientListModel) =>
+                {
+                    PatientListModel.DeleteUser();
+                });
+            }
         }
     }
 }
