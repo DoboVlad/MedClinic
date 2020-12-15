@@ -24,7 +24,7 @@ namespace mobile
 
             
 
-    
+                 BindingContext = hpm.Aplist;
             // bind the picker to enable translation
             pickerSort.ItemsSource = new List<string> { AppResources.Active, AppResources.Inactive, AppResources.All };
 
@@ -36,12 +36,14 @@ namespace mobile
         {
             base.OnAppearing();
 
-            BindingContext = hpm.aplist;
+            
+            appointmentsList.ItemsSource = hpm.Aplist;
         }
         private void OnItemTapped(Object sender, ItemTappedEventArgs e)
         {
             var appointment = e.Item as AppointmentModel; // conversion
            hpm.HideOrShowAppointment(appointment);
+            
 
         }
       

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using mobile.Models;
 using mobile.ViewModels;
 
 namespace mobile
@@ -11,13 +12,12 @@ namespace mobile
         private int id;
         private DateTime date;
         private string hour;
-        private string status;
+        private string status = "active";
         private const string duration = "Duration: 30 min";
         private string details;
-        private PatientModel patient;
-        private string patientName;
-
-        public PatientModel Patient 
+        private User patient;
+      
+        public User Patient 
         { 
             get 
             {
@@ -29,7 +29,7 @@ namespace mobile
         {
             get
             {
-                return patient.FullName;
+                return patient.lastName;
             }
          
         }
@@ -65,7 +65,7 @@ namespace mobile
             get
             {
 
-                return date.ToString();
+                return date.ToShortDateString();
 
             }
         }

@@ -25,7 +25,7 @@ namespace mobile
 
            
             
-            appointmentsList.ItemsSource = hpm.aplist;
+            appointmentsList.ItemsSource = hpm.Aplist;
             // bind the picker to enable translation
             pickerSort.ItemsSource = new List<string> { AppResources.Active, AppResources.Inactive, AppResources.All };
 

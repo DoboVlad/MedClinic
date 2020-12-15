@@ -261,16 +261,26 @@ namespace mobile.Services
                 JArray userData = JsonConvert.DeserializeObject<dynamic>(content.ToString());
                 foreach (JObject obj in userData)
                 {
-                    list.Add(new AppointmentModel {
-                    Id = obj.Value<int>("Id"),
-                    Hour = obj.Value<string>("hour"),
-                    Date = obj.Value<DateTime>("date"),
-                    Patient = obj.Value<PatientModel>("user")
 
+
+                    JObject user = obj.Value<JObject>("user");
+                    User usr = JsonConvert.DeserializeObject<User>(user.ToString());
+                    list.Add(new AppointmentModel
+                    {
+                        Id = obj.Value<int>("Id"),
+                        Hour = obj.Value<string>("hour"),
+                        Date = obj.Value<DateTime>("date"),
+                        Patient = usr
+
+                    });
+
+                    foreach (AppointmentModel am in list)
+                    {
+                        if (am.Date < DateTime.Now)
+                            am.Status = "inactive";
                     }
+
                         
-                        
-                        );
                 }
             }
                 return list;
