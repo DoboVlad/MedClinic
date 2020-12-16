@@ -11,6 +11,7 @@ using Xamarin.Forms;
 using Microsoft.CSharp.RuntimeBinder;
 using mobile.ViewModels;
 using System.Net.Http.Headers;
+using System.Linq;
 
 namespace mobile.Services
 {
@@ -184,7 +185,7 @@ namespace mobile.Services
             var response = await client.GetAsync(getPatientInfoUrl);
             var content = await response.Content.ReadAsStringAsync();
             JObject userData =  JsonConvert.DeserializeObject<dynamic>(content.ToString());
-            Console.WriteLine(userData);
+            JObject o = (JObject)JObject.Parse(content)["doctor"];
             PatientModel patient = new PatientModel
             {
                 Id = userData.Value<int>("id"),
@@ -193,7 +194,13 @@ namespace mobile.Services
                 Email = userData.Value<string>("email"),
                 Phone = userData.Value<string>("phoneNumber"),
                 cnp = userData.Value<string>("cnp"),
-                age = userData.Value<int>("age")
+                age = userData.Value<int>("age"),
+                Doctor = new DoctorModel()
+                {
+                    FirstName = o.Value<string>("firstName"),
+                    LastName = o.Value<string>("lastName"),
+                    Phone = o.Value<string>("phoneNumber")
+                }
             };
             return patient;
         }

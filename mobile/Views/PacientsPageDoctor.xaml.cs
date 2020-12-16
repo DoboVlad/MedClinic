@@ -24,5 +24,12 @@ namespace mobile
             var patient = e.Item as PatientModel;
             plm.HideOrShowPatient(patient, "P");
         }
+
+        private void btnRemove_Clicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var patient = button?.BindingContext as PatientModel;
+            plm.DeletePatientList.Execute(patient);
+        }
     }
 }

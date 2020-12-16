@@ -20,13 +20,25 @@ namespace mobile.ViewModels
         {
             get
             {
-                return new Command( () =>
+                return new Command(() =>
+               {
+                   getPatients(("R"));
+               });
+            }
+        }
+        public Command<PatientModel> DeletePatientList
+        {
+            get
+            {
+                return new Command<PatientModel>(async (patient) =>
                 {
-                    getPatients(("R"));
+                    if (await App.apiServicesManager.DeleteUserAsync(App.user.token, patient.Id))
+                    {
+                        getPatients("P");
+                    }
                 });
             }
         }
-  
         public List<PatientModel> Requests
         {
             get
@@ -41,7 +53,7 @@ namespace mobile.ViewModels
 
             }
         }
-        public ObservableCollection<PatientModel> patients
+        public List<PatientModel> Patients
         {
             get
             {
@@ -55,10 +67,11 @@ namespace mobile.ViewModels
 
             }
         }
+
         public ICommand DeleteItemCommand { get; }
         private List<PatientModel> _requests = new List<PatientModel>();
-        public List<PatientModel> Patients = new List<PatientModel>();
-        private ObservableCollection<PatientModel> _patients = new ObservableCollection<PatientModel>();
+        private List<PatientModel> _patients = new List<PatientModel>();
+        public ObservableCollection<PatientModel> patients = new ObservableCollection<PatientModel>();
         private PatientModel oldPatient;
         private PatientModel oldRequest;
 
@@ -67,7 +80,6 @@ namespace mobile.ViewModels
         public PatientListModel(string l)
         {
                 getPatients(l);
-                DeleteItemCommand = new Command(DeleteUser);
         }
 
         public async void getPatients(string l)

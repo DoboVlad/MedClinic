@@ -88,7 +88,7 @@
                         </StackLayout>
                         <StackLayout Grid.Row="6" Orientation="Horizontal">
                             <Label x:Name="lblDoctor" Text="{local:Translate Doctor}"/>
-                            <Label x:Name="lblUserDoctor" Text="{Binding IdDoctor}" FontSize="16" HorizontalOptions="EndAndExpand"/>
+                            <Label x:Name="lblDoctorName" Text="{Binding Doctor.FullName}" FontSize="16"  WidthRequest="150" HorizontalOptions="EndAndExpand"  />
                         </StackLayout>
                         <StackLayout Grid.Row="7" Orientation="Horizontal">
                             <Label x:Name="lblPassword" Text="{local:Translate Password}" HorizontalOptions="StartAndExpand"/>

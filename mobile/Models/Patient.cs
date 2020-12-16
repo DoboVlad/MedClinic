@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,7 +17,18 @@ namespace mobile
         private string pin;
        
         private string phone;
-        private string idDoctor;
+        private DoctorModel doctor;
+        public DoctorModel Doctor
+        {
+            get
+            {
+                return doctor;
+            }
+            set
+            {
+                doctor = value;
+            }
+        }
 
         public int age { get; set; }
 
