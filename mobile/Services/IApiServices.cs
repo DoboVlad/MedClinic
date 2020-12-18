@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using mobile.Models;
 using mobile.ViewModels;
 using Xamarin.Forms;
 
@@ -25,6 +26,6 @@ namespace mobile.Services
         public Task<List<AppointmentModel>> GetNextApptsAsync(string token);
         public Task<List<AppointmentModel>> GetBackApptsAsync(string token);
         public  Task<List<AppointmentModel>> GetAllApptsAsync(int id);
-
+        public Task<CreateAppointment> CreateAppointmentAsync(CreateAppointment createAppointment, string token);
     }
 }

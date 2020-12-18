@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mobile.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
@@ -47,6 +48,16 @@ namespace mobile.ViewModels
                 return new Command(() =>
                 {
                     App.hpm.DeleteAppt();
+                });
+            }
+        }
+        public Command<CreateAppointment> CreateApppointmentCommand
+        {
+            get
+            {
+                return new Command<CreateAppointment>(async (appointment) =>
+                {
+                    AppointmentsPage.createAppt = await App.apiServicesManager.CreateAppointmentAsync(appointment, App.user.token);
                 });
             }
         }

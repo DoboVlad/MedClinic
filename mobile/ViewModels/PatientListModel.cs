@@ -34,7 +34,7 @@ namespace mobile.ViewModels
                 {
                     if (await App.apiServicesManager.DeleteUserAsync(App.user.token, patient.Id))
                     {
-                        getPatients("P");
+                        patients.Remove(patient);
                     }
                 });
             }

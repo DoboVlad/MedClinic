@@ -232,7 +232,7 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your appointment has been saved for.
+        ///   Looks up a localized string similar to Your appointment has been saved..
         /// </summary>
         internal static string AppSavedMess {
             get {

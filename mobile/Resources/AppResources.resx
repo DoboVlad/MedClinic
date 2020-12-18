@@ -175,7 +175,7 @@
     <value>Appts</value>
   </data>
   <data name="AppSavedMess" xml:space="preserve">
-    <value>Your appointment has been saved for</value>
+    <value>Your appointment has been saved.</value>
   </data>
   <data name="AvailableDate" xml:space="preserve">
     <value>The date is available.</value>

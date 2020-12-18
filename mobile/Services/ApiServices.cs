@@ -38,6 +38,7 @@ namespace mobile.Services
         public static string getBackAppts = $"{BaseAddress}/api/appointments/nextAppointmentsByMedic";
         public static string deleteAppt = $"{BaseAddress}/api/appointments/delete";
         public static string getAllAppts = $"{BaseAddress}/api/allDoctorApp/";
+        public static string createAppointmentUrl = $"{BaseAddress}/api/appointments/createApp";
         // Pass the handler to httpclient(from you are calling api) only in debug mode we have to pass the ssl, in release we dont
         public ApiServices()
         {
@@ -95,11 +96,23 @@ namespace mobile.Services
 
                 App.user.token = userDynamic.Value<string>("token");
                 App.user.role = userDynamic.Value<int>("role");
+                App.user.id = userDynamic.Value<int>("id");
                 return true;
             }
             return false;
         }
-
+        public async Task<CreateAppointment> CreateAppointmentAsync (CreateAppointment createAppointment, string token)
+        {
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var jsonApp = JsonConvert.SerializeObject(createAppointment);
+            HttpContent content = new StringContent(jsonApp);
+            content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var respons = await client.PostAsync(createAppointmentUrl, content);
+            var appointmentString = await respons.Content.ReadAsStringAsync();
+            CreateAppointment appointmentCreated = JsonConvert.DeserializeObject<CreateAppointment>(appointmentString);
+            return appointmentCreated;
+        }
         public async Task<List<PatientModel>> GetUnapprovedPatientsAsync(string token) {
 
             List<PatientModel> patients = new List<PatientModel>();
@@ -225,7 +238,7 @@ namespace mobile.Services
 
 
         public async Task<bool> DeleteUserAsync(string token, int id)
-        {
+         {
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             var response = await client.DeleteAsync(deleteUser + "?id=" + id);
