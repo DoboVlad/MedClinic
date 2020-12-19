@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using mobile.Models;
 using mobile.ViewModels;
@@ -12,10 +13,11 @@ namespace mobile
         private int id;
         private DateTime date;
         private string hour;
-        private string status = "active";
+        private string status = "Active";
         private const string duration = "Duration: 30 min";
         private string details;
         private User patient;
+        protected Color statusColor = Color.Green;
       
         public User Patient 
         { 

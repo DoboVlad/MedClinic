@@ -37,7 +37,7 @@ namespace mobile.Services
         public static string getNextAppts = $"{BaseAddress}/api/appointments/historyAppointmentsByMedic";
         public static string getBackAppts = $"{BaseAddress}/api/appointments/nextAppointmentsByMedic";
         public static string deleteAppt = $"{BaseAddress}/api/appointments/delete";
-        public static string getAllAppts = $"{BaseAddress}/api/allDoctorApp/";
+        public static string getAllAppts = $"{BaseAddress}/api/appointments/allDoctorApp/";
         public static string createAppointmentUrl = $"{BaseAddress}/api/appointments/createApp";
         // Pass the handler to httpclient(from you are calling api) only in debug mode we have to pass the ssl, in release we dont
         public ApiServices()
@@ -337,7 +337,10 @@ namespace mobile.Services
                     foreach (AppointmentModel am in list)
                     {
                         if (am.Date < DateTime.Now)
-                            am.Status = "inactive";
+                        {
+                            am.Status = "Inactive";
+                            am.StatusColor = Color.Red;
+                        }
                     }
 
                         
@@ -374,7 +377,10 @@ namespace mobile.Services
                     foreach (AppointmentModel am in list)
                     {
                         if (am.Date < DateTime.Now)
-                            am.Status = "inactive";
+                        {
+                            am.Status = "Inactive";
+                            am.StatusColor = Color.Red;
+                        }
                     }
 
 
@@ -411,7 +417,10 @@ namespace mobile.Services
                     foreach (AppointmentModel am in list)
                     {
                         if (am.Date < DateTime.Now)
-                            am.Status = "inactive";
+                        {
+                            am.Status = "Inactive";
+                            am.StatusColor = Color.Red;
+                        }
                     }
 
 
@@ -424,7 +433,7 @@ namespace mobile.Services
         {
             List<AppointmentModel> list = new List<AppointmentModel>();
           
-            var response = await client.GetAsync(getAllAppts + "1");
+            var response = await client.GetAsync(getAllAppts + id);
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
@@ -433,21 +442,27 @@ namespace mobile.Services
                 {
 
 
-                    JObject user = obj.Value<JObject>("user");
-                    User usr = JsonConvert.DeserializeObject<User>(user.ToString());
+
                     list.Add(new AppointmentModel
                     {
-                        Id = obj.Value<int>("id"),
-                        Hour = obj.Value<string>("hour"),
-                        Date = obj.Value<DateTime>("date"),
-                        Patient = usr
+                      //  Id = obj.Value<int>("id"),
+                        Hour = obj.Value<string>("hourOfApp"),
+                        Date = obj.Value<DateTime>("dateOfApp"),
+                        Patient = new User{
+                        firstName = obj.Value<string>("pactientFirstName"),
+                        lastName = obj.Value<string>("pacientLastName"),
+                        phone = obj.Value<string>("phone"),
+                        }
 
-                    });
+                    }); ;
 
                     foreach (AppointmentModel am in list)
                     {
                         if (am.Date < DateTime.Now)
-                            am.Status = "inactive";
+                        {
+                            am.Status = "Inactive";
+                            am.StatusColor = Color.Red;
+                        }
                     }
 
 

@@ -83,8 +83,8 @@
           <target state="new">Programări</target>
         </trans-unit>
         <trans-unit id="AppSavedMess" translate="yes" xml:space="preserve">
-          <source>Your appointment has been saved for</source>
-          <target state="new">Programarea a fost salvată pentru</target>
+          <source>Your appointment has been saved.</source>
+          <target state="new">Your appointment has been saved.</target>
         </trans-unit>
         <trans-unit id="AvailableDate" translate="yes" xml:space="preserve">
           <source>The date is available.</source>

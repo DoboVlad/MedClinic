@@ -31,12 +31,19 @@ namespace mobile.ViewModels
             }
 
         }
+        public Color StatusColor
+        {
+            get { return statusColor; }
+            set {
+                statusColor = value;
+            }
+        }
         // to get the name displayed as wanted, with the format Patient: FullName
         public string PatientNameFormat
         {
             get
             {
-                return "Patient: " + PatientName;
+                return "Patient: " + Patient.FullName;
 
             }
         }

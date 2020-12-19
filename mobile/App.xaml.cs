@@ -14,7 +14,7 @@ namespace mobile
         public static AboutUsModel aum;
         public static PatientListModel plm;
         public static HomePageModel hpm;
-        public HomePageModelDoctor hpmd;
+        public static HomePageModelDoctor hpmd;
         public App()
         {
             InitializeComponent();
