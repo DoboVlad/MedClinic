@@ -9,7 +9,7 @@
              Title="{local:Translate Requests}"
              IconImageSource="{local:ImageResource mobile.Images.requests.png}">
     <StackLayout>
-
+        <ActivityIndicator x:Name="activityIndicator" IsRunning="{Binding isLoading}" IsVisible="{Binding isLoading}"/>
         <ListView x:Name="listRequests" ItemsSource="{Binding Requests}" SelectionMode="None"  HasUnevenRows="True" >
         <ListView.ItemTemplate>
             <DataTemplate>

@@ -19,14 +19,19 @@ namespace mobile
         public NewPatientsPageDoctor()
         {
             InitializeComponent();
-            App.plm = new PatientListModel("R");
+            App.plm = new PatientListModel();
             BindingContext = App.plm;
             listRequests.ItemTapped += OnItemTapped;
            
         
         }
 
-       
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            App.plm.getPatients("R");
+
+        }
         private void OnItemTapped(Object sender, ItemTappedEventArgs e)
         {
             var patient = e.Item as PatientModel; // conversion

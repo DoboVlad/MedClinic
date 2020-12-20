@@ -4,7 +4,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using mobile.ViewModels;
+using Xamarin.Forms;
 
 namespace mobile.ViewModels
 {
@@ -13,6 +15,19 @@ namespace mobile.ViewModels
     {
         // used for the tapped event, to close the most recent opened item in the list
         private AppointmentModel oldAppointment;
+        private bool _isLoading = true;
+        public bool isLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                OnPropertyChanged();
+            }
+        }
         public List<AppointmentModel> Aplist
         {
             get { return _aplist; }
@@ -20,6 +35,7 @@ namespace mobile.ViewModels
             {
                 _aplist = value;
                 OnPropertyChanged();
+
             }
         }
         private List<AppointmentModel> _aplist = new List<AppointmentModel>();
@@ -40,8 +56,16 @@ namespace mobile.ViewModels
 
         public async void getAppts()
         {
-            Aplist = await App.apiServicesManager.GetAllApptsAsync(App.user.id);
+            isLoading = true;
+             Aplist = await App.apiServicesManager.GetAllApptsAsync(App.user.id); 
+            isLoading = false;
+            
+          
+
+            
         }
+
+
         public void HideOrShowAppointment(AppointmentModel a)
         {
 

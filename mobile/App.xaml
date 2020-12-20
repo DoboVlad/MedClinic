@@ -24,4 +24,4 @@
             <Setter Property="SeparatorColor" Value="#5084F2"/>
         </Style>
     </Application.Resources>
-</Application>
+ </Application>

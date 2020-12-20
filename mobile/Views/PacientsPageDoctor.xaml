@@ -7,8 +7,10 @@
              xmlns:local ="clr-namespace:mobile.Helpers"
              Title ="{local:Translate Patients}"
              IconImageSource="{local:ImageResource mobile.Images.patients.png}">
+    <StackLayout>
+        <ActivityIndicator x:Name="activityIndicator" IsRunning="{Binding isLoading}" IsVisible="{Binding isLoading}"/>
 
-    <ListView x:Name="listPacients" SelectionMode="None" HasUnevenRows="True">
+    <ListView x:Name="listPacients" ItemsSource="{Binding Patients}" SelectionMode="None" HasUnevenRows="True">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
@@ -44,10 +46,11 @@
                             <Label Text="{local:Translate PhoneProfile}" FontAttributes="Bold"/>
                             <Label x:Name="lblPatientPhone" Text="{Binding Phone}"/>
                         </StackLayout>
-                        <Button x:Name="btnRemove" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Clicked="btnRemove_Clicked" Text="{local:Translate DeletePacient}" IsVisible="{Binding IsVisible}"  TextColor="White" BackgroundColor="Red"/>
+                            <Button x:Name="btnRemove" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding DeleteCommandPatientList}" Text="{local:Translate DeletePacient}" IsVisible="{Binding IsVisible}"  TextColor="White" BackgroundColor="Red"/>
                     </Grid>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
+            </StackLayout>
 </ContentPage>

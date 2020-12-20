@@ -5,9 +5,8 @@
              x:Class="mobile.MainPage"
              Title="MedClinic"
              >
-   
-        
-        
+
+  
         <Grid Padding="50,0,50,0" Grid.Row="0">
             <Grid.RowDefinitions>
 
@@ -27,5 +26,5 @@
        
 
     </Grid>
-        
+
 </ContentPage>

@@ -166,28 +166,31 @@ namespace mobile.Services
         {
             List<DoctorModel> doctors = new List<DoctorModel>();
             var response = await client.GetAsync(getAboutUsDoctorsUrl);
-            var usr = await response.Content.ReadAsStringAsync();
-            JArray userDynamic = JsonConvert.DeserializeObject<dynamic>(usr);
+            if (response.IsSuccessStatusCode)
+            {
+                var usr = await response.Content.ReadAsStringAsync();
+                JArray userDynamic = JsonConvert.DeserializeObject<dynamic>(usr);
 
-            foreach (JObject d in userDynamic)
-            {
-                doctors.Add(new DoctorModel
+                foreach (JObject d in userDynamic)
                 {
-                    Id = d.Value<int>("id"),
-                    FirstName = d.Value<string>("firstName"),
-                    LastName = d.Value<string>("lastName"),
-                    Email = d.Value<string>("email"),
-                    Phone = d.Value<string>("phoneNumber"),
-                    Description = d.Value<string>("Description"),
-                    Image = d.Value<string>("photo")
-                });
-            }
-            foreach (DoctorModel dm in doctors)
-            {
-                int start = dm.Image.IndexOf("img");
-                
-                dm.Image = dm.Image.Substring(start + 4);
-                
+                    doctors.Add(new DoctorModel
+                    {
+                        Id = d.Value<int>("id"),
+                        FirstName = d.Value<string>("firstName"),
+                        LastName = d.Value<string>("lastName"),
+                        Email = d.Value<string>("email"),
+                        Phone = d.Value<string>("phoneNumber"),
+                        Description = d.Value<string>("Description"),
+                        Image = d.Value<string>("photo")
+                    });
+                }
+                foreach (DoctorModel dm in doctors)
+                {
+                    int start = dm.Image.IndexOf("img");
+
+                    dm.Image = dm.Image.Substring(start + 4);
+
+                }
             }
             return doctors;
         }

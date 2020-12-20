@@ -19,10 +19,16 @@ namespace mobile
         {
             InitializeComponent();
 
-           
-            doctorsList.ItemsSource = App.aum.doctorList;
+            BindingContext = App.aum;
+            
             // added an event on item tapped 
             doctorsList.ItemTapped += OnItemTapped;
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            App.aum.getDoctors();
+       
         }
         // any item tapped will open another page with more details about the doctor
         public void OnItemTapped(object sender, ItemTappedEventArgs e) => Navigation.PushAsync(new AboutUsPageDetails((DoctorModel)e.Item));

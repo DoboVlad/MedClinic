@@ -15,7 +15,9 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ListView x:Name="doctorsList" RowHeight="360" SelectionMode="None" RefreshCommand="{Binding command}">
+        <StackLayout>
+            <ActivityIndicator x:Name="activityIndicator" IsRunning="{Binding isLoading}" IsVisible="{Binding isLoading}"/>
+            <ListView x:Name="doctorsList" ItemsSource="{Binding DoctorList}" RowHeight="360" SelectionMode="None" RefreshCommand="{Binding command}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -30,6 +32,7 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>  
+        </ListView> 
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

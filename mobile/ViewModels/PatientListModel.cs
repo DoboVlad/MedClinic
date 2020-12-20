@@ -15,17 +15,6 @@ namespace mobile.ViewModels
     public class PatientListModel : INotifyPropertyChanged
     {
 
-        public ICommand PatientsCommand
-
-        {
-            get
-            {
-                return new Command(() =>
-               {
-                   getPatients(("R"));
-               });
-            }
-        }
         public Command<PatientModel> DeletePatientList
         {
             get
@@ -34,7 +23,7 @@ namespace mobile.ViewModels
                 {
                     if (await App.apiServicesManager.DeleteUserAsync(App.user.token, patient.Id))
                     {
-                        patients.Remove(patient);
+                        _patients.Remove(patient);
                     }
                 });
             }
@@ -67,34 +56,53 @@ namespace mobile.ViewModels
 
             }
         }
-
+        private bool _isLoading = true;
+        public bool isLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                OnPropertyChanged();
+            }
+        }
         public ICommand DeleteItemCommand { get; }
         private List<PatientModel> _requests = new List<PatientModel>();
         private List<PatientModel> _patients = new List<PatientModel>();
-        public ObservableCollection<PatientModel> patients = new ObservableCollection<PatientModel>();
-        private PatientModel oldPatient;
+         private PatientModel oldPatient;
         private PatientModel oldRequest;
 
         public event PropertyChangedEventHandler PropertyChanged;
-        
-        public PatientListModel(string l)
+
+        public PatientListModel()
         {
-                getPatients(l);
+            
         }
 
-        public async void getPatients(string l)
+        public void getPatients(string l)
         {
+            isLoading = true;
             if (l.Equals("R"))
             {
-                Requests = await App.apiServicesManager.getUnapprovedUsers(App.user.token);
+                Task.Run(async () =>
+                {
+                    
+                    Requests = await App.apiServicesManager.getUnapprovedUsers(App.user.token);
+                    isLoading = false;
+                });
             }
             else
             {
-                Patients = await App.apiServicesManager.GetApprovedUsers(App.user.token);
-                foreach(var item in Patients)
+                Task.Run(async () =>
                 {
-                    patients.Add(item);
-                }
+                    Patients = await App.apiServicesManager.GetApprovedUsers(App.user.token);
+                    isLoading = false;
+                });
+
+               
 
             }
 
@@ -165,9 +173,16 @@ namespace mobile.ViewModels
         {
             if (l.Equals("P"))
             {
-                var index = patients.IndexOf(a);
-                patients.Remove(a);
-                patients.Insert(index, a);
+                var index = _patients.IndexOf(a);
+                if (index >= 0)
+                {
+                    _patients.Remove(a);
+                    _patients.Insert(index, a);
+                    var _patients3 = new List<PatientModel>();
+                    foreach (PatientModel p in _patients)
+                        _patients3.Add(p);
+                    Patients = _patients3;
+                }
             }
             else if (l.Equals("R"))
             {
@@ -181,14 +196,15 @@ namespace mobile.ViewModels
                         _requests3.Add(p);
                     Requests = _requests3;
                 }
-                
+
             }
         }
-        public async void ApproveUser() {
+        public async void ApproveUser()
+        {
 
             await App.apiServicesManager.ApproveUserASync(App.user.token, oldRequest);
             getPatients("R");
-           
+
 
 
         }
@@ -200,15 +216,14 @@ namespace mobile.ViewModels
 
 
         }
-        public Command<PatientListModel> DeleteListPatientCommand
+        public async void DeleteUserPatient()
         {
-            get
-            {
-                return new Command<PatientListModel>((PatientListModel) =>
-                {
-                    PatientListModel.DeleteUser();
-                });
-            }
+
+            await App.apiServicesManager.DeleteUserAsync(App.user.token, oldPatient.Id);
+            getPatients("P");
+
+
         }
+
     }
 }

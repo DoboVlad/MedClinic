@@ -18,16 +18,14 @@ namespace mobile
     {
         
          List<AppointmentModel> list1 = new List<AppointmentModel>();
-     
-
+       
         public HomePageDoctor()
 
         { 
-            App.hpmd = new HomePageModelDoctor();
        
             InitializeComponent();
-           
-
+ 
+            App.hpmd = new HomePageModelDoctor();
 
             BindingContext = App.hpmd;
             // bind the picker to enable translation
@@ -42,10 +40,10 @@ namespace mobile
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-
+ 
             App.hpmd.getAppts();
             list1 = App.hpmd.Aplist;
+
         }
         public void PickerSort_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -5,7 +5,7 @@
     ios:Page.UseSafeArea="true"
              x:Class="mobile.HomePageDoctor"
              xmlns:local ="clr-namespace:mobile.Helpers"
-            
+            x:Name="contentPage"
              Title ="{local:Translate Home}"
              IconImageSource="{local:ImageResource mobile.Images.home.png}">
     <!--used ios namespace to ensure the tabbed page is not overlapping the status bar -->
@@ -22,6 +22,7 @@
             <Picker Title="{local:Translate Sort}" x:Name="pickerSort" Margin="320,10,10,5" TextColor="#5084F2">
 
             </Picker>
+            <ActivityIndicator x:Name="activityIndicator" IsRunning="{Binding isLoading}" IsVisible="{Binding isLoading}"/>
             <ListView x:Name="appointmentsList" ItemsSource="{Binding Aplist}" RowHeight="90" SelectionMode="None" HasUnevenRows="True" >
                 <!--IsPullToRefreshEnabled="True"-->
                 <ListView.ItemTemplate>

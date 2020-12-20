@@ -12,26 +12,26 @@ namespace mobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PacientsPageDoctor : ContentPage
     {
-        private PatientListModel plm;
+      
         public PacientsPageDoctor()
         {
            InitializeComponent();
-            plm = new PatientListModel("P");
-            listPacients.ItemsSource = plm.patients;
+            App.plm = new PatientListModel();
+            BindingContext = App.plm;
             listPacients.ItemTapped += OnItemTapped;
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            App.plm.getPatients("P");
 
+        }
         private void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             var patient = e.Item as PatientModel;
-            plm.HideOrShowPatient(patient, "P");
+            App.plm.HideOrShowPatient(patient, "P");
         }
 
-        private void btnRemove_Clicked(object sender, EventArgs e)
-        {
-            var button = sender as Button;
-            var patient = button?.BindingContext as PatientModel;
-            plm.DeletePatientList.Execute(patient);
-        }
+        
     }
 }

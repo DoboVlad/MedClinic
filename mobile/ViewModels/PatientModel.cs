@@ -40,6 +40,17 @@ namespace mobile.ViewModels
                 });
             }
         }
+        public ICommand DeleteCommandPatientList
+
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    App.plm.DeleteUserPatient();
+                });
+            }
+        }
         public ICommand UpdateCommand
         {
             get
