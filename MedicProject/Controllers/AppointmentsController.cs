@@ -37,17 +37,21 @@ namespace MedicProject.Controllers
                     return BadRequest("This date is already used!");
                 }
             }
+
+            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = await _context.USERS.Where(x => x.email == useremail).FirstOrDefaultAsync();
+
             var Appointment = new Appointments
             {
                 date = app.date,
                 hour = app.hour,
-                UserId = app.UserId
+                UserId = user.Id
             };
             
             _context.APPOINTMENTS.Add(Appointment);
             await _context.SaveChangesAsync();
 
-            return Appointment;
+            return Ok("App created");
         }
 
         //verify if the date is already used in the database
@@ -118,7 +122,7 @@ namespace MedicProject.Controllers
             var appointments = await _context.APPOINTMENTS
             .Include(p => p.User)
             .Where(app => app.date < date)
-            .Where(p => p.User.email == useremail)
+            .Where(p => p.User.doctorId == user.Id)
             .ToListAsync();
 
             var appToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
@@ -136,7 +140,7 @@ namespace MedicProject.Controllers
             var appointments = await _context.APPOINTMENTS
             .Include(p => p.User)
             .Where(app => app.date > date)
-            .Where(p => p.User.email == useremail)
+            .Where(p => p.User.doctorId == user.Id)
             .ToListAsync();
 
             var appointementsToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
@@ -145,7 +149,7 @@ namespace MedicProject.Controllers
         }
 
         //return all the appointements of a medic
-        [HttpGet("allDoctorApp/{id}")]
+/*        [HttpGet("allDoctorApp/{id}")]
         public async Task<ActionResult<IList>> getAllUsers(int id){
 
             //get all users from db
@@ -190,14 +194,19 @@ namespace MedicProject.Controllers
             var finalResult = result.Where(medic => medic.MedicId == id).ToList();
 
             return finalResult;
-        }
+        }*/
 
         // api/appointments/delete/id
         // delete an appointment by ID
         [HttpDelete("delete/{appId}")]
         public async Task<ActionResult> deleteApp(int appId)
         {
+            DateTime date = DateTime.Now;
             var appointment = await _context.APPOINTMENTS.FirstOrDefaultAsync(app => app.Id == appId);
+
+            if (appointment.date < date) {
+                return Unauthorized("You can't delete past appointments");
+            }
 
             _context.APPOINTMENTS.Remove(appointment);
 
