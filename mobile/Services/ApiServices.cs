@@ -101,7 +101,7 @@ namespace mobile.Services
             }
             return false;
         }
-        public async Task<CreateAppointment> CreateAppointmentAsync (CreateAppointment createAppointment, string token)
+        public async Task<Boolean> CreateAppointmentAsync (CreateAppointment createAppointment, string token)
         {
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
@@ -109,9 +109,7 @@ namespace mobile.Services
             HttpContent content = new StringContent(jsonApp);
             content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             var respons = await client.PostAsync(createAppointmentUrl, content);
-            var appointmentString = await respons.Content.ReadAsStringAsync();
-            CreateAppointment appointmentCreated = JsonConvert.DeserializeObject<CreateAppointment>(appointmentString);
-            return appointmentCreated;
+            return true;
         }
         public async Task<List<PatientModel>> GetUnapprovedPatientsAsync(string token) {
 

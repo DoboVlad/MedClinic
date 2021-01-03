@@ -14,7 +14,7 @@
             <Label x:Name="lblChooseDate" Text="{local:Translate ChooseDate}" FontSize="Large" TextColor="#5084F2" HorizontalOptions="Center"/>
             <DatePicker x:Name="dpAppointment" MinimumDate="{Binding Source={x:Static sys:DateTime.Now}}" Format ='MMMM dd, yyyy'/>
             <TimePicker x:Name="tpAppointment" Format="t"/>
-            <Label x:Name="lblAvailable"   IsVisible="false" TextColor="#5084F2" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+            <Label x:Name="lblAvailable" Text="{Binding Message}"  TextColor="#5084F2" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             <!--<Button x:Name="btnCheck" Clicked="btnCheck_Clicked" Text="{local:Translate CheckAvailability}" BackgroundColor="#5084F2"/>-->
             <Button x:Name="btnMakeApt" Clicked="btnMake_Clicked" Text="{local:Translate MakeAppointment}" BackgroundColor="#5084F2" IsVisible="True" />
            

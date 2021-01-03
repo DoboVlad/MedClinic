@@ -168,6 +168,9 @@
   <data name="AnotherEmail" xml:space="preserve">
     <value>Send another email</value>
   </data>
+  <data name="AppNotSAved" xml:space="preserve">
+    <value>Your appointment could not be saved.</value>
+  </data>
   <data name="Appointments" xml:space="preserve">
     <value>Appointments</value>
   </data>

@@ -37,8 +37,8 @@ namespace mobile.ViewModels
                 {
                    var isSuccess = await App.apiServicesManager.Register(firstName, lastName, email, cnp, dateOfBirth, phoneNumber, password, repeatPassword, doctorId);
                     if (isSuccess)
-                    { 
-                        Console.WriteLine("A MERS!");
+                    {
+                        Console.WriteLine("a mers");
                     }
                     else
                     {

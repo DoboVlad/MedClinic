@@ -40,7 +40,6 @@ namespace MedicProject.Controllers
 
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
             var user = await _context.USERS.Where(x => x.email == useremail).FirstOrDefaultAsync();
-
             var Appointment = new Appointments
             {
                 date = app.date,
@@ -50,8 +49,8 @@ namespace MedicProject.Controllers
             
             _context.APPOINTMENTS.Add(Appointment);
             await _context.SaveChangesAsync();
-
-            return Ok("App created");
+            
+            return Ok(_mapper.Map<ReturnAppointmentsDTO>(Appointment));
         }
 
         //verify if the date is already used in the database

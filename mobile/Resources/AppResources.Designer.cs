@@ -214,6 +214,15 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your appointment could not be saved..
+        /// </summary>
+        internal static string AppNotSAved {
+            get {
+                return ResourceManager.GetString("AppNotSAved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Appointments.
         /// </summary>
         internal static string Appointments {

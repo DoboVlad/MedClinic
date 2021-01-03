@@ -1,13 +1,16 @@
 ﻿using mobile.Models;
+using mobile.Resources;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace mobile.ViewModels
 {
-    public class AppointmentModel : Appointment
+    public class AppointmentModel : Appointment, INotifyPropertyChanged
     {
         // testing the visibility of the details
         public bool IsVisible { get; set; }
@@ -47,6 +50,16 @@ namespace mobile.ViewModels
 
             }
         }
+        protected string message;
+        public string Message { 
+            get {
+                return message;
+            }
+            set {
+                message = value;
+                OnPropertyChanged();
+            }
+                }
         public ICommand DeleteApptCommand
 
         {
@@ -64,9 +77,24 @@ namespace mobile.ViewModels
             {
                 return new Command<CreateAppointment>(async (appointment) =>
                 {
-                    AppointmentsPage.createAppt = await App.apiServicesManager.CreateAppointmentAsync(appointment, App.user.token);
+                    if( await App.apiServicesManager.CreateAppointmentAsync(appointment, App.user.token))
+                    {
+                        Message = AppResources.AppSavedMess;
+                    }
+                    else
+                    {
+                        Message = AppResources.AppNotSAved;
+                    }
                 });
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string
+            propertyName = null)
+
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
