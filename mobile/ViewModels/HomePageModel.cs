@@ -49,20 +49,32 @@ namespace mobile.ViewModels
 
         public HomePageModel()
         {
-            getAppts();
+            getNextAppts();
         }
 
-        public void getAppts()
+        public void getBackAppts()
         {
             isLoading = true;
             Task.Run(async () =>
             {
-                Aplist = await App.apiServicesManager.GetApptsAsync(App.user.token);
+                Aplist = await App.apiServicesManager.GetBackPatientApptsAsync(App.user.token);
                 isLoading = false;
                 
             });
           
             
+        }
+        public void getNextAppts()
+        {
+            isLoading = true;
+            Task.Run(async () =>
+            {
+                Aplist = await App.apiServicesManager.GetNextPatientApptsAsync(App.user.token);
+                isLoading = false;
+
+            });
+
+
         }
         public void HideOrShowAppointment(AppointmentModel a)
         {
@@ -111,7 +123,7 @@ namespace mobile.ViewModels
         {
 
             await App.apiServicesManager.DeleteApptAsync(oldAppointment.Id);
-            getAppts();
+            getNextAppts();
            
             
 

@@ -71,6 +71,19 @@ namespace mobile.ViewModels
                 });
             }
         }
+
+        public ICommand DeleteApptDoctorCommand
+
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    App.hpmd.DeleteDoctorAppt();
+                });
+            }
+        }
+
         public Command<CreateAppointment> CreateApppointmentCommand
         {
             get

@@ -68,6 +68,7 @@ namespace mobile
         private void OnItemTapped(Object sender, ItemTappedEventArgs e)
         {
             var appointment = e.Item as AppointmentModel; // conversion
+            if (appointment.IsActive.Equals("Status: " + AppResources.Active))
             App.hpmd.HideOrShowAppointment(appointment);
 
         }

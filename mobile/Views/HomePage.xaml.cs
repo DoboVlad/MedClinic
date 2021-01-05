@@ -16,7 +16,7 @@ namespace mobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
-        List<AppointmentModel> list1 = new List<AppointmentModel>();
+
 
         public HomePage()
         {
@@ -26,7 +26,7 @@ namespace mobile
             
             BindingContext = App.hpm;
             // bind the picker to enable translation
-            pickerSort.ItemsSource = new List<string> { AppResources.Active, AppResources.Inactive, AppResources.All };
+            pickerSort.ItemsSource = new List<string> { AppResources.Active, AppResources.Inactive };
 
             appointmentsList.ItemTapped += OnItemTapped;
             pickerSort.SelectedIndexChanged += PickerSort_SelectedIndexChanged;
@@ -37,48 +37,34 @@ namespace mobile
             base.OnAppearing();
 
 
-            App.hpm.getAppts();
-            list1 = App.hpm.Aplist;
+            App.hpm.getNextAppts();
+
         }
         public void PickerSort_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             int value = pickerSort.SelectedIndex;
-            List<AppointmentModel> list = new List<AppointmentModel>();
-            App.hpm.Aplist = list1;
             switch (value)
             {
                 case 0:
                     {
-                        foreach (AppointmentModel app in list1)
-                            if (app.Status.Equals(AppResources.Active))
-                                list.Add(app);
-                        App.hpm.Aplist = list;
+                        App.hpm.getNextAppts();
 
                     }
                     break;
                 case 1:
                     {
-                        foreach (AppointmentModel app in list1)
-                            if (app.Status.Equals(AppResources.Inactive))
-                                list.Add(app);
-                        App.hpm.Aplist = list;
-
+                        App.hpm.getBackAppts();
                     }
                     break;
-                case 2:
-                    {
-
-                        App.hpm.Aplist = list1;
-
-                    }
-                    break;
+       
 
             }
         }
         private void OnItemTapped(Object sender, ItemTappedEventArgs e)
         {
             var appointment = e.Item as AppointmentModel; // conversion
+            if (appointment.IsActive.Equals("Status: " + AppResources.Active))
            App.hpm.HideOrShowAppointment(appointment);
             
 

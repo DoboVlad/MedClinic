@@ -31,9 +31,11 @@ namespace mobile.Services
         public static string getDoctorInfoUrl = $"{BaseAddress}/api/users/MyAccountMedic";
         public static string deleteUser = $"{BaseAddress}/api/users/DeletePatient";
         public static string approveUser = $"{BaseAddress}/api/users/ApproveUser";
-        public static string updatePatient = $"{BaseAddress}/api/users/updateUser"; 
+        public static string updatePatient = $"{BaseAddress}/api/users/updateUser";
         public static string updateDoctor = $"{BaseAddress}/api/users/updateMedic";
         public static string getAppts = $"{BaseAddress}/api/appointments/myAppointments";
+        public static string getBackPatientAppts = $"{BaseAddress}/api/appointments/historyAppointments";
+        public static string getNextPatientAppts = $"{BaseAddress}/api/appointments/nextAppointments";
         public static string getBackAppts = $"{BaseAddress}/api/appointments/historyAppointmentsByMedic";
         public static string getNextAppts = $"{BaseAddress}/api/appointments/nextAppointmentsByMedic";
         public static string deleteAppt = $"{BaseAddress}/api/appointments/delete";
@@ -53,7 +55,7 @@ namespace mobile.Services
 
             //Console.WriteLine(firstName + ' ' + lastName + ' ' + email + ' ' + cnp + ' ' + dateOfBirth.ToString() + ' ' + phoneNumber + ' ' + password + ' ' + repeatPassword + ' ' + doctorId);
 
-            
+
             var model = new RegisterBindingModel
             {
                 firstName = firstName,
@@ -71,25 +73,25 @@ namespace mobile.Services
             content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             var respons = await client.PostAsync(registerUrl, content);
             return respons.IsSuccessStatusCode;
-            
+
         }
-        public async Task<bool> LoginAsync(string UserName, string Password) 
+        public async Task<bool> LoginAsync(string UserName, string Password)
         {
             var model = new Login
             {
 
                 email = UserName,
                 password = Password,
-                
-                
+
+
             };
-            
+
             var json = JsonConvert.SerializeObject(model);
             HttpContent httpContent = new StringContent(json);
             httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             var response = await client.PostAsync(loginUrl, httpContent);
             var usr = await response.Content.ReadAsStringAsync();
-            
+
             if (response.IsSuccessStatusCode)
             {
                 JObject userDynamic = JsonConvert.DeserializeObject<dynamic>(usr);
@@ -101,7 +103,7 @@ namespace mobile.Services
             }
             return false;
         }
-        public async Task<Boolean> CreateAppointmentAsync (CreateAppointment createAppointment, string token)
+        public async Task<Boolean> CreateAppointmentAsync(CreateAppointment createAppointment, string token)
         {
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
@@ -111,7 +113,8 @@ namespace mobile.Services
             var respons = await client.PostAsync(createAppointmentUrl, content);
             return true;
         }
-        public async Task<List<PatientModel>> GetUnapprovedPatientsAsync(string token) {
+        public async Task<List<PatientModel>> GetUnapprovedPatientsAsync(string token)
+        {
 
             List<PatientModel> patients = new List<PatientModel>();
             client.DefaultRequestHeaders.Clear();
@@ -130,7 +133,7 @@ namespace mobile.Services
                     cnp = p.Value<string>("cnp"),
                     Phone = p.Value<string>("phoneNumber")
 
-                }) ;
+                });
             }
             return patients;
 
@@ -198,7 +201,7 @@ namespace mobile.Services
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             var response = await client.GetAsync(getPatientInfoUrl);
             var content = await response.Content.ReadAsStringAsync();
-            JObject userData =  JsonConvert.DeserializeObject<dynamic>(content.ToString());
+            JObject userData = JsonConvert.DeserializeObject<dynamic>(content.ToString());
             JObject o = (JObject)JObject.Parse(content)["doctor"];
             PatientModel patient = new PatientModel
             {
@@ -239,7 +242,7 @@ namespace mobile.Services
 
 
         public async Task<bool> DeleteUserAsync(string token, int id)
-         {
+        {
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             var response = await client.DeleteAsync(deleteUser + "?id=" + id);
@@ -248,9 +251,9 @@ namespace mobile.Services
             else return false;
 
         }
-        public async Task<bool> DeleteApptAsync( int id)
+        public async Task<bool> DeleteApptAsync(int id)
         {
-        
+
             var response = await client.DeleteAsync(deleteAppt + "/" + id);
             if (response.IsSuccessStatusCode)
                 return true;
@@ -259,12 +262,12 @@ namespace mobile.Services
         }
         public async Task<bool> ApproveUserASync(string token, PatientModel patient)
         {
-           
+
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
             var json = JsonConvert.SerializeObject(patient.Id);
             HttpContent content = new StringContent(json);
-            
+
             content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             var response = await client.PutAsync(approveUser + "?id=" + patient.Id, content);
             if (response.IsSuccessStatusCode)
@@ -272,17 +275,17 @@ namespace mobile.Services
             else
             {
                 return false;
-                
-            }
 
             }
+
+        }
         public async Task<bool> UpdateUserAsync(string firstName, string lastName, string phoneNumber, string email, string token)
         {
             UpdatePatient updateModel = new UpdatePatient
             {
                 firstName = firstName,
                 lastName = lastName,
-                email= email,
+                email = email,
                 phoneNumber = phoneNumber
             };
             client.DefaultRequestHeaders.Clear();
@@ -311,7 +314,8 @@ namespace mobile.Services
             var respons = await client.PutAsync(updateDoctor, content);
             return respons.IsSuccessStatusCode;
         }
-        public async Task<List<AppointmentModel>> GetApptsAsync(string token) {
+        public async Task<List<AppointmentModel>> GetApptsAsync(string token)
+        {
             List<AppointmentModel> list = new List<AppointmentModel>();
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
@@ -344,11 +348,11 @@ namespace mobile.Services
                         }
                     }
 
-                        
+
                 }
             }
-                return list;
-           
+            return list;
+
         }
         public async Task<List<AppointmentModel>> GetNextApptsAsync(string token)
         {
@@ -430,6 +434,88 @@ namespace mobile.Services
             return list;
 
         }
-     
+
+        public async Task<List<AppointmentModel>> GetBackPatientAppointments(string token)
+        {
+            List<AppointmentModel> list = new List<AppointmentModel>();
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var response = await client.GetAsync(getBackPatientAppts);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                JArray userData = JsonConvert.DeserializeObject<dynamic>(content.ToString());
+                foreach (JObject obj in userData)
+                {
+
+
+                    JObject user = obj.Value<JObject>("user");
+                    User usr = JsonConvert.DeserializeObject<User>(user.ToString());
+                    list.Add(new AppointmentModel
+                    {
+                        Id = obj.Value<int>("id"),
+                        Hour = obj.Value<string>("hour"),
+                        Date = obj.Value<DateTime>("date"),
+                        Patient = usr
+
+                    });
+
+                    foreach (AppointmentModel am in list)
+                    {
+                        if (am.Date < DateTime.Now)
+                        {
+                            am.Status = "Inactive";
+                            am.StatusColor = Color.Red;
+                        }
+                    }
+
+
+                }
+            }
+            return list;
+
+        }
+        public async Task<List<AppointmentModel>> GetNextPatientAppointments(string token)
+        {
+
+
+            List<AppointmentModel> list = new List<AppointmentModel>();
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+            var response = await client.GetAsync(getNextPatientAppts);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                JArray userData = JsonConvert.DeserializeObject<dynamic>(content.ToString());
+                foreach (JObject obj in userData)
+                {
+
+
+                    JObject user = obj.Value<JObject>("user");
+                    User usr = JsonConvert.DeserializeObject<User>(user.ToString());
+                    list.Add(new AppointmentModel
+                    {
+                        Id = obj.Value<int>("id"),
+                        Hour = obj.Value<string>("hour"),
+                        Date = obj.Value<DateTime>("date"),
+                        Patient = usr
+
+                    });
+
+                    foreach (AppointmentModel am in list)
+                    {
+                        if (am.Date < DateTime.Now)
+                        {
+                            am.Status = "Inactive";
+                            am.StatusColor = Color.Red;
+                        }
+                    }
+
+
+                }
+            }
+            return list;
+        }
+
     }
 }

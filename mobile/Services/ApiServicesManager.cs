@@ -69,6 +69,16 @@ namespace mobile.Services
         public async Task<List<AppointmentModel>> GetBackApptsAsync(string token) {
             return await apiS.GetBackApptsAsync(token);
         }
+
+        public async Task<List<AppointmentModel>> GetBackPatientApptsAsync(string token)
+        {
+            return await apiS.GetBackPatientAppointments(token);
+        }
+        public async Task<List<AppointmentModel>> GetNextPatientApptsAsync(string token)
+        {
+            return await apiS.GetNextPatientAppointments(token);
+        }
+
         public async Task<Boolean> CreateAppointmentAsync(CreateAppointment createAppointment, string token)
         {
             return await apiS.CreateAppointmentAsync(createAppointment, token);

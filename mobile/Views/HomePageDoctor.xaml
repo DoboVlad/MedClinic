@@ -41,7 +41,7 @@
                                     <Label x:Name="lblStatus" Text="{Binding IsActive}" TextColor="{Binding StatusColor}" Style="{StaticResource secondaryLabels}" HorizontalOptions="End" Margin="0,0,10,0" Grid.Column="1"/>
                                 </Grid>
                                 <Label x:Name="lblDetails" Text="{Binding Details}" IsVisible="{Binding IsVisible}" Margin="0,0,0,5"/>
-                                <Button Text="{local:Translate Delete}" IsVisible="{Binding IsVisible}" Command="{Binding DeleteApptCommand}"  WidthRequest="100" TextColor="White" BackgroundColor="Red"/>
+                                <Button Text="{local:Translate Delete}" IsVisible="{Binding IsVisible}" Command="{Binding DeleteApptDoctorCommand}"  WidthRequest="100" TextColor="White" BackgroundColor="Red"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

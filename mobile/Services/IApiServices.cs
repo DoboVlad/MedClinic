@@ -26,5 +26,7 @@ namespace mobile.Services
         public Task<List<AppointmentModel>> GetNextApptsAsync(string token);
         public Task<List<AppointmentModel>> GetBackApptsAsync(string token);
         public Task<Boolean> CreateAppointmentAsync(CreateAppointment createAppointment, string token);
+        public Task<List<AppointmentModel>> GetBackPatientAppointments(string token);
+        public Task<List<AppointmentModel>> GetNextPatientAppointments(string token);
     }
 }
