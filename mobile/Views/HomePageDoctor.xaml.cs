@@ -17,7 +17,6 @@ namespace mobile
     public partial class HomePageDoctor : ContentPage
     {
         
-         List<AppointmentModel> list1 = new List<AppointmentModel>();
        
         public HomePageDoctor()
 
@@ -29,7 +28,7 @@ namespace mobile
 
             BindingContext = App.hpmd;
             // bind the picker to enable translation
-            pickerSort.ItemsSource = new List<string> { AppResources.Active, AppResources.Inactive, AppResources.All };
+            pickerSort.ItemsSource = new List<string> { AppResources.Active, AppResources.Inactive };
 
             appointmentsList.ItemTapped += OnItemTapped;
             pickerSort.SelectedIndexChanged += PickerSort_SelectedIndexChanged;
@@ -41,43 +40,28 @@ namespace mobile
         {
             base.OnAppearing();
  
-            App.hpmd.getAppts();
-            list1 = App.hpmd.Aplist;
+            App.hpmd.getNextAppts();
 
         }
         public void PickerSort_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             int value = pickerSort.SelectedIndex;
-            List<AppointmentModel> list = new List<AppointmentModel>();
-            App.hpmd.Aplist = list1;
             switch (value)
             {
                 case 0:
                     {
-                        foreach (AppointmentModel app in list1)
-                            if (app.Status.Equals(AppResources.Active))
-                                list.Add(app);
-                        App.hpmd.Aplist = list;
 
+                        App.hpmd.getNextAppts();
                     }
                     break;
                 case 1:
                     {
-                        foreach (AppointmentModel app in list1)
-                            if (app.Status.Equals(AppResources.Inactive))
-                                list.Add(app);
-                        App.hpmd.Aplist = list;
+                        App.hpmd.getOldAppts();
 
                     }
                     break;
-                case 2:
-                    {
-
-                        App.hpmd.Aplist = list1;
-
-                    }
-                    break;
+                   
 
             }
         }

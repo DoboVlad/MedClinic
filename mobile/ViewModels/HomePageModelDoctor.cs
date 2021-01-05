@@ -51,18 +51,28 @@ namespace mobile.ViewModels
 
         public HomePageModelDoctor()
         {
-            getAppts();
+            getNextAppts();
         }
 
-        public async void getAppts()
+        public async void getOldAppts()
         {
             isLoading = true;
-             Aplist = await App.apiServicesManager.GetAllApptsAsync(App.user.id); 
+             Aplist = await App.apiServicesManager.GetBackApptsAsync(App.user.token); 
             isLoading = false;
             
           
 
             
+        }
+        public async void getNextAppts()
+        {
+            isLoading = true;
+            Aplist = await App.apiServicesManager.GetNextApptsAsync(App.user.token);
+            isLoading = false;
+
+
+
+
         }
 
 
@@ -113,7 +123,7 @@ namespace mobile.ViewModels
         {
 
             await App.apiServicesManager.DeleteApptAsync(oldAppointment.Id);
-            getAppts();
+            getNextAppts();
 
 
 

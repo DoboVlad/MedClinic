@@ -34,8 +34,8 @@ namespace mobile.Services
         public static string updatePatient = $"{BaseAddress}/api/users/updateUser"; 
         public static string updateDoctor = $"{BaseAddress}/api/users/updateMedic";
         public static string getAppts = $"{BaseAddress}/api/appointments/myAppointments";
-        public static string getNextAppts = $"{BaseAddress}/api/appointments/historyAppointmentsByMedic";
-        public static string getBackAppts = $"{BaseAddress}/api/appointments/nextAppointmentsByMedic";
+        public static string getBackAppts = $"{BaseAddress}/api/appointments/historyAppointmentsByMedic";
+        public static string getNextAppts = $"{BaseAddress}/api/appointments/nextAppointmentsByMedic";
         public static string deleteAppt = $"{BaseAddress}/api/appointments/delete";
         public static string getAllAppts = $"{BaseAddress}/api/appointments/allDoctorApp/";
         public static string createAppointmentUrl = $"{BaseAddress}/api/appointments/createApp";
@@ -430,47 +430,6 @@ namespace mobile.Services
             return list;
 
         }
-        public async Task<List<AppointmentModel>> GetAllApptsAsync(int id)
-        {
-            List<AppointmentModel> list = new List<AppointmentModel>();
-          
-            var response = await client.GetAsync(getAllAppts + id);
-            if (response.IsSuccessStatusCode)
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                JArray userData = JsonConvert.DeserializeObject<dynamic>(content.ToString());
-                foreach (JObject obj in userData)
-                {
-
-
-
-                    list.Add(new AppointmentModel
-                    {
-                      //  Id = obj.Value<int>("id"),
-                        Hour = obj.Value<string>("hourOfApp"),
-                        Date = obj.Value<DateTime>("dateOfApp"),
-                        Patient = new User{
-                        firstName = obj.Value<string>("pactientFirstName"),
-                        lastName = obj.Value<string>("pacientLastName"),
-                        phone = obj.Value<string>("phone"),
-                        }
-
-                    }); ;
-
-                    foreach (AppointmentModel am in list)
-                    {
-                        if (am.Date < DateTime.Now)
-                        {
-                            am.Status = "Inactive";
-                            am.StatusColor = Color.Red;
-                        }
-                    }
-
-
-                }
-            }
-            return list;
-
-        }
+     
     }
 }
