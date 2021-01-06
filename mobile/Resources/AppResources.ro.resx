@@ -27,8 +27,32 @@
   <data name="Age" xml:space="preserve">
     <value>Vârstă</value>
   </data>
+  <data name="AlertBirthday" xml:space="preserve">
+    <value>Nu v-ați introdus data nașterii.</value>
+  </data>
   <data name="AlertChange" xml:space="preserve">
     <value>Doriți să încercați din nou?</value>
+  </data>
+  <data name="AlertCnp" xml:space="preserve">
+    <value>Ați introdus un cod numeric personal invalid.</value>
+  </data>
+  <data name="AlertEmail" xml:space="preserve">
+    <value>Emailul dumneavoastră este invalid.</value>
+  </data>
+  <data name="AlertFillField" xml:space="preserve">
+    <value>Nu ați completat toate rândurile.</value>
+  </data>
+  <data name="AlertPIN" xml:space="preserve">
+    <value>Ați introdus un cod numeric personal invalid.</value>
+  </data>
+  <data name="AlertPwdMatch" xml:space="preserve">
+    <value>Parolele dumneavoastră nu sunt aceleași.</value>
+  </data>
+  <data name="AlertPwdNotStrong" xml:space="preserve">
+    <value>Parola dumneavoastră nu este destul de puternică</value>
+  </data>
+  <data name="AlertPwdShort" xml:space="preserve">
+    <value>Parola este prea scurtă. Lungimea minimă este de 6 caractere.</value>
   </data>
   <data name="All" xml:space="preserve">
     <value>Tot</value>
@@ -36,8 +60,26 @@
   <data name="AllRightsRes" xml:space="preserve">
     <value>Toate drepturile rezervate</value>
   </data>
+  <data name="AnotherEmail" xml:space="preserve">
+    <value>Trimite un alt email</value>
+  </data>
+  <data name="AppNotSAved" xml:space="preserve">
+    <value>Programarea dumneavoastră nu s-a putut salva.</value>
+  </data>
   <data name="Appointments" xml:space="preserve">
     <value>Programări</value>
+  </data>
+  <data name="AppointmentsShort" xml:space="preserve">
+    <value>Prgm</value>
+  </data>
+  <data name="AppSavedMess" xml:space="preserve">
+    <value>Programarea dumneavoastră a fost salvată.</value>
+  </data>
+  <data name="AvailableDate" xml:space="preserve">
+    <value>Data este disponibilă.</value>
+  </data>
+  <data name="BirthDateProfile" xml:space="preserve">
+    <value>Data nașterii:</value>
   </data>
   <data name="Birthday" xml:space="preserve">
     <value>Zi de naștere</value>
@@ -48,8 +90,17 @@
   <data name="CheckAvailability" xml:space="preserve">
     <value>Verificați disponibilitatea</value>
   </data>
+  <data name="ChooseDate" xml:space="preserve">
+    <value>Alegeți o dată</value>
+  </data>
+  <data name="ChooseDoctor" xml:space="preserve">
+    <value>Alegeți doctorul</value>
+  </data>
   <data name="Cnp" xml:space="preserve">
-    <value>Cod numeric personal</value>
+    <value>Cod de identificare personală</value>
+  </data>
+  <data name="CodeInstructions" xml:space="preserve">
+    <value>Vă rugăm verificați-vă cutia de email-uri. Un email cu un cod a fost trimis la această adresă. Scrieți codul in cutia alăturată.</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirmare</value>
@@ -62,6 +113,9 @@
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Ștergere</value>
+  </data>
+  <data name="DeletePacient" xml:space="preserve">
+    <value>Stergeți pacient</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Descriere</value>
@@ -78,17 +132,26 @@
   <data name="EmailProfile" xml:space="preserve">
     <value>E-mail:</value>
   </data>
+  <data name="EmptyEmail" xml:space="preserve">
+    <value>Nu ați introdus adresă de email</value>
+  </data>
   <data name="EnterCode" xml:space="preserve">
     <value>Introduceți codul</value>
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Doriți să ieșiți?</value>
   </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Prenume</value>
+  </data>
   <data name="ForgotPass" xml:space="preserve">
     <value>Ați uitat parola?</value>
   </data>
   <data name="FullNameProfile" xml:space="preserve">
-    <value>NumeComplet</value>
+    <value>NumeComplet:</value>
+  </data>
+  <data name="GoMainPage" xml:space="preserve">
+    <value>Click pentru a vă întoarce pe pagina principală</value>
   </data>
   <data name="HasAccount" xml:space="preserve">
     <value>Aveți deja un cont?</value>
@@ -99,11 +162,17 @@
   <data name="Inactive" xml:space="preserve">
     <value>Inactiv</value>
   </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Nume</value>
+  </data>
   <data name="LogIn" xml:space="preserve">
     <value>Conectare</value>
   </data>
   <data name="LogOut" xml:space="preserve">
     <value>Deconectare</value>
+  </data>
+  <data name="MakeAppointment" xml:space="preserve">
+    <value>Programează-mă</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Nu</value>
@@ -118,25 +187,55 @@
     <value>Numărul de telefon</value>
   </data>
   <data name="PhoneProfile" xml:space="preserve">
-    <value>Telefon</value>
+    <value>Telefon:</value>
   </data>
   <data name="PIN" xml:space="preserve">
     <value>CNP</value>
   </data>
   <data name="PINProfile" xml:space="preserve">
-    <value>CNP</value>
+    <value>CNP:</value>
+  </data>
+  <data name="PlaceOfBirth" xml:space="preserve">
+    <value>Locul Nașterii</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profil</value>
   </data>
+  <data name="PwdDigit" xml:space="preserve">
+    <value>Parola trebuie să conțină minim o cifră.</value>
+  </data>
+  <data name="PwdLowerCharacter" xml:space="preserve">
+    <value>Parola trebuie să conțină minim o literă mică.</value>
+  </data>
+  <data name="PwdMedium" xml:space="preserve">
+    <value>Parola dumneavoastră este medie.</value>
+  </data>
+  <data name="PwdStrong" xml:space="preserve">
+    <value>Parola dumneavoastră este puternică.</value>
+  </data>
+  <data name="PwdUpperCharacter" xml:space="preserve">
+    <value>Parola dumneavoastră trebuie să conțină minim o literă mare.</value>
+  </data>
+  <data name="PwdVeryStrong" xml:space="preserve">
+    <value>Parola dumneavoastră este foarte puternică.</value>
+  </data>
+  <data name="PwdWeak" xml:space="preserve">
+    <value>Parola dumneavoastră este slabă.</value>
+  </data>
   <data name="RecoveryPwd" xml:space="preserve">
-    <value>Parola de recuperare</value>
+    <value>Recuperare parolă</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Înregistrare</value>
   </data>
+  <data name="RegistrationSucceed" xml:space="preserve">
+    <value>Înregistrare cu succes. Vă rugăm așteptați confirmarea medicului.</value>
+  </data>
   <data name="Requests" xml:space="preserve">
     <value>Solicitări</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Sunteți sigur/ă că vrei să salvezi schimbările?</value>
   </data>
   <data name="SendEmail" xml:space="preserve">
     <value>Trimitere e-mail</value>
@@ -149,6 +248,12 @@
   </data>
   <data name="Sort" xml:space="preserve">
     <value>Sortare</value>
+  </data>
+  <data name="SucRegistration" xml:space="preserve">
+    <value>Înregistrare cu succes.</value>
+  </data>
+  <data name="UnavailableDate" xml:space="preserve">
+    <value>Data nu este disponibilă.</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Nume de utilizator</value>
