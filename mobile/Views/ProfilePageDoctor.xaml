@@ -32,14 +32,6 @@
                     <StackLayout>
                         <!--Stack for details next to the image-->
                         <Label x:Name="lblDoctorFullName" Text="{Binding FullName}" HorizontalOptions="Center" FontSize="24" FontAttributes="Bold"/>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{local:Translate BirthDateProfile}" FontAttributes="Bold"/>
-                            <Label x:Name="lblDoctorBirthDate" Text="{Binding BirthDate}"/>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{local:Translate PINProfile}" FontAttributes="Bold"/>
-                            <Label x:Name="lblDoctorPIN" Text="{Binding PIN}"/>
-                        </StackLayout>
                     </StackLayout>
                 </StackLayout>
 

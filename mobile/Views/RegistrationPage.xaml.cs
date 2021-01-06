@@ -19,15 +19,13 @@ namespace mobile
     public partial class RegistrationPage : ContentPage
     {
         RegisterModel register = new RegisterModel();
+        
 
         public RegistrationPage()
         {
             InitializeComponent();
-            pckDoctor.ItemsSource = new ObservableCollection<Int32>()
-            {
-                1, 2
-            };
             BindingContext = register;
+            pckDoctor.ItemsSource = App.aum.DoctorList;
         }
         //regex for email validation
         Regex emailPattern = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
@@ -91,7 +89,9 @@ namespace mobile
                 }
                 if(passwordPattern.IsMatch(entPassword.Text))
                 {
-                       register.RegisterCommand.Execute(null);
+                    DoctorModel x = (DoctorModel)pckDoctor.SelectedItem;
+                    register.doctorId = x.Id;
+                    register.RegisterCommand.Execute(null);
                        await this.Navigation.PushAsync(new RegistrationSucceedPage());
                 }
                 else

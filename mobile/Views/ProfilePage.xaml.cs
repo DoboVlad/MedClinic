@@ -29,7 +29,6 @@ namespace mobile
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
             BindingContext = profileModel.patient;
         }
 

@@ -47,8 +47,7 @@
                 <Label x:Name="lblBirthDay" Text="{local:Translate Birthday}"/> <!--!!!!!!!!!!!!!!!!-->
                 <DatePicker x:Name="dpBirthDate" MinimumDate="01/01/1900" MaximumDate="{x:Static sys:DateTime.Now}"   Date="{Binding dateOfBirth}" />
                 <Label x:Name="lblDoc" Text="{local:Translate ChooseDoctor}"/>
-                <Picker x:Name="pckDoctor" HorizontalOptions="FillAndExpand"  Title="{local:Translate ChooseDoctor}" SelectedItem="{Binding doctorId}" >
-                </Picker>
+                <Picker x:Name="pckDoctor" HorizontalOptions="FillAndExpand"  Title="{local:Translate ChooseDoctor}" SelectedItem="{Binding doctorId}" ItemDisplayBinding="{Binding FullName}"/> 
                 <Label x:Name="lblPassCheck" FontSize="Medium" TextColor="Black"  IsVisible="false"/>
                 <Label x:Name ="lblPassword" Text="{local:Translate Password}"/>
                 <Entry x:Name ="entPassword" Placeholder="{local:Translate Password}" ReturnType="Next" IsPassword="True" Text="{Binding password}" TextChanged="onTexChanged" />

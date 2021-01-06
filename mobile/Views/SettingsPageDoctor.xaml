@@ -47,7 +47,7 @@
             </StackLayout>
             <StackLayout Grid.Row="1" BackgroundColor="#5084F2" Padding="0, 10, 0, 10" Margin="90, 7, 90, 0">
                 <Image Source="{local:ImageResource mobile.Images.profile.png}" WidthRequest="100"  />
-                <Label Text="Nume utilizator" HorizontalOptions="CenterAndExpand" TextColor="White"/>
+                <Label Text="{Binding FullName}" HorizontalOptions="CenterAndExpand" TextColor="White"/>
             </StackLayout>
 
             <StackLayout Grid.Row="2" Margin="40, 30, 40, 20">

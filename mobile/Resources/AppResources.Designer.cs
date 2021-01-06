@@ -718,6 +718,15 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your registration is not successful. Please try again :).
+        /// </summary>
+        internal static string RegistrationNotSucceed {
+            get {
+                return ResourceManager.GetString("RegistrationNotSucceed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your registration is successful. Please wait for the doctor to accept your request..
         /// </summary>
         internal static string RegistrationSucceed {

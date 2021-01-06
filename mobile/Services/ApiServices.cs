@@ -111,7 +111,8 @@ namespace mobile.Services
             HttpContent content = new StringContent(jsonApp);
             content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             var respons = await client.PostAsync(createAppointmentUrl, content);
-            return true;
+            bool ver = respons.IsSuccessStatusCode;
+            return ver;
         }
         public async Task<List<PatientModel>> GetUnapprovedPatientsAsync(string token)
         {

@@ -1,4 +1,5 @@
 ﻿using mobile.Resources;
+using mobile.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,16 @@ namespace mobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegistrationSucceedPage : ContentPage
     {
+        public static string regMessage;
         public RegistrationSucceedPage()
         {
+            NavigationPage.SetHasBackButton(this, false);
             InitializeComponent();
-
+            
         }
-
+        protected override void OnAppearing() {
+            lblMessage.Text = regMessage;
+        }
         async private void btnMainPage_Clicked(object sender, EventArgs e)
         {
             Animations.Button_Scale_Clicked((Button)sender);

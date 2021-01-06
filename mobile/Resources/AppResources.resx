@@ -336,6 +336,9 @@
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="RegistrationNotSucceed" xml:space="preserve">
+    <value>Your registration is not successful. Please try again :)</value>
+  </data>
   <data name="RegistrationSucceed" xml:space="preserve">
     <value>Your registration is successful. Please wait for the doctor to accept your request.</value>
   </data>

@@ -1,13 +1,16 @@
-﻿using mobile.Services;
+﻿using mobile.Resources;
+using mobile.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace mobile.ViewModels
 {
-    class RegisterModel
+    class RegisterModel: INotifyPropertyChanged
     {
       
         public string firstName { get; set; }
@@ -26,8 +29,25 @@ namespace mobile.ViewModels
         public String repeatPassword { get; set; }
 
         public int doctorId { get; set; }
+        private string message;
 
-        public string Message { get; set; }
+        public string Message { 
+            get {
+                return message;
+            }
+            set {
+                message = value;
+                OnPropertyChanged();
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string
+            propertyName = null)
+
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        public AboutUsModel aboutUsModel { get; set; }
 
         public ICommand RegisterCommand
         {
@@ -38,11 +58,11 @@ namespace mobile.ViewModels
                    var isSuccess = await App.apiServicesManager.Register(firstName, lastName, email, cnp, dateOfBirth, phoneNumber, password, repeatPassword, doctorId);
                     if (isSuccess)
                     {
-                        Console.WriteLine("a mers");
+                        RegistrationSucceedPage.regMessage = AppResources.RegistrationSucceed;
                     }
                     else
                     {
-                        Console.WriteLine("Nu a mers");
+                        RegistrationSucceedPage.regMessage = AppResources.RegistrationNotSucceed;
                     }
                 } 
                 );
