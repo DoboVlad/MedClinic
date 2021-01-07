@@ -41,6 +41,8 @@ namespace mobile.Services
         public static string deleteAppt = $"{BaseAddress}/api/appointments/delete";
         public static string getAllAppts = $"{BaseAddress}/api/appointments/allDoctorApp/";
         public static string createAppointmentUrl = $"{BaseAddress}/api/appointments/createApp";
+        public static string sendEmailUrl = $"{BaseAddress}/api/users/ForgotPassword";
+        public static string resetPasswordUrl = $"{BaseAddress}/api/users/ResetPassword";
         // Pass the handler to httpclient(from you are calling api) only in debug mode we have to pass the ssl, in release we dont
         public ApiServices()
         {
@@ -517,6 +519,22 @@ namespace mobile.Services
             }
             return list;
         }
-
+        public async Task<Boolean> SendEmail(string email)
+        {
+            var jsonApp = JsonConvert.SerializeObject(email);
+            HttpContent content = new StringContent(jsonApp);
+            content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            Uri uri = new Uri(string.Format(sendEmailUrl, content));
+            var respons = await client.GetAsync(uri);
+            return respons.IsSuccessStatusCode;
+        }
+        public async Task<Boolean> ResetPassword(ResetPasswordModel resetPwd)
+        {
+            var jsonApp = JsonConvert.SerializeObject(resetPwd);
+            HttpContent content = new StringContent(jsonApp);
+            content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var respons = await client.PostAsync(resetPasswordUrl, content);
+            return respons.IsSuccessStatusCode;
+        }
     }
 }

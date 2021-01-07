@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using mobile.Resources;
 using mobile.ViewModels;
+using mobile.Views;
 using Xamarin.Forms;
 
 namespace mobile
@@ -42,6 +43,11 @@ namespace mobile
 
 
         }
-      // prevend user from going back after logged out
+
+        async private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await this.Navigation.PushAsync(new HelpPage());
+        }
+        // prevend user from going back after logged out
     }
 }

@@ -228,6 +228,14 @@
   <data name="Doctor" xml:space="preserve">
     <value>Doctor</value>
   </data>
+  <data name="DoctorGuide" xml:space="preserve">
+    <value>Log in with the given data
+Look through the past and future appoinments.
+Delete the once you want by taping the appoinment and taping the delete button.
+Look through the pacients and delete the ones you want.
+Look through the new request and accept your pacients.
+Verify your profile data and change it if you want by clicking the settings icon.</value>
+  </data>
   <data name="Done" xml:space="preserve">
     <value>Done</value>
   </data>
@@ -242,6 +250,12 @@
   </data>
   <data name="EnterCode" xml:space="preserve">
     <value>Enter code</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>There was an error.</value>
+  </data>
+  <data name="ErrorTryAgain" xml:space="preserve">
+    <value>There was an error. Please try again.</value>
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Do you want to exit?</value>
@@ -258,6 +272,12 @@
   <data name="GoMainPage" xml:space="preserve">
     <value>Click here to go to main page</value>
   </data>
+  <data name="Guide" xml:space="preserve">
+    <value>Guide</value>
+  </data>
+  <data name="GuideHelp" xml:space="preserve">
+    <value>Brief guide to the application</value>
+  </data>
   <data name="HasAccount" xml:space="preserve">
     <value>Already have an account?</value>
   </data>
@@ -269,6 +289,9 @@
   </data>
   <data name="Inactive" xml:space="preserve">
     <value>Inactive</value>
+  </data>
+  <data name="InvalidCode" xml:space="preserve">
+    <value>Your code is invalid.</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Last name</value>
@@ -284,6 +307,21 @@
   </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="PacientAcceptGuide" xml:space="preserve">
+    <value>Log in with chosen the email and password.
+Enter the appointment section, make an appoinment.
+Look through the past and future appoinments.
+Delete an appointement if you change your minde by taping on the appointment and taping on the delete button.
+Verify your profile data and change it if you want by clicking the settings icon.</value>
+  </data>
+  <data name="PacientRegisterGuide" xml:space="preserve">
+    <value>Find your family doctor.
+Register with your personal data. 
+Wait for the doctor to accept your request.</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -330,6 +368,9 @@
   <data name="PwdWeak" xml:space="preserve">
     <value>Your password is weak.</value>
   </data>
+  <data name="RecoverAccount" xml:space="preserve">
+    <value>Your account is recovered.</value>
+  </data>
   <data name="RecoveryPwd" xml:space="preserve">
     <value>Recovery password</value>
   </data>
@@ -345,11 +386,17 @@
   <data name="Requests" xml:space="preserve">
     <value>Requests</value>
   </data>
+  <data name="ResetPwdEmail" xml:space="preserve">
+    <value>Server error or invalid email.</value>
+  </data>
   <data name="SaveChanges" xml:space="preserve">
     <value>Are you sure you want to save the changes?</value>
   </data>
   <data name="SendEmail" xml:space="preserve">
     <value>Send email</value>
+  </data>
+  <data name="SetPwd" xml:space="preserve">
+    <value>Set password</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Profile settings</value>
@@ -359,6 +406,9 @@
   </data>
   <data name="Sort" xml:space="preserve">
     <value>Sort</value>
+  </data>
+  <data name="SuccessfulReset" xml:space="preserve">
+    <value>Successful reset.</value>
   </data>
   <data name="SucRegistration" xml:space="preserve">
     <value>Successful registration</value>

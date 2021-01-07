@@ -37,5 +37,9 @@ namespace mobile
             await Navigation.PushAsync(page);
             NavigationPage.SetHasNavigationBar(page, false);
         }
+        async private void Guide_Tapped(object sender, EventArgs e)
+        {
+            await this.Navigation.PushAsync(new HelpPage());
+        }
     }
 }

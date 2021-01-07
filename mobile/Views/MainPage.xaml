@@ -14,16 +14,23 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
            
             <Image Source="{local:ImageResource  mobile.Images.logo.png}"  Grid.Row="0"/>
             <Button x:Name="btnRegister" Grid.Row="1" Text="{local:Translate Register}" Clicked="btnRegister_Clicked"/>
             <Button x:Name="btnLogIn" Grid.Row="2" Text="{local:Translate LogIn}" Clicked="btnLogIn_Clicked"/>
             <Button x:Name="btnAboutUs" Grid.Row="3" Text="{local:Translate AboutUs}" Clicked="btnAboutUs_Clicked"/>
-            <Label Grid.Row="4" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="EndAndExpand" />
-       
+        <Label Grid.Row="4" Text="{local:Translate Guide}" HorizontalOptions="Center"  FontSize="18">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+            </Label.GestureRecognizers>
+        </Label>
+        <Label Grid.Row="5" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="EndAndExpand" />
+
+
 
     </Grid>
 

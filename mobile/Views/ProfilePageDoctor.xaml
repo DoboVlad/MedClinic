@@ -67,6 +67,11 @@
                 </StackLayout>
             </StackLayout>
             <Button x:Name="btnLogOut" Text="{local:Translate LogOut}" Grid.Row="2" Margin="50,50,50,0" Clicked="btnLogOut_Clicked"/>
+            <Label Grid.Row="4" Text="{local:Translate Guide}" HorizontalOptions="Center" FontSize="18">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Guide_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

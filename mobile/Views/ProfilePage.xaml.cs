@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using mobile.ViewModels;
+using mobile.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -47,6 +48,10 @@ namespace mobile
             Navigation.PushAsync(page);
             NavigationPage.SetHasNavigationBar(page, false);
             //await Navigation.PushAsync(new SettingsPage());
+        }
+        async private void Guide_Tapped(object sender, EventArgs e)
+        {
+            await this.Navigation.PushAsync(new HelpPage());
         }
     }
 }

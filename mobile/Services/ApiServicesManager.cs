@@ -83,5 +83,13 @@ namespace mobile.Services
         {
             return await apiS.CreateAppointmentAsync(createAppointment, token);
         }
+        public async Task<Boolean> SendEmail(string email)
+        {
+            return await apiS.SendEmail(email);
+        }
+        public async Task<Boolean> ResetPassword(ResetPasswordModel resetPwd)
+        {
+            return await apiS.ResetPassword(resetPwd);
+        }
     }
 }
