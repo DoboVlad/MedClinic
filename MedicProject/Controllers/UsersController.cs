@@ -53,11 +53,12 @@ namespace MedicProject.Controllers
             var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
            
            //verify if the user is medic
-            if(user.isMedic==1){
+            if(user.isMedic==1)
+            {
                 //return all the patients of the loged in medic
-            var users = await _context.USERS.Where(p => p.doctorId == user.Id).ToListAsync();
-            var patients = _mapper.Map<IEnumerable<PatientDTO>>(users);
-            return Ok(patients);
+                var users = await _context.USERS.Where(p => p.doctorId == user.Id).ToListAsync();
+                var patients = _mapper.Map<IEnumerable<PatientDTO>>(users);
+                return Ok(patients);
             }
             //if the patient is not medic he is not authorized 
             else return Unauthorized();
@@ -66,13 +67,12 @@ namespace MedicProject.Controllers
       
       
       
-      
-      
         [AllowAnonymous]
         [HttpGet]
         [Route("getDoctors")]
         //returns all doctors from database
-        public async Task<ActionResult<IEnumerable<DoctorDTO>>> getDoctors(){
+        public async Task<ActionResult<IEnumerable<DoctorDTO>>> getDoctors()
+        {
             var users = await _context.USERS.Where(d => d.isMedic == 1).ToListAsync();
             var doctors = _mapper.Map<IEnumerable<DoctorDTO>>(users);
             return Ok(doctors);
@@ -82,18 +82,19 @@ namespace MedicProject.Controllers
        
        
        
-       
-       
         [Authorize]
         [HttpGet]
         [Route("MyAccount")]
         //returns one specific user from the database (for user Myaccount and fordoctors to see the selected pacient's data)
-        public async Task<ActionResult<PatientDTO>> getUser(){
+        public async Task<ActionResult<PatientDTO>> getUser()
+        {
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
             var user = await _context.USERS.Include(p => p.doctor).Where(p => p.email == useremail).FirstAsync();
+
             //verify if the user is a patient
             if (user.isMedic == 0)
                 return Ok(_mapper.Map<AccountDTO>(user));
+
             //if the user is not a patient he is unauthorized
             else return Unauthorized();
         }
@@ -108,13 +109,16 @@ namespace MedicProject.Controllers
         [HttpGet]
         [Route("MyAccountMedic")]
         //returns a doctor's data (for doctor Myaccount) (the data includes photo and description)
-        public async Task<ActionResult<DoctorDTO>> getDoctor(){
+        public async Task<ActionResult<DoctorDTO>> getDoctor()
+        {
             //get the currentloged in user
-            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+           var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+
            //verify if the user is a doctor
            if(user.isMedic==1)
              return  Ok(_mapper.Map<DoctorDTO>(user));
+           
            //if the user is not a doctor then he is unauthorized to do this action
            else return Unauthorized();
         }
@@ -128,37 +132,37 @@ namespace MedicProject.Controllers
         [HttpGet]
         [Route("getPatientInfo")]
         //returns one specific user from the database (more info page about the user)
-        public async Task<ActionResult<PatientDTO>> getPatientInfo(int id){
-         //get the current loged in user
-         var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-         var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
-        //verify if the user is a medic
-        if(user.isMedic==1){
-            //get the patient with the requested id only if it is the logged in user's patient
-            var patient= await _context.USERS.Where(x => x.Id==id && x.doctorId==user.Id).FirstOrDefaultAsync();
-            return Ok(_mapper.Map<PatientDTO>(patient));
+        public async Task<ActionResult<PatientDTO>> getPatientInfo(int id)
+        {
+            //get the current loged in user
+            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+
+            //verify if the user is a medic
+            if(user.isMedic==1)
+            {
+                //get the patient with the requested id only if it is the logged in user's patient
+                var patient= await _context.USERS.Where(x => x.Id==id && x.doctorId==user.Id).FirstOrDefaultAsync();
+                return Ok(_mapper.Map<PatientDTO>(patient));
             }
-        //if the user is not a doctor he is unauthorized
-        else return Unauthorized();
+
+            //if the user is not a doctor he is unauthorized
+            else return Unauthorized();
         }
 
         
      
-     
-     
-     
-     
-     
+
      
         [AllowAnonymous]
         [HttpGet]
         [Route("getMedicInfo")]
         //returns a doctor's data (for doctor MoreInfo page)
-        public async Task<ActionResult<DoctorDTO>> getDoctorInfo(int id){
+        public async Task<ActionResult<DoctorDTO>> getDoctorInfo(int id)
+        {
             //get the doctor with the requested id
              var user = await _context.USERS.Where(d => d.isMedic == 1 && d.Id==id).FirstOrDefaultAsync();
              return  Ok(_mapper.Map<DoctorDTO>(user));
-           //if the user is not a doctor then he is unauthorized to do this action       
         }
 
        
@@ -172,19 +176,23 @@ namespace MedicProject.Controllers
         [HttpDelete]
         [Route("DeletePatient")]
         //deletes an user from the database
-        public async Task<ActionResult> deletePatient(int id){
+        public async Task<ActionResult> deletePatient(int id)
+        {
            //get the currently logged in user
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
             var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
-           //verify if the user is a docotr
-           if(user.isMedic==1){
-            //get the user with the requested id who is also patient of the logged in medic
-            var patient= await _context.USERS.Where(x => x.Id==id && x.doctorId==user.Id).FirstOrDefaultAsync();
-            _context.USERS.Remove(patient);
-            await _context.SaveChangesAsync();
-            return Ok();
-        }//if the user is not a doctor he is unauthorized to delete patients
-        else return Unauthorized();
+
+            //verify if the user is a docotr
+            if (user.isMedic == 1)
+            {
+                //get the user with the requested id who is also patient of the logged in medic
+                var patient = await _context.USERS.Where(x => x.Id == id && x.doctorId == user.Id).FirstOrDefaultAsync();
+                _context.USERS.Remove(patient);
+                await _context.SaveChangesAsync();
+                return Ok();
+            }//if the user is not a doctor he is unauthorized to delete patients
+
+            return Unauthorized();
         }
 
       
@@ -195,7 +203,8 @@ namespace MedicProject.Controllers
         [HttpDelete]
         [Route("DeleteAccount")]
         //deletes an user from the database
-        public async Task<ActionResult> deleteAccount(){
+        public async Task<ActionResult> deleteAccount()
+        {
            //get the currently logged in user
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
             var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
@@ -213,18 +222,22 @@ namespace MedicProject.Controllers
         [HttpGet]
         [Route("getUnapprovedUsers")]
         //returns all unapproved users of a doctor
-        public async Task<ActionResult<IEnumerable<PatientDTO>>> getUnapprovedUsers(){
+        public async Task<ActionResult<IEnumerable<PatientDTO>>> getUnapprovedUsers()
+        {
               //get the currently logged in user
                var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
                var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+
                //verify if the user is a doctor
-               if(user.isMedic==1){
-               //get the list of unapproved users of the loged in medic
-               var users = await _context.USERS.Where(p => p.doctorId == user.Id).Where(p => p.isApproved == 0).ToListAsync();
-               var unapprovedusers = _mapper.Map<IEnumerable<PatientDTO>>(users);
-               return Ok(unapprovedusers);
-               }//if the user is not a medic then he is unauthorized to see unapproved users
-               else return Unauthorized();
+               if(user.isMedic==1)
+                { 
+                   //get the list of unapproved users of the loged in medic
+                   var users = await _context.USERS.Where(p => p.doctorId == user.Id).Where(p => p.isApproved == 0).ToListAsync();
+                   var unapprovedusers = _mapper.Map<IEnumerable<PatientDTO>>(users);
+                   return Ok(unapprovedusers);
+                }//if the user is not a medic then he is unauthorized to see unapproved users
+
+               return Unauthorized();
         }
 
        
@@ -237,24 +250,28 @@ namespace MedicProject.Controllers
         [HttpPut]
         [Route("ApproveUser")]
         //approves a selected user
-        public async Task<ActionResult> ApproveUser(int id){
+        public async Task<ActionResult> ApproveUser(int id)
+        {
            //get the currently logged in user
            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+
            //check if the user is a doctor
             if(user.isMedic==1) {
-           //get the requested user
-            var patient=await _context.USERS.FindAsync(id);
-            //check if the user is a patient of the loged in doctor
-            if(patient.doctorId==user.Id)
-           {//approve the user's account
-               patient.isApproved=1;
-               _context.USERS.Update(patient);
-               await  _context.SaveChangesAsync();
-           }
-           return Ok();
+                //get the requested user
+                var patient=await _context.USERS.FindAsync(id);
+
+                //check if the user is a patient of the loged in doctor
+                if(patient.doctorId==user.Id)
+                   {
+                        //approve the user's account
+                        patient.isApproved=1;
+                       _context.USERS.Update(patient);
+                       await  _context.SaveChangesAsync();
+                   }
+                return Ok();
             }
-            else return Unauthorized();
+            return Unauthorized();
         }
 
       
