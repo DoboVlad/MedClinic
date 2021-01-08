@@ -12,10 +12,14 @@ import { UserService } from 'src/app/Services/user.service';
 export class AppointmentsComponent implements OnInit {
   appForm: FormGroup;
   app: Appointment
-
+  minDate: Date;
+  newDate: Date;
   constructor(public appService: AppointmentService, public userService: UserService) { }
 
   ngOnInit(): void {
+    this.minDate = new Date();
+    var date = new Date();
+    this.newDate = new Date(date.setMonth(date.getMonth()+1));
     this.appForm = new FormGroup({
       "hour": new FormControl(null, Validators.required),
       "date": new FormControl(null, Validators.required)
@@ -24,7 +28,7 @@ export class AppointmentsComponent implements OnInit {
 
   onSubmit(){
     this.app = {...this.appForm.value};
+    console.log(this.app);
     this.appService.createAppointment(this.app);
-
   }
 }
