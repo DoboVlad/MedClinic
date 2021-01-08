@@ -1,9 +1,9 @@
-<!--engleza-->
-<div class="imgDescription"  *ngIf = "this.userService.language == 0">
+<!--pacient engleza-->
+<div class="imgDescription"  *ngIf = "this.userService.language == 0 && this.userService.role==0">
     <img src="assets/img/doctor3eng.png" >
     <!--<p>Programeaz&#259;-te la medicul de familie dorit pentru servicii medicale.</p>-->
 </div>
-<div class="minihelp"  *ngIf = "this.userService.language == 0">
+<div class="minihelp"  *ngIf = "this.userService.language == 0 && this.userService.role==0">
     <p class="guide-title">A little guide to the application</p>
     <ul class="guide-steps">
         <div class="column">
@@ -44,12 +44,12 @@
     </div>
     </ul>
 </div>
-<!--romana-->
-<div class="imgDescription"  *ngIf = "this.userService.language == 1">
+<!-- pacient romana-->
+<div class="imgDescription"  *ngIf = "this.userService.language == 1 && this.userService.role==0">
     <img src="assets/img/doctor3write.png" >
     <!--<p>Programeaz&#259;-te la medicul de familie dorit pentru servicii medicale.</p>-->
 </div>
-<div class="minihelp"  *ngIf = "this.userService.language == 1">
+<div class="minihelp"  *ngIf = "this.userService.language == 1 && this.userService.role==0">
     <p class="guide-title">Un mic ghid al aplicatiei</p>
     <ul class="guide-steps">
         <div class="column">
@@ -84,6 +84,96 @@
         </p>
             <ul class="bullets-step">
                 <li >Nu sunt incluse taxe suplimentare.
+                </li>
+            </ul>
+        </li>
+    </div>
+    </ul>
+</div>
+
+<!--medic engleza-->
+<div class="imgDescription"  *ngIf = "this.userService.language == 0 && this.userService.role==1">
+    <img src="assets/img/doctor3engdoc.png" >
+    <!--<p>Programeaz&#259;-te la medicul de familie dorit pentru servicii medicale.</p>-->
+</div>
+<div class="minihelp"  *ngIf = "this.userService.language == 0 && this.userService.role==1">
+    <p class="guide-title">A little guide to the application</p>
+    <ul class="guide-steps">
+        <div class="column">
+        <li ><p class="step">First step</p>
+            <ul class="bullets-step">
+                <li >Enter the application.
+                </li>
+                <li >Log in with the given data.
+                </li>
+                
+            </ul>
+        </li>
+        </div>
+        <div class="column">
+        <li ><p class="step">Second step
+        </p>
+            <ul class="bullets-step">
+                <li>Look through the past and future appoinments.</li>
+                <li >Delete the once you want by taping the appoinment and taping the delete button.
+                </li>
+                <li >Look through the pacients and delete the ones you want.
+                </li>
+                <li >Look through the new request and accept your pacients.
+                </li>
+            </ul>
+        </li>
+        </div>
+        <div class="column">
+        <li ><p class="step">Third step
+        </p>
+            <ul class="bullets-step">
+                <li >Verify your profile data and change it if you want by clicking the settings icon.
+                </li>
+            </ul>
+        </li>
+    </div>
+    </ul>
+</div>
+
+<!--medic romana-->
+<div class="imgDescription"  *ngIf = "this.userService.language == 1 && this.userService.role==1">
+    <img src="assets/img/doctor3rodoc.png" >
+    <!--<p>Programeaz&#259;-te la medicul de familie dorit pentru servicii medicale.</p>-->
+</div>
+<div class="minihelp"  *ngIf = "this.userService.language == 1 && this.userService.role==1">
+    <p class="guide-title">Un mic ghid al aplicatiei</p>
+    <ul class="guide-steps">
+        <div class="column">
+        <li ><p class="step">Pasul 1</p>
+            <ul class="bullets-step">
+                <li >Intra pe aplicatie
+                </li>
+                <li >Concteaza-te cu datele primite.
+                </li>
+                
+            </ul>
+        </li>
+        </div>
+        <div class="column">
+        <li ><p class="step">Pasul 2
+        </p>
+            <ul class="bullets-step">
+                <li>Priviti prin programarile trecute si viitoare.</li>
+                <li >
+                </li>Ștergeți data dorită atingând întâlnirea și atingând butonul de ștergere.
+                <li >Uită-te printre pacienți și șterge-i pe cei pe care îi dorești.
+                </li>
+                <li >Priviți prin noua cerere și acceptați-vă pacientul
+                </li>
+            </ul>
+        </li>
+        </div>
+        <div class="column">
+        <li ><p class="step">Pasul 3
+        </p>
+            <ul class="bullets-step">
+                <li >Verificați datele de profil și modificați-le dacă doriți, făcând clic pe pictograma de setări.
                 </li>
             </ul>
         </li>
