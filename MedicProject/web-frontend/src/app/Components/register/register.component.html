@@ -17,7 +17,7 @@
             <option value="" disabled selected></option>
             <option *ngFor="let doctor of doctors" [ngValue]="doctor.id">{{doctor.firstName}} {{doctor.lastName}}</option>
           </select><br><br>
-        <button>Register</button>
+        <button type="submit">Register</button>
         <p class="message">Already registered? <a routerLink="/login">Login</a></p>
       </form>
     </div>
@@ -41,7 +41,7 @@
           <option value="" disabled selected></option>
           <option *ngFor="let doctor of doctors" [ngValue]="doctor.id">{{doctor.firstName}} {{doctor.lastName}}</option>
         </select><br><br>
-      <button>Inregistreaza-te</button>
+      <button type="submit">Inregistreaza-te</button>
       <p class="message">Esti deja inregistrat? <a routerLink="/login">Autentificare</a></p>
     </form>
   </div>
