@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>حول</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>للتعرّف علينا</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>نشط</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>العنوان الحالي:</value>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>العمر</value>
+  </data>
+  <data name="AlertChange" xml:space="preserve">
+    <value>هل ترغب في إعادة المحاولة؟</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>الكل</value>
+  </data>
+  <data name="AllRightsRes" xml:space="preserve">
+    <value>كافة الحقوق محفوظة</value>
+  </data>
+  <data name="Appointments" xml:space="preserve">
+    <value>‏‏مواعيد</value>
+  </data>
+  <data name="Birthday" xml:space="preserve">
+    <value>تاريخ الميلاد</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>إلغاء الأمر</value>
+  </data>
+  <data name="CheckAvailability" xml:space="preserve">
+    <value>التحقق من التوفر</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>تأكيد</value>
+  </data>
+  <data name="ConfPwd" xml:space="preserve">
+    <value>تأكيد كلمة المرور</value>
+  </data>
+  <data name="Decline" xml:space="preserve">
+    <value>رفض</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>وصف</value>
+  </data>
+  <data name="Doctor" xml:space="preserve">
+    <value>طبيب</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>تم</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>بريد إلكترونى</value>
+  </data>
+  <data name="EmailProfile" xml:space="preserve">
+    <value>البريد الإلكتروني:</value>
+  </data>
+  <data name="EnterCode" xml:space="preserve">
+    <value>إدخال الرمز</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>هل تريد الإنهاء؟</value>
+  </data>
+  <data name="ForgotPass" xml:space="preserve">
+    <value>نسيت كلمة المرور؟</value>
+  </data>
+  <data name="FullNameProfile" xml:space="preserve">
+    <value>الاسم_الكامل</value>
+  </data>
+  <data name="HasAccount" xml:space="preserve">
+    <value>هل لديك حساب بالفعل؟</value>
+  </data>
+  <data name="Hei" xml:space="preserve">
+    <value>Hei</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>الصفحة الرئيسية</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>غير نشط</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>الاسم الأخير</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>تسجيل الخروج</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>لا</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>كلمة مرور</value>
+  </data>
+  <data name="Patients" xml:space="preserve">
+    <value>المرضى</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>URL</value>
+  </data>
+  <data name="PhoneProfile" xml:space="preserve">
+    <value>الهاتف</value>
+  </data>
+  <data name="PIN" xml:space="preserve">
+    <value>تثبيت</value>
+  </data>
+  <data name="PINProfile" xml:space="preserve">
+    <value>تثبيت</value>
+  </data>
+  <data name="PlaceOfBirth" xml:space="preserve">
+    <value>مكان الميلاد</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>ملف التعريف</value>
+  </data>
+  <data name="RecoveryPwd" xml:space="preserve">
+    <value>كلمة مرور الاسترداد</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>تسجيل</value>
+  </data>
+  <data name="Requests" xml:space="preserve">
+    <value>الطلبات</value>
+  </data>
+  <data name="SendEmail" xml:space="preserve">
+    <value>إرسال بريد إلكتروني</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>إعدادات ملف التعريف</value>
+  </data>
+  <data name="SingUp" xml:space="preserve">
+    <value>تسجيل!</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>فرز</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>userName</value>
+  </data>
+  <data name="VerifyCode" xml:space="preserve">
+    <value>التحقق من الرمز</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+</root>
