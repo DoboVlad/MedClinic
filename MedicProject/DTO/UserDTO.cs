@@ -8,6 +8,8 @@ namespace MedicProject.DTO
         public string lastName{get;set;}
         
         public int role{get;set;}
+
+        public int validated { get; set; }
         public string token{get;set;}
         public int doctorId { get; set; }
     }

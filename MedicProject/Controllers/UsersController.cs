@@ -516,6 +516,7 @@ namespace MedicProject.Controllers
                 email=user.email,
                 firstName=user.firstName,
                 lastName=user.lastName,
+                validated = user.validated,
                 role=user.isMedic,
                 token=_tokenService.CreateToken(user)
             };
@@ -545,8 +546,7 @@ namespace MedicProject.Controllers
                 {
                     user.Token = resetCode;
 
-                   _context.USERS.Update(user);
-                    await  _context.SaveChangesAsync();
+ogin                    await  _context.SaveChangesAsync();
 
                     var subject = "Password Reset Request";
                     var body = "Hi " + user.firstName + ", <br/> You recently requested to reset your password for your account. Use the following token to confirm your identity. " +
@@ -681,7 +681,8 @@ namespace MedicProject.Controllers
        [HttpPost]
        [Route("VerifyAccount")]
         //user has to introduce the validation string sent to him via email to verify his account and activate it 
-        public async Task<ActionResult> VerifyAccount(string token){
+        public async Task<ActionResult> VerifyAccount(string token)
+        {
             //find the user with the sent unique token
              var user = await _context.USERS.Where(a => a.Token == token).FirstOrDefaultAsync();
               //if a user is found his account is validated, now he can login
