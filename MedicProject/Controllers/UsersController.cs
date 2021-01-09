@@ -240,9 +240,11 @@ namespace MedicProject.Controllers
                return Unauthorized();
         }
 
+
+
         [Authorize]
         [HttpGet]
-        [Route("getUnapprovedUsers")]
+        [Route("getApprovedUsers")]
         //returns all unapproved users of a doctor
         public async Task<ActionResult<IEnumerable<PatientDTO>>> getApprovedUsers()
         {
