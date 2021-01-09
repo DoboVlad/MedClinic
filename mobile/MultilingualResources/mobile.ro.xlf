@@ -94,10 +94,6 @@
           <source>The date is available.</source>
           <target state="translated">Data este disponibilă.</target>
         </trans-unit>
-        <trans-unit id="BirthDateProfile" translate="yes" xml:space="preserve">
-          <source>BirthDate:</source>
-          <target state="translated">Data nașterii:</target>
-        </trans-unit>
         <trans-unit id="Birthday" translate="yes" xml:space="preserve">
           <source>Birthday</source>
           <target state="translated" state-qualifier="tm-suggestion">Zi de naștere</target>
@@ -345,6 +341,96 @@
         <trans-unit id="Yes" translate="yes" xml:space="preserve">
           <source>Yes</source>
           <target state="translated" state-qualifier="tm-suggestion">Da</target>
+        </trans-unit>
+        <trans-unit id="DoctorGuide" translate="yes" xml:space="preserve">
+          <source>Log in with the given data
+Look through the past and future appoinments.
+Delete the once you want by taping the appoinment and taping the delete button.
+Look through the pacients and delete the ones you want.
+Look through the new request and accept your pacients.
+Verify your profile data and change it if you want by clicking the settings icon.</source>
+          <target state="new">Log in with the given data
+Look through the past and future appoinments.
+Delete the once you want by taping the appoinment and taping the delete button.
+Look through the pacients and delete the ones you want.
+Look through the new request and accept your pacients.
+Verify your profile data and change it if you want by clicking the settings icon.</target>
+        </trans-unit>
+        <trans-unit id="Error" translate="yes" xml:space="preserve">
+          <source>There was an error.</source>
+          <target state="new">There was an error.</target>
+        </trans-unit>
+        <trans-unit id="ErrorTryAgain" translate="yes" xml:space="preserve">
+          <source>There was an error. Please try again.</source>
+          <target state="new">There was an error. Please try again.</target>
+        </trans-unit>
+        <trans-unit id="Guide" translate="yes" xml:space="preserve">
+          <source>Guide</source>
+          <target state="new">Guide</target>
+        </trans-unit>
+        <trans-unit id="GuideHelp" translate="yes" xml:space="preserve">
+          <source>Brief guide to the application</source>
+          <target state="new">Brief guide to the application</target>
+        </trans-unit>
+        <trans-unit id="InvalidCode" translate="yes" xml:space="preserve">
+          <source>Your code is invalid.</source>
+          <target state="translated">Codul este invalid.</target>
+        </trans-unit>
+        <trans-unit id="OK" translate="yes" xml:space="preserve">
+          <source>OK</source>
+          <target state="new">OK</target>
+        </trans-unit>
+        <trans-unit id="PacientAcceptGuide" translate="yes" xml:space="preserve">
+          <source>Log in with chosen the email and password.
+Enter the appointment section, make an appoinment.
+Look through the past and future appoinments.
+Delete an appointment if you change your mind by taping on the appointment and taping on the delete button.
+Verify your profile data and change it if you want by clicking the settings icon.</source>
+          <target state="translated">Conectați-vă cu email și parolă.
+Intrați pe pagina Programări, unde puteți să faceți o programare.
+În meniul Acasă, puteți vedea programările trecute și viitoare.
+Programările se pot șterge apăsând pe aceasta și selectând butonul Șterge.
+Pe pagina de profil vă puteți modifica/verifica datele personale dând click pe iconița de Setări.</target>
+        </trans-unit>
+        <trans-unit id="PacientRegisterGuide" translate="yes" xml:space="preserve">
+          <source>Find your family doctor.
+Register with your personal data. 
+Wait for the doctor to accept your request.</source>
+          <target state="translated">Găsiți-vă doctorul de familie.
+Înregistrați-vă datele personale.
+Așteptați confirmarea doctorului.</target>
+        </trans-unit>
+        <trans-unit id="RecoverAccount" translate="yes" xml:space="preserve">
+          <source>Your account is recovered.</source>
+          <target state="translated">Contul este recuperat.</target>
+        </trans-unit>
+        <trans-unit id="RegistrationNotSucceed" translate="yes" xml:space="preserve">
+          <source>Your registration is not successful. Please try again :)</source>
+          <target state="translated">Înregistrare cu eșec. Încercați din nou :)</target>
+        </trans-unit>
+        <trans-unit id="ResetPwdEmail" translate="yes" xml:space="preserve">
+          <source>Server error or invalid email.</source>
+          <target state="translated">Eroare server sau email invalid.</target>
+        </trans-unit>
+        <trans-unit id="SetPwd" translate="yes" xml:space="preserve">
+          <source>Set password</source>
+          <target state="translated">Setați parola.</target>
+        </trans-unit>
+        <trans-unit id="SuccessfulReset" translate="yes" xml:space="preserve">
+          <source>Successful reset.</source>
+          <target state="translated">Resetare cu succes.</target>
+        </trans-unit>
+        <trans-unit id="ValidateCode" translate="yes" xml:space="preserve">
+          <source>Validate Code</source>
+          <target state="translated">Cod Validare</target>
+        </trans-unit>
+        <trans-unit id="ValidateCodeDesc" translate="yes" xml:space="preserve">
+          <source>Please insert the code sent to you by email...</source>
+          <target state="translated">Inserați codul trimis pe email...</target>
+        </trans-unit>
+        <trans-unit id="AgeProfile" translate="yes" xml:space="preserve">
+          <source>Age:</source>
+          <target state="translated">Vârstă:</target>
         </trans-unit>
       </group>
     </body>

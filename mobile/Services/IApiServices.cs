@@ -30,5 +30,7 @@ namespace mobile.Services
         public Task<List<AppointmentModel>> GetNextPatientAppointments(string token);
         public Task<Boolean> SendEmail(string email);
         public Task<Boolean> ResetPassword(ResetPasswordModel code);
+
+        public Task<bool> ValidateCode(string code);
     }
 }

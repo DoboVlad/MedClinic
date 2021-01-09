@@ -28,10 +28,12 @@ namespace mobile.Models
                     {
                         if (App.user.role == 1)
                         {
-                      
+
                             await Application.Current.MainPage.Navigation.PushAsync(new TabbedMainPageDoctor());
                         }
-                        else await Application.Current.MainPage.Navigation.PushAsync(new TabbedPageMain());
+                        else if (App.user.Validated == 1)
+                            await Application.Current.MainPage.Navigation.PushAsync(new TabbedPageMain());
+                        else await Application.Current.MainPage.Navigation.PushAsync(new ValidatePage());
                     }
 
                 });

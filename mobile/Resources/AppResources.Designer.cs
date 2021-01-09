@@ -106,6 +106,15 @@ namespace mobile.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Age:.
+        /// </summary>
+        internal static string AgeProfile {
+            get {
+                return ResourceManager.GetString("AgeProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You didn&apos;t introduced your birthday..
         /// </summary>
         internal static string AlertBirthday {
@@ -255,15 +264,6 @@ namespace mobile.Resources {
         internal static string AvailableDate {
             get {
                 return ResourceManager.GetString("AvailableDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to BirthDate:.
-        /// </summary>
-        internal static string BirthDateProfile {
-            get {
-                return ResourceManager.GetString("BirthDateProfile", resourceCulture);
             }
         }
         
@@ -636,7 +636,7 @@ namespace mobile.Resources {
         ///   Looks up a localized string similar to Log in with chosen the email and password.
         ///Enter the appointment section, make an appoinment.
         ///Look through the past and future appoinments.
-        ///Delete an appointement if you change your minde by taping on the appointment and taping on the delete button.
+        ///Delete an appointment if you change your mind by taping on the appointment and taping on the delete button.
         ///Verify your profile data and change it if you want by clicking the settings icon..
         /// </summary>
         internal static string PacientAcceptGuide {
@@ -941,6 +941,24 @@ namespace mobile.Resources {
         internal static string Username {
             get {
                 return ResourceManager.GetString("Username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validate Code.
+        /// </summary>
+        internal static string ValidateCode {
+            get {
+                return ResourceManager.GetString("ValidateCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please insert the code sent to you by email....
+        /// </summary>
+        internal static string ValidateCodeDesc {
+            get {
+                return ResourceManager.GetString("ValidateCodeDesc", resourceCulture);
             }
         }
         

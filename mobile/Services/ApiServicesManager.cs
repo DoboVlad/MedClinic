@@ -91,5 +91,9 @@ namespace mobile.Services
         {
             return await apiS.ResetPassword(resetPwd);
         }
+
+        public async Task<bool> ValidateCode(string code) {
+            return await apiS.ValidateCode(code);
+        }
     }
 }

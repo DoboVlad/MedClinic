@@ -32,8 +32,8 @@
                             <Label x:Name="lblPatientFullName" Text="{Binding FullName}" />
                         </StackLayout>
                         <StackLayout Padding="0,0,0,5" Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-                            <Label Text="{local:Translate BirthDateProfile}" FontAttributes="Bold"/>
-                            <Label x:Name="lblPatientBirthDate" Text="{Binding BirthDate}"/>
+                            <Label Text="{local:Translate AgeProfile}" FontAttributes="Bold"/>
+                            <Label x:Name="lblPatientBirthDate" Text="{Binding Age}"/>
                         </StackLayout>
                         <StackLayout Padding="0,0,0,5" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
                             <Label Text="{local:Translate EmailProfile}" FontAttributes="Bold"/>

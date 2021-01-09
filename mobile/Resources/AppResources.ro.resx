@@ -78,9 +78,6 @@
   <data name="AvailableDate" xml:space="preserve">
     <value>Data este disponibilă.</value>
   </data>
-  <data name="BirthDateProfile" xml:space="preserve">
-    <value>Data nașterii:</value>
-  </data>
   <data name="Birthday" xml:space="preserve">
     <value>Zi de naștere</value>
   </data>
@@ -263,5 +260,44 @@
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Da</value>
+  </data>
+  <data name="InvalidCode" xml:space="preserve">
+    <value>Codul este invalid.</value>
+  </data>
+  <data name="PacientAcceptGuide" xml:space="preserve">
+    <value>Conectați-vă cu email și parolă.
+Intrați pe pagina Programări, unde puteți să faceți o programare.
+În meniul Acasă, puteți vedea programările trecute și viitoare.
+Programările se pot șterge apăsând pe aceasta și selectând butonul Șterge.
+Pe pagina de profil vă puteți modifica/verifica datele personale dând click pe iconița de Setări.</value>
+  </data>
+  <data name="PacientRegisterGuide" xml:space="preserve">
+    <value>Găsiți-vă doctorul de familie.
+Înregistrați-vă datele personale.
+Așteptați confirmarea doctorului.</value>
+  </data>
+  <data name="RecoverAccount" xml:space="preserve">
+    <value>Contul este recuperat.</value>
+  </data>
+  <data name="RegistrationNotSucceed" xml:space="preserve">
+    <value>Înregistrare cu eșec. Încercați din nou :)</value>
+  </data>
+  <data name="ResetPwdEmail" xml:space="preserve">
+    <value>Eroare server sau email invalid.</value>
+  </data>
+  <data name="SetPwd" xml:space="preserve">
+    <value>Setați parola.</value>
+  </data>
+  <data name="SuccessfulReset" xml:space="preserve">
+    <value>Resetare cu succes.</value>
+  </data>
+  <data name="ValidateCode" xml:space="preserve">
+    <value>Cod Validare</value>
+  </data>
+  <data name="ValidateCodeDesc" xml:space="preserve">
+    <value>Inserați codul trimis pe email...</value>
+  </data>
+  <data name="AgeProfile" xml:space="preserve">
+    <value>Vârstă:</value>
   </data>
 </root>

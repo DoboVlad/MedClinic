@@ -132,6 +132,9 @@
   <data name="Age" xml:space="preserve">
     <value>Age</value>
   </data>
+  <data name="AgeProfile" xml:space="preserve">
+    <value>Age:</value>
+  </data>
   <data name="AlertBirthday" xml:space="preserve">
     <value>You didn't introduced your birthday.</value>
   </data>
@@ -182,9 +185,6 @@
   </data>
   <data name="AvailableDate" xml:space="preserve">
     <value>The date is available.</value>
-  </data>
-  <data name="BirthDateProfile" xml:space="preserve">
-    <value>BirthDate:</value>
   </data>
   <data name="Birthday" xml:space="preserve">
     <value>Birthday</value>
@@ -315,7 +315,7 @@ Verify your profile data and change it if you want by clicking the settings icon
     <value>Log in with chosen the email and password.
 Enter the appointment section, make an appoinment.
 Look through the past and future appoinments.
-Delete an appointement if you change your minde by taping on the appointment and taping on the delete button.
+Delete an appointment if you change your mind by taping on the appointment and taping on the delete button.
 Verify your profile data and change it if you want by clicking the settings icon.</value>
   </data>
   <data name="PacientRegisterGuide" xml:space="preserve">
@@ -418,6 +418,12 @@ Wait for the doctor to accept your request.</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>Username</value>
+  </data>
+  <data name="ValidateCode" xml:space="preserve">
+    <value>Validate Code</value>
+  </data>
+  <data name="ValidateCodeDesc" xml:space="preserve">
+    <value>Please insert the code sent to you by email...</value>
   </data>
   <data name="VerifyCode" xml:space="preserve">
     <value>Verify code</value>

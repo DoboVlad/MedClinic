@@ -15,5 +15,13 @@ namespace mobile.Models
         public string token { get; set; }
         public int doctorId { get; set; }
         public string FullName { get { return firstName + ' ' + lastName; } }
+
+        public int Validated
+        {
+            get;
+
+            set;
+        }
+
     }
 }

@@ -11,13 +11,15 @@ namespace mobile
         private string firstName;
         private string lastName;
         private string email;
-       
+
         private string birthDate;
         // Personal Identification Number
         private string pin;
-       
         private string phone;
         private DoctorModel doctor;
+
+
+  
         public DoctorModel Doctor
         {
             get

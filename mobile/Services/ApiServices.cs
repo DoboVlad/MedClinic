@@ -25,7 +25,7 @@ namespace mobile.Services
         public static string registerUrl = $"{BaseAddress}/api/users/register";
         public static string loginUrl = $"{BaseAddress}/api/users/login";
         public static string getUnapprovedUsersUrl = $"{BaseAddress}/api/users/getUnapprovedUsers";
-        public static string getApprovedUsersUrl = $"{BaseAddress}/api/users/getPatients";
+        public static string getApprovedUsersUrl = $"{BaseAddress}/api/users/getApprovedUsers";
         public static string getAboutUsDoctorsUrl = $"{BaseAddress}/api/users/getDoctors";
         public static string getPatientInfoUrl = $"{BaseAddress}/api/users/MyAccount";
         public static string getDoctorInfoUrl = $"{BaseAddress}/api/users/MyAccountMedic";
@@ -43,6 +43,7 @@ namespace mobile.Services
         public static string createAppointmentUrl = $"{BaseAddress}/api/appointments/createApp";
         public static string sendEmailUrl = $"{BaseAddress}/api/users/ForgotPassword";
         public static string resetPasswordUrl = $"{BaseAddress}/api/users/ResetPassword";
+        public static string validateCode = $"{BaseAddress}/api/users/VerifyAccount";
         // Pass the handler to httpclient(from you are calling api) only in debug mode we have to pass the ssl, in release we dont
         public ApiServices()
         {
@@ -101,6 +102,7 @@ namespace mobile.Services
                 App.user.token = userDynamic.Value<string>("token");
                 App.user.role = userDynamic.Value<int>("role");
                 App.user.id = userDynamic.Value<int>("id");
+                App.user.Validated = userDynamic.Value<int>("validated");
                 return true;
             }
             return false;
@@ -134,8 +136,8 @@ namespace mobile.Services
                     LastName = p.Value<string>("lastName"),
                     Email = p.Value<string>("email"),
                     cnp = p.Value<string>("cnp"),
-                    Phone = p.Value<string>("phoneNumber")
-
+                    Phone = p.Value<string>("phoneNumber"),
+                   
                 });
             }
             return patients;
@@ -536,5 +538,14 @@ namespace mobile.Services
             var respons = await client.PostAsync(resetPasswordUrl, content);
             return respons.IsSuccessStatusCode;
         }
+
+        public async Task<bool> ValidateCode(string code) {
+
+            var response = await client.PostAsync(validateCode +"?token=" + code, null);
+            return response.IsSuccessStatusCode;
+
+        }
+
+
     }
 }
