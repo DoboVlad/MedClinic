@@ -546,7 +546,8 @@ namespace MedicProject.Controllers
                 {
                     user.Token = resetCode;
 
-ogin                    await  _context.SaveChangesAsync();
+                    _context.USERS.Update(user);
+                    await  _context.SaveChangesAsync();
 
                     var subject = "Password Reset Request";
                     var body = "Hi " + user.firstName + ", <br/> You recently requested to reset your password for your account. Use the following token to confirm your identity. " +
