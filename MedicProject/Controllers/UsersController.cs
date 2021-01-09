@@ -240,12 +240,32 @@ namespace MedicProject.Controllers
                return Unauthorized();
         }
 
-       
-      
-      
-      
-      
-      
+        [Authorize]
+        [HttpGet]
+        [Route("getUnapprovedUsers")]
+        //returns all unapproved users of a doctor
+        public async Task<ActionResult<IEnumerable<PatientDTO>>> getApprovedUsers()
+        {
+            //get the currently logged in user
+            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = await _context.USERS.Where(p => p.email == useremail).FirstAsync();
+
+            //verify if the user is a doctor
+            if (user.isMedic == 1)
+            {
+                //get the list of unapproved users of the loged in medic
+                var users = await _context.USERS.Where(p => p.doctorId == user.Id).Where(p => p.isApproved == 1).ToListAsync();
+                var unapprovedusers = _mapper.Map<IEnumerable<PatientDTO>>(users);
+                return Ok(unapprovedusers);
+            }//if the user is not a medic then he is unauthorized to see unapproved users
+
+            return Unauthorized();
+        }
+
+
+
+
+
         [Authorize]
         [HttpPut]
         [Route("ApproveUser")]
@@ -685,21 +705,22 @@ namespace MedicProject.Controllers
         public async Task<ActionResult> VerifyAccount(string token)
         {
             //find the user with the sent unique token
+            Console.WriteLine(token+"token");
              var user = await _context.USERS.Where(a => a.Token == token).FirstOrDefaultAsync();
-              //if a user is found his account is validated, now he can login
+            //if a user is found his account is validated, now he can login
               if (user != null)
               {
                   user.Token="";
                   user.validated=1;
                   _context.USERS.Update(user);
                   await  _context.SaveChangesAsync();
-
-              }
+                
+            }
                else
             {
                 return BadRequest("Token invalid");
             }
-          
+
             return Ok("Your account was verified");
         }
 
