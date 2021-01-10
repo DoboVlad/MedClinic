@@ -48,7 +48,7 @@ namespace mobile
             if (ver1 == -1 || ver2 == 1 || (ver3 == -1 && verDate <= 0) || verDateSuper >= 0)
             {
                 lblAvailable.IsVisible = true;
-                lblAvailable.Text = AppResources.UnavailableDate;
+                apt.Message = AppResources.UnavailableDate;
             }
             else
             {

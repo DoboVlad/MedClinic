@@ -343,18 +343,18 @@
           <target state="needs-review-translation" state-qualifier="tm-suggestion">نعم</target>
         </trans-unit>
         <trans-unit id="DoctorGuide" translate="yes" xml:space="preserve">
-          <source>Log in with the given data
-Look through the past and future appoinments.
-Delete the once you want by taping the appoinment and taping the delete button.
-Look through the pacients and delete the ones you want.
-Look through the new request and accept your pacients.
-Verify your profile data and change it if you want by clicking the settings icon.</source>
-          <target state="new">Log in with the given data
-Look through the past and future appoinments.
-Delete the once you want by taping the appoinment and taping the delete button.
-Look through the pacients and delete the ones you want.
-Look through the new request and accept your pacients.
-Verify your profile data and change it if you want by clicking the settings icon.</target>
+          <source>Log in with the given data.
+Look through the past and future appointments in the Appt page. You can delete future appointments by tapping on the chosen one and selecting the delete button.
+Look through the pacients in the Pacients page delete the ones you want by tapping one and tapping the delete button.
+Look through the new request and accept or decline pacients.
+Verify your profile data in the Profile Page and change it if you want by clicking the settings icon.
+On the settings page you will be able to update your data.</source>
+          <target state="new">Log in with the given data.
+Look through the past and future appointments in the Appt page. You can delete future appointments by tapping on the chosen one and selecting the delete button.
+Look through the pacients in the Pacients page delete the ones you want by tapping one and tapping the delete button.
+Look through the new request and accept or decline pacients.
+Verify your profile data in the Profile Page and change it if you want by clicking the settings icon.
+On the settings page you will be able to update your data.</target>
         </trans-unit>
         <trans-unit id="Error" translate="yes" xml:space="preserve">
           <source>There was an error.</source>
@@ -381,15 +381,17 @@ Verify your profile data and change it if you want by clicking the settings icon
           <target state="new">OK</target>
         </trans-unit>
         <trans-unit id="PacientAcceptGuide" translate="yes" xml:space="preserve">
-          <source>Log in with chosen the email and password.
+          <source>Log in with the chosen the email and password.
 Enter the appointment section, make an appoinment.
-Look through the past and future appoinments.
-Delete an appointment if you change your mind by taping on the appointment and taping on the delete button.
+Look through the past and future appoinments. You can delete future appointments by tapping and selecting the delete button.
+Verify your profile data in the Profile Page and change it if you want by clicking the settings icon.
+On the settings page you will be able to update your data.
 Verify your profile data and change it if you want by clicking the settings icon.</source>
-          <target state="new">Log in with chosen the email and password.
+          <target state="new">Log in with the chosen the email and password.
 Enter the appointment section, make an appoinment.
-Look through the past and future appoinments.
-Delete an appointment if you change your mind by taping on the appointment and taping on the delete button.
+Look through the past and future appoinments. You can delete future appointments by tapping and selecting the delete button.
+Verify your profile data in the Profile Page and change it if you want by clicking the settings icon.
+On the settings page you will be able to update your data.
 Verify your profile data and change it if you want by clicking the settings icon.</target>
         </trans-unit>
         <trans-unit id="PacientRegisterGuide" translate="yes" xml:space="preserve">
@@ -431,6 +433,14 @@ Wait for the doctor to accept your request.</target>
         <trans-unit id="AgeProfile" translate="yes" xml:space="preserve">
           <source>Age:</source>
           <target state="new">Age:</target>
+        </trans-unit>
+        <trans-unit id="PwdRecoveryGuide" translate="yes" xml:space="preserve">
+          <source>If you have lost your password, it can be recovered by taping on the "Forgetten password" text from the Log in page.
+Once you get there you have to introduce your account email and tap on the "Send email button". An email 
+containing a code will be sent to you, you have to introuce the code and the new password.</source>
+          <target state="new">If you have lost your password, it can be recovered by taping on the "Forgetten password" text from the Log in page.
+Once you get there you have to introduce your account email and tap on the "Send email button". An email 
+containing a code will be sent to you, you have to introuce the code and the new password.</target>
         </trans-unit>
       </group>
     </body>

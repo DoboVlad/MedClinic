@@ -28,5 +28,11 @@ namespace mobile.Views
                 await Application.Current.MainPage.Navigation.PushAsync(new TabbedPageMain());
             else entValidateCode.BackgroundColor = Color.Red;
         }
+
+        private void entValidateCode_Focused(object sender, FocusEventArgs e)
+        {
+            entValidateCode.BackgroundColor = Color.Default;
+
+        }
     }
 }

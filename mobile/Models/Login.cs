@@ -35,7 +35,7 @@ namespace mobile.Models
                             await Application.Current.MainPage.Navigation.PushAsync(new TabbedPageMain());
                         else await Application.Current.MainPage.Navigation.PushAsync(new ValidatePage());
                     }
-
+                    
                 });
             } }
    

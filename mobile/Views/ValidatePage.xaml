@@ -24,7 +24,7 @@
                             <Label Text="{local:Translate ValidateCode}"  TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
                         </StackLayout>
                         <StackLayout Margin="10, 0" VerticalOptions="CenterAndExpand" >
-                            <Entry x:Name="entValidateCode" Placeholder="{local:Translate ValidateCodeDesc}"  HorizontalOptions="FillAndExpand"/>
+                            <Entry x:Name="entValidateCode" Placeholder="{local:Translate ValidateCodeDesc}" Focused="entValidateCode_Focused" HorizontalOptions="FillAndExpand"/>
                             <Button x:Name="btnValidate"  Text="{local:Translate ValidateCode}" Clicked="btnValidate_Clicked" BackgroundColor="#5084F2"/>
                         </StackLayout>
                     </StackLayout>
