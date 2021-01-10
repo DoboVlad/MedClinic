@@ -34,14 +34,19 @@ namespace mobile
         //time span for doctor schedule
         TimeSpan startTime = new TimeSpan(8, 0, 0);
         TimeSpan endTime = new TimeSpan(17, 0, 0);
-       
-         private void btnMake_Clicked(object sender, EventArgs e)
+        TimeSpan dt = DateTime.Now.TimeOfDay;
+
+        private void btnMake_Clicked(object sender, EventArgs e)
         {
             lblAvailable.IsVisible = true;
             //compare data choosen by user with schedule
             int ver1 = TimeSpan.Compare(tpAppointment.Time, startTime);
             int ver2 = TimeSpan.Compare(tpAppointment.Time, endTime);
-            if ( ver1 == -1 || ver2 == 1 ){
+            int ver3 = TimeSpan.Compare(tpAppointment.Time, dt);
+            int verDate = DateTime.Compare(dpAppointment.Date, DateTime.Now);
+            int verDateSuper = DateTime.Compare(dpAppointment.Date, DateTime.Now.AddMonths(1));
+            if (ver1 == -1 || ver2 == 1 || (ver3 == -1 && verDate <= 0) || verDateSuper >= 0)
+            {
                 lblAvailable.IsVisible = true;
                 lblAvailable.Text = AppResources.UnavailableDate;
             }

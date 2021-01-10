@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local ="clr-namespace:mobile.Helpers"
              x:Class="mobile.Views.HelpPage">
-    <ContentPage.Content>
+    <ScrollView>
         <Grid BackgroundColor="White" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -18,10 +18,11 @@
                     <StackLayout>
                     <Label x:Name="lblGuideRegister" Text="{local:Translate PacientRegisterGuide}"/>
                     <Label x:Name="lblGuideAcceept" Text="{local:Translate PacientAcceptGuide}"/>
+                    <Label x:Name="lblRecPwdGuide" Text="{local:Translate PwdRecoveryGuide}"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>
             <Label Grid.Row="1" Text="{local:Translate AllRightsRes}" HorizontalOptions="Center" VerticalOptions="End"/>
         </Grid>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

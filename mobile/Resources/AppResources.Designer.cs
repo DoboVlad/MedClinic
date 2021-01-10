@@ -394,12 +394,12 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log in with the given data
-        ///Look through the past and future appoinments.
-        ///Delete the once you want by taping the appoinment and taping the delete button.
-        ///Look through the pacients and delete the ones you want.
-        ///Look through the new request and accept your pacients.
-        ///Verify your profile data and change it if you want by clicking the settings icon..
+        ///   Looks up a localized string similar to Log in with the given data.
+        ///Look through the past and future appointments in the Appt page. You can delete future appointments by tapping on the chosen one and selecting the delete button.
+        ///Look through the pacients in the Pacients page delete the ones you want by tapping one and tapping the delete button.
+        ///Look through the new request and accept or decline pacients.
+        ///Verify your profile data in the Profile Page and change it if you want by clicking the settings icon.
+        ///On the settings page you will be able [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string DoctorGuide {
             get {
@@ -633,10 +633,11 @@ namespace mobile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log in with chosen the email and password.
+        ///   Looks up a localized string similar to Log in with the chosen the email and password.
         ///Enter the appointment section, make an appoinment.
-        ///Look through the past and future appoinments.
-        ///Delete an appointment if you change your mind by taping on the appointment and taping on the delete button.
+        ///Look through the past and future appoinments. You can delete future appointments by tapping and selecting the delete button.
+        ///Verify your profile data in the Profile Page and change it if you want by clicking the settings icon.
+        ///On the settings page you will be able to update your data.
         ///Verify your profile data and change it if you want by clicking the settings icon..
         /// </summary>
         internal static string PacientAcceptGuide {
@@ -752,6 +753,17 @@ namespace mobile.Resources {
         internal static string PwdMedium {
             get {
                 return ResourceManager.GetString("PwdMedium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you have lost your password, it can be recovered by taping on the &quot;Forgetten password&quot; text from the Log in page.
+        ///Once you get there you have to introduce your account email and tap on the &quot;Send email button&quot;. An email 
+        ///containing a code will be sent to you, you have to introuce the code and the new password..
+        /// </summary>
+        internal static string PwdRecoveryGuide {
+            get {
+                return ResourceManager.GetString("PwdRecoveryGuide", resourceCulture);
             }
         }
         
