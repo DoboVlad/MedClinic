@@ -30,7 +30,7 @@ namespace MedicProject.Controllers
         private readonly ITokenService _tokenService;
         private readonly IMapper _mapper;
         
-         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IWebHostEnvironment _webHostEnvironment;
        
        //inject dependencies
         public UsersController(DatabaseContext context,ITokenService tokenService,IMapper mapper,IWebHostEnvironment hostEnvironment){
@@ -245,7 +245,7 @@ namespace MedicProject.Controllers
         [Authorize]
         [HttpGet]
         [Route("getApprovedUsers")]
-        //returns all unapproved users of a doctor
+        //returns all approved users of a doctor
         public async Task<ActionResult<IEnumerable<PatientDTO>>> getApprovedUsers()
         {
             //get the currently logged in user
@@ -706,19 +706,24 @@ namespace MedicProject.Controllers
         //user has to introduce the validation string sent to him via email to verify his account and activate it 
         public async Task<ActionResult> VerifyAccount(string token)
         {
-            //find the user with the sent unique token
-            Console.WriteLine(token+"token");
-             var user = await _context.USERS.Where(a => a.Token == token).FirstOrDefaultAsync();
-            //if a user is found his account is validated, now he can login
-              if (user != null)
-              {
-                  user.Token="";
-                  user.validated=1;
-                  _context.USERS.Update(user);
-                  await  _context.SaveChangesAsync();
-                
+            if (token == null)
+            {
+                return BadRequest("Token invalid");
             }
-               else
+
+            //find the user with the sent unique token
+            Console.WriteLine(token + "token");
+            var user = await _context.USERS.Where(a => a.Token == token).FirstOrDefaultAsync();
+            //if a user is found his account is validated, now he can login
+            if (user != null)
+            {
+                user.Token = "";
+                user.validated = 1;
+                _context.USERS.Update(user);
+                await _context.SaveChangesAsync();
+
+            }
+            else
             {
                 return BadRequest("Token invalid");
             }
@@ -728,5 +733,5 @@ namespace MedicProject.Controllers
 
 
 
-}
+    }
 }
