@@ -13,9 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mobile.iOS", "mobile.iOS\mo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testare", "Testare", "{AC6BE375-8DF5-49B3-BC2F-06775A0CA7F5}"
 	ProjectSection(SolutionItems) = preProject
-		..\FSEGA\An 3\Testarea Produselor Soft\LOCALIZARE APLICATIE MOBILA MEDCLINIC.pdf = ..\FSEGA\An 3\Testarea Produselor Soft\LOCALIZARE APLICATIE MOBILA MEDCLINIC.pdf
-		..\FSEGA\An 3\Testarea Produselor Soft\Specificatii pagina principala in romana.pdf = ..\FSEGA\An 3\Testarea Produselor Soft\Specificatii pagina principala in romana.pdf
-		..\FSEGA\An 3\Testarea Produselor Soft\TestCaseLoginLogout.xlsx = ..\FSEGA\An 3\Testarea Produselor Soft\TestCaseLoginLogout.xlsx
+		..\..\facX3\testare\specificatii\logInPageSpecificatii.pdf = ..\..\facX3\testare\specificatii\logInPageSpecificatii.pdf
+		..\..\facX3\testare\specificatii\TestCaseCreareProgramare.xls = ..\..\facX3\testare\specificatii\TestCaseCreareProgramare.xls
 	EndProjectSection
 EndProject
 Global
