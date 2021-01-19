@@ -36,6 +36,8 @@ namespace MedicProject.Services
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            //write token -> serializat
             return tokenHandler.WriteToken(token);
         }
     }

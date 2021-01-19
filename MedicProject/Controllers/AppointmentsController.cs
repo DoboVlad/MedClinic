@@ -29,11 +29,13 @@ namespace MedicProject.Controllers
 
         [HttpPost]
         [Route("createApp")]
-        //[Authorize]// only the users with a token can access this method
+        [Authorize]// only the users with a token can access this method
         public async Task<ActionResult<Appointments>> createAppointment(CreateAppointmentDTO app)
         {
-            if(await AppointmentDateExist(app.date)){
-                if(await AppointmentHourExist(app.hour)){
+            if(await AppointmentDateExist(app.date))
+            {
+                if(await AppointmentHourExist(app.hour))
+                {
                     return BadRequest("This date is already used!");
                 }
             }
@@ -64,9 +66,9 @@ namespace MedicProject.Controllers
         }
 
         // return all the appointements made by a user
-        // TODO: Find a way to make this method asynchronous
         [HttpGet("{userId}")]
-        public async Task<ActionResult<IList<Appointments>>> getAppointments(int userId){
+        public async Task<ActionResult<IList<Appointments>>> getAppointments(int userId)
+        {
             // SELECT * FROM APPOINTMENTS a
             // WHERE a.userId = userId
             var appointments = await _context.APPOINTMENTS.Where(p => p.UserId == userId).ToListAsync();
@@ -76,35 +78,37 @@ namespace MedicProject.Controllers
         [Authorize]
         [HttpGet("historyAppointments")]
         // return all the appointments that have a date smaller than today
-        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getBackApp(){
+        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getBackApp()
+        {
             DateTime date = DateTime.Now;
-
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
             var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+            
             var appointments = await _context.APPOINTMENTS
-            .Include(p => p.User)
-            .Where(app => app.date < date)
-            .Where(p => p.User.Id == user.Id)
-            .ToListAsync();
+                .Include(p => p.User)
+                .Where(app => app.date < date)
+                .Where(p => p.User.Id == user.Id)
+                .ToListAsync();
             
             var appToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
 
             return Ok(appToReturn);
         }
 
-         [HttpGet("nextAppointments")]
+        [HttpGet("nextAppointments")]
         // return all the appointments that have a date bigger than today
-        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getNextApp(){
+        public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getNextApp()
+        {
             DateTime date = DateTime.Now;
 
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
             var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
 
             var appointments = await _context.APPOINTMENTS
-            .Include(p => p.User)
-            .Where(p => p.date > date)
-            .Where(p => p.User.Id == user.Id)
-            .ToListAsync();
+                    .Include(p => p.User)
+                    .Where(p => p.date > date)
+                    .Where(p => p.User.Id == user.Id)
+                    .ToListAsync();
 
             var appointementsToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
 
@@ -117,10 +121,10 @@ namespace MedicProject.Controllers
         {
             DateTime date = DateTime.Now;
             var appointments = await _context.APPOINTMENTS
-            .Include(p => p.User)
-            .Where(app => app.date < date)
-            .Where(p => p.User.doctorId == Id)
-            .ToListAsync();
+                    .Include(p => p.User)
+                    .Where(app => app.date < date)
+                    .Where(p => p.User.doctorId == Id)
+                    .ToListAsync();
 
             var appToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
 
@@ -143,52 +147,6 @@ namespace MedicProject.Controllers
             return Ok(appointementsToReturn);
         }
 
-        //return all the appointements of a medic
-        [HttpGet("allDoctorApp/{id}")]
-        public async Task<ActionResult<IList>> getAllUsers(int id){
-            //get all users from db
-            var users =  await _context.USERS.ToListAsync();
-
-            //get all appointments from db
-            var appointments = await _context.APPOINTMENTS.ToListAsync();
-
-            //join appointments with users lists
-            var medicAppointemnts = appointments.Join(
-                users,
-                keyFromAppointemnts => keyFromAppointemnts.UserId,
-                keyFromUsers => keyFromUsers.Id,
-                (appointments, users) => new {
-                    doctorId = users.doctorId,
-                    pactientFirstName = users.firstName,
-                    pacientLastName = users.lastName,
-                    phone = users.phoneNumber,
-                    email = users.email,
-                    DateOfApp = appointments.date,
-                    HourOfApp = appointments.hour
-                }
-            );
-
-            //join users with medicAppointments lists 
-            var result = users.Join(
-                medicAppointemnts,
-                keyFromUser => keyFromUser.Id,
-                keyFromMedic => keyFromMedic.doctorId,
-                (medic, appointments) => new {
-                    MedicId = medic.Id,
-                    firstName = appointments.pactientFirstName,
-                    lastName = appointments.pacientLastName,
-                    phone = appointments.phone,
-                    email = appointments.email,
-                    date = appointments.DateOfApp,
-                    hour = appointments.HourOfApp
-                }
-            );
-
-            // find only the correct results
-            var finalResult = result.Where(medic => medic.MedicId == id).ToList();
-
-            return finalResult;
-        }
 
         // api/appointments/delete/id
         // delete an appointment by ID
