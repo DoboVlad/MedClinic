@@ -1,182 +1,56 @@
-* {
-  -webkit-transition-property: all;
-  -webkit-transition-duration: .2s;
-  -moz-transition-timing-function: cubic-bezier(100,50,21,6);
-  -moz-transition-property: all;
-  -moz-transition-timing-function: cubic-bezier(100,50,21,6);
+.navbar{
+  width: 100%;
+  background-color: #012C50;
+  color: #B9F1DA;
 }
 
-.navbar{ /* here are the characteristics of the entire navbar*/
-  background-color: white;  
-  width:100%; 
-  display: flex;
-  flex-direction: column;
-  border: 2px solid rgb(231, 231, 231);
-}
-
-.navbar .firstnav{ /*here I am putting the characteristics for the first part of the navbar*/
-  background-color: white; 
-}
-
-.navbar .firstnav .logo{/*here I am editing the logo */
-  float:left;
+.navbar__links{
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: row;
-  max-width: 100%;
-  height: auto;
-  margin-left: 100px;
-  cursor: pointer;
-}
-
-.navbar .firstNavList{/*here I am editing the menu from the first part of the navbar*/
-  text-align: right;
-  font-size: 12px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  text-align: right;
-  float:right;
-  display: flex;
-  flex-direction: row;
-  text-decoration: none;
-  padding-top:20px;
-  padding-right: 20px;
-  cursor: pointer;
-}
-
-.firstNavList li{/*the elements of the first menu*/
-  color:rgb(128, 128, 128);
-  padding:10px 20px;
-  font-size:15px;
-  text-decoration:none;
-  letter-spacing:2px;
-  text-transform:uppercase;
+  width: 100%;
+  justify-content: space-between;
   list-style-type: none;
+  align-items: center;
 }
 
-.firstNavList li:hover{/*how the buttons will react when I put the mouse on it*/
-  border:2px, rgb(255, 255, 255);
-  background-color:  #b9cdfa;;
-  padding:7px 17px;
-  font-size:19px;
-  color: #fcf7f7;  
-}
-
-
-.navbar .secondnav{/*the second part of the navbar*/
-  background-color: #5084F2;
-  padding-bottom: 3px;
-}
-
-.navbar .secondNavList{/*second menu*/
-  height: 20%;
-  background-color: #5084F2;
-  list-style-type: none;
-  padding-right: 10px;
-  margin-right: 5px;
-  float:right;
+.left-nav{
   display: flex;
   flex-direction: row;
 }
 
-.secondNavList li{/*the elements of the second menu*/
-  color:rgb(248, 245, 245);
-  background-color:#5084F2;
-  padding:15px 15px;
-  font-size:15px;
-  text-decoration:none;
-  letter-spacing:2px;
-  text-transform:uppercase;
+.right-nav{
+  display: flex;
+  flex-direction: row;
+}
+
+li{
   cursor: pointer;
+  padding: 10px 20px;
 }
 
-.secondNavList li:hover{/*how will reat the elements of the second menu when i put the mouse on*/
-  border:2px, white;
-  background-color:  #1745af;;
-  padding:13px 13px;
-  font-size:17px;
-  color: #fcf9f9;
-  
-}
-
-.secondNavList a {
+a{
   text-decoration: none;
+  color: #B9F1DA;
 }
 
-.container{
-  background-color: white;
-  margin: 0 auto;
-  padding:0  auto;
-  width: 70%;
-  height: 125%;
-  scroll-behavior: auto;
-  border: 2px solid rgb(231, 231, 231);
-  overflow: auto;  
-}
 
-footer:after {
-  text-align: center;
-  display: table;
-  clear: both;
-}
-
-footer .column {
-  float: left;
-  width: 33.33%;
+#footer{
+  background-color: #012C50;
+  color:#B9F1DA;
+  display: flex;
+  justify-content: space-around;
+  border: none;
   padding-top: 10px;
-  height: auto;
-  text-align: center;
-  background-color: #D3D6F3;
-}
-
-footer .column p {
-  cursor: pointer;
   font-size: 16px;
+
 }
 
-footer .column .border {
-  border-style: groove;
-  border-bottom: none;
-  border-left: none;
-  border-right: none;
+.main-container{
+  min-height: 86vh;
 }
 
-
-li a, .dropbtn {
-  display: inline-block;
-  color: rgb(128, 128, 128);
-  text-align: center;
-  text-decoration: none;
-}
-
-
-li.dropdown {
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 80px;
-  max-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(243, 209, 209, 0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: rgba(34, 34, 34, 0.568);
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-  font-size: 50%;
-  font-weight: bold;
-  background-color: #e2e8f5;
-}
-
-.dropdown-content a:hover {
-  background-color: #8aacf5;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
+.column>p{
+  cursor: pointer;
 }

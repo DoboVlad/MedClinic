@@ -1,11 +1,8 @@
 <!-- engleza -->
 
 <nav class="navbar" *ngIf = "this.userService.language == 0">
-    <div class="firstnav">
-        <p class="logo"  routerLink="/home">
-            <img src="assets/img/logo.png">
-        </p>
-        <ul class="firstNavList">
+  <ul class="navbar__links">
+            <div class="left-nav">
             <li routeLink="/home" *ngIf = "this.userService.isUserLoggedIn  == true" (click)="logout()">Logout</li>
             <li routerLink="/profile" *ngIf="this.userService.isUserLoggedIn == true && this.userService.isApproved == true">Profile</li>
             <li routerLink="/login" *ngIf= "this.userService.isUserLoggedIn == false">ACCOUNT</li>
@@ -21,10 +18,8 @@
                   <a (click) = "setLanguage(1)">Romanian</a>
                 </div>
             </li>
-        </ul>
-    </div>
-    <div class="secondnav">
-        <ul class="secondNavList">
+          </div>
+          <div class="right-nav">
             <li routerLink="/home">HOME</li>
             <li routerLink="/doctorpatients" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">PATIENTS</li>
             <li routerLink="/doctors" *ngIf = "this.userService.role  == 0">DOCTORS</li>
@@ -32,12 +27,12 @@
             <li routerLink="/doctorappointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">APPOINTMENTS</li>
             <li routerLink="/historic" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">PAST APPOINTMENTS</li>
             <a href="#footer"><li>CONTACT</li></a>
-        </ul>
-    </div>
+          </div>
+    </ul>
 </nav>
 
 
-<div class="container" *ngIf = "this.userService.language == 0">
+<div class="main-container" *ngIf = "this.userService.language == 0">
     <router-outlet></router-outlet>
 </div>
 
@@ -49,19 +44,17 @@
             <p routerLink="/home">About</p>
             <p routerLink="/terms">Terms and Conditions</p>
             <p routerLink="/terms">Privacy</p>
-            <p class="border">.</p>
         </div>
         <div class="column">
             <p>Address: Cluj-Napoca, Dorobantilor 48</p>
             <p>Phone number: 0755851417</p>
             <p style="visibility:hidden">.</p>
-            <p class="border">Copyright &#169;</p>
+            <p class="">Copyright &#169;</p>
         </div>
         <div class="column">
             <p routerLink="/doctors">Doctors</p>
             <p routerLink="/appointments">Appointments</p>
             <p routerLink="/login">My account</p>
-            <p class="border">.</p>
         </div>
     </div>
 </footer>

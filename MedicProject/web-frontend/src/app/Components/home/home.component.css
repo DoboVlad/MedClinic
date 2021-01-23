@@ -1,67 +1,51 @@
-
-.imgDescription img{/*editing the image*/
-
-    width:940px;
-    height: 500px;
-    margin-left: 10px auto;
-    margin-right: 10px auto; 
-    margin: auto;
-    padding: 0 auto;
-    display: block;
+.container{
+  display: flex;
+  min-height: 86vh;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.minihelp{/*edit the container of minihelp*/
-    color: #45ada3;
-    font-size: 40px;
-    text-align: center;
-    display: table;
-    clear: both;
-
+img{/*editing the image*/
+  width: 600px;
 }
-.minihelp .guide-title{/*edit the title of minihelp*/
-    color: #1c2d60;
-    font-size: 40px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    text-align: center;
+
+.minihelp{
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-title{
+  font-size: 24px;
+}
+
+.step{
+  font-size: 20px;
+  list-style-type: none;
 
 }
 
-.minihelp .guide-steps{/*edit the guide */
-    color: #45ada3;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    padding-left: 10px ;
-    padding-right: 10px ;
+.bullets-step{
+  font-size: 16px;
 }
 
-.minihelp .step {/*edit each step of the guid*/
-    padding: 2px 25px;
-   /* text-decoration:none;*/
-    letter-spacing:2px;
-    /*text-transform:uppercase;*/
-    font-size: 20px;
-    font-style: italic;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #45ada3;
-    
-}
-
- .bullets-step{/*edit each bullet*/
-    font-size: 15px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #45ada3;
-    padding: 2px 25px;
+.guide-steps{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .column{
     float: left;
-     width: 33.33%;
+    width: 100%;
     padding-top: 10px;
     height: auto;
     text-align: left;
     background-color: #ffffff;
+}
+
+
+li{
+  width: 100%;
+  padding-left: 30px;
 }
