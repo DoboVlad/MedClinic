@@ -12,33 +12,35 @@
 
 }
 .nav-doctor{
- 
-    background: #FFFFFF;
+    background:#012C50;
     max-width: 500px;
-    margin: 0 auto 0px;
     padding: 25px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
-
+    margin: auto;
+    border-radius: 15px;
 }
 
 .form input{
-    height:40px;
     width: 80%;
     padding-right: 10px;
+    background-color: #B9F1DA;
+    padding: 10px;
+    border-radius: 10px 0 0 10px;
+    border: none;
+    color:#012C50;
+    border-right: 1px solid #012C50;
+}
 
-}
 .form button{
-    height:40px;
-    margin-left:2%;
-    padding-left:2%;
-    padding-right:2%;
-    background: #5084F2;
-    color: #FFFFFF;
-    transition: all 0.3 ease;
+    background: #B9F1DA;
+    color: #012C50;
+    padding: 10px 15px;
     cursor: pointer;
-  
+    border: none;
+    border-radius: 0px 10px 10px 0px;
 }
+
 .show-doctor{
     display: flex;
     flex-direction: row;
@@ -54,20 +56,25 @@
     padding: 45px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
+    background-color: #012C50;
+    color:#B9F1DA;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .show-doctor .form2 button {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #5084F2;
+    background: #B9F1DA;
     width: 100%;
     border: 0;
     padding: 15px;
-    color: #FFFFFF;
+    color: #012C50;
     font-size: 14px;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
     cursor: pointer;
+    border-radius: 100px;
   }
  .show-doctor .form2 button:hover,.form2 button:active,.form2 button:focus {
     background: #8aacf5;

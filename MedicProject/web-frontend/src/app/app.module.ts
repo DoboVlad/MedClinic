@@ -21,7 +21,7 @@ import { RequestsComponent } from './Components/requests/requests.component';
 import { DoctorPatientsComponent } from './Components/doctor-patients/doctor-patients.component';
 import { HistoricComponent } from './Components/historic/historic.component';
 import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.component';
-
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +46,8 @@ import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

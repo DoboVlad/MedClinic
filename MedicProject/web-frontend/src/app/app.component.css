@@ -44,13 +44,34 @@ a{
   border: none;
   padding-top: 10px;
   font-size: 16px;
-
+  width: 100%;
 }
 
 .main-container{
   min-height: 86vh;
+  position:relative;
 }
 
 .column>p{
   cursor: pointer;
 }
+
+@media only screen and (max-width: 768px) {
+    #footer{
+      font-size: 12px;
+    }
+
+    .navbar__links{
+      flex-direction: column;
+      font-size: 12px;
+    }
+
+    .column{
+      padding: 0 5px;
+    }
+
+    .main-container{
+      min-height: 70vh;
+    }
+}
+

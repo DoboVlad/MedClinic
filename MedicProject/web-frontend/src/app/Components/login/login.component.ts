@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import {User} from '../../Models/UserModel';
 import {UserService} from '../../Services/user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -23,7 +25,6 @@ export class LoginComponent implements OnInit {
       "password": new FormControl(null, Validators.required)
     });
   }
-
   //when the form is submitted, this method apply
   onSubmit(){
     this.user = {...this.loginForm.value};
