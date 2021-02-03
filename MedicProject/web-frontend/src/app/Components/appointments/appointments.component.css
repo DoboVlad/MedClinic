@@ -1,12 +1,13 @@
 .form {
     position: relative;
     z-index: 1;
-    background: #FFFFFF;
-    max-width: 370px;
+    background: #012C50;
+    max-width: 300px;
     margin: 0 auto;
     padding: 5px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
+    color:#B9F1DA;
   }
 
 
@@ -14,16 +15,16 @@
 .appointments-title{
     text-align: center;
     font-size: 35px;
-    color: #1c2d60;
+    color: #012C50;
     padding-top: 3%;
 
 }
 
+
 .appointments-description {
     text-align: center;
     font-size: 25px;
-    color: #455172;
-    padding-top: 5%;
+    color:#012C50;
     margin-top: 40px;
 }
 
@@ -46,46 +47,40 @@ input[type="date"]::-webkit-inner-spin-button, input[type="time"]::-webkit-inner
 
 /* Always display the drop down caret */
 input[type="date"]::-webkit-calendar-picker-indicator,input[type="time"]::-webkit-calendar-picker-indicator {
-    color: #2c3e50;
+    color: #012C50;
+    background-color: #B9F1DA;
 }
 
 /* A few custom styles for date inputs */
 input[type="date"], input[type="time"]  {
-    appearance: none;
-    -webkit-appearance: none;
-    color: #95a5a6;
-    font-family: "Helvetica", arial, sans-serif;
     font-size: 18px;
-    border:1px solid #ecf0f1;
-    background:#ecf0f1;
+    border:none;
     padding:7px;
-    display: inline-block !important;
-    visibility: visible !important;
     cursor: pointer;
+    background-color: #B9F1DA;
+    border-radius: 20px;
+    width: 60%;
+    min-width: 100px;
 }
 
-input[type="date"], input[type="time"], focus {
-    color: #95a5a6;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
+.label{
+  display: inline-block;
+}
+
+form{
+  text-align: center;
 }
 
 input[type="submit"] {
-
-    font-family: "Roboto", sans-serif;
-    outline: 0;
-    background: #5084F2;
-    width: 20%;
+    background:#B9F1DA;
+    width: 100px;
+    margin-top: 5px;
     border: 0;
     padding: 15px;
-    color: #FFFFFF;
-    font-size: 14px;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
-    cursor: pointer;
-    margin-top: 3%;
+    color: #012C50;
+    font-size: 16px;
     text-align: center;
+    border-radius: 100px;
 }
 
 .form input[type="submit"]:hover {
@@ -105,10 +100,41 @@ input[type=time]::-webkit-datetime-edit-ampm-field {
     display: none;
 }
 
+full-calendar{
+  background-color: #012C50;
+  color:#B9F1DA;
+  margin: 15px 0;
+  padding: 2.5px;
+  box-shadow: 0 5px 10px black;
+}
+
+.fc-h-event{
+  background-color: #B9F1DA;
+  color:#012C50;
+}
+
 .message{
   background-color: #0af50a;
   text-align: center;
   width: 400px;
   margin: auto;
   padding: 5px;
+}
+
+.container{
+  width: 80%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .mes{
+    font-size: 22px;
+  }
+  .mes--1, .label, input[type="date"], input[type="time"], input[type="submit"]{
+    font-size: 16px;
+  }
+}
+
+.fc-button-primary{
+  display: none;
 }

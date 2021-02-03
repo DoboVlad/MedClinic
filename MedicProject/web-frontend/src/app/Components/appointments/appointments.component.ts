@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
+import { CalendarOptions } from '@fullcalendar/angular';
 import { Appointment } from 'src/app/Models/AppointmentModel';
 import { AppointmentService } from 'src/app/Services/appointment.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -11,9 +13,12 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class AppointmentsComponent implements OnInit {
   appForm: FormGroup;
-  app: Appointment
+  app: Appointment;
   minDate: Date;
   newDate: Date;
+  pastAppointment: Appointment[];
+  calendarOptions: CalendarOptions;
+
   constructor(public appService: AppointmentService, public userService: UserService) { }
 
   ngOnInit(): void {
@@ -24,7 +29,37 @@ export class AppointmentsComponent implements OnInit {
       "hour": new FormControl(null, Validators.required),
       "date": new FormControl(null, Validators.required)
     });
+
+    // this.calendarOptions = {
+    //   initialView: 'dayGridMonth',
+    //   weekends:false,
+    //   events:function(info, success, fail){
+    //       req.get("https://localhost:5001/api/appointments/historyAppointments").type('json')
+    //         .query({
+    //           start: info.start.valueOf(),
+    //           end: info.end.valueOf()
+    //         })
+    //         .end(function(err, res){
+    //           if (err) {
+    //             fail(err);
+    //           } else {
+    //             success(
+    //               Array.prototype.slice.call(
+    //                 res.getElementsByTagName('event')
+    //               ).map(function(eventEl){
+    //                 return {
+    //                   title: eventEl.getAttribute('title'),
+    //                   start: eventEl.getAttribute('start')
+    //                 }
+    //               })
+    //             )
+    //         }
+    //     })
+    //   }
+    // }
   }
+
+
 
   onSubmit(){
     this.app = {...this.appForm.value};

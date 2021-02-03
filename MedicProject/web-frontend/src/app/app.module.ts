@@ -22,6 +22,15 @@ import { DoctorPatientsComponent } from './Components/doctor-patients/doctor-pat
 import { HistoricComponent } from './Components/historic/historic.component';
 import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.component';
 import {MatInputModule} from '@angular/material/input';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +56,8 @@ import {MatInputModule} from '@angular/material/input';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatInputModule
+    MatInputModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

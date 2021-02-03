@@ -1,13 +1,13 @@
 <!--engleza-->
 <div *ngIf = "this.userService.language == 0">
     <div class="appointments-title" >
-         <p>Make an appointment online</p>
+         <p class="mes">Make an appointment online</p>
     </div>
     <div class="message" *ngIf="this.appService.isSuccesfully == true;" >
         Your appointment have been registered succesfully! Thank you
     </div>
     <div class="appointments-description">
-        <p>Choose an available date and hour:</p><br>
+        <p class="mes--1">Choose an available date and hour:</p><br>
     </div>
 </div>
 
@@ -15,14 +15,15 @@
     <div class="date">
         <form [formGroup]="appForm" (ngSubmit)="onSubmit()">
             <!-- for min=sysdate and for max=sysdate + 30 days for example -->
-            Date: <input type="date" min="{{this.minDate | date: 'yyyy-MM-dd'}}" max="{{this.newDate | date: 'yyyy-MM-dd'}}" formControlName="date"><br><br>
-            Hour: <input type="time" step="1800" min="09:00" formControlName="hour"><br>
+            <p class="label">Date:</p> <input type="date" min="{{this.minDate | date: 'yyyy-MM-dd'}}" max="{{this.newDate | date: 'yyyy-MM-dd'}}" formControlName="date"><br><br>
+            <p class="label">Hour:</p> <input type="time" step="1800" min="09:00" formControlName="hour"><br>
             <input type="submit" value="Submit">
         </form>
     </div>
 </div>
-
-
+<div class="container">
+  <full-calendar [options]="calendarOptions"></full-calendar>
+</div>
 <!--romana-->
 <div *ngIf = "this.userService.language == 1">
 <div class="appointments-title" >

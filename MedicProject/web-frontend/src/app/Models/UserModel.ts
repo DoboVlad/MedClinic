@@ -2,7 +2,7 @@ import {Doctor} from './DoctorModel';
 
 export class User{
   id? : number;
-  firstName?: String;
+  firstName?: string;
   lastName?: String;
   email?: String;
   password?: String;
