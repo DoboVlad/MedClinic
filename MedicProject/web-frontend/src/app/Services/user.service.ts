@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { User } from '../Models/UserModel';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl: String = "https://localhost:5001";
+  baseUrl: String = environment.apiUrl;
   error: any;
   constructor(private http: HttpClient, private router: Router) { }
   user: User;
@@ -20,9 +21,8 @@ export class UserService {
   //use post method to login the user
   //call the base url using /login endpoint
   logInUser(user: User){
-    this.http.post<User>(this.baseUrl + "/api/users/login", user).subscribe(user => {
+    this.http.post<User>(this.baseUrl + "/users/login", user).subscribe(user => {
       this.user = user;
-      console.log(user.status) + 'status';
       this.saveAuthData(user.token, user.role);
       this.token = user.token;
       this.isFetching = true;
@@ -44,7 +44,7 @@ export class UserService {
   }
 
   registerUser(user: User){
-    this.http.post(this.baseUrl + "/api/users/register", user).subscribe(user =>{
+    this.http.post(this.baseUrl + "/users/register", user).subscribe(user =>{
       this.user = user;
       this.router.navigate(["/home"]);
     });
@@ -84,19 +84,19 @@ export class UserService {
 
   //get all doctors from database
   getDoctors(){
-    return this.http.get<User[]>(this.baseUrl + "/api/users/getDoctors");
+    return this.http.get<User[]>(this.baseUrl + "/users/getDoctors");
   }
 
   //search a doctor by it's name
   searchDoctor(name: string){
     const params = new HttpParams().set("str", name);
     console.log(this.baseUrl + "api/users/searchDoctor" + params);
-    return this.http.get<User[]>(this.baseUrl + "/api/users/searchDoctor?",{params});
+    return this.http.get<User[]>(this.baseUrl + "/users/searchDoctor?",{params});
   }
 
   // get a single user from api
   myAccount(){
-    return this.http.get<User>(this.baseUrl + "/api/users/MyAccount", {
+    return this.http.get<User>(this.baseUrl + "/users/MyAccount", {
       headers: {
         'Authorization' : 'Bearer ' + this.token
       }
@@ -104,7 +104,7 @@ export class UserService {
   }
 
   medicAccount(){
-    return this.http.get<User>(this.baseUrl + '/api/users/MyAccountMedic', {
+    return this.http.get<User>(this.baseUrl + '/users/MyAccountMedic', {
       headers: {
         'Authorization' : 'Bearer ' + this.token
       }
@@ -112,7 +112,7 @@ export class UserService {
     }
 
     getAllPatients(){
-      return this.http.get<User[]>(this.baseUrl + '/api/users/getPatients', {
+      return this.http.get<User[]>(this.baseUrl + '/users/getPatients', {
         headers: {
           'Authorization': 'Bearer ' + this.token
         }
@@ -120,7 +120,7 @@ export class UserService {
     }
 
     getUnapprovedUsers(){
-      return this.http.get<User[]>(this.baseUrl + '/api/users/getUnapprovedUsers', {
+      return this.http.get<User[]>(this.baseUrl + '/users/getUnapprovedUsers', {
         headers: {
           'Authorization': 'Bearer ' + this.token
         }
@@ -128,7 +128,7 @@ export class UserService {
     }
 
     approveUser(id: number){
-        this.http.put(this.baseUrl + '/api/users/ApproveUser?id=' + id, id, {
+        this.http.put(this.baseUrl + '/users/ApproveUser?id=' + id, id, {
           headers: {
             'Authorization': 'Bearer ' + this.token
           }

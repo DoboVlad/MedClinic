@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Appointment } from '../Models/AppointmentModel';
 import { UserService } from './user.service';
 
@@ -7,7 +8,7 @@ import { UserService } from './user.service';
   providedIn: 'root'
 })
 export class AppointmentService {
-  baseUrl: string = "https://localhost:5001/api/appointments";
+  baseUrl: string = environment.apiUrl + "/api/appointments";
   constructor(private http: HttpClient, private userService: UserService) { }
 
   isSuccesfully: boolean;
