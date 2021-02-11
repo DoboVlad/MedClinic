@@ -1,49 +1,35 @@
-/*p{
-  text-align: center;
-  font-size: 16px;
-}
-
-h2{
-  text-align: center;
+.main-container-waiting{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 86vh;
 }
 
 .info{
-  display: flex;
-  justify-content: space-evenly;
-
-}/*
-/*.waitingText{
-
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  padding-top: 20px;
-}*/
-.info{
-  position: relative;
-  z-index: 1;
-  background: #FFFFFF;
+  background: #012C50;;
   max-width: 360px;
-  margin: 100px auto 100px;
+  color:#B9F1DA;
+  font-size: 20px;
+  margin:auto;
   padding: 45px;
-  text-align: left;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
-.info p{
-  height: 40px;
-  padding-right: 10px;
-  margin-bottom: 5%;
-  border: none;
-  font-size: 19px;
-  color: #1c2d60;
-  text-align: left;
-  font-weight: 500;
-}
+
 .notaccepted{
   color: red;
-  font-size: 25px;
+  font-size: 24px;
+  text-align: center;
 }
 
-.contactdoctor{
-  font-size: 20px;
+@media only screen and (max-width: 768px) {
+  .info{
+    font-size: 14px;
+    padding: 20px;
+    max-width: 300px;
+  }
+
+  .notaccepted{
+    font-size: 20px;
+  }
 }

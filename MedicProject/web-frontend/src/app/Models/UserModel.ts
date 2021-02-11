@@ -20,4 +20,5 @@ export class User{
   doctor?: Doctor;
   role?: number;
   status?: any;
+  validated?: number;
 }

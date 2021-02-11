@@ -16,6 +16,7 @@ import {RequestsComponent} from './Components/requests/requests.component';
 import {DoctorPatientsComponent} from './Components/doctor-patients/doctor-patients.component';
 import {HistoricComponent} from './Components/historic/historic.component';
 import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.component';
+import { ActivateAccountComponent } from './Components/activate-account/activate-account.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard, ApproveGuard]},
   {path: 'forgotpassword', component: ForgotPasswordComponent},
   {path: 'terms', component: TermsComponent},
+  {path: 'activate-account', component: ActivateAccountComponent},
   {path: 'waiting', component: WaitingComponent},
   {path: 'doctorappointments', component: DoctorAppointmentsComponent},
   {path: 'requests', component: RequestsComponent},

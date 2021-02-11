@@ -27,6 +27,9 @@ export class UserService {
       this.token = user.token;
       this.isFetching = true;
       this.role = user.role;
+      if(this.user.validated == 0){
+        this.router.navigate(["/activate-account"]);
+      }else{
       if(this.user.isApproved == 1){
         this.isApproved = true;
         this.isUserLoggedIn = true;
@@ -38,6 +41,7 @@ export class UserService {
          this.isUserLoggedIn = true;
          this.router.navigate(["/waiting"]);
       }
+    }
     }, error => {
       this.error = error.status;
     });
@@ -46,6 +50,9 @@ export class UserService {
   registerUser(user: User){
     this.http.post(this.baseUrl + "/users/register", user).subscribe(user =>{
       this.user = user;
+      if(this.user.validated == 0){
+        this.router.navigate(["/activate-account"]);
+      }
       this.router.navigate(["/home"]);
     });
   }
@@ -135,5 +142,21 @@ export class UserService {
         }).subscribe(user => {
           this.router.navigate(["/home"]);
         });
+    }
+
+    activateAccount(code: string){
+      this.http.post<User>(this.baseUrl + '/users/VerifyAccount?token=' + code, null).subscribe(user => {
+        if(user.isApproved == 1){
+          this.isApproved = true;
+          this.isUserLoggedIn = true;
+          this.isFetching = false;
+          this.router.navigateByUrl("/profile");
+        }
+        else {
+           this.isApproved = false;
+           this.isUserLoggedIn = true;
+           this.router.navigate(["/waiting"]);
+        }
+      });
     }
 }

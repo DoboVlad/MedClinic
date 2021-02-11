@@ -483,8 +483,8 @@ namespace MedicProject.Controllers
             //send verification email
             await EmailVerification(user.email);
             return user;
-
         }
+
         private async Task<bool> UserExists(string email)
         {
             return await _context.USERS.AnyAsync(x => x.email == email.ToLower());
@@ -513,6 +513,7 @@ namespace MedicProject.Controllers
                 lastName=user.lastName,
                 role=user.isMedic,
                 isApproved = user.isApproved,
+                validated = user.validated,
                 token=_tokenService.CreateToken(user)
             };
         }
@@ -650,6 +651,7 @@ namespace MedicProject.Controllers
        //user has to introduce the validation string sent to him via email to verify his account and activate it 
        public async Task<ActionResult> VerifyAccount(string token)
        {
+           Console.WriteLine(token);
            //find the user with the sent unique token
            var user = await _context.USERS.Where(a => a.Token == token).FirstOrDefaultAsync();
            
@@ -666,10 +668,20 @@ namespace MedicProject.Controllers
                 return BadRequest("Token invalid");
            }
            
-            return Ok("Your account was verified");
+            var userToReturn = new UserDTO
+            {
+                id = user.Id,
+                email=user.email,
+                firstName=user.firstName,
+                lastName=user.lastName,
+                role=user.isMedic,
+                isApproved = user.isApproved,
+                validated = user.validated,
+                token=_tokenService.CreateToken(user)
+            };
+
+            return Ok(userToReturn);
        }
-
-
 
     }
 }

@@ -24,7 +24,8 @@ import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.
 import {MatInputModule} from '@angular/material/input';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
-import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction';
+import { ActivateAccountComponent } from './Components/activate-account/activate-account.component'; // a plugin
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -48,7 +49,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     RequestsComponent,
     DoctorPatientsComponent,
     HistoricComponent,
-    ChangeDoctorComponent
+    ChangeDoctorComponent,
+    ActivateAccountComponent
   ],
   imports: [
     BrowserModule,
