@@ -3,21 +3,21 @@
 <nav class="navbar" *ngIf = "this.userService.language == 0">
   <ul class="navbar__links">
             <div class="left-nav">
-            <li routeLink="/home" *ngIf = "this.userService.isUserLoggedIn  == true" (click)="logout()">Logout</li>
-            <li routerLink="/profile" *ngIf="this.userService.isUserLoggedIn == true && this.userService.isApproved == true">Profile</li>
+            <li routeLink="/home" *ngIf = "this.userService.isUserLoggedIn  == true" (click)="logout()">LOGOUT</li>
+            <li routerLink="/profile" *ngIf="this.userService.isUserLoggedIn == true && this.userService.isApproved == true">PROFILE</li>
             <li routerLink="/login" *ngIf= "this.userService.isUserLoggedIn == false">ACCOUNT</li>
             <li routerLink="/requests" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">
                 <span title="requests" class="material-icons" >
                 notification_important
                 </span>
             </li>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a class="dropbtn">LANGUAGE</a>
                 <div class="dropdown-content">
                   <a (click) = "setLanguage(0)">English</a>
                   <a (click) = "setLanguage(1)">Romanian</a>
                 </div>
-            </li>
+            </li> -->
           </div>
           <div class="right-nav">
             <li routerLink="/home">HOME</li>

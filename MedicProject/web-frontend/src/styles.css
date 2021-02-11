@@ -56,7 +56,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   transform: translate(320px, 80px);
 }
 
-@media only screen and (max-width: 768px) {
+.svg__container--6{
+  position: absolute;
+  transform: translate(1250px, 750px);
+}
+
+
+@media only screen and (max-width: 1280px) {
   svg{
     display: none;
   }

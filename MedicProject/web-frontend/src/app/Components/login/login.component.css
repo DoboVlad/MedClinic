@@ -9,16 +9,15 @@
 }
 
 .form {
-  position: relative;
-  z-index: 1;
   background-color: #012C50;
   max-width: 360px;
   margin: auto;
   padding: 45px;
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
   animation: moveInUp 0.8s;
   color: #B9F1DA;
+  border-radius: 10px;
 }
 
 .form button {
@@ -76,3 +75,29 @@
 }
 
 
+@media only screen and (max-width: 768px) {
+  .form{
+    font-size: 14px;
+    padding: 20px;
+    max-width: 300px;
+  }
+
+  .input{
+    padding: 8px;
+  }
+
+  .form button {
+    border: 0;
+    padding: 10px;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    border-radius: 100px;
+    margin-top: 10px;
+  }
+
+  p{
+    font-size: 12px;
+  }
+}

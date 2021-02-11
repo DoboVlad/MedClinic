@@ -2,6 +2,7 @@
   width: 100%;
   background-color: #012C50;
   color: #B9F1DA;
+
 }
 
 .navbar__links{
@@ -13,6 +14,7 @@
   justify-content: space-between;
   list-style-type: none;
   align-items: center;
+  height: 10%;
 }
 
 .left-nav{
@@ -75,3 +77,8 @@ a{
     }
 }
 
+@media only screen and (max-width: 1280px) {
+  svg{
+    display: none;
+  }
+}

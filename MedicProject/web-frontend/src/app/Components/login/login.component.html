@@ -99,9 +99,9 @@
      <form [formGroup] = "loginForm" (ngSubmit) = "onSubmit()"> <!-- Bind the form to the loginForm -->
       <div class="log">Login</div><br>
       <input type="text" class="input" placeholder="email" formControlName="email" required/>
-      <span *ngIf = "!loginForm.get('email').valid && loginForm.get('email').touched">
-        <p class="red">Email is required</p>
-      </span>
+        <div *ngIf = "!loginForm.get('email').valid && loginForm.get('email').touched">
+          <span class="red">Email is required</span>
+        </div>
       <span *ngIf = "error()">
         <p class="red">Wrong email or password</p>
       </span>
