@@ -511,7 +511,7 @@ namespace MedicProject.Controllers
                 email=user.email,
                 firstName=user.firstName,
                 lastName=user.lastName,
-                role=user.isMedic,
+                isMedic=user.isMedic,
                 isApproved = user.isApproved,
                 validated = user.validated,
                 token=_tokenService.CreateToken(user)
@@ -638,8 +638,18 @@ namespace MedicProject.Controllers
        }
 
 
+       [AllowAnonymous]
+       [HttpPost]
+       [Route("getInfoAboutAccount")]
+        public async Task<ActionResult<InfoAccountDTO>> getInfo()
+        {
+            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var account = await _context.USERS.Where(x => x.email==useremail).FirstOrDefaultAsync();
 
+            var info = _mapper.Map<InfoAccountDTO>(account);
 
+            return info;
+        } 
 
 
 
@@ -651,7 +661,6 @@ namespace MedicProject.Controllers
        //user has to introduce the validation string sent to him via email to verify his account and activate it 
        public async Task<ActionResult> VerifyAccount(string token)
        {
-           Console.WriteLine(token);
            //find the user with the sent unique token
            var user = await _context.USERS.Where(a => a.Token == token).FirstOrDefaultAsync();
            
@@ -674,7 +683,7 @@ namespace MedicProject.Controllers
                 email=user.email,
                 firstName=user.firstName,
                 lastName=user.lastName,
-                role=user.isMedic,
+                isMedic=user.isMedic,
                 isApproved = user.isApproved,
                 validated = user.validated,
                 token=_tokenService.CreateToken(user)

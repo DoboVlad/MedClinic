@@ -7,7 +7,7 @@ namespace MedicProject.DTO
         public string firstName{get;set;}
         public string lastName{get;set;}
         
-        public int role{get;set;}
+        public int isMedic{get;set;}
 
         public int validated { get; set; }
         public string token{get;set;}

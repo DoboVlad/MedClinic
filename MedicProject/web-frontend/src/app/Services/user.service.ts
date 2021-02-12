@@ -13,20 +13,21 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) { }
   user: User;
   token: string;
-  role: number = 0;
+  role: number;
   isUserLoggedIn: boolean;
   isFetching: boolean;
   language: number = 0;
   isApproved: boolean;
+  isValidated: number = 0;
   //use post method to login the user
   //call the base url using /login endpoint
   logInUser(user: User){
     this.http.post<User>(this.baseUrl + "/users/login", user).subscribe(user => {
       this.user = user;
-      this.saveAuthData(user.token, user.role);
+      this.saveAuthData(user.token);
       this.token = user.token;
       this.isFetching = true;
-      this.role = user.role;
+      this.role = user.isMedic;
       if(this.user.validated == 0){
         this.router.navigate(["/activate-account"]);
       }else{
@@ -61,31 +62,26 @@ export class UserService {
     const authInfo = this.getAuthData();
     if(authInfo!= null){
       this.token = authInfo.token;
-      this.role = +authInfo.role;
       this.isUserLoggedIn = true;
     }
   }
 
-  saveAuthData(token: string, role: number){
+  saveAuthData(token: string){
     localStorage.setItem('token', token);
-    localStorage.setItem('role', role.toString());
   }
 
   clearAuthData(){
     localStorage.removeItem("token");
-    localStorage.removeItem("role");
     this.isUserLoggedIn = false;
   }
 
   getAuthData(){
     const token = localStorage.getItem("token");
-    const role = localStorage.getItem("role");
     if(!token){
       return;
     }
     return{
       token: token,
-      role: role
     }
   }
 

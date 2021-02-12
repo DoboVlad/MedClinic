@@ -24,6 +24,7 @@
     "@fullcalendar/angular": "^5.5.0",
     "@fullcalendar/daygrid": "^5.5.0",
     "@fullcalendar/interaction": "^5.5.0",
+    "jwt-decode": "^3.1.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

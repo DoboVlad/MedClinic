@@ -16,6 +16,7 @@ namespace MedicProject.Mappers
             CreateMap<User, UserApp>();
             CreateMap<User, AccountDTO>();
             CreateMap<User, MedicDTO>();
+            CreateMap<User, InfoAccountDTO>();
         }
     }
 }

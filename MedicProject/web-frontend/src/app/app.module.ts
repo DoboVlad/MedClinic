@@ -27,6 +27,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
 import interactionPlugin from '@fullcalendar/interaction';
 import { ActivateAccountComponent } from './Components/activate-account/activate-account.component'; // a plugin
 
+
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin
@@ -59,7 +60,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ReactiveFormsModule,
     HttpClientModule,
     MatInputModule,
-    FullCalendarModule
+    FullCalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,7 +18,7 @@ export class User{
   token?: string;
   doctorId?: number;
   doctor?: Doctor;
-  role?: number;
+  isMedic?: number;
   status?: any;
   validated?: number;
 }
