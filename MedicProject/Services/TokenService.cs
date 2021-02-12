@@ -19,12 +19,13 @@ namespace MedicProject.Services
         public string CreateToken(User user)
         {  
             var claims = new List<Claim>
-            
             {
-               
                 new Claim(JwtRegisteredClaimNames.Email, user.email),
-                
+                new Claim(ClaimTypes.Role, user.isMedic.ToString()),
+                new Claim("Approved", user.isApproved.ToString()),
+                new Claim("Validated", user.validated.ToString())                
             };
+            
             var creds = new SigningCredentials(_key,SecurityAlgorithms.HmacSha512Signature);
 
             var tokenDescriptor = new SecurityTokenDescriptor

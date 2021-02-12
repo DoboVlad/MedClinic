@@ -1,0 +1,128 @@
+<!-- engleza -->
+
+<nav class="navbar" *ngIf = "this.userService.language == 0">
+  <ul class="navbar__links">
+            <div class="left-nav">
+            <li routeLink="/home" *ngIf = "this.userService.isUserLoggedIn  == true" (click)="logout()">LOGOUT</li>
+            <li routerLink="/profile" *ngIf="this.userService.isUserLoggedIn == true && this.userService.isApproved == true">PROFILE</li>
+            <li routerLink="/login" *ngIf= "this.userService.isUserLoggedIn == false">ACCOUNT</li>
+            <li routerLink="/requests" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">
+                <span title="requests" class="material-icons" >
+                notification_important
+                </span>
+            </li>
+            <!-- <li class="dropdown">
+                <a class="dropbtn">LANGUAGE</a>
+                <div class="dropdown-content">
+                  <a (click) = "setLanguage(0)">English</a>
+                  <a (click) = "setLanguage(1)">Romanian</a>
+                </div>
+            </li> -->
+          </div>
+          <div class="right-nav">
+            <li routerLink="/home">HOME</li>
+            <li routerLink="/doctorpatients" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">PATIENTS</li>
+            <li routerLink="/doctors" *ngIf = "this.userService.role  == 0">DOCTORS</li>
+            <li routerLink="/appointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">APPOINTMENTS</li>
+            <li routerLink="/doctorappointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">APPOINTMENTS</li>
+            <!-- <li routerLink="/historic" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">PAST APPOINTMENTS</li> -->
+            <!-- <a href="#footer"><li>CONTACT</li></a> -->
+          </div>
+    </ul>
+</nav>
+
+
+<div class="main-container" *ngIf = "this.userService.language == 0">
+    <router-outlet></router-outlet>
+</div>
+
+
+<!-- footer -->
+<footer *ngIf = "this.userService.language == 0">
+    <div id="footer">
+        <div class="column">
+            <p routerLink="/home">About</p>
+            <p routerLink="/terms">Terms and Conditions</p>
+            <p routerLink="/terms">Privacy</p>
+        </div>
+        <div class="column">
+            <p>Address: Cluj-Napoca, Dorobantilor 48</p>
+            <p>Phone number: 0755851417</p>
+            <p style="visibility:hidden">.</p>
+            <p class="">Copyright &#169;</p>
+        </div>
+        <div class="column">
+            <p routerLink="/doctors">Doctors</p>
+            <p routerLink="/appointments">Appointments</p>
+            <p routerLink="/login">My account</p>
+        </div>
+    </div>
+</footer>
+
+
+<!-- ROMANA -->
+
+<nav class="navbar" *ngIf = "this.userService.language == 1">
+  <div class="firstnav">
+      <p class="logo"  routerLink="/home">
+          <img src="assets/img/logo.png">
+      </p>
+      <ul class="firstNavList">
+          <li routeLink="/home" *ngIf = "this.userService.isUserLoggedIn  == true" (click)="logout()">DECONECTARE</li>
+          <li routerLink="/profile" *ngIf="this.userService.isUserLoggedIn == true && this.userService.isApproved == true">PROFIL</li>
+          <li routerLink="/login" *ngIf= "this.userService.isUserLoggedIn == false">CONT</li>
+          <li routerLink="/requests" *ngIf= "this.userService.isUserLoggedIn == true && this.userService.isApproved == true && this.userService.role  == 1"><span title="cereri" class="material-icons">
+            notification_important
+            </span>
+        </li>
+          <li class="dropdown">
+              <a class="dropbtn">LIMBA</a>
+              <div class="dropdown-content">
+                <a (click) = "setLanguage(0)">ENGLEZA</a>
+                <a (click) = "setLanguage(1)">ROMANA</a>
+              </div>
+          </li>
+      </ul>
+  </div>
+  <div class="secondnav">
+      <ul class="secondNavList">
+          <li routerLink="/home">ACASA</li>
+          <li routerLink="/doctors" *ngIf = "this.userService.role  == 0">DOCTORI</li>
+          <li routerLink="/doctorpatients" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">PACIENTI</li>
+          <li routerLink="/appointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">PROGRAMARI</li>
+          <li routerLink="/doctorappointments" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 1">PROGRAMARI</li>
+          <li routerLink="/historic" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">PROGRAMARI-ANTERIOARE</li>
+          <a href="#footer"><li>CONTACT</li></a>
+      </ul>
+  </div>
+</nav>
+
+
+<div class="container" *ngIf = "this.userService.language == 1">
+  <router-outlet></router-outlet>
+</div>
+
+
+<!-- footer -->
+<footer>
+  <div id="footer" *ngIf = "this.userService.language == 1">
+      <div class="column">
+          <p routerLink="/home">Despre</p>
+          <p routerLink="/terms">Termeni si conditii</p>
+          <p routerLink="/terms">Privacy</p>
+          <p class="border">.</p>
+      </div>
+      <div class="column">
+          <p>Adresa: Cluj-Napoca, Dorobantilor 48</p>
+          <p>Numar de telefon: 0755851417</p>
+          <p style="visibility:hidden">.</p>
+          <p class="border">Copyright &#169;</p>
+      </div>
+      <div class="column">
+          <p routerLink="/doctors">Doctori</p>
+          <p routerLink="/appointments">Programari</p>
+          <p routerLink="/login">Contul meu</p>
+          <p class="border">.</p>
+      </div>
+  </div>
+</footer>

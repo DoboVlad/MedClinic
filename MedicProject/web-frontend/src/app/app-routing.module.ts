@@ -1,0 +1,45 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './Components/home/home.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { AppointmentsComponent } from './Components/appointments/appointments.component';
+import { DoctorsComponent} from './Components/doctors/doctors.component';
+import { ProfileComponent} from './Components/profile/profile.component';
+import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
+import {TermsComponent} from './Components/terms/terms.component';
+import {AuthGuard} from './Services/auth.guard';
+import { WaitingComponent } from './Components/waiting/waiting.component';
+import {ApproveGuard} from './Services/approve.guard';
+import {DoctorAppointmentsComponent} from './Components/doctor-appointments/doctor-appointments.component';
+import {RequestsComponent} from './Components/requests/requests.component';
+import {DoctorPatientsComponent} from './Components/doctor-patients/doctor-patients.component';
+import {HistoricComponent} from './Components/historic/historic.component';
+import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.component';
+import { ActivateAccountComponent } from './Components/activate-account/activate-account.component';
+
+const routes: Routes = [
+  {path: 'home', component: HomeComponent},
+  {path: 'appointments', component: AppointmentsComponent, canActivate: [AuthGuard, ApproveGuard]},
+  {path: 'doctors', component: DoctorsComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard, ApproveGuard]},
+  {path: 'forgotpassword', component: ForgotPasswordComponent},
+  {path: 'terms', component: TermsComponent},
+  {path: 'activate-account', component: ActivateAccountComponent},
+  {path: 'waiting', component: WaitingComponent},
+  {path: 'doctorappointments', component: DoctorAppointmentsComponent},
+  {path: 'requests', component: RequestsComponent},
+  {path: 'doctorpatients', component: DoctorPatientsComponent},
+  {path: 'historic', component: HistoricComponent},
+  {path: 'change-doctor', component: ChangeDoctorComponent},
+  {path: "**", component: HomeComponent}
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  providers: [AuthGuard, ApproveGuard]
+})
+export class AppRoutingModule { }

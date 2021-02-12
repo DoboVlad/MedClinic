@@ -1,0 +1,35 @@
+.main-container-waiting{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 86vh;
+}
+
+.info{
+  background: #012C50;;
+  max-width: 360px;
+  color:#B9F1DA;
+  font-size: 20px;
+  margin:auto;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.notaccepted{
+  color: red;
+  font-size: 24px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .info{
+    font-size: 14px;
+    padding: 20px;
+    max-width: 300px;
+  }
+
+  .notaccepted{
+    font-size: 20px;
+  }
+}

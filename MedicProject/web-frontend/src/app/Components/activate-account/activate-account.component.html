@@ -1,0 +1,17 @@
+<!-- /VerifyAccount -->
+<div class="activate-account-page">
+  <div class="form">
+     <form [formGroup] = "activateAccountForm" (ngSubmit) = "onSubmit()"> <!-- Bind the form to the loginForm -->
+      <div class="log">Activate your account</div><br>
+      <p>Here you can activate your account. Introduce the code that have been sent to you on your email to validate your account</p>
+      <input type="text" class="input" placeholder="code" formControlName="code" required/>
+        <div *ngIf = "!activateAccountForm.get('code').valid && activateAccountForm.get('code').touched">
+          <span class="red">Please enter the code</span>
+        </div>
+      <span *ngIf = "error()">
+        <p class="red">Wrong email or password</p>
+      </span>
+      <button type="submit">Sent</button>
+    </form>
+  </div>
+</div>
