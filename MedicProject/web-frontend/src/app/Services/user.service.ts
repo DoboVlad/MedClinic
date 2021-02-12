@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) { }
   user: User;
   token: string;
-  role: number;
+  role: number = 0;
   isUserLoggedIn: boolean;
   isFetching: boolean;
   language: number = 0;
