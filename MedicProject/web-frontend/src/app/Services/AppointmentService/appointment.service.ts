@@ -1,21 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Appointment } from '../Models/AppointmentModel';
-import { UserService } from './user.service';
+import { Appointment } from '../../Models/AppointmentModel';
+import { AccountService } from '../account.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppointmentService {
   baseUrl: string = environment.apiUrl + "/api/appointments";
-  constructor(private http: HttpClient, private userService: UserService) { }
+  constructor(private http: HttpClient, private accountService: AccountService) { }
 
   isSuccesfully: boolean;
   createAppointment(appointment: Appointment){
     this.http.post(this.baseUrl + "/createApp", appointment, {
       headers: {
-        'Authorization': 'Bearer ' + this.userService.token
+        'Authorization': 'Bearer ' + this.accountService.token
       }
     }).subscribe(app => {
       console.log(app);
@@ -26,7 +26,7 @@ export class AppointmentService {
   getPastAppointments(){
     return this.http.get<Appointment[]>(this.baseUrl + "/historyAppointments",{
       headers: {
-        "Authorization": "Bearer " + this.userService.token
+        "Authorization": "Bearer " + this.accountService.token
       }
     });
   }
@@ -34,7 +34,7 @@ export class AppointmentService {
   getAllMedicAppointments(){
     return this.http.get<Appointment[]>(this.baseUrl + "/allDoctorApp/1",{
       headers: {
-        "Authorization": "Bearer " + this.userService.token
+        "Authorization": "Bearer " + this.accountService.token
       }
     });
   }

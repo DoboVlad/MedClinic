@@ -3,8 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { CalendarOptions } from '@fullcalendar/angular';
 import { Appointment } from 'src/app/Models/AppointmentModel';
-import { AppointmentService } from 'src/app/Services/appointment.service';
-import { UserService } from 'src/app/Services/user.service';
+import { AppointmentService } from 'src/app/Services/AppointmentService/appointment.service';
+import { AccountService } from 'src/app/Services/account.service';
 
 @Component({
   selector: 'app-appointments',
@@ -19,7 +19,7 @@ export class AppointmentsComponent implements OnInit {
   pastAppointment: Appointment[];
   calendarOptions: CalendarOptions;
 
-  constructor(public appService: AppointmentService, public userService: UserService) { }
+  constructor(public appService: AppointmentService, public accountService: AccountService) { }
 
   ngOnInit(): void {
     this.minDate = new Date();

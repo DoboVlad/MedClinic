@@ -3,7 +3,7 @@ import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import {User} from '../../Models/UserModel';
-import {UserService} from '../../Services/user.service';
+import {AccountService} from '../../Services/account.service';
 
 
 @Component({
@@ -14,12 +14,12 @@ import {UserService} from '../../Services/user.service';
 export class LoginComponent implements OnInit {
   user: User;
   loginForm: FormGroup;
-  constructor(public userService: UserService, private router: Router) { }
+  constructor(public accountService: AccountService, private router: Router) { }
 
 
   ngOnInit(): void {
     //initialize the reactive form
-    this.userService.error = null;
+    this.accountService.error = null;
     this.loginForm = new FormGroup({
       "email": new FormControl(null,[Validators.required, Validators.email]),
       "password": new FormControl(null, Validators.required)
@@ -28,12 +28,12 @@ export class LoginComponent implements OnInit {
   //when the form is submitted, this method apply
   onSubmit(){
     this.user = {...this.loginForm.value};
-    this.userService.logInUser(this.user);
+    this.accountService.logInUser(this.user);
     this.router.navigateByUrl("/profile");
   }
 
   error(){
-    if(this.userService.error != null){
+    if(this.accountService.error != null){
       return true;
     }else {
       return false;

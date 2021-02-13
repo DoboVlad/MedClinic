@@ -1,5 +1,5 @@
 <!--engleza-->
-<div *ngIf = "this.userService.language == 0">
+<div *ngIf = "this.accountService.language == 0">
     <div class="appointments-title" >
          <p>Change your doctor</p>
     </div>
@@ -8,7 +8,7 @@
     </div>
 </div>
 
-<div class="form" *ngIf = "this.userService.language == 0">
+<div class="form" *ngIf = "this.accountService.language == 0">
     <div class="doctor">
         <form [formGroup]="">
             Doctors:<br><br>
@@ -23,7 +23,7 @@
 
 
 <!--romana-->
-<div *ngIf = "this.userService.language == 1">
+<div *ngIf = "this.accountService.language == 1">
     <div class="appointments-title" >
          <p>Schimbă-ti doctorul</p>
     </div>
@@ -32,7 +32,7 @@
     </div>
 </div>
 
-<div class="form" *ngIf = "this.userService.language == 1">
+<div class="form" *ngIf = "this.accountService.language == 1">
     <div class="doctor">
         <form [formGroup]="">
             Doctori disponibili:<br><br>

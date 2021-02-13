@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { UserService } from 'src/app/Services/user.service';
+import { PatientService } from 'src/app/Services/PatientService/patient.service';
 import { User } from 'src/app/Models/UserModel';
 import { Component } from '@angular/core';
 
@@ -19,9 +19,9 @@ export class DataTableDataSource extends DataSource<User> {
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor(userService: UserService) {
+  constructor(patientService: PatientService) {
     super();
-    userService.getAllPatients().subscribe(patients => {
+    patientService.getAllPatients().subscribe(patients => {
       this.data = patients;
     })
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Models/UserModel';
-import { UserService } from 'src/app/Services/user.service';
+import { AccountService } from 'src/app/Services/account.service';
+import { MedicService } from 'src/app/Services/MedicService/medic.service';
 
 @Component({
   selector: 'app-waiting',
@@ -9,10 +10,11 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class WaitingComponent implements OnInit {
   medic: User;
-  constructor(public userService: UserService) { }
+  constructor(public accountService: AccountService,
+    private medicService: MedicService) { }
 
   ngOnInit(): void {
-    this.userService.medicAccount().subscribe(medic => {
+    this.medicService.medicAccount().subscribe(medic => {
       this.medic = medic;
     })
   }

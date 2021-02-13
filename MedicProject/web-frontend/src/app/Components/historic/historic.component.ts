@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Appointment } from 'src/app/Models/AppointmentModel';
-import { AppointmentService } from 'src/app/Services/appointment.service';
-import { UserService } from '../../Services/user.service';
+import { AppointmentService } from 'src/app/Services/AppointmentService/appointment.service';
+import { AccountService } from '../../Services/account.service';
 
 @Component({
   selector: 'app-historic',
@@ -10,13 +10,13 @@ import { UserService } from '../../Services/user.service';
 })
 export class HistoricComponent implements OnInit {
   appointments: Appointment[];
-  constructor(public userService: UserService, private appService: AppointmentService) { }
+  constructor(public accountService: AccountService, private appService: AppointmentService) { }
 
   ngOnInit(): void {
-    this.userService.isFetching = true;
+    this.accountService.isFetching = true;
     this.appService.getPastAppointments().subscribe(app => {
         this.appointments = app;
-        this.userService.isFetching = false;
+        this.accountService.isFetching = false;
     });
   }
 

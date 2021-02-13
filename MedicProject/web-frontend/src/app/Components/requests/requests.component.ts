@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Models/UserModel';
-import { UserService } from 'src/app/Services/user.service';
+import { AccountService } from 'src/app/Services/account.service';
+import { MedicService } from 'src/app/Services/MedicService/medic.service';
 
 @Component({
   selector: 'app-requests',
@@ -9,16 +10,17 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class RequestsComponent implements OnInit {
   users: User[];
-  constructor(public userService: UserService) { }
+  constructor(public accountService: AccountService,
+    private medicService: MedicService) { }
 
   ngOnInit(): void {
-    this.userService.isFetching = true;
-    this.userService.getUnapprovedUsers().subscribe(users => {
+    this.accountService.isFetching = true;
+    this.medicService.getUnapprovedUsers().subscribe(users => {
       this.users = users;
-      this.userService.isFetching = false;
+      this.accountService.isFetching = false;
     })
   }
   acceptUser(id: number){
-    this.userService.approveUser(id);
+    this.medicService.approveUser(id);
   }
 }

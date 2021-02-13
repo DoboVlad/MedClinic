@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from './Services/user.service';
+import { AccountService } from './Services/account.service';
 import jwt_decode from "jwt-decode";
 
 @Component({
@@ -9,29 +9,29 @@ import jwt_decode from "jwt-decode";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  constructor(public userService: UserService, private router: Router){}
+  constructor(public accountService: AccountService, private router: Router){}
 
   ngOnInit(){
-   this.userService.autoAuthUser();
-   if(this.userService.token == null){ // check if we have data in local storage
-    this.userService.isUserLoggedIn = false;
+   this.accountService.autoAuthUser();
+   if(this.accountService.token == null){ // check if we have data in local storage
+    this.accountService.isUserLoggedIn = false;
   } else {
-    var decoded: any = jwt_decode(this.userService.token);
-    this.userService.role = decoded.role;
-    this.userService.isApproved = decoded.Approved;
-    this.userService.isValidated = decoded.Validated;
-    this.userService.isUserLoggedIn = true;
+    var decoded: any = jwt_decode(this.accountService.token);
+    this.accountService.role = decoded.role;
+    this.accountService.isApproved = decoded.Approved;
+    this.accountService.isValidated = decoded.Validated;
+    this.accountService.isUserLoggedIn = true;
     }
   }
 
   setLanguage(lang: number){
-    this.userService.language = lang;
-    console.log(this.userService.language);
+    this.accountService.language = lang;
+    console.log(this.accountService.language);
   }
 
   logout(){
-    this.userService.role = 0;
-    this.userService.clearAuthData();
+    this.accountService.role = 0;
+    this.accountService.clearAuthData();
     this.router.navigate(["/home"]);
   }
 }

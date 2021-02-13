@@ -95,7 +95,7 @@
     </svg>
 </div>
 <div class="main-container-waiting">
-  <div class="waitingText" *ngIf = "this.userService.language == 0">
+  <div class="waitingText" *ngIf = "this.accountService.language == 0">
     <div class="info">
       <p class="notaccepted">Your medic hasn't accepted you yet!</p><br>
       <p class="contactdoctor">Send him/her an email and ask why</p><br>
@@ -105,7 +105,7 @@
   </div>
 </div>
 <!--romana-->
-<div class="waitingText" *ngIf = "this.userService.language == 1">
+<div class="waitingText" *ngIf = "this.accountService.language == 1">
   <div class="info">
 <p class="notaccepted" style="color: red; font-size: 25px; text-align: justify;">Medicul tau nu te a acceptat inca!</p><br>
 <p class="contactdoctor">Trimite-i un email si intreaba-l de ce:</p><br>

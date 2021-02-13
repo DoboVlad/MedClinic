@@ -1,5 +1,5 @@
 <!--engleza-->
-<div *ngIf = "this.userService.language == 0">
+<div *ngIf = "this.accountService.language == 0">
     <div class="appointments-title" >
          <p class="mes">Make an appointment online</p>
     </div>
@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div class="form" *ngIf = "this.userService.language == 0">
+<div class="form" *ngIf = "this.accountService.language == 0">
     <div class="date">
         <form [formGroup]="appForm" (ngSubmit)="onSubmit()">
             <!-- for min=sysdate and for max=sysdate + 30 days for example -->
@@ -25,7 +25,7 @@
   <full-calendar [options]="calendarOptions"></full-calendar>
 </div>
 <!--romana-->
-<div *ngIf = "this.userService.language == 1">
+<div *ngIf = "this.accountService.language == 1">
 <div class="appointments-title" >
     <p>Fa o programare online</p>
 </div>
@@ -37,7 +37,7 @@
 </div>
 </div>
 
-<div class="form" *ngIf = "this.userService.language == 1">
+<div class="form" *ngIf = "this.accountService.language == 1">
    <div class="date">
        <form [formGroup]="appForm" (ngSubmit)="onSubmit()">
            <!-- for min=sysdate and for max=sysdate + 30 days for example -->

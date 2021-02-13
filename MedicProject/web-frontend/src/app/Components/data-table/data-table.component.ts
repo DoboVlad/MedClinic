@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { User } from 'src/app/Models/UserModel';
-import { UserService } from 'src/app/Services/user.service';
+import { PatientService } from 'src/app/Services/PatientService/patient.service';
 import { DataTableDataSource } from './data-table-datasource';
 
 
@@ -28,14 +28,14 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   dataSource: DataTableDataSource;
   expandedElement: any;
 
-  constructor(private userService: UserService) {}
+  constructor(private patientService: PatientService) {}
 
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['firstName', 'age', 'email', 'phoneNumber'];
 
   ngOnInit() {
-    this.dataSource = new DataTableDataSource(this.userService);
+    this.dataSource = new DataTableDataSource(this.patientService);
   }
 
   ngAfterViewInit() {

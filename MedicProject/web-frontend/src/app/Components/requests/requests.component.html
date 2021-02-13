@@ -1,9 +1,9 @@
 <!--engleza-->
-<div class="title" *ngIf = "this.userService.language == 0">
+<div class="title" *ngIf = "this.accountService.language == 0">
     <p>Pending requests</p>
 </div>
-<app-spinner *ngIf="this.userService.isFetching == true && this.userService.language == 0"></app-spinner>
-<div class="doctor-requests" *ngIf = "this.userService.language == 0 && this.userService.isFetching  == false">
+<app-spinner *ngIf="this.accountService.isFetching == true && this.accountService.language == 0"></app-spinner>
+<div class="doctor-requests" *ngIf = "this.accountService.language == 0 && this.accountService.isFetching  == false">
     <div class="requests" *ngFor = "let user of users">
             <input type="text" value="{{user.firstName}} {{user.lastName}}">
             <button type="submit" name="accept" (click) = "acceptUser(user.id)" value="Accept">Accept</button>
@@ -11,11 +11,11 @@
     </div>
 </div>
 <!--romana-->
-<div class="title" *ngIf = "this.userService.language == 1">
+<div class="title" *ngIf = "this.accountService.language == 1">
     <p>Cereri in asteptare</p>
 </div>
-<app-spinner *ngIf="this.userService.isFetching == true && this.userService.language == 1"></app-spinner>
-<div class="doctor-requests" *ngIf = "this.userService.language == 1 && this.userService.isFetching  == false">
+<app-spinner *ngIf="this.accountService.isFetching == true && this.accountService.language == 1"></app-spinner>
+<div class="doctor-requests" *ngIf = "this.accountService.language == 1 && this.accountService.isFetching  == false">
   <div class="requests" *ngFor = "let user of users">
     <input type="text" value="{{user.firstName}} {{user.lastName}}">
     <button type="submit" name="accept" (click) = "acceptUser(user.id)" value="Accept">Accept</button>

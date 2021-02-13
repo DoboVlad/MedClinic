@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Models/UserModel';
-import { UserService } from 'src/app/Services/user.service';
+import { AccountService } from 'src/app/Services/account.service';
+import { PatientService } from 'src/app/Services/PatientService/patient.service';
 
 @Component({
   selector: 'app-doctor-patients',
@@ -9,13 +10,13 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class DoctorPatientsComponent implements OnInit {
   patients: User[];
-  constructor(public userService: UserService) { }
+  constructor(public patientService: PatientService, public accountService: AccountService) { }
   dataSource: any;
   ngOnInit(): void {
-    this.userService.isFetching = true;
-    this.userService.getAllPatients().subscribe(patients => {
+    this.accountService.isFetching = true;
+    this.patientService.getAllPatients().subscribe(patients => {
       this.patients = patients
-      this.userService.isFetching = false;
+      this.accountService.isFetching = false;
     })
   }
 

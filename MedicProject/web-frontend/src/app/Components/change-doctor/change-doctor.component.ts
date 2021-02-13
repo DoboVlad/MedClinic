@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../Services/user.service';
+import { AccountService } from '../../Services/account.service';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { UserService } from '../../Services/user.service';
 })
 export class ChangeDoctorComponent implements OnInit {
 
-  constructor(public userService: UserService) { }
+  constructor(public accountService: AccountService) { }
 
   ngOnInit(): void {
   }

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Models/UserModel';
 import { Appointment } from 'src/app/Models/AppointmentModel';
-import { UserService } from 'src/app/Services/user.service';
-import { AppointmentService } from 'src/app/Services/appointment.service';
+import { AccountService } from 'src/app/Services/account.service';
+import { AppointmentService } from 'src/app/Services/AppointmentService/appointment.service';
+import { PatientService } from 'src/app/Services/PatientService/patient.service';
+import { MedicService } from 'src/app/Services/MedicService/medic.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -11,12 +13,15 @@ import { AppointmentService } from 'src/app/Services/appointment.service';
 export class ProfileComponent implements OnInit {
   user: User;
   appointments: Appointment[];
-  constructor(public userService: UserService, private appService: AppointmentService) {}
+  constructor(public accountService: AccountService,
+     private appService: AppointmentService,
+    private patientService: PatientService,
+    private medicService: MedicService) {}
 
   ngOnInit(): void {
-    this.userService.isFetching = true;
-    if(this.userService.role == 0){
-      this.userService.myAccount().subscribe(user => {
+    this.accountService.isFetching = true;
+    if(this.accountService.role == 0){
+      this.patientService.myAccount().subscribe(user => {
         this.user = user;
         if(parseInt(this.user.cnp.substr(0,1)) == 1 || parseInt(this.user.cnp.substr(0,1)) == 5){
           this.user.gender = "Male";
@@ -24,17 +29,17 @@ export class ProfileComponent implements OnInit {
           this.user.gender = "Female";
         }
       if(user.isApproved == 1) {
-        this.userService.isApproved = true;
-        this.userService.isFetching = false;
+        this.accountService.isApproved = true;
+        this.accountService.isFetching = false;
       }
     });
   }
-  if(this.userService.role == 1){
-    this.userService.medicAccount().subscribe(user => {
+  if(this.accountService.role == 1){
+    this.medicService.medicAccount().subscribe(user => {
       this.user = user;
       if(user.isApproved == 1) {
-        this.userService.isApproved = true;
-        this.userService.isFetching = false;
+        this.accountService.isApproved = true;
+        this.accountService.isFetching = false;
       }
     });
   }

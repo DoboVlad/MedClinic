@@ -1,5 +1,5 @@
 <!-- enlezatest -->
-<div class="doctor-page" *ngIf = "this.userService.language == 0">
+<div class="doctor-page" *ngIf = "this.accountService.language == 0">
     <p class="page-doctor-title">DOCTORS</p>
     <div class="nav-doctor">
         <div class="form">
@@ -15,7 +15,7 @@
         </div>
     </div>
     <br>
-    <div class="show-doctor" *ngIf = "this.userService.language == 0">
+    <div class="show-doctor" *ngIf = "this.accountService.language == 0">
         <div class="doctor" *ngFor = "let medic of users">
             <div class="form1">
               <img src="{{medic.photo}}" width="200px">
@@ -29,7 +29,7 @@
     </div>
    </div>
    <!--romana-->
-   <div class="doctor-page" *ngIf = "this.userService.language == 1">
+   <div class="doctor-page" *ngIf = "this.accountService.language == 1">
     <p class="page-doctor-title">DOCTORI</p>
     <div class="nav-doctor">
         <div class="form">
@@ -45,7 +45,7 @@
         </div>
     </div>
     <br>
-    <div class="show-doctor" *ngIf = "this.userService.language == 1">
+    <div class="show-doctor" *ngIf = "this.accountService.language == 1">
         <div class="doctor" *ngFor = "let medic of users">
             <img src="/assets/icon-doctor.png">
             <p class="doctor-name">{{medic.firstName}} {{medic.lastName}}</p>

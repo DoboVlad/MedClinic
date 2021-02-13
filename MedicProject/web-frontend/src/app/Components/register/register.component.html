@@ -113,7 +113,7 @@
     </defs>
     </svg>
 </div>
-<div class="register-page" *ngIf = "this.userService.language == 0">
+<div class="register-page" *ngIf = "this.accountService.language == 0">
     <div class="form">
       <form class="register-form" [formGroup] = "registerForm" (ngSubmit) = "onSubmit()">
         <div class="reg">Sign Up</div><br>
@@ -137,7 +137,7 @@
     </div>
 </div>
 <!--romana-->
-<div class="register-page" *ngIf = "this.userService.language == 1">
+<div class="register-page" *ngIf = "this.accountService.language == 1">
   <div class="form">
     <form class="register-form" [formGroup] = "registerForm" (ngSubmit) = "onSubmit()">
       <div class="reg">Inregistreaza-te</div><br>

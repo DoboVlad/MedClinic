@@ -94,7 +94,7 @@
     </defs>
     </svg>
 </div>
-<div class="login-page" *ngIf = "this.userService.language == 0">
+<div class="login-page" *ngIf = "this.accountService.language == 0">
   <div class="form">
      <form [formGroup] = "loginForm" (ngSubmit) = "onSubmit()"> <!-- Bind the form to the loginForm -->
       <div class="log">Login</div><br>
@@ -119,7 +119,7 @@
   </div>
 </div>
 <!--romana-->
-<div class="login-page" *ngIf = "this.userService.language == 1">
+<div class="login-page" *ngIf = "this.accountService.language == 1">
   <div class="form">
      <form class="login-form" [formGroup] = "loginForm" (ngSubmit) = "onSubmit()"> <!-- Bind the form to the loginForm -->
       <div class="log">Autentificare</div><br>

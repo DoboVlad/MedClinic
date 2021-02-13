@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserService } from 'src/app/Services/user.service';
+import { AccountService } from 'src/app/Services/account.service';
 
 @Component({
   selector: 'app-activate-account',
@@ -9,7 +9,7 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class ActivateAccountComponent implements OnInit {
   activateAccountForm: FormGroup;
-  constructor(private userService: UserService) { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.activateAccountForm = new FormGroup({
@@ -23,6 +23,6 @@ export class ActivateAccountComponent implements OnInit {
 
   onSubmit(){
     const token = this.activateAccountForm.get("code").value;
-    this.userService.activateAccount(token);
+    this.accountService.activateAccount(token);
   }
 }
