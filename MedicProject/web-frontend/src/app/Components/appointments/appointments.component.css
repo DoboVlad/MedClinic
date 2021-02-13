@@ -100,18 +100,7 @@ input[type=time]::-webkit-datetime-edit-ampm-field {
     display: none;
 }
 
-full-calendar{
-  background-color: #012C50;
-  color:#B9F1DA;
-  margin: 15px 0;
-  padding: 2.5px;
-  box-shadow: 0 5px 10px black;
-}
 
-.fc-h-event{
-  background-color: #B9F1DA;
-  color:#012C50;
-}
 
 .message{
   background-color: #0af50a;
@@ -121,10 +110,6 @@ full-calendar{
   padding: 5px;
 }
 
-.container{
-  width: 80%;
-  margin: auto;
-}
 
 @media only screen and (max-width: 768px) {
   .mes{

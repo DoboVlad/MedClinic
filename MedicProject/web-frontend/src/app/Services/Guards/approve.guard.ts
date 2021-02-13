@@ -7,7 +7,7 @@ import { AccountService } from '../account.service';
 export class ApproveGuard implements CanActivate{
 
   constructor(private userService: AccountService, private router: Router){}
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
     const isApproved = this.userService.isApproved;
       if(isApproved == false){

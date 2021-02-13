@@ -2,12 +2,9 @@
 <div class="title" *ngIf = "this.accountService.language == 0">
     <p>All your appointments</p>
 </div>
-<app-spinner *ngIf="this.accountService.isFetching  == true && this.accountService.language == 0"></app-spinner>
-<div class="doctor-appointments" *ngIf = "this.accountService.language == 0 && this.accountService.isFetching == false">
-    <div class="appointments" *ngFor = "let app of appointments">
-            <span class="name">{{app.firstName}} {{app.lastName}} :</span>
-            <span class="date">{{app.date | date: 'medium' }}</span>
-    </div>
+<!-- <app-spinner *ngIf="this.accountService.isFetching  == true && this.accountService.language == 0"></app-spinner> -->
+<div class="container">
+  <full-calendar [options]="calendarOptions"></full-calendar>
 </div>
 
 <!--romana-->

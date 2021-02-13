@@ -7,6 +7,24 @@
 
 }
 
+.container{
+  width: 80%;
+  margin: auto;
+}
+
+full-calendar{
+  background-color: #012C50;
+  color:#B9F1DA;
+  margin: 15px 0;
+  padding: 2.5px;
+  box-shadow: 0 5px 10px black;
+}
+
+.fc-h-event{
+  background-color: #B9F1DA;
+  color:#012C50;
+}
+
 
 .doctor-appointments{
 
@@ -43,4 +61,17 @@
 
 .doctor-appointments span.date{
     color: #484bec;
+}
+
+@media only screen and (max-width: 768px) {
+  .mes{
+    font-size: 22px;
+  }
+  .mes--1, .label, input[type="date"], input[type="time"], input[type="submit"]{
+    font-size: 16px;
+  }
+}
+
+.fc-button-primary{
+  display: none;
 }
