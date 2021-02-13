@@ -48,13 +48,8 @@
     <!-- MEDIC PROFILE -->
     <div class="container" *ngIf="this.userService.isFetching == false">
         <div class="left" *ngIf = "this.userService.role == 1">
-            <img src="{{user.photo}}" alt="user" height="180px">
+            <img src="{{user.photo}}" alt="user" class="img">
             <h2>{{user.firstName}} {{user.lastName}}</h2>
-            <div class="buttons">
-                <div class="button">
-                    <input type="submit" value="Appointment" routerLink="/doctorappointments">
-                </div>
-            </div>
         </div>
         <div class="right" *ngIf = "this.userService.role == 1">
             <div class="info">

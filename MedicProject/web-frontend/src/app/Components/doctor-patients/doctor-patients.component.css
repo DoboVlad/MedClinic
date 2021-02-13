@@ -1,74 +1,8 @@
-.title{
-    text-align: center;
-    font-size: 35px;
-    color: #1c2d60;
-    padding-top: 3%;
-    padding-bottom: 4%;
+/* background:#012C50;
+background-color: #B9F1DA;*/
 
+.main-container{
+  display: flex;
+  min-height: 86vh;
+  font-size: 14px;
 }
-
-.nav-doctor{
- 
-    background: #FFFFFF;
-    max-width: 500px;
-    margin: 0 auto 0px;
-    padding: 25px;
-    text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
-
-}
-
-.form input{
-    height:40px;
-    width: 80%;
-    padding-right: 10px;
-
-}
-.form button{
-    height:40px;
-    margin-left:2%;
-    padding-left:2%;
-    padding-right:2%;
-    background: #5084F2;
-    color: #FFFFFF;
-    transition: all 0.3 ease;
-    cursor: pointer;
-  
-}
-.doctor-patients{
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding-top: 20px;
-}
-.patients{
-    position: relative;
-    z-index: 1;
-    background: #FFFFFF;
-    max-width: 360px;
-    margin: 0 auto 100px;
-    padding: 45px;
-    text-align: left;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
-}
-
-.doctor-patients span{
-    height: 40px;
-    width: 50%;
-    padding-right: 10px;
-    margin-bottom: 5%;
-    border: none;
-    font-size: 19px;
-    color: #1c2d60;
-    text-align: left;
-    font-weight: 500;
-}
-.doctor-patients span.name{
-    font-size: 25px;
-    
-}
-.doctor-patients span.name:hover{
-    cursor: pointer;
-}
-

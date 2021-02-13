@@ -25,6 +25,10 @@
   margin-bottom: 10px;
 }
 
+.img{
+  width: 100%;
+}
+
 .container .left h2{
   margin-bottom: 10px;
 }
@@ -105,9 +109,13 @@
 
 @media only screen and (max-width: 768px) {
   .container{
-    max-width: 300px;
+    min-width: 300px;
+  }
+
+  .info_data{
     flex-direction: column;
   }
+
   .left{
     display: none;
   }

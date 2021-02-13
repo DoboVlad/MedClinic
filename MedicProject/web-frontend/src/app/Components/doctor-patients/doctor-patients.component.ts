@@ -10,7 +10,7 @@ import { UserService } from 'src/app/Services/user.service';
 export class DoctorPatientsComponent implements OnInit {
   patients: User[];
   constructor(public userService: UserService) { }
-
+  dataSource: any;
   ngOnInit(): void {
     this.userService.isFetching = true;
     this.userService.getAllPatients().subscribe(patients => {
