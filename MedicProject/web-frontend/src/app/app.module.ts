@@ -25,7 +25,11 @@ import {MatInputModule} from '@angular/material/input';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
 import interactionPlugin from '@fullcalendar/interaction';
-import { ActivateAccountComponent } from './Components/activate-account/activate-account.component'; // a plugin
+import { ActivateAccountComponent } from './Components/activate-account/activate-account.component';
+import { DataTableComponent } from './Components/data-table/data-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort'; // a plugin
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -51,7 +55,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     DoctorPatientsComponent,
     HistoricComponent,
     ChangeDoctorComponent,
-    ActivateAccountComponent
+    ActivateAccountComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +66,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     HttpClientModule,
     MatInputModule,
     FullCalendarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

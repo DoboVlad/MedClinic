@@ -1,0 +1,51 @@
+<div class="mat-elevation-z8 mytable">
+  <table mat-table class="full-width-table" multiTemplateDataRows matSort aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let row">{{row.firstName | titlecase}} {{row.lastName | titlecase}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Age</th>
+      <td mat-cell *matCellDef="let row">{{row.age}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <td mat-cell *matCellDef="let row">{{row.email}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="phoneNumber">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
+      <td mat-cell *matCellDef="let row">{{row.phoneNumber}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+        <div class="example-element-detail"
+          [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <div class="example-element-description">
+            Last time seen: 15.02.2021
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+    class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      *ngIf = "dataSource"
+      [length]="dataSource?.data.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[10, 25 ,50]">
+  </mat-paginator>
+</div>
