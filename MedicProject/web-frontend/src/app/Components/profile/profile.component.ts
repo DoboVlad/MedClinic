@@ -5,6 +5,7 @@ import { AccountService } from 'src/app/Services/account.service';
 import { AppointmentService } from 'src/app/Services/AppointmentService/appointment.service';
 import { PatientService } from 'src/app/Services/PatientService/patient.service';
 import { MedicService } from 'src/app/Services/MedicService/medic.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -16,7 +17,8 @@ export class ProfileComponent implements OnInit {
   constructor(public accountService: AccountService,
      private appService: AppointmentService,
     private patientService: PatientService,
-    private medicService: MedicService) {}
+    private medicService: MedicService,
+    private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.accountService.isFetching = true;
@@ -35,6 +37,11 @@ export class ProfileComponent implements OnInit {
     });
   }
   if(this.accountService.role == 1){
+    this.medicService.getUnapprovedUsers().subscribe(users => {
+      if(users)
+        this.toastr.info('You have new requests for new patients.', 'New users!');
+    });
+
     this.medicService.medicAccount().subscribe(user => {
       this.user = user;
       if(user.isApproved == 1) {

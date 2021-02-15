@@ -19,7 +19,6 @@ import { WaitingComponent } from './Components/waiting/waiting.component';
 import { DoctorAppointmentsComponent } from './Components/doctor-appointments/doctor-appointments.component';
 import { RequestsComponent } from './Components/requests/requests.component';
 import { DoctorPatientsComponent } from './Components/doctor-patients/doctor-patients.component';
-import { HistoricComponent } from './Components/historic/historic.component';
 import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.component';
 import {MatInputModule} from '@angular/material/input';
 import { FullCalendarModule } from '@fullcalendar/angular';
@@ -30,7 +29,7 @@ import { DataTableComponent } from './Components/data-table/data-table.component
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort'; // a plugin
-
+import { ToastrModule } from 'ngx-toastr';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -53,7 +52,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     DoctorAppointmentsComponent,
     RequestsComponent,
     DoctorPatientsComponent,
-    HistoricComponent,
     ChangeDoctorComponent,
     ActivateAccountComponent,
     DataTableComponent
@@ -69,6 +67,10 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

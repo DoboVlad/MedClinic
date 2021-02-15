@@ -21,7 +21,7 @@ export class DataTableDataSource extends DataSource<User> {
 
   constructor(patientService: PatientService) {
     super();
-    patientService.getAllPatients().subscribe(patients => {
+    patientService.getApprovedPatients().subscribe(patients => {
       this.data = patients;
     })
   }

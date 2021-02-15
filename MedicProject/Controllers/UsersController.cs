@@ -223,7 +223,30 @@ namespace MedicProject.Controllers
         }
         
         
+        [Authorize]
+        [HttpGet]
+        [Route("getApprovedUsers")]
+        public async Task<ActionResult<PatientDTO>> getApprovedUsers()
+        {
 
+            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+
+            if(user.isMedic==1)
+            {
+                //get the list of approved users of the loged in medic
+                var users = await _context.USERS
+                    .Where(p => p.doctorId == user.Id)
+                    .Where(p => p.isApproved == 1)
+                    .Include(p => p.Appointments)
+                    .ToListAsync();
+                
+                var approvedusers = _mapper.Map<IEnumerable<PatientDTO>>(users);
+            
+                return Ok(approvedusers);
+            }
+            else return Unauthorized();
+        }
         
         
         

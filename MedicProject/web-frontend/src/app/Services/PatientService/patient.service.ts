@@ -22,7 +22,13 @@ export class PatientService {
     });
   }
 
-
+    getApprovedPatients(){
+      return this.http.get<User[]>(this.account.baseUrl + '/users/getApprovedUsers',{
+        headers: {
+          'Authorization': 'Bearer ' + this.account.token
+        }
+      })
+    }
 
     getAllPatients(){
       return this.http.get<User[]>(this.account.baseUrl + '/users/getPatients', {

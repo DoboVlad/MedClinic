@@ -27,6 +27,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/@fullcalendar/daygrid/main.css",
               "./node_modules/@fullcalendar/common/main.min.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
             "scripts": []

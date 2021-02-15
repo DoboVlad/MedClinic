@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from './Services/account.service';
 import jwt_decode from "jwt-decode";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit{
   constructor(public accountService: AccountService, private router: Router){}
 
   ngOnInit(){
+
    this.accountService.autoAuthUser();
    if(this.accountService.token == null){ // check if we have data in local storage
     this.accountService.isUserLoggedIn = false;
