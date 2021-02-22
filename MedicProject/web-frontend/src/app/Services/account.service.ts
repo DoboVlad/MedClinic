@@ -29,7 +29,6 @@ export class AccountService {
       this.isFetching = true;
       this.role = user.isMedic;
       if(this.user.validated == 0){
-        console.log("activate-account...");
         this.router.navigate(["/activate-account"]);
       }else{
       if(this.user.isApproved == 1){
@@ -98,6 +97,14 @@ export class AccountService {
            this.isApproved = false;
            this.isUserLoggedIn = true;
            this.router.navigate(["/waiting"]);
+        }
+      });
+    }
+
+    updateUser(user: User){
+      return this.http.put(this.baseUrl + '/users/updateMedic', user, {
+        headers: {
+          'Authorization': 'Bearer ' + this.token
         }
       });
     }

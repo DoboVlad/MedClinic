@@ -18,6 +18,7 @@ import {RequestsComponent} from './Components/requests/requests.component';
 import {DoctorPatientsComponent} from './Components/doctor-patients/doctor-patients.component';
 import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.component';
 import { ActivateAccountComponent } from './Components/activate-account/activate-account.component';
+import { UpdateAccountComponent } from './Components/update-account/update-account.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path: 'requests', component: RequestsComponent, canActivate: [RoleGuard]},
   {path: 'doctorpatients', component: DoctorPatientsComponent, canActivate: [RoleGuard]},
   {path: 'change-doctor', component: ChangeDoctorComponent},
+  {path: 'updateAccount', component: UpdateAccountComponent},
   {path: "**", component: HomeComponent}
 ];
 

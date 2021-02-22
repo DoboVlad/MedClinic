@@ -238,6 +238,7 @@ namespace MedicProject.Controllers
                 var users = await _context.USERS
                     .Where(p => p.doctorId == user.Id)
                     .Where(p => p.isApproved == 1)
+                    .Where(p => p.validated == 1)
                     .Include(p => p.Appointments)
                     .ToListAsync();
                 
@@ -264,7 +265,10 @@ namespace MedicProject.Controllers
                if(user.isMedic==1)
                {
                    //get the list of unapproved users of the loged in medic
-                   var users = await _context.USERS.Where(p => p.doctorId == user.Id).Where(p => p.isApproved == 0).ToListAsync();
+                   var users = await _context.USERS.Where(p => p.doctorId == user.Id)
+                                .Where(p => p.isApproved == 0)
+                                .Where(p => p.validated == 1)
+                                .ToListAsync();
                    var unapprovedusers = _mapper.Map<IEnumerable<PatientDTO>>(users);
                    return Ok(unapprovedusers);
                }

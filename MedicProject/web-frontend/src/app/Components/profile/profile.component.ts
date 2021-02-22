@@ -6,6 +6,8 @@ import { AppointmentService } from 'src/app/Services/AppointmentService/appointm
 import { PatientService } from 'src/app/Services/PatientService/patient.service';
 import { MedicService } from 'src/app/Services/MedicService/medic.service';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { UpdateAccountComponent } from '../update-account/update-account.component';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -18,7 +20,8 @@ export class ProfileComponent implements OnInit {
      private appService: AppointmentService,
     private patientService: PatientService,
     private medicService: MedicService,
-    private toastr: ToastrService) {}
+    private toastr: ToastrService,
+    public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.accountService.isFetching = true;
@@ -42,6 +45,11 @@ export class ProfileComponent implements OnInit {
         this.toastr.info('You have new requests for new patients.', 'New users!');
     });
 
+    this.getMedicInfo();
+  }
+  }
+
+  getMedicInfo(){
     this.medicService.medicAccount().subscribe(user => {
       this.user = user;
       if(user.isApproved == 1) {
@@ -50,5 +58,11 @@ export class ProfileComponent implements OnInit {
       }
     });
   }
+
+  openDialog(){
+    const dialogRef = this.dialog.open(UpdateAccountComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      this.getMedicInfo();
+    });
   }
 }

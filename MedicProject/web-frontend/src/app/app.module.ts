@@ -30,6 +30,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort'; // a plugin
 import { ToastrModule } from 'ngx-toastr';
+import { UpdateAccountComponent } from './Components/update-account/update-account.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatRadioModule} from '@angular/material/radio';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -54,7 +60,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     DoctorPatientsComponent,
     ChangeDoctorComponent,
     ActivateAccountComponent,
-    DataTableComponent
+    DataTableComponent,
+    UpdateAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -64,11 +71,17 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     HttpClientModule,
     MatInputModule,
     FullCalendarModule,
+    MatFormFieldModule,
     MatTableModule,
     MatPaginatorModule,
+    MatDialogModule,
     MatSortModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    MatSidenavModule,
+    MatRadioModule,
     ToastrModule.forRoot({
-      timeOut: 10000,
+      timeOut: 2000,
       positionClass: 'toast-bottom-right',
     })
   ],

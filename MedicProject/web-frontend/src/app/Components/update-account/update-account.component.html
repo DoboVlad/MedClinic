@@ -1,0 +1,62 @@
+<h1 mat-dialog-title>Update Account</h1>
+<form [formGroup] = "updateAccountForm" *ngIf="updateAccountForm" (ngSubmit)= "onSubmit()">
+<div class="left-section">
+<p>First name: </p>
+<mat-form-field appearance="fill">
+  <mat-label>First Name</mat-label>
+  <input matInput formControlName="firstName" name="firstName">
+  <!-- <mat-error >
+    Please enter a valid phone number
+  </mat-error> -->
+</mat-form-field>
+<br>
+<p>Last name: </p>
+<mat-form-field appearance="fill">
+  <mat-label>Last Name</mat-label>
+  <input matInput formControlName="lastName" name="lastName">
+  <!-- <mat-error >
+    Please enter a valid phone number
+  </mat-error> -->
+</mat-form-field>
+<br>
+<p>Email: </p>
+<mat-form-field appearance="fill">
+  <mat-label>Email</mat-label>
+  <input matInput formControlName="email" name="email">
+  <mat-error *ngIf = "!updateAccountForm.get('email').valid && updateAccountForm.get('email').touched || !(updateAccountForm.get('email').value === '')">
+    Please enter a valid email
+  </mat-error>
+</mat-form-field>
+<br>
+</div>
+<div class="right-section">
+ <!-- <p>Set up a new password:</p>
+<mat-form-field appearance="fill">
+  <mat-label>Password</mat-label>
+  <input matInput formControlName="password" name="password">
+</mat-form-field>
+<br> -->
+<p>Phone number: </p>
+<mat-form-field appearance="fill">
+  <mat-label>Phone number</mat-label>
+  <input matInput formControlName="phoneNumber" name="phoneNumber">
+  <!-- <mat-error >
+    Please enter a valid phone number
+  </mat-error> -->
+</mat-form-field>
+<p>Description: </p>
+<mat-form-field appearance="fill">
+  <mat-label>Description</mat-label>
+  <textarea matInput formControlName="description" name="description"></textarea>
+  <!-- <mat-error >
+    Please enter a valid phone number
+  </mat-error> -->
+</mat-form-field>
+<div class="buttons">
+  <button mat-button type="submit" [mat-dialog-close]="" [disabled] = "updateAccountForm.invalid">Update</button>
+  <button mat-button [mat-dialog-close]="" (click)="back()">Cancel</button>
+</div>
+</div>
+</form>
+
+

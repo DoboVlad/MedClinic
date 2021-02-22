@@ -50,6 +50,9 @@
         <div class="left" *ngIf = "this.accountService.role == 1">
             <img src="{{user.photo}}" alt="user" class="img">
             <h2>{{user.firstName}} {{user.lastName}}</h2>
+            <div class="button">
+              <button type="button" (click)="openDialog()">Update</button>
+          </div>
         </div>
         <div class="right" *ngIf = "this.accountService.role == 1">
             <div class="info">
@@ -145,6 +148,9 @@
                 <div class="button">
                     <input type="submit" value="Appointment" routerLink="/doctorappointments">
                 </div>
+                <div class="button">
+                  <button type="button" routerLink="/updateAccount">Update</button>
+              </div>
             </div>
         </div>
         <div class="right" *ngIf = "this.accountService.role == 1">
