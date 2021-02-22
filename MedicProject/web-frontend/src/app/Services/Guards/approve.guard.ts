@@ -3,7 +3,9 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Observable } from 'rxjs';
 import { AccountService } from '../account.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ApproveGuard implements CanActivate{
 
   constructor(private userService: AccountService, private router: Router){}

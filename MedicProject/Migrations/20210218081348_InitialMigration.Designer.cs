@@ -5,37 +5,34 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Oracle.EntityFrameworkCore.Metadata;
 
 namespace MedicProject.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20201029140711_AddTables")]
-    partial class AddTables
+    [Migration("20210218081348_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn)
                 .HasAnnotation("ProductVersion", "3.1.8")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("MedicProject.Models.Appointments", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)")
-                        .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("date")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("hour")
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -48,47 +45,52 @@ namespace MedicProject.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)")
-                        .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<byte[]>("PasswordHash")
-                        .HasColumnType("RAW(2000)");
+                        .HasColumnType("varbinary(4000)");
 
                     b.Property<byte[]>("PasswordSalt")
-                        .HasColumnType("RAW(2000)");
+                        .HasColumnType("varbinary(4000)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("text");
 
                     b.Property<string>("cnp")
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("dateOfBirth")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("description")
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("text");
 
                     b.Property<int?>("doctorId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
                     b.Property<string>("email")
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("text");
 
                     b.Property<string>("firstName")
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("text");
 
                     b.Property<int>("isApproved")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
                     b.Property<int>("isMedic")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("int");
 
                     b.Property<string>("lastName")
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("text");
 
                     b.Property<string>("phoneNumber")
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("text");
 
                     b.Property<string>("photo")
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("text");
+
+                    b.Property<int>("validated")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

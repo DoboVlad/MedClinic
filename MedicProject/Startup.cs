@@ -47,7 +47,7 @@ namespace MedicProject
             services.AddControllers();
             services.AddDbContext<DatabaseContext>(options =>
             {
-                options.UseOracle(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
             });
         }
 

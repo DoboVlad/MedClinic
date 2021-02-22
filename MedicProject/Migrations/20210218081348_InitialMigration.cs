@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Oracle.EntityFrameworkCore.Metadata;
+using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace MedicProject.Migrations
 {
-    public partial class AddTables : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace MedicProject.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     firstName = table.Column<string>(nullable: true),
                     lastName = table.Column<string>(nullable: true),
                     email = table.Column<string>(nullable: true),
@@ -26,7 +26,9 @@ namespace MedicProject.Migrations
                     isMedic = table.Column<int>(nullable: false),
                     description = table.Column<string>(nullable: true),
                     photo = table.Column<string>(nullable: true),
-                    doctorId = table.Column<int>(nullable: true)
+                    doctorId = table.Column<int>(nullable: true),
+                    Token = table.Column<string>(nullable: true),
+                    validated = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -36,7 +38,7 @@ namespace MedicProject.Migrations
                         column: x => x.doctorId,
                         principalTable: "USERS",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,7 +46,7 @@ namespace MedicProject.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     date = table.Column<DateTime>(nullable: false),
                     hour = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
