@@ -15,6 +15,10 @@ tr.example-detail-row {
   height: 0;
 }
 
+ng-container{
+  width: 100%;
+}
+
 tr.example-element-row:not(.example-expanded-row):hover {
   background: whitesmoke;
 }
@@ -53,4 +57,15 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-description-attribution {
   opacity: 0.5;
+}
+
+@media only screen and (max-width: 1280px) {
+  th:nth-child(2), th:nth-child(3) {display: none;}
+  td:nth-child(2), td:nth-child(3) {display:none;}
+}
+
+@media only screen and (max-width: 680px) {
+  .mytable{
+    width: auto;
+  }
 }

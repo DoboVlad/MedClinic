@@ -66,4 +66,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   svg{
     display: none;
   }
+
+.mytable{
+  margin: 0px;
+  width: 100%;
+}
+
 }
