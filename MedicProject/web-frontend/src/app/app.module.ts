@@ -36,6 +36,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatRadioModule} from '@angular/material/radio';
+import { MessagesComponent } from './Components/messages/messages.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -61,7 +62,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ChangeDoctorComponent,
     ActivateAccountComponent,
     DataTableComponent,
-    UpdateAccountComponent
+    UpdateAccountComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

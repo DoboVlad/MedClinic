@@ -67,6 +67,8 @@ namespace MedicProject
                 policy
                 .AllowAnyHeader()
                 .AllowAnyMethod()
+                .AllowAnyOrigin()
+                .AllowCredentials()
                 .WithOrigins("http://localhost:4200");
             });
 

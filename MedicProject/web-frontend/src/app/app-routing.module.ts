@@ -19,6 +19,7 @@ import {DoctorPatientsComponent} from './Components/doctor-patients/doctor-patie
 import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.component';
 import { ActivateAccountComponent } from './Components/activate-account/activate-account.component';
 import { UpdateAccountComponent } from './Components/update-account/update-account.component';
+import { MessagesComponent } from './Components/messages/messages.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path: 'doctorpatients', component: DoctorPatientsComponent, canActivate: [RoleGuard]},
   {path: 'change-doctor', component: ChangeDoctorComponent},
   {path: 'updateAccount', component: UpdateAccountComponent},
+  {path: 'messages', component: MessagesComponent},
   {path: "**", component: HomeComponent}
 ];
 

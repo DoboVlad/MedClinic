@@ -32,16 +32,18 @@ namespace MedicProject.Controllers
         public async Task<ActionResult<MessageDto>> CreateMessage(CreateMessageDto createMessageDto)
         {
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-          
-
-            if(useremail == createMessageDto.ReceiverEmail.ToLower())
-            {
-                return BadRequest("Can't send message to yourself");
-            }
 
             var user = await _context.users.Where(p => p.email == useremail).FirstAsync();
 
-            var receiver = await _context.users.Where(p => p.email == createMessageDto.ReceiverEmail).FirstAsync();
+            var receiver = new User();
+            
+            if(createMessageDto.ReceiverEmail == null)
+            {
+                receiver = await _context.users.Where(p => p.Id == user.doctorId).FirstAsync();
+
+            } else {
+              receiver = await _context.users.Where(p => p.email == createMessageDto.ReceiverEmail).FirstAsync();
+            }
 
             if (receiver == null) return NotFound();
 
@@ -69,30 +71,31 @@ namespace MedicProject.Controllers
             return message;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IList<MessageDto>>> GetMessagesForUser([FromQuery] MessageParams messageParams)
-        {
-            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+        // [HttpGet]
+        // [Route("getMessages")]
+        // public async Task<ActionResult<IList<MessageDto>>> GetMessagesForUser([FromQuery] MessageParams messageParams)
+        // {
+        //     var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
 
-            messageParams.Email = useremail;
+        //     messageParams.Email = useremail;
 
-            var query = _context.messages.OrderByDescending(m => m.DateSent)
-                        .AsQueryable();
+        //     var query = _context.messages.OrderByDescending(m => m.DateSent)
+        //                 .AsQueryable();
 
-            query = messageParams.Container switch
-            {
-                "Inbox" => query.Where(u => u.Receiver.email == messageParams.Email),
-                "Outbox" => query.Where(u => u.Transmitter.email == messageParams.Email),
-                _ => query.Where(u => u.Receiver.email == messageParams.Email
-                && u.DateRead == null)
-            };
+        //     query = messageParams.Container switch
+        //     {
+        //         "Inbox" => query.Where(u => u.Receiver.email == messageParams.Email),
+        //         "Outbox" => query.Where(u => u.Transmitter.email == messageParams.Email),
+        //         _ => query.Where(u => u.Receiver.email == messageParams.Email
+        //         && u.DateRead == null)
+        //     };
 
-            var messages = query.ProjectTo<MessageDto>(_mapper.ConfigurationProvider);
+        //     var messages = query.ProjectTo<MessageDto>(_mapper.ConfigurationProvider);
 
-            return Ok(messages);
+        //     return Ok(messages);
 
-            /*return Ok(messages);*/
-        }
+        //     /*return Ok(messages);*/
+        // }
 
         [HttpGet]
         [Route("thread/{receiverUserEmail}")]
@@ -100,34 +103,58 @@ namespace MedicProject.Controllers
         {
             var currentUserEmail = User.FindFirst(ClaimTypes.Email)?.Value;
 
-            var messages = await _context.messages
-                    .Include(u => u.Receiver)
-                    .Include(u => u.Transmitter)
-                    .Where(m => m.Receiver.email ==  currentUserEmail
-                        && m.Transmitter.email == receiverUserEmail
-                        || m.Receiver.email == receiverUserEmail
-                        && m.Transmitter.email == currentUserEmail
-                    )
-                    .OrderBy(m => m.DateSent)
-                    .ToListAsync();
+                var messages = GetMessages(currentUserEmail, receiverUserEmail);
 
-            var unreadMessages = messages.Where(m => m.DateRead == null
-                && m.Receiver.email == currentUserEmail)
-                .ToList();
+                var unreadMessages = messages.Where(m => m.DateRead == null
+                    && m.Receiver.email == currentUserEmail)
+                    .ToList();
 
-            if(unreadMessages.Any())
-            {
-                foreach (var message in unreadMessages)
+                if(unreadMessages.Any())
                 {
-                    message.DateRead = DateTime.Now;
+                    foreach (var message in unreadMessages)
+                    {
+                        message.DateRead = DateTime.Now;
+                    }
+
+                    await _context.SaveChangesAsync();
                 }
 
-                await _context.SaveChangesAsync();
-            }
+                var messagesToReturn = _mapper.Map<IEnumerable<MessageDto>>(messages);
 
-            var messagesToReturn = _mapper.Map<IEnumerable<MessageDto>>(messages);
+                return Ok(messagesToReturn);
+        }
 
-            return Ok(messagesToReturn);
+        [HttpGet]
+        [Route("thread")]
+        public async Task<ActionResult<IEnumerable<MessageDto>>> GetMessageThreadForPacient(string receiverUserEmail)
+        {
+                var currentUserEmail = User.FindFirst(ClaimTypes.Email)?.Value;
+
+                var user = await _context.users.FirstOrDefaultAsync(u => u.email == currentUserEmail);
+
+                var medic = await _context.users.Where(u => u.Id == user.doctorId).FirstAsync();
+         
+                var messages = GetMessages(currentUserEmail, medic.email);
+
+                var messagesToReturn = _mapper.Map<IEnumerable<MessageDto>>(messages);
+
+                return Ok(messagesToReturn);
+        }
+
+        public List<Message> GetMessages(string currentUserEmail, string receiverUserEmail)
+        {
+                var messages = _context.messages
+                                .Include(u => u.Receiver)
+                                .Include(u => u.Transmitter)
+                                .Where(m => m.Receiver.email ==  currentUserEmail
+                                    && m.Transmitter.email == receiverUserEmail
+                                    || m.Receiver.email == receiverUserEmail
+                                    && m.Transmitter.email == currentUserEmail
+                                )
+                                .OrderBy(m => m.DateSent)
+                                .ToList();
+
+            return messages;
         }
 
         public async Task<bool> SaveAllAsync()

@@ -19,6 +19,7 @@ export class AccountService {
   language: number = 0;
   isApproved: boolean;
   isValidated: number = 0;
+  email: string;
 
 
   logInUser(user: User){

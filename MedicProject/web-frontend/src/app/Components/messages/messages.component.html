@@ -1,0 +1,38 @@
+<button class="open-button" (click)="openForm()" *ngIf="this.accountService.role == 0">Chat</button>
+<div class="chat-popup" id="myForm" *ngIf="this.accountService.role == 0">
+  <form [formGroup]="chatForm" class="form-container" (ngSubmit)="onSubmit()">
+    <h1>Send a message to your medic</h1>
+    <div class="small-chat">
+      <p *ngFor="let message of messages" [ngClass]="message.transmitterEmail !== accountService.email ? 'right' : 'left'">{{message.content}}
+        <br>
+        <small>{{message.transmitterFirstName}}<br></small>
+      </p>
+    </div>
+    <label for="msg"><b>Message</b></label>
+    <input type="text" placeholder="Type message.." formControlName="Content" name="msg" required>
+
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
+  </form>
+</div>
+
+<div class="container" *ngIf="this.accountService.role == 1">
+  <div class="pacients-list">
+    <p class="patient" *ngFor="let patient of patients" (click)="getMessage(patient.email)">{{patient.firstName}} {{patient.lastName}}</p>
+  </div>
+  <div class="chat">
+    <div class="chat__messages">
+      <p *ngIf="messages?.length == 0"> You didn't send this patient a message yet.</p>
+      <p *ngFor="let message of messages" [ngClass]="message.transmitterEmail !== accountService.email ? 'right' : 'left'">{{message.content}}
+        <br>
+        <small>{{message.transmitterFirstName}}<br></small>
+      </p>
+    </div>
+    <form class="form" [formGroup]="chatForm" (ngSubmit)="onSubmit()">
+      <input type="text" formControlName="Content" placeholder="Type message.." required>
+      <div class="button">
+        <button type="submit">Send</button>
+      </div>
+    </form>
+  </div>
+</div>

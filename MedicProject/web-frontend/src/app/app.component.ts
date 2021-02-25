@@ -22,6 +22,7 @@ export class AppComponent implements OnInit{
     this.accountService.role = decoded.role;
     this.accountService.isApproved = decoded.Approved;
     this.accountService.isValidated = decoded.Validated;
+    this.accountService.email = decoded.email;
     this.accountService.isUserLoggedIn = true;
     }
   }
