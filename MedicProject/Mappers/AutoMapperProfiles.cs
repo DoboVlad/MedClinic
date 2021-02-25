@@ -1,6 +1,7 @@
 using AutoMapper;
 using MedicProject.DTO;
 using MedicProject.Models;
+using System.Linq;
 
 namespace MedicProject.Mappers
 {
@@ -18,6 +19,11 @@ namespace MedicProject.Mappers
             CreateMap<User, AccountDTO>();
             CreateMap<User, MedicDTO>();
             CreateMap<User, InfoAccountDTO>();
+            CreateMap<Message, MessageDto>()
+                .ForMember(dest => dest.TransmitterFirstName, opt => opt.MapFrom(
+                    src => src.Transmitter.firstName))
+                .ForMember(src => src.ReceiverFirstName, opt => opt.MapFrom(
+                    src => src.Receiver.firstName));
         }
     }
 }

@@ -28,7 +28,6 @@ export class AppointmentsComponent implements OnInit {
       "hour": new FormControl(null, Validators.required),
       "date": new FormControl(null, Validators.required)
     });
-
   }
 
 

@@ -3,14 +3,16 @@ using System;
 using MedicProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MedicProject.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210224150641_AddedMessageEntity")]
+    partial class AddedMessageEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,8 +56,8 @@ namespace MedicProject.Migrations
                     b.Property<DateTime>("DateSent")
                         .HasColumnType("datetime");
 
-                    b.Property<string>("ReceiverEmail")
-                        .HasColumnType("text");
+                    b.Property<int>("ReceiverEmail")
+                        .HasColumnType("int");
 
                     b.Property<int>("ReceiverId")
                         .HasColumnType("int");

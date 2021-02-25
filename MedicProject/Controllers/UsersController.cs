@@ -51,13 +51,13 @@ namespace MedicProject.Controllers
 
            //get the current logged in user info
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+            var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
            
            //verify if the user is medic
             if(user.isMedic==1)
             {
                 //return all the patients of the loged in medic
-                var users = await _context.USERS.Where(p => p.doctorId == user.Id).ToListAsync();
+                var users = await _context.users.Where(p => p.doctorId == user.Id).ToListAsync();
                 var patients = _mapper.Map<IEnumerable<PatientDTO>>(users);
                 return Ok(patients);
             }
@@ -76,7 +76,7 @@ namespace MedicProject.Controllers
         //returns all doctors from database
         public async Task<ActionResult<IEnumerable<DoctorDTO>>> getDoctors()
         {
-            var users = await _context.USERS.Where(d => d.isMedic == 1).ToListAsync();
+            var users = await _context.users.Where(d => d.isMedic == 1).ToListAsync();
             var doctors = _mapper.Map<IEnumerable<DoctorDTO>>(users);
             return Ok(doctors);
         }
@@ -95,7 +95,7 @@ namespace MedicProject.Controllers
         {
              //get the current loged in user
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var user = await _context.USERS.Include(p => p.doctor).Where(p => p.email==useremail).FirstAsync();
+            var user = await _context.users.Include(p => p.doctor).Where(p => p.email==useremail).FirstAsync();
         
                 //verify if the user is a patient
             if(user.isMedic==0)
@@ -119,7 +119,7 @@ namespace MedicProject.Controllers
         {
             //get the currentloged in user
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+            var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
         
             //verify if the user is a doctor
             return  Ok(_mapper.Map<DoctorDTO>(user));
@@ -138,13 +138,13 @@ namespace MedicProject.Controllers
         {
             //get the current loged in user
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+            var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
         
             //verify if the user is a medic
             if(user.isMedic==1)
             { 
                 //get the patient with the requested id only if it is the logged in user's patient
-                var patient= await _context.USERS.Where(x => x.Id==id && x.doctorId==user.Id).FirstOrDefaultAsync();
+                var patient= await _context.users.Where(x => x.Id==id && x.doctorId==user.Id).FirstOrDefaultAsync();
                 return Ok(_mapper.Map<PatientDTO>(patient));
             }
             
@@ -168,8 +168,8 @@ namespace MedicProject.Controllers
         {
             //get the doctor with the requested id
              var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-             var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
-             var medic = await _context.USERS.Where(d => d.isMedic == 1 && d.Id==user.doctorId).FirstOrDefaultAsync();
+             var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
+             var medic = await _context.users.Where(d => d.isMedic == 1 && d.Id==user.doctorId).FirstOrDefaultAsync();
              return  Ok(_mapper.Map<DoctorDTO>(medic));
         }
 
@@ -188,14 +188,14 @@ namespace MedicProject.Controllers
         {
            //get the currently logged in user
            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-           var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+           var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
            
             //verify if the user is a docotr
            if(user.isMedic==1)
            {
                //get the user with the requested id who is also patient of the logged in medic
-               var patient= await _context.USERS.Where(x => x.Id==id && x.doctorId==user.Id).FirstOrDefaultAsync();
-               _context.USERS.Remove(patient);
+               var patient= await _context.users.Where(x => x.Id==id && x.doctorId==user.Id).FirstOrDefaultAsync();
+               _context.users.Remove(patient);
                await _context.SaveChangesAsync();
                return Ok();
             }
@@ -216,8 +216,8 @@ namespace MedicProject.Controllers
         {
            //get the currently logged in user
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
-            _context.USERS.Remove(user);
+            var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
+            _context.users.Remove(user);
             await _context.SaveChangesAsync();
             return Ok();
         }
@@ -230,12 +230,12 @@ namespace MedicProject.Controllers
         {
 
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+            var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
 
             if(user.isMedic==1)
             {
                 //get the list of approved users of the loged in medic
-                var users = await _context.USERS
+                var users = await _context.users
                     .Where(p => p.doctorId == user.Id)
                     .Where(p => p.isApproved == 1)
                     .Where(p => p.validated == 1)
@@ -259,13 +259,13 @@ namespace MedicProject.Controllers
         {
               //get the currently logged in user
                var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-               var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+               var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
                
                //verify if the user is a doctor
                if(user.isMedic==1)
                {
                    //get the list of unapproved users of the loged in medic
-                   var users = await _context.USERS.Where(p => p.doctorId == user.Id)
+                   var users = await _context.users.Where(p => p.doctorId == user.Id)
                                 .Where(p => p.isApproved == 0)
                                 .Where(p => p.validated == 1)
                                 .ToListAsync();
@@ -291,20 +291,20 @@ namespace MedicProject.Controllers
         {
             //get the currently logged in user
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+            var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
             
             //check if the user is a doctor
             if(user.isMedic==1) 
             {
                 //get the requested user
-                var patient=await _context.USERS.FindAsync(id);
+                var patient=await _context.users.FindAsync(id);
                 
                 //check if the user is a patient of the loged in doctor
                 if(patient.doctorId==user.Id)
                 {
                     //approve the user's account
                     patient.isApproved=1;
-                    _context.USERS.Update(patient);
+                    _context.users.Update(patient);
                     await  _context.SaveChangesAsync();
                 }
                 return Ok();
@@ -328,7 +328,7 @@ namespace MedicProject.Controllers
         {
             //get the currently logged in user
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+            var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
             
             //CHECK IF THE USER IS A PATIENT
             if(user.isMedic==0)
@@ -338,7 +338,7 @@ namespace MedicProject.Controllers
                 user.lastName=patientDTO.lastName;
                 user.phoneNumber=patientDTO.phoneNumber;
                 user.email=patientDTO.email.ToLower();
-                _context.USERS.Update(user);
+                _context.users.Update(user);
                 await  _context.SaveChangesAsync();
                 return Ok();
             }
@@ -356,7 +356,7 @@ namespace MedicProject.Controllers
         {
            //get the currently logged in user
            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-           var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+           var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
            
             //CHECK IF THE USER IS A doctor
            if(user.isMedic==1)
@@ -373,7 +373,7 @@ namespace MedicProject.Controllers
                {
                    user.photo=uniqueFileName;
                }  
-               _context.USERS.Update(user);
+               _context.users.Update(user);
                await  _context.SaveChangesAsync();
                return Ok();
            }    
@@ -421,7 +421,7 @@ namespace MedicProject.Controllers
         {
             //get the currently logged in user
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+            var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
             
             //hmac object with the logged in user's salt 
             using var hmac1= new HMACSHA512(user.PasswordSalt);
@@ -438,7 +438,7 @@ namespace MedicProject.Controllers
             using var hmac=new HMACSHA512();
             user.PasswordHash=hmac.ComputeHash(Encoding.UTF8.GetBytes(changePasswordDTO.newPassword));
             user.PasswordSalt=hmac.Key;
-            _context.USERS.Update(user);
+            _context.users.Update(user);
             await  _context.SaveChangesAsync();
             return Ok();
         }
@@ -452,13 +452,13 @@ namespace MedicProject.Controllers
         {
             //get the currently logged in user
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var medic = await _context.USERS.Where(x => x.email==useremail).FirstOrDefaultAsync();
+            var medic = await _context.users.Where(x => x.email==useremail).FirstOrDefaultAsync();
             
             //check if the user is a doctor
             if(medic.isMedic==1)
             {
                 var s=str.ToLower();
-                var users = await _context.USERS.Where(p => p.firstName.ToLower().Contains(s) || p.lastName.ToLower().Contains(s) || Convert.ToString(p.firstName.ToLower()) +" "+ Convert.ToString(p.lastName.ToLower()) == s || Convert.ToString(p.lastName.ToLower())+" "+ Convert.ToString(p.firstName.ToLower()) == s).Where(x => x.doctorId== medic.Id).Where(x => x.isMedic==0).ToListAsync();
+                var users = await _context.users.Where(p => p.firstName.ToLower().Contains(s) || p.lastName.ToLower().Contains(s) || Convert.ToString(p.firstName.ToLower()) +" "+ Convert.ToString(p.lastName.ToLower()) == s || Convert.ToString(p.lastName.ToLower())+" "+ Convert.ToString(p.firstName.ToLower()) == s).Where(x => x.doctorId== medic.Id).Where(x => x.isMedic==0).ToListAsync();
                 var userstoreturn = _mapper.Map<IEnumerable<PatientDTO>>(users);
                 return Ok(userstoreturn);
             }
@@ -474,7 +474,7 @@ namespace MedicProject.Controllers
         public async Task<ActionResult<IEnumerable<DoctorDTO>>> searchDoctor(string str)
         {
             var s = str.ToLower();
-            var users = await _context.USERS.Where(p => p.firstName.ToLower().Contains(s) || p.lastName.ToLower().Contains(s) || Convert.ToString(p.firstName.ToLower()) +" "+ Convert.ToString(p.lastName.ToLower()) == s || Convert.ToString(p.lastName.ToLower())+" "+ Convert.ToString(p.firstName.ToLower()) == s).Where(x => x.isMedic==1).ToListAsync();
+            var users = await _context.users.Where(p => p.firstName.ToLower().Contains(s) || p.lastName.ToLower().Contains(s) || Convert.ToString(p.firstName.ToLower()) +" "+ Convert.ToString(p.lastName.ToLower()) == s || Convert.ToString(p.lastName.ToLower())+" "+ Convert.ToString(p.firstName.ToLower()) == s).Where(x => x.isMedic==1).ToListAsync();
             var userstoreturn = _mapper.Map<IEnumerable<DoctorDTO>>(users);
             return Ok(userstoreturn);
         }
@@ -504,7 +504,7 @@ namespace MedicProject.Controllers
                 
             };
 
-            _context.USERS.Add(user);
+            _context.users.Add(user);
             await _context.SaveChangesAsync();
             
             //send verification email
@@ -514,14 +514,14 @@ namespace MedicProject.Controllers
 
         private async Task<bool> UserExists(string email)
         {
-            return await _context.USERS.AnyAsync(x => x.email == email.ToLower());
+            return await _context.users.AnyAsync(x => x.email == email.ToLower());
         }
       
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<UserDTO>> Login(LoginDTO LoginDto)
         {
-            var user=await _context.USERS.SingleOrDefaultAsync(x => x.email==LoginDto.email);
+            var user=await _context.users.SingleOrDefaultAsync(x => x.email==LoginDto.email);
             if(user==null) return Unauthorized("Invalid credentials");
 
             using var hmac= new HMACSHA512(user.PasswordSalt);
@@ -553,12 +553,12 @@ namespace MedicProject.Controllers
         public async Task<ActionResult> ForgotPassword(string email)
         {
             string resetCode = Guid.NewGuid().ToString();
-            var user = _context.USERS.Where(u => u.email == email.ToLower()).FirstOrDefault();
+            var user = _context.users.Where(u => u.email == email.ToLower()).FirstOrDefault();
             if (await UserExists(email))
             {
                 user.Token = resetCode;
 
-               _context.USERS.Update(user);
+               _context.users.Update(user);
                 await  _context.SaveChangesAsync();
 
                 var subject = "Password Reset Request";
@@ -608,7 +608,7 @@ namespace MedicProject.Controllers
         //resets a user's password if he correctly introduced
         public async Task<ActionResult> ResetPassword(ResetPasswordDTO model)
         {
-            var user = await _context.USERS.Where(a => a.Token == model.resetCode).FirstOrDefaultAsync();
+            var user = await _context.users.Where(a => a.Token == model.resetCode).FirstOrDefaultAsync();
             if (user != null)
             {
                 using var hmac=new HMACSHA512();
@@ -617,7 +617,7 @@ namespace MedicProject.Controllers
         
             
                 user.Token = "";
-                _context.USERS.Update(user);
+                _context.users.Update(user);
                 await  _context.SaveChangesAsync();
             }
             else
@@ -641,11 +641,11 @@ namespace MedicProject.Controllers
        public async Task<ActionResult> EmailVerification(string email)
        {
            string resetCode = Guid.NewGuid().ToString();
-           var user = _context.USERS.Where(u => u.email == email.ToLower()).FirstOrDefault();
+           var user = _context.users.Where(u => u.email == email.ToLower()).FirstOrDefault();
            if (await UserExists(email))
            {
                user.Token = resetCode;
-               _context.USERS.Update(user);
+               _context.users.Update(user);
                await  _context.SaveChangesAsync();
            
                var subject = "Email verification";
@@ -671,7 +671,7 @@ namespace MedicProject.Controllers
         public async Task<ActionResult<InfoAccountDTO>> getInfo()
         {
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var account = await _context.USERS.Where(x => x.email==useremail).FirstOrDefaultAsync();
+            var account = await _context.users.Where(x => x.email==useremail).FirstOrDefaultAsync();
 
             var info = _mapper.Map<InfoAccountDTO>(account);
 
@@ -689,14 +689,14 @@ namespace MedicProject.Controllers
        public async Task<ActionResult> VerifyAccount(string token)
        {
            //find the user with the sent unique token
-           var user = await _context.USERS.Where(a => a.Token == token).FirstOrDefaultAsync();
+           var user = await _context.users.Where(a => a.Token == token).FirstOrDefaultAsync();
            
             //if a user is found his account is validated, now he can login
            if (user != null)
            {
                user.Token="";
                user.validated=1;
-               _context.USERS.Update(user);
+               _context.users.Update(user);
                await  _context.SaveChangesAsync();
            }
            else

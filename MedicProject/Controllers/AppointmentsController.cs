@@ -40,7 +40,7 @@ namespace MedicProject.Controllers
                 }
             }
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+            var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
 
             var Appointment = new Appointments
             {
@@ -49,7 +49,7 @@ namespace MedicProject.Controllers
                 UserId = user.Id
             };
             
-            _context.APPOINTMENTS.Add(Appointment);
+            _context.appointments.Add(Appointment);
             await _context.SaveChangesAsync();
             
             return Ok(_mapper.Map<ReturnAppointmentsDTO>(Appointment));
@@ -57,12 +57,12 @@ namespace MedicProject.Controllers
 
         //verify if the date is already used in the database
         private async Task<bool> AppointmentDateExist(DateTime date){
-             return await _context.APPOINTMENTS.AnyAsync(x => x.date == date);
+             return await _context.appointments.AnyAsync(x => x.date == date);
         } 
 
         //verify if the hour is already used in the database
         private async Task<bool> AppointmentHourExist(string Hour){
-             return await _context.APPOINTMENTS.AnyAsync(x => x.hour == Hour);
+             return await _context.appointments.AnyAsync(x => x.hour == Hour);
         }
 
         // return all the appointements made by a user
@@ -71,7 +71,7 @@ namespace MedicProject.Controllers
         {
             // SELECT * FROM APPOINTMENTS a
             // WHERE a.userId = userId
-            var appointments = await _context.APPOINTMENTS.Where(p => p.UserId == userId).ToListAsync();
+            var appointments = await _context.appointments.Where(p => p.UserId == userId).ToListAsync();
             return appointments;
         }
 
@@ -82,9 +82,9 @@ namespace MedicProject.Controllers
         {
             DateTime date = DateTime.Now;
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+            var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
             
-            var appointments = await _context.APPOINTMENTS
+            var appointments = await _context.appointments
                 .Include(p => p.User)
                 .Where(app => app.date < date)
                 .Where(p => p.User.Id == user.Id)
@@ -102,9 +102,9 @@ namespace MedicProject.Controllers
             DateTime date = DateTime.Now;
 
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var user = await _context.USERS.Where(p => p.email==useremail).FirstAsync();
+            var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
 
-            var appointments = await _context.APPOINTMENTS
+            var appointments = await _context.appointments
                     .Include(p => p.User)
                     .Where(p => p.date > date)
                     .Where(p => p.User.Id == user.Id)
@@ -120,7 +120,7 @@ namespace MedicProject.Controllers
         public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getBackAppByMedic(int Id)
         {
             DateTime date = DateTime.Now;
-            var appointments = await _context.APPOINTMENTS
+            var appointments = await _context.appointments
                     .Include(p => p.User)
                     .Where(app => app.date < date)
                     .Where(p => p.User.doctorId == Id)
@@ -136,7 +136,7 @@ namespace MedicProject.Controllers
         public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getNextAppByMedic(int Id)
         {
             DateTime date = DateTime.Now;
-            var appointments = await _context.APPOINTMENTS
+            var appointments = await _context.appointments
             .Include(p => p.User)
             .Where(p => p.date > date)
             .Where(p => p.User.doctorId == Id)
@@ -153,9 +153,9 @@ namespace MedicProject.Controllers
         [HttpDelete("delete/{appId}")]
         public async Task<ActionResult> deleteApp(int appId)
         {
-            var appointment = await _context.APPOINTMENTS.FirstOrDefaultAsync(app => app.Id == appId);
+            var appointment = await _context.appointments.FirstOrDefaultAsync(app => app.Id == appId);
 
-            _context.APPOINTMENTS.Remove(appointment);
+            _context.appointments.Remove(appointment);
 
             if(await _context.SaveChangesAsync() > 0) return Ok(appointment);
 
@@ -166,7 +166,7 @@ namespace MedicProject.Controllers
         [HttpGet("getMyAppointments")]
         public async Task<ActionResult> getAppByDate(DateTime date, int id)
         {
-            var app = await _context.APPOINTMENTS
+            var app = await _context.appointments
                 .Where(x => x.date == date)
                 .Include(x => x.User)
                 .ToListAsync();

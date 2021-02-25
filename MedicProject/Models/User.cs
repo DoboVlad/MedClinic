@@ -46,6 +46,7 @@ namespace MedicProject.Models
           return dateOfBirth.CalculateAge();
         }
         
-
+        public ICollection<Message> MessagesSent{ get; set; }
+        public ICollection<Message> MessagesReceived{ get; set; }
     }
 }
