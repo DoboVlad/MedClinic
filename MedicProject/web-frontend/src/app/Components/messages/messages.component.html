@@ -5,7 +5,7 @@
     <div class="small-chat">
       <p *ngFor="let message of messages" [ngClass]="message.transmitterEmail !== accountService.email ? 'right' : 'left'">{{message.content}}
         <br>
-        <small>{{message.transmitterFirstName}}<br></small>
+        <small>{{message.transmitterFirstName}} - {{message.dateSent | date: "shortTime"}}<br></small>
       </p>
     </div>
     <label for="msg"><b>Message</b></label>
@@ -25,7 +25,7 @@
       <p *ngIf="messages?.length == 0"> You didn't send this patient a message yet.</p>
       <p *ngFor="let message of messages" [ngClass]="message.transmitterEmail !== accountService.email ? 'right' : 'left'">{{message.content}}
         <br>
-        <small>{{message.transmitterFirstName}}<br></small>
+        <small>{{message.transmitterFirstName}} - {{message.dateSent | date:"shortTime"}}<br></small>
       </p>
     </div>
     <form class="form" [formGroup]="chatForm" (ngSubmit)="onSubmit()">

@@ -50,4 +50,12 @@ export class MedicService {
         this.router.navigate(["/home"]);
       });
   }
+
+    getMedicInfo(){
+      return this.http.get<User>(this.account.baseUrl + '/users/getMedicInfo',{
+        headers: {
+          "Authorization": "Bearer " + this.account.token
+        }
+      })
+    }
 }

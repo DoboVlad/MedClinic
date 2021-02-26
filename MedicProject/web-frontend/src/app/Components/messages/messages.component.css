@@ -1,13 +1,13 @@
 .open-button {
   background-color: #555;
-  color: white;
+  color:#B9F1DA;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
-  opacity: 0.8;
   position: fixed;
   bottom: 23px;
-  right: 28px;
+  right: 0px;
+  bottom: 0px;
   width: 280px;
 }
 
@@ -16,9 +16,10 @@
   display: none;
   position: fixed;
   bottom: 0;
-  right: 15px;
+  right: 0;
   border: 3px solid #f1f1f1;
   z-index: 9;
+  background-color: #012C50;
 }
 
 .chat{
@@ -40,7 +41,6 @@
 .form-container {
   max-width: 300px;
   padding: 10px;
-  background-color: white;
 }
 
 /* Full-width textarea */
@@ -49,30 +49,31 @@
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
-  background: #f1f1f1;
+  background-color: #B9F1DA;
+  color:#012C50;
 }
 
 /* When the textarea gets focus, do something */
 .form-container textarea:focus {
-  background-color: #ddd;
   outline: none;
 }
 
 /* Set a style for the submit/send button */
 .form-container .btn {
-  background-color: #4CAF50;
-  color: white;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
   width: 100%;
+  font-size: 14px;
   margin-bottom:10px;
-  opacity: 0.8;
+  background-color: #B9F1DA;
+  color:#012C50;
 }
 
 /* Add a red background color to the cancel button */
 .form-container .cancel {
   background-color: red;
+  color: #B9F1DA;
 }
 
 /* Add some hover effects to buttons */

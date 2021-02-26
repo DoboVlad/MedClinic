@@ -14,7 +14,7 @@ export class WaitingComponent implements OnInit {
     private medicService: MedicService) { }
 
   ngOnInit(): void {
-    this.medicService.medicAccount().subscribe(medic => {
+    this.medicService.getMedicInfo().subscribe(medic => {
       this.medic = medic;
     })
   }
