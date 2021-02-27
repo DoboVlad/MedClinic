@@ -25,6 +25,7 @@
     "@fullcalendar/angular": "^5.5.0",
     "@fullcalendar/daygrid": "^5.5.0",
     "@fullcalendar/interaction": "^5.5.0",
+    "@microsoft/signalr": "^5.0.3",
     "jwt-decode": "^3.1.2",
     "ngx-toastr": "^13.2.0",
     "rxjs": "~6.5.5",

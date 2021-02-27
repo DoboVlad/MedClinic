@@ -1,5 +1,5 @@
 import { Message } from '../../Models/Message';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MessageService } from '../../Services/MessageService/message.service';
 import { AccountService } from 'src/app/Services/account.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -10,9 +10,9 @@ import { PatientService } from 'src/app/Services/PatientService/patient.service'
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.css']
 })
-export class MessagesComponent implements OnInit {
+export class MessagesComponent implements OnInit, OnDestroy {
   messages: Message[] = [];
-  constructor(private messageService: MessageService,
+  constructor(public messageService: MessageService,
      public accountService: AccountService,
      private patientService: PatientService) { }
   chatForm: FormGroup;
@@ -21,16 +21,10 @@ export class MessagesComponent implements OnInit {
   message: Message = {};
 
   ngOnInit(): void {
+    this.messageService.startConnection();
     this.chatForm = new FormGroup({
       "Content": new FormControl(null, Validators.required)
     });
-
-    if(this.accountService.role==0){
-      this.messageService.getMessages().subscribe(response => {
-        this.messages = response;
-        console.log(response);
-      });
-    }
 
     if(this.accountService.role == 1){
       this.patientService.getApprovedPatients().subscribe(users => {
@@ -40,10 +34,8 @@ export class MessagesComponent implements OnInit {
   }
 
   getMessage(email: string){
-    this.messageService.getMessages(email).subscribe(response => {
-      this.messages = response;
-      console.log(response);
-    });
+    this.messageService.stopConnection();
+    this.messageService.startConnection(email);
     this.email = email;
   }
 
@@ -58,6 +50,13 @@ export class MessagesComponent implements OnInit {
   onSubmit(){
     this.message.content = this.chatForm.get('Content').value;
     this.message.receiverEmail = this.email;
-    this.messageService.sendMessage(this.message);
+    console.log(this.message);
+    this.messageService.sendMessage(this.message).then(() => {
+      this.chatForm.reset();
+    });
+  }
+
+  ngOnDestroy(){
+    this.messageService.stopConnection();
   }
 }

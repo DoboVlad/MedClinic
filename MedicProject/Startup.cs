@@ -8,6 +8,7 @@ using MedicProject.Data;
 using MedicProject.Interfaces;
 using MedicProject.Mappers;
 using MedicProject.Services;
+using MedicProject.SignalR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,14 +35,33 @@ namespace MedicProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSignalR(o =>
+                    {
+                        o.EnableDetailedErrors = true;
+                    });
             services.AddScoped<ITokenService,TokenService>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(OptionsBuilderConfigurationExtensions=>{
-                OptionsBuilderConfigurationExtensions.TokenValidationParameters = new TokenValidationParameters{
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options=>{
+                options.TokenValidationParameters = new TokenValidationParameters{
                     ValidateIssuerSigningKey=true,
                     IssuerSigningKey =new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["TokenKey"])),
                     ValidateIssuer=false,
                     ValidateAudience=false
+                };
+
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context => 
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+                        var path = context.HttpContext.Request.Path;
+                        if(!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/hubs"))
+                        {
+                            context.Token = accessToken;
+                        }
+
+                        return Task.CompletedTask;
+                    }
                 };
             });
             services.AddControllers();
@@ -79,11 +99,12 @@ namespace MedicProject
 
             // app.UseDefaultFiles();
             // app.UseStaticFiles();
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 // endpoints.MapFallbackToController("Index","Fallback");
+                endpoints.MapHub<MessageHub>("hubs/MessageHub");
             });
         }
     }

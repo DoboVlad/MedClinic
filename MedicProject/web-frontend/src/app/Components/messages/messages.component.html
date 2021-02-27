@@ -3,7 +3,7 @@
   <form [formGroup]="chatForm" class="form-container" (ngSubmit)="onSubmit()">
     <h1>Send a message to your medic</h1>
     <div class="small-chat">
-      <p *ngFor="let message of messages" [ngClass]="message.transmitterEmail !== accountService.email ? 'right' : 'left'">{{message.content}}
+      <p *ngFor="let message of this.messageService.messageThread$ | async" [ngClass]="message.transmitterEmail !== accountService.email ? 'right' : 'left'">{{message.content}}
         <br>
         <small>{{message.transmitterFirstName}} - {{message.dateSent | date: "shortTime"}}<br></small>
       </p>
@@ -23,7 +23,7 @@
   <div class="chat">
     <div class="chat__messages">
       <p *ngIf="messages?.length == 0"> You didn't send this patient a message yet.</p>
-      <p *ngFor="let message of messages" [ngClass]="message.transmitterEmail !== accountService.email ? 'right' : 'left'">{{message.content}}
+      <p *ngFor="let message of this.messageService.messageThread$ | async" [ngClass]="message.transmitterEmail !== accountService.email ? 'right' : 'left'">{{message.content}}
         <br>
         <small>{{message.transmitterFirstName}} - {{message.dateSent | date:"shortTime"}}<br></small>
       </p>

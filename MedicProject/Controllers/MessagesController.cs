@@ -27,41 +27,41 @@ namespace MedicProject.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost]
-        [Route("send")]
-        public async Task<ActionResult<MessageDto>> CreateMessage(CreateMessageDto createMessageDto)
-        {
-            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+        // [HttpPost]
+        // [Route("send")]
+        // public async Task<ActionResult<MessageDto>> CreateMessage(CreateMessageDto createMessageDto)
+        // {
+        //     var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
 
-            var user = await _context.users.Where(p => p.email == useremail).FirstAsync();
+        //     var user = await _context.users.Where(p => p.email == useremail).FirstAsync();
 
-            var receiver = new User();
+        //     var receiver = new User();
             
-            if(createMessageDto.ReceiverEmail == null)
-            {
-                receiver = await _context.users.Where(p => p.Id == user.doctorId).FirstAsync();
+        //     if(createMessageDto.ReceiverEmail == null)
+        //     {
+        //         receiver = await _context.users.Where(p => p.Id == user.doctorId).FirstAsync();
 
-            } else {
-              receiver = await _context.users.Where(p => p.email == createMessageDto.ReceiverEmail).FirstAsync();
-            }
+        //     } else {
+        //       receiver = await _context.users.Where(p => p.email == createMessageDto.ReceiverEmail).FirstAsync();
+        //     }
 
-            if (receiver == null) return NotFound();
+        //     if (receiver == null) return NotFound();
 
-            var message = new Message
-            {
-                Transmitter = user,
-                Receiver = receiver,
-                TransmitterEmail = user.email,
-                ReceiverEmail = receiver.email,
-                Content = createMessageDto.Content
-            };
+        //     var message = new Message
+        //     {
+        //         Transmitter = user,
+        //         Receiver = receiver,
+        //         TransmitterEmail = user.email,
+        //         ReceiverEmail = receiver.email,
+        //         Content = createMessageDto.Content
+        //     };
 
-            _context.messages.Add(message);
+        //     _context.messages.Add(message);
 
-            if (await SaveAllAsync()) return Ok(_mapper.Map<MessageDto>(message));
+        //     if (await SaveAllAsync()) return Ok(_mapper.Map<MessageDto>(message));
 
-            return BadRequest("Fail");
-        }
+        //     return BadRequest("Fail");
+        // }
 
 
         public async Task<Message> GetMessage(int Id)
