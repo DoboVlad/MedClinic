@@ -22,7 +22,7 @@
   </div>
   <div class="chat">
     <div class="chat__messages">
-      <p *ngIf="messages?.length == 0"> You didn't send this patient a message yet.</p>
+      <p *ngIf="(this.messageService.messageThread$ | async).length == 0"> You didn't send this patient a message yet.</p>
       <p *ngFor="let message of this.messageService.messageThread$ | async" [ngClass]="message.transmitterEmail !== accountService.email ? 'right' : 'left'">{{message.content}}
         <br>
         <small>{{message.transmitterFirstName}} - {{message.dateSent | date:"shortTime"}}<br></small>
