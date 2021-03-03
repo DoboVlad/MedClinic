@@ -101,18 +101,35 @@ namespace MedicProject.Controllers
         {
             DateTime date = DateTime.Now;
 
-            var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var useremail = "medic@gmail.com";
             var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
 
             var appointments = await _context.appointments
                     .Include(p => p.User)
                     .Where(p => p.date > date)
-                    .Where(p => p.User.Id == user.Id)
+                    .Where(p => p.User.doctorId == user.Id)
                     .ToListAsync();
 
-            var appointementsToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
-
-            return Ok(appointementsToReturn);
+            var appointmentsToReturn = new List<EventSourceDTO>();
+            foreach (var item in appointments)
+            {
+                var appointment = new EventSourceDTO();
+                appointment.title = item.User.firstName + " " + item.User.lastName;
+                appointment.start = item.date;
+                appointment.end = item.date;
+                Console.WriteLine(item.date);
+                Console.WriteLine(appointment.start);
+                Console.WriteLine(appointment.end);
+                appointmentsToReturn.Add(appointment);
+            }
+            
+             foreach (var item in appointmentsToReturn)
+            {
+                Console.WriteLine(item.start);
+                Console.WriteLine(item.end);
+            }
+            Console.WriteLine(appointmentsToReturn.ToString() + "user");
+            return Ok(appointmentsToReturn);
         }
 
         [HttpGet("historyAppointmentsByMedic")]

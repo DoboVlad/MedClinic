@@ -22,33 +22,19 @@ export class DoctorAppointmentsComponent implements OnInit {
       this.accountService.isFetching = false;
     });
 
-      // this.calendarOptions = {
-      //   initialView: 'dayGridMonth',
-      //   weekends:false,
-      //   events:function(info, success, fail){
-      //       req.get("https://localhost:5001/api/appointments/historyAppointments").type('json')
-      //         .query({
-      //           start: info.start.valueOf(),
-      //           end: info.end.valueOf()
-      //         })
-      //         .end(function(err, res){
-      //           if (err) {
-      //             fail(err);
-      //           } else {
-      //             success(
-      //               Array.prototype.slice.call(
-      //                 res.getElementsByTagName('event')
-      //               ).map(function(eventEl){
-      //                 return {
-      //                   title: eventEl.getAttribute('title'),
-      //                   start: eventEl.getAttribute('start')
-      //                 }
-      //               })
-      //             )
-      //         }
-      //     })
-      //   }
-      // }
+      this.calendarOptions = {
+        initialView: 'dayGridMonth',
+        timeZoneParam: 'UTC',
+        weekends:false,
+        eventSources:[
+          {
+            url: 'https://localhost:5001/api/appointments/nextAppointments',
+            method: 'GET',
+            color: '#B9F1DA',
+            textColor: 'black',
+          },
+        ],
+      }
   }
 
 

@@ -20,11 +20,12 @@ full-calendar{
   box-shadow: 0 5px 10px black;
 }
 
+
 .fc-h-event{
   background-color: #B9F1DA;
   color:#012C50;
+  font-size: 12px;
 }
-
 
 .doctor-appointments{
 

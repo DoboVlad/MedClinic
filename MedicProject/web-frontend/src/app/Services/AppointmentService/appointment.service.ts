@@ -8,7 +8,7 @@ import { AccountService } from '../account.service';
   providedIn: 'root'
 })
 export class AppointmentService {
-  baseUrl: string = environment.apiUrl + "/api/appointments";
+  baseUrl: string = environment.apiUrl + "/appointments";
   constructor(private http: HttpClient, private accountService: AccountService) { }
 
   isSuccesfully: boolean;
@@ -32,7 +32,7 @@ export class AppointmentService {
   }
 
   getAllMedicAppointments(){
-    return this.http.get<Appointment[]>(this.baseUrl + "/allDoctorApp/1",{
+    return this.http.get<Appointment[]>(this.baseUrl + "/allDoctorApp/5",{
       headers: {
         "Authorization": "Bearer " + this.accountService.token
       }
