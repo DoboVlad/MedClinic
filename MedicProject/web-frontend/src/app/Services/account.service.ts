@@ -102,8 +102,17 @@ export class AccountService {
       });
     }
 
-    updateUser(user: User){
+    updateMedic(user: User){
       return this.http.put(this.baseUrl + '/users/updateMedic', user, {
+        headers: {
+          'Authorization': 'Bearer ' + this.token
+        }
+      });
+    }
+
+
+    updatePatient(user: User){
+      return this.http.put(this.baseUrl + '/users/updateUser', user, {
         headers: {
           'Authorization': 'Bearer ' + this.token
         }

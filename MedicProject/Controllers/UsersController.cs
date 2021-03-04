@@ -330,16 +330,17 @@ namespace MedicProject.Controllers
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
             var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
             
+            var patient = await _context.users.FirstOrDefaultAsync(u => u.email == patientDTO.email);
             //CHECK IF THE USER IS A PATIENT
-            if(user.isMedic==0)
+            if(user.isMedic==1 && patient != null)
             {
                 //update the user
-                user.firstName=patientDTO.firstName;
-                user.lastName=patientDTO.lastName;
-                user.phoneNumber=patientDTO.phoneNumber;
-                user.email=patientDTO.email.ToLower();
-                _context.users.Update(user);
-                await  _context.SaveChangesAsync();
+                patient.firstName=patientDTO.firstName;
+                patient.lastName=patientDTO.lastName;
+                patient.phoneNumber=patientDTO.phoneNumber;
+                patient.email=patientDTO.email.ToLower();
+                _context.users.Update(patient);
+                await _context.SaveChangesAsync();
                 return Ok();
             }
           else return Unauthorized();

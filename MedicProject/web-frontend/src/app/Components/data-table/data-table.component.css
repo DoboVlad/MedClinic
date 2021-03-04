@@ -34,6 +34,9 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-detail {
   overflow: hidden;
   display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .example-element-diagram {
@@ -43,6 +46,36 @@ tr.example-element-row:not(.example-expanded-row):active {
   font-weight: lighter;
   margin: 8px 0;
   height: 104px;
+}
+
+.crud-pacient{
+  display: flex;
+}
+
+
+.button-edit, .button-delete {
+  text-transform: uppercase;
+  outline: 0;
+  background: #012C50;
+  color: #B9F1DA;
+  width: 100%;
+  border: 0;
+  padding: 10px;
+  font-size: 12px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-radius: 100px;
+}
+
+.delete-pacient{
+  justify-self: end;
+  padding: 10px;
+}
+
+.edit-pacient{
+  justify-self: end;
+  padding: 10px;
 }
 
 .example-element-symbol {

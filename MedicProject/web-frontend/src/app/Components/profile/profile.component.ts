@@ -8,6 +8,8 @@ import { MedicService } from 'src/app/Services/MedicService/medic.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateAccountComponent } from '../update-account/update-account.component';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -16,12 +18,14 @@ import { UpdateAccountComponent } from '../update-account/update-account.compone
 export class ProfileComponent implements OnInit {
   user: User;
   appointments: Appointment[];
+  currentUrl: any;
+  previousUrl: any;
   constructor(public accountService: AccountService,
      private appService: AppointmentService,
     private patientService: PatientService,
     private medicService: MedicService,
     private toastr: ToastrService,
-    public dialog: MatDialog) {}
+    public dialog: MatDialog, private router: Router) {}
 
   ngOnInit(): void {
     this.accountService.isFetching = true;
@@ -41,7 +45,7 @@ export class ProfileComponent implements OnInit {
   }
   if(this.accountService.role == 1){
     this.medicService.getUnapprovedUsers().subscribe(users => {
-      if(users)
+      if(users.length > 0)
         this.toastr.info('You have new requests for new patients.', 'New users!');
     });
 
