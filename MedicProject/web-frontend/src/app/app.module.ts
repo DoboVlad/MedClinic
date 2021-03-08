@@ -37,7 +37,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatRadioModule} from '@angular/material/radio';
 import { MessagesComponent } from './Components/messages/messages.component';
-
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarComponent } from './Components/calendar/calendar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlatpickrModule } from 'angularx-flatpickr';
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin
@@ -63,7 +67,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ActivateAccountComponent,
     DataTableComponent,
     UpdateAccountComponent,
-    MessagesComponent
+    MessagesComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +90,10 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ToastrModule.forRoot({
       timeOut: 2000,
       positionClass: 'toast-bottom-right',
-    })
+    }),
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,6 +20,7 @@ import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.
 import { ActivateAccountComponent } from './Components/activate-account/activate-account.component';
 import { UpdateAccountComponent } from './Components/update-account/update-account.component';
 import { MessagesComponent } from './Components/messages/messages.component';
+import { CalendarComponent } from './Components/calendar/calendar.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path: 'change-doctor', component: ChangeDoctorComponent},
   {path: 'updateAccount', component: UpdateAccountComponent},
   {path: 'messages', component: MessagesComponent},
+  {path: "calendar", component: CalendarComponent},
   {path: "**", component: HomeComponent}
 ];
 
