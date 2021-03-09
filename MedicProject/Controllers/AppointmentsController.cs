@@ -117,18 +117,9 @@ namespace MedicProject.Controllers
                 appointment.title = item.User.firstName + " " + item.User.lastName;
                 appointment.start = item.date;
                 appointment.end = item.date;
-                Console.WriteLine(item.date);
-                Console.WriteLine(appointment.start);
-                Console.WriteLine(appointment.end);
+                appointment.hour = item.hour;
                 appointmentsToReturn.Add(appointment);
             }
-            
-             foreach (var item in appointmentsToReturn)
-            {
-                Console.WriteLine(item.start);
-                Console.WriteLine(item.end);
-            }
-            Console.WriteLine(appointmentsToReturn.ToString() + "user");
             return Ok(appointmentsToReturn);
         }
 
