@@ -15,8 +15,13 @@
     <div class="date">
         <form [formGroup]="appForm" (ngSubmit)="onSubmit()">
             <!-- for min=sysdate and for max=sysdate + 30 days for example -->
-            <p class="label">Date:</p> <input type="date" min="{{this.minDate | date: 'yyyy-MM-dd'}}" max="{{this.newDate | date: 'yyyy-MM-dd'}}" formControlName="date"><br><br>
-            <p class="label">Hour:</p> <input type="time" step="1800" min="09:00" formControlName="hour"><br>
+            <p class="label">Date:</p> <input type="date" min="{{this.minDate | date: 'yyyy-MM-dd'}}" max="{{this.newDate | date: 'yyyy-MM-dd'}}"  formControlName="date"><br><br>
+            <p class="label">Hour:</p>
+            <!-- <input type="time" step="1800" min="09:00" formControlName="hour"><br> -->
+            <select name="hour" id="hour" formControlName = "hour" required (mouseover)="onSelectedDate()">
+              <option value="" disabled selected></option>
+              <option *ngFor="let hour of hours" [ngValue]="hour">{{hour.hour}}</option>
+            </select><br><br>
             <input type="submit" value="Submit">
         </form>
     </div>

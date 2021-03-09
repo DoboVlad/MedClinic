@@ -8,7 +8,6 @@ namespace MedicProject.Models
 
         public string day { get; set; }
 
-        public string HourId { get; set; }
         public List<Hour> Hour { get; set; }
 
         public int UserId { get; set; }

@@ -24,6 +24,8 @@ namespace MedicProject.Mappers
                     src => src.Transmitter.firstName))
                 .ForMember(src => src.ReceiverFirstName, opt => opt.MapFrom(
                     src => src.Receiver.firstName));
+
+            CreateMap<Hour, ReturnScheduleDTO>();
         }
     }
 }

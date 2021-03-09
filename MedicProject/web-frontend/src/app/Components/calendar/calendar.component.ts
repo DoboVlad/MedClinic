@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {
   ChangeDetectionStrategy,
   ViewChild,
@@ -12,7 +12,7 @@ import {
   isSameMonth,
   parseISO,
 } from 'date-fns';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
@@ -27,6 +27,7 @@ import { HttpClient } from '@angular/common/http';
 import { AccountService } from 'src/app/Services/account.service';
 import { AddAppointmentComponent } from '../add-appointment/add-appointment.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { filter, map } from 'rxjs/operators';
 
 const colors: any = {
   red: {
@@ -55,21 +56,32 @@ export class CalendarComponent implements OnInit {
   ready: boolean = true;
   excludeDays: number[] = [0, 6];
   weekStartsOn = DAYS_OF_WEEK.SUNDAY;
-
+  testEmitter$ = new BehaviorSubject<CalendarEvent>({});
   ngOnInit(): void {
-    console.log('ngoninit');
-    this.getNextApp().subscribe(apps => {
+    this.getNextApp().pipe(
+    //   map((n: Appointment) => {
+    //     n.start = startOfDay(parseISO(n.start.toString()));
+    //     n.title = n.title + " | Hour: " + n.hour;
+    //     n.end = addDays(parseISO(n.end.toString()), 0);
+    //   })
+    )
+    .subscribe(apps => {
       this.ready = false;
-      apps.forEach(appointment => {
-        var event: CalendarEvent = {
-          start: startOfDay(parseISO(appointment.start.toString())),
-          title: appointment.title + " | Hour: " + appointment.hour,
-          end: addDays(parseISO(appointment.end.toString()), 0),
-          color: colors.red,
-        };
-        this.events.push(event);
-      });
-      this.ready = true;
+
+
+
+
+      // apps.forEach(appointment => {
+      //   var event: CalendarEvent = {
+      //     start: startOfDay(parseISO(appointment.start.toString())),
+      //     title: appointment.title + " | Hour: " + appointment.hour,
+      //     end: addDays(parseISO(appointment.end.toString()), 0),
+      //     color: colors.red,
+      //   };
+      //   this.ready = true;
+      //   this.events.push(event);
+      //   this.testEmitter$.next(event);
+      // });
     })
 
   }
@@ -124,7 +136,8 @@ export class CalendarComponent implements OnInit {
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal, private http: HttpClient, private accountService: AccountService, private dialog: MatDialog) {}
+  constructor(private modal: NgbModal, private http: HttpClient, private accountService: AccountService,
+     private dialog: MatDialog, private cd: ChangeDetectorRef) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {

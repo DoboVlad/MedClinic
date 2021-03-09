@@ -45,7 +45,8 @@ namespace MedicProject.Models
         public int Getage(){
           return dateOfBirth.CalculateAge();
         }
-        
+
+        public ICollection<Schedule> schedule { get; set; }
         public ICollection<Message> MessagesSent{ get; set; }
         public ICollection<Message> MessagesReceived{ get; set; }
     }

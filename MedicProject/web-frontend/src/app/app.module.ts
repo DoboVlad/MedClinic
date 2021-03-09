@@ -42,7 +42,10 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarComponent } from './Components/calendar/calendar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { AddAppointmentComponent } from './Components/add-appointment/add-appointment.component';
+import { MatNativeDateModule } from '@angular/material/core';
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin
@@ -89,6 +92,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatSliderModule,
     MatSidenavModule,
     MatRadioModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     ToastrModule.forRoot({
       timeOut: 2000,
       positionClass: 'toast-bottom-right',

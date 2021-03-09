@@ -10,6 +10,16 @@
     color:#B9F1DA;
   }
 
+  .form select {
+    width: 60%;
+    padding: 7px;
+    border-radius: 20px;
+    border: none;
+    margin: 10px 0;
+    background: #B9F1DA;
+    color:#012C50;
+    min-width: 100px;
+  }
 
 
 .appointments-title{

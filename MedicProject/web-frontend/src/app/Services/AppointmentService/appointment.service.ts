@@ -38,4 +38,12 @@ export class AppointmentService {
       }
     });
   }
+
+  getMedicSchedule(date: Date){
+    return this.http.get<Appointment[]>("https://localhost:5001/api/schedule/getMedicSchedule/" + date,{
+      headers: {
+        "Authorization": "Bearer " + this.accountService.token
+      }
+    });
+  }
 }

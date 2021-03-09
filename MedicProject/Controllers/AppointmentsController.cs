@@ -32,12 +32,9 @@ namespace MedicProject.Controllers
         [Authorize]// only the users with a token can access this method
         public async Task<ActionResult<Appointments>> createAppointment(CreateAppointmentDTO app)
         {
-            if(await AppointmentDateExist(app.date))
+            if(await AppointmentDateExist(app.date, app.hour))
             {
-                if(await AppointmentHourExist(app.hour))
-                {
                     return BadRequest("This date is already used!");
-                }
             }
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
             var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
@@ -48,6 +45,9 @@ namespace MedicProject.Controllers
                 hour = app.hour,
                 UserId = user.Id
             };
+
+            var hour = await _context.hours.FirstAsync(h => h.hour.StartsWith(app.hour));
+            hour.Availability = 0;
             
             _context.appointments.Add(Appointment);
             await _context.SaveChangesAsync();
@@ -56,14 +56,9 @@ namespace MedicProject.Controllers
         }
 
         //verify if the date is already used in the database
-        private async Task<bool> AppointmentDateExist(DateTime date){
-             return await _context.appointments.AnyAsync(x => x.date == date);
+        private async Task<bool> AppointmentDateExist(DateTime date, string hour){
+             return await _context.appointments.AnyAsync(x => x.date == date && x.hour == hour);
         } 
-
-        //verify if the hour is already used in the database
-        private async Task<bool> AppointmentHourExist(string Hour){
-             return await _context.appointments.AnyAsync(x => x.hour == Hour);
-        }
 
         // return all the appointements made by a user
         [HttpGet("{userId}")]
@@ -106,7 +101,7 @@ namespace MedicProject.Controllers
 
             var appointments = await _context.appointments
                     .Include(p => p.User)
-                    .Where(p => p.date > date)
+                    .Where(p => p.date >= date)
                     .Where(p => p.User.doctorId == user.Id)
                     .ToListAsync();
 
