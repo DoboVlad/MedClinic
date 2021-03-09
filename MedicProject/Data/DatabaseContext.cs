@@ -20,6 +20,10 @@ namespace MedicProject.Data
 
         public DbSet<Message> messages {get; set;}
 
+        public DbSet<Schedule> schedules {get; set;}
+
+        public DbSet<Hour> hours {get; set;}
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Message>()
