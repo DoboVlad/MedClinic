@@ -1,3 +1,4 @@
+<div class="container">
 <div class="row text-center" *ngIf="this.ready === true">
   <div class="col-md-4">
     <div class="btn-group">
@@ -6,6 +7,7 @@
         mwlCalendarPreviousView
         [view]="view"
         [(viewDate)]="viewDate"
+        [excludeDays] = "excludeDays"
         (viewDateChange)="closeOpenMonthViewDay()"
       >
         Previous
@@ -23,24 +25,31 @@
         [view]="view"
         [(viewDate)]="viewDate"
         (viewDateChange)="closeOpenMonthViewDay()"
+        [excludeDays]="excludeDays"
       >
         Next
       </div>
     </div>
   </div>
   <div class="col-md-4">
-    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en': weekStartsOn: excludeDays }}</h3>
   </div>
   <div class="col-md-4">
     <div class="btn-group">
       <div
+        class="btn btn-primary"
+        (click)="openDialog()"
+      >
+        Add appointment
+      </div>
+      <!-- <div
         class="btn btn-primary"
         (click)="setView(CalendarView.Month)"
         [class.active]="view === CalendarView.Month"
       >
         Month
       </div>
-      <div
+      <!-- <div
         class="btn btn-primary"
         (click)="setView(CalendarView.Week)"
         [class.active]="view === CalendarView.Week"
@@ -53,17 +62,19 @@
         [class.active]="view === CalendarView.Day"
       >
         Day
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
 <br />
 <div *ngIf="this.ready === true">
   <mwl-calendar-month-view
+    (beforeViewRender)="beforeMonthViewRender($event)"
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
     [activeDayIsOpen]="activeDayIsOpen"
+    [excludeDays]="excludeDays"
     (dayClicked)="dayClicked($event.day)"
     (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)"
@@ -87,6 +98,7 @@
     (eventTimesChanged)="eventTimesChanged($event)"
   >
   </mwl-calendar-day-view> -->
+</div>
 </div>
 <br><br>
 

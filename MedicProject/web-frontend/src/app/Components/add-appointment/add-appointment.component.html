@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Add appointment</h1>
+<form [formGroup] = "addAppointmentForm" *ngIf="addAppointmentForm" (ngSubmit)= "onSubmit()">
+<div class="left-section">
+<mat-form-field appearance="fill">
+  <mat-label>Select a date</mat-label>
+  <input matInput formControlName="date" name="date">
+  <!-- <mat-error >
+    Please enter a valid date
+  </mat-error> -->
+</mat-form-field>
+<br>
+<p>Last name: </p>
+<mat-form-field appearance="fill">
+  <mat-label>Select a hour</mat-label>
+  <input matInput formControlName="hour" name="hour">
+  <!-- <mat-error >
+    Please select a valid hour
+  </mat-error> -->
+</mat-form-field>
+<br>
+<div class="buttons">
+  <button mat-button type="submit" [mat-dialog-close]="" [disabled] = "addAppointmentForm.invalid">Add</button>
+  <button mat-button [mat-dialog-close]="" (click)="back()">Cancel</button>
+</div>
+</div>
+</form>
+
+

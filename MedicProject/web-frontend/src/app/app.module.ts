@@ -42,6 +42,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarComponent } from './Components/calendar/calendar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
+import { AddAppointmentComponent } from './Components/add-appointment/add-appointment.component';
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin
@@ -68,7 +69,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     DataTableComponent,
     UpdateAccountComponent,
     MessagesComponent,
-    CalendarComponent
+    CalendarComponent,
+    AddAppointmentComponent
   ],
   imports: [
     BrowserModule,

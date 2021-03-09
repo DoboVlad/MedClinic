@@ -7,12 +7,9 @@ import {
 import {
   startOfDay,
   endOfDay,
-  subDays,
   addDays,
-  endOfMonth,
   isSameDay,
   isSameMonth,
-  addHours,
   parseISO,
 } from 'date-fns';
 import { Subject } from 'rxjs';
@@ -21,15 +18,19 @@ import {
   CalendarEvent,
   CalendarEventAction,
   CalendarEventTimesChangedEvent,
+  CalendarMonthViewBeforeRenderEvent,
   CalendarView,
+  DAYS_OF_WEEK,
 } from 'angular-calendar';
 import { Appointment } from 'src/app/Models/AppointmentModel';
 import { HttpClient } from '@angular/common/http';
 import { AccountService } from 'src/app/Services/account.service';
+import { AddAppointmentComponent } from '../add-appointment/add-appointment.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 const colors: any = {
   red: {
-    primary: '#ad2121',
+    primary: '#B9F1DA',
     secondary: '#FAE3E3',
   },
   blue: {
@@ -52,8 +53,11 @@ export class CalendarComponent implements OnInit {
   events: CalendarEvent[] = [];
   appointments: Appointment[];
   ready: boolean = true;
+  excludeDays: number[] = [0, 6];
+  weekStartsOn = DAYS_OF_WEEK.SUNDAY;
 
   ngOnInit(): void {
+    console.log('ngoninit');
     this.getNextApp().subscribe(apps => {
       this.ready = false;
       apps.forEach(appointment => {
@@ -61,15 +65,20 @@ export class CalendarComponent implements OnInit {
           start: startOfDay(parseISO(appointment.start.toString())),
           title: appointment.title + " | Hour: " + appointment.hour,
           end: addDays(parseISO(appointment.end.toString()), 0),
-          color: colors.red.primary,
+          color: colors.red,
         };
         this.events.push(event);
-        console.log(this.events);
-        this.refresh.subscribe();
       });
       this.ready = true;
-      console.log(this.ready);
     })
+
+  }
+
+  openDialog(){
+    const dialogRef = this.dialog.open(AddAppointmentComponent);
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
   }
 
   getNextApp(){
@@ -115,7 +124,7 @@ export class CalendarComponent implements OnInit {
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal, private http: HttpClient, private accountService: AccountService) {}
+  constructor(private modal: NgbModal, private http: HttpClient, private accountService: AccountService, private dialog: MatDialog) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -152,6 +161,12 @@ export class CalendarComponent implements OnInit {
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
     this.modal.open(this.modalContent, { size: 'lg' });
+  }
+
+  beforeMonthViewRender(renderEvent: CalendarMonthViewBeforeRenderEvent): void {
+    renderEvent.body.forEach((day) => {
+      day.cssClass = 'my-cells';
+    });
   }
 
   addEvent(): void {
