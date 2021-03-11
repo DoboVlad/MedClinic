@@ -5,8 +5,8 @@ export class Appointment{
   hour?: string;
   date?: Date;
   user?: User;
-  start?: Date;
-  end?: Date;
+  startHour?: Date;
+  endHour?: Date;
   title?: string;
   firstName? : string;
   lastName? : string;

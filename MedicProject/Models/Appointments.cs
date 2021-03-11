@@ -14,6 +14,8 @@ namespace MedicProject.Models
 
         public string hour { get; set; }
 
+        public string endHour { get; set; }
+
         public User User {get; set;}
 
         public int UserId {get;set;}

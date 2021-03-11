@@ -492,7 +492,7 @@ namespace MedicProject.Controllers
             {
                 firstName=RegisterDTO.firstName,
                 lastName=RegisterDTO.lastName,
-                email=RegisterDTO.email.ToLower(),
+                email=RegisterDTO.email,
                 cnp=RegisterDTO.cnp,
                 dateOfBirth=RegisterDTO.dateOfBirth,
                 phoneNumber=RegisterDTO.phoneNumber,

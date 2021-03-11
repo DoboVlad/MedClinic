@@ -33,13 +33,13 @@ const routes: Routes = [
   {path: 'terms', component: TermsComponent},
   {path: 'activate-account', component: ActivateAccountComponent, canActivate:[AuthGuard]},
   {path: 'waiting', component: WaitingComponent, canActivate:[AuthGuard]},
-  {path: 'doctorappointments', component: DoctorAppointmentsComponent, canActivate: [RoleGuard]},
+  // {path: 'doctorappointments', component: DoctorAppointmentsComponent, canActivate: [RoleGuard]},
   {path: 'requests', component: RequestsComponent, canActivate: [RoleGuard]},
   {path: 'doctorpatients', component: DoctorPatientsComponent, canActivate: [RoleGuard]},
   {path: 'change-doctor', component: ChangeDoctorComponent},
   {path: 'updateAccount', component: UpdateAccountComponent},
   {path: 'messages', component: MessagesComponent},
-  {path: "calendar", component: CalendarComponent},
+  {path: "doctorappointments", component: CalendarComponent},
   {path: "**", component: HomeComponent}
 ];
 

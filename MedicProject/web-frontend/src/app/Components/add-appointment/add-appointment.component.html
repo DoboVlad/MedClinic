@@ -12,8 +12,8 @@
 <mat-form-field appearance="fill"  (mousehover)="getSchedule()">
   <mat-label>Available hour</mat-label>
   <mat-select formControlName="hour" (mouseover)="getSchedule()">
-    <mat-option *ngFor="let hour of hours" [value]="hour.hour">
-      {{hour.hour}}
+    <mat-option *ngFor="let hour of hours" [value]="hour.startHour">
+      {{hour.startHour}}:{{hour.endHour}}
     </mat-option>
   </mat-select>
 </mat-form-field>

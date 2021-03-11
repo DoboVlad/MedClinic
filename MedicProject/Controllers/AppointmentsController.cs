@@ -46,8 +46,8 @@ namespace MedicProject.Controllers
                 UserId = user.Id
             };
 
-            var hour = await _context.hours.FirstAsync(h => h.hour.StartsWith(app.hour));
-            hour.Availability = 0;
+            // var hour = await _context.hours.FirstAsync(h => h.hour.StartsWith(app.hour));
+            // hour.Availability = 0;
             
             _context.appointments.Add(Appointment);
             await _context.SaveChangesAsync();
@@ -101,8 +101,8 @@ namespace MedicProject.Controllers
 
             var appointments = await _context.appointments
                     .Include(p => p.User)
-                    .Where(p => p.date >= date)
                     .Where(p => p.User.doctorId == user.Id)
+                    .OrderBy(i => i.hour)
                     .ToListAsync();
 
             var appointmentsToReturn = new List<EventSourceDTO>();

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicProject.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20210309181112_AddedSchedule")]
-    partial class AddedSchedule
+    [Migration("20210311113009_DatabaseScheduleChanges1")]
+    partial class DatabaseScheduleChanges1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,6 +30,9 @@ namespace MedicProject.Migrations
 
                     b.Property<DateTime>("date")
                         .HasColumnType("datetime");
+
+                    b.Property<string>("endHour")
+                        .HasColumnType("text");
 
                     b.Property<string>("hour")
                         .HasColumnType("text");
@@ -53,7 +56,10 @@ namespace MedicProject.Migrations
                     b.Property<int>("ScheduleId")
                         .HasColumnType("int");
 
-                    b.Property<string>("hour")
+                    b.Property<string>("endHour")
+                        .HasColumnType("text");
+
+                    b.Property<string>("startHour")
                         .HasColumnType("text");
 
                     b.HasKey("Id");

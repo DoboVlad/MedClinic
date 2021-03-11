@@ -67,7 +67,16 @@
   </div>
 </div>
 <br />
-<div *ngIf="this.ready === true">
+
+<ng-template #loading>
+  <div class="text-center">
+    <i class="fas fa-spin fa-spinner fa-5x"></i> <br />
+    Loading events...
+  </div>
+</ng-template>
+
+
+<div *ngIf="eventEmitter$ | async; else loading; let events">
   <mwl-calendar-month-view
     (beforeViewRender)="beforeMonthViewRender($event)"
     [viewDate]="viewDate"
@@ -77,7 +86,6 @@
     [excludeDays]="excludeDays"
     (dayClicked)="dayClicked($event.day)"
     (eventClicked)="handleEvent('Clicked', $event.event)"
-    (eventTimesChanged)="eventTimesChanged($event)"
   >
   </mwl-calendar-month-view>
   <!-- <mwl-calendar-week-view

@@ -2,6 +2,8 @@ namespace MedicProject.DTO
 {
     public class ReturnScheduleDTO
     {
-        public string hour { get; set; }
+        public string startHour { get; set; }
+
+        public string endHour { get; set; }
     }
 }

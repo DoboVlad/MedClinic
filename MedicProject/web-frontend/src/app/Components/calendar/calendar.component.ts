@@ -12,7 +12,7 @@ import {
   isSameMonth,
   parseISO,
 } from 'date-fns';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
@@ -27,7 +27,8 @@ import { HttpClient } from '@angular/common/http';
 import { AccountService } from 'src/app/Services/account.service';
 import { AddAppointmentComponent } from '../add-appointment/add-appointment.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, take } from 'rxjs/operators';
+import { start } from 'repl';
 
 const colors: any = {
   red: {
@@ -51,39 +52,15 @@ const colors: any = {
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
-  events: CalendarEvent[] = [];
+  events: CalendarEvent;
   appointments: Appointment[];
   ready: boolean = true;
   excludeDays: number[] = [0, 6];
   weekStartsOn = DAYS_OF_WEEK.SUNDAY;
-  testEmitter$ = new BehaviorSubject<CalendarEvent>({});
+  eventEmitter$: Observable<CalendarEvent<any>[]>;
+
   ngOnInit(): void {
-    this.getNextApp().pipe(
-    //   map((n: Appointment) => {
-    //     n.start = startOfDay(parseISO(n.start.toString()));
-    //     n.title = n.title + " | Hour: " + n.hour;
-    //     n.end = addDays(parseISO(n.end.toString()), 0);
-    //   })
-    )
-    .subscribe(apps => {
-      this.ready = false;
-
-
-
-
-      // apps.forEach(appointment => {
-      //   var event: CalendarEvent = {
-      //     start: startOfDay(parseISO(appointment.start.toString())),
-      //     title: appointment.title + " | Hour: " + appointment.hour,
-      //     end: addDays(parseISO(appointment.end.toString()), 0),
-      //     color: colors.red,
-      //   };
-      //   this.ready = true;
-      //   this.events.push(event);
-      //   this.testEmitter$.next(event);
-      // });
-    })
-
+    this.eventEmitter$ = this.getNextApp();
   }
 
   openDialog(){
@@ -93,13 +70,22 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-  getNextApp(){
-    return this.http.get<Appointment[]>("https://localhost:5001/api/appointments/nextAppointments",{
+  getNextApp() : Observable<CalendarEvent[]>{
+    return this.http.get("https://localhost:5001/api/appointments/nextAppointments",{
       headers: {
         "Authorization": "Bearer " + this.accountService.token
       }
-    });
-  }
+    }).pipe(
+      map((res: any) =>
+        res.map((item) => {
+          return {
+            start: startOfDay(parseISO(item.start.toString())),
+            title:  item.title + " | Hour: " + item.hour,
+            end: addDays(parseISO(item.end.toString()), 0),
+          }
+      })
+  ));
+}
 
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
@@ -113,24 +99,6 @@ export class CalendarComponent implements OnInit {
     action: string;
     event: CalendarEvent;
   };
-
-  actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
-      a11yLabel: 'Edit',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      },
-    },
-    {
-      label: '<i class="fas fa-fw fa-trash-alt"></i>',
-      a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
-      },
-    },
-  ];
 
   refresh: Subject<any> = new Subject();
 
@@ -153,23 +121,23 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd,
-  }: CalendarEventTimesChangedEvent): void {
-    this.events = this.events.map((iEvent) => {
-      if (iEvent === event) {
-        return {
-          ...event,
-          start: newStart,
-          end: newEnd,
-        };
-      }
-      return iEvent;
-    });
-    this.handleEvent('Dropped or resized', event);
-  }
+  // eventTimesChanged({
+  //   event,
+  //   newStart,
+  //   newEnd,
+  // }: CalendarEventTimesChangedEvent): void {
+  //   this.events = this.events.map((iEvent) => {
+  //     if (iEvent === event) {
+  //       return {
+  //         ...event,
+  //         start: newStart,
+  //         end: newEnd,
+  //       };
+  //     }
+  //     return iEvent;
+  //   });
+  //   this.handleEvent('Dropped or resized', event);
+  // }
 
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
@@ -182,26 +150,6 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-  addEvent(): void {
-    this.events = [
-      ...this.events,
-      {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
-      },
-    ];
-  }
-
-  deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter((event) => event !== eventToDelete);
-  }
 
   setView(view: CalendarView) {
     this.view = view;

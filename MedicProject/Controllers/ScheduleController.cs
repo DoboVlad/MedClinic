@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MedicProject.Data;
 using MedicProject.DTO;
+using MedicProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -35,9 +36,25 @@ namespace MedicProject.Controllers
             var availableDate = await _context.hours
                                         .Where(cond => cond.Availability == 1)
                                         .Where(cond => cond.schedule.day == day)
+                                        .OrderBy(cond => cond.startHour)
                                         .ToListAsync();
 
-            var datesToReturn = mapper.Map<IEnumerable<ReturnScheduleDTO>>(availableDate);
+            var busyHours = await _context.appointments
+                                .Where(d => d.date == date)
+                                .Select(d => d.hour)
+                                .ToListAsync();
+                            
+            var availableHours = new List<Hour>();
+            
+            foreach (var item in availableDate)
+            {
+                if(!busyHours.Contains(item.startHour))
+                {
+                    availableHours.Add(item);
+                }
+            }
+
+            var datesToReturn = mapper.Map<IEnumerable<ReturnScheduleDTO>>(availableHours);
             return Ok(datesToReturn);
         }
     }

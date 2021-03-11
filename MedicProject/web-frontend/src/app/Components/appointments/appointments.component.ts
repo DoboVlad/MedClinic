@@ -40,10 +40,8 @@ export class AppointmentsComponent implements OnInit {
   onSubmit(){
     this.app = {...this.appForm.value};
     this.app.date = this.appForm.get("date").value;
-    var replaceIndex = this.appForm.get("hour").value.hour.indexOf("-");
-    console.log(replaceIndex);
 
-    this.app.hour = this.appForm.get("hour").value.hour.substring(0, replaceIndex);
+    this.app.hour = this.appForm.get("hour").value;
     console.log(this.app);
     this.appService.createAppointment(this.app);
   }

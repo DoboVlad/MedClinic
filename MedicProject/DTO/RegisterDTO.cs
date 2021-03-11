@@ -38,7 +38,7 @@ namespace MedicProject.DTO
         [Compare(nameof(password), ErrorMessage = "The passwords don't match.")]
         public String repeatPassword {get;set;}
         
-        [Required(ErrorMessage="Select a doctor")]
+        // [Required(ErrorMessage="Select a doctor")]
         public int doctorId { get; set; }
 
         

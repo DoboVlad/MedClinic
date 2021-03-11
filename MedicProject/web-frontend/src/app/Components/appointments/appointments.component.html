@@ -20,7 +20,7 @@
             <!-- <input type="time" step="1800" min="09:00" formControlName="hour"><br> -->
             <select name="hour" id="hour" formControlName = "hour" required (mouseover)="onSelectedDate()">
               <option value="" disabled selected></option>
-              <option *ngFor="let hour of hours" [ngValue]="hour">{{hour.hour}}</option>
+              <option *ngFor="let hour of hours" [ngValue]="hour.startHour">{{hour.startHour}}:{{hour.endHour}}</option>
             </select><br><br>
             <input type="submit" value="Submit">
         </form>

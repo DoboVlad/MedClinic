@@ -4,8 +4,9 @@ namespace MedicProject.Models
     {
         public int Id { get; set; }
 
-        public string hour { get; set; }
+        public string startHour { get; set; }
 
+        public string endHour {get; set;}
         public int Availability { get; set; } = 1;    
 
         public int ScheduleId { get; set; } 
