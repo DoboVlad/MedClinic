@@ -6,13 +6,24 @@ h3 {
   margin-top: 10px;
 }
 
-.btn-primary{
+.btn-group{
+  box-shadow: 0 2px 6px black;
+}
+
+.btn{
   background-color: #012c50;
   color: #b9f1DA;
+  border: none;
+}
+
+.btn-outline-secondary{
+  color:#012c50;
+  background-color: #b9f1DA;
 }
 
 .btn.btn-primary.active{
   background-color: #b9f1DA;
   color: #012c50;
   border: none;
+  box-shadow: 0 2px 6px black;
 }
