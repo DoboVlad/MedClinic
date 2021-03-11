@@ -7,6 +7,8 @@ namespace MedicProject.Models
         public string startHour { get; set; }
 
         public string endHour {get; set;}
+
+        // this might be useless
         public int Availability { get; set; } = 1;    
 
         public int ScheduleId { get; set; } 
