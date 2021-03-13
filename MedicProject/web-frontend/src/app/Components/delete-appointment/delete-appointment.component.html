@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Edit appointment</h1>
+<form [formGroup] = "editAppointmentForm" *ngIf="editAppointmentForm" (ngSubmit)= "onSubmit()">
+<div class="left-section">
+  <mat-form-field appearance="fill"  (blur)="getSchedule()">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="date">
+    <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+    <mat-datepicker #picker ></mat-datepicker>
+  </mat-form-field>
+<br>
+<p>Available hour: </p>
+<mat-form-field appearance="fill">
+  <mat-label>Change the hour</mat-label>
+  <mat-select formControlName="hour">
+    <mat-option *ngFor="let hour of hours" [value]="hour.startHour">
+      {{hour.startHour}}:{{hour.endHour}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<div class="buttons">
+  <button mat-button type="submit" [mat-dialog-close]="" [disabled] = "editAppointmentForm.invalid">Edit</button>
+  <button mat-button class="delete" type="button" [mat-dialog-close]="" (click) = "onDelete()">Delete</button>
+  <button mat-button [mat-dialog-close]="" (click)="back()">Cancel</button>
+</div>
+</div>
+</form>
+
+

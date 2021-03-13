@@ -39,9 +39,11 @@ namespace MedicProject.Controllers
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
             var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
 
+
+
             var Appointment = new Appointments
             {
-                date = app.date,
+                date = app.date.ToLocalTime(),
                 hour = app.hour,
                 UserId = user.Id
             };
@@ -109,6 +111,7 @@ namespace MedicProject.Controllers
             foreach (var item in appointments)
             {
                 var appointment = new EventSourceDTO();
+                appointment.Id = item.Id;
                 appointment.title = item.User.firstName + " " + item.User.lastName;
                 appointment.start = item.date;
                 appointment.end = item.date;
@@ -166,20 +169,34 @@ namespace MedicProject.Controllers
         }
 
         // return appointemntes using a date and medicId
-        [HttpGet("getMyAppointments")]
-        public async Task<ActionResult> getAppByDate(DateTime date, int id)
+        [HttpGet("getAppointmentById/{id}")]
+        public async Task<ActionResult> getAppById(int id)
         {
             var app = await _context.appointments
-                .Where(x => x.date == date)
                 .Include(x => x.User)
+                .Where(x => x.Id == id)
                 .ToListAsync();
 
-            var filterAppById = app.Where(x => x.User.doctorId == id);
-            var appToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(filterAppById);
+            var appToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(app);
 
-            
             return Ok(appToReturn);
         }
         // history and next app get by id
+
+         [HttpPut("updateAppointment")]
+        public async Task<ActionResult> updateAppointment(Appointments appointment)
+        {
+            var app = await _context.appointments
+                .Where(x => x.Id == appointment.Id)
+                .FirstOrDefaultAsync();
+
+            app.date = appointment.date;
+            app.hour = appointment.hour;
+            
+            _context.appointments.Update(app);
+            await _context.SaveChangesAsync();    
+
+            return Ok(app);
+        }
     }
 }

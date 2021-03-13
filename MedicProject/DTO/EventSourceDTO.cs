@@ -11,5 +11,6 @@ namespace MedicProject.DTO
         public DateTime start { get; set; }
 
         public DateTime end { get; set; }
+        public int Id { get; set; }
     }
 }

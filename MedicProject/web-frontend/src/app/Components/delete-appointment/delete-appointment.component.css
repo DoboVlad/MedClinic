@@ -1,0 +1,28 @@
+.buttons{
+  display: flex;
+  justify-content: space-around;
+}
+
+.delete{
+  background-color: #8B0000;
+}
+
+button{
+  text-transform: uppercase;
+  outline: 0;
+  background:#012C50;
+  color: #B9F1DA;
+  border: 0;
+  padding: 10px;
+  font-size: 12px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-radius: 100px;
+}
+
+@media only screen and (max-width: 1080px) {
+  form{
+    flex-direction: column;
+  }
+}

@@ -28,26 +28,11 @@ import { AccountService } from 'src/app/Services/account.service';
 import { AddAppointmentComponent } from '../add-appointment/add-appointment.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { filter, map, take } from 'rxjs/operators';
-import { start } from 'repl';
+import { DeleteAppointmentComponent } from '../delete-appointment/delete-appointment.component';
 
-const colors: any = {
-  red: {
-    primary: '#B9F1DA',
-    secondary: '#FAE3E3',
-  },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF',
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA',
-  },
-};
 
 @Component({
   selector: 'app-calendar',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
@@ -66,7 +51,7 @@ export class CalendarComponent implements OnInit {
   openDialog(){
     const dialogRef = this.dialog.open(AddAppointmentComponent);
     dialogRef.afterClosed().subscribe(result => {
-
+      this.eventEmitter$ = this.getNextApp();
     });
   }
 
@@ -79,6 +64,7 @@ export class CalendarComponent implements OnInit {
       map((res: any) =>
         res.map((item) => {
           return {
+            id: item.id,
             start: startOfDay(parseISO(item.start.toString())),
             title:  item.title + " | Hour: " + item.hour,
             end: addDays(parseISO(item.end.toString()), 0),
@@ -121,27 +107,11 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  // eventTimesChanged({
-  //   event,
-  //   newStart,
-  //   newEnd,
-  // }: CalendarEventTimesChangedEvent): void {
-  //   this.events = this.events.map((iEvent) => {
-  //     if (iEvent === event) {
-  //       return {
-  //         ...event,
-  //         start: newStart,
-  //         end: newEnd,
-  //       };
-  //     }
-  //     return iEvent;
-  //   });
-  //   this.handleEvent('Dropped or resized', event);
-  // }
-
   handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    const dialogRef = this.dialog.open(DeleteAppointmentComponent, {data: {id: event.id}});
+    dialogRef.afterClosed().subscribe(result => {
+      this.eventEmitter$ = this.getNextApp();
+    });
   }
 
   beforeMonthViewRender(renderEvent: CalendarMonthViewBeforeRenderEvent): void {

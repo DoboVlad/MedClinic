@@ -13,14 +13,11 @@ export class AppointmentService {
 
   isSuccesfully: boolean;
   createAppointment(appointment: Appointment){
-    this.http.post(this.baseUrl + "/createApp", appointment, {
+    return this.http.post(this.baseUrl + "/createApp", appointment, {
       headers: {
         'Authorization': 'Bearer ' + this.accountService.token
       }
-    }).subscribe(app => {
-      console.log(app);
-      this.isSuccesfully = true;
-    })
+    });
   }
 
   getPastAppointments(){
@@ -41,6 +38,30 @@ export class AppointmentService {
 
   getMedicSchedule(date: Date){
     return this.http.get<Appointment[]>("https://localhost:5001/api/schedule/getMedicSchedule/" + date,{
+      headers: {
+        "Authorization": "Bearer " + this.accountService.token
+      }
+    });
+  }
+
+  getAnAppoinmentById(id: number){
+    return this.http.get<Appointment>(this.baseUrl + "/getAppointmentById/" + id,{
+      headers: {
+        "Authorization": "Bearer " + this.accountService.token
+      }
+    });
+  }
+
+  deleteAppointmentById(id: number){
+    return this.http.delete<Appointment>(this.baseUrl + "/delete/" + id,{
+      headers: {
+        "Authorization": "Bearer " + this.accountService.token
+      }
+    });
+  }
+
+  updateAppointment(appointment: Appointment){
+    return this.http.put(this.baseUrl + "/updateAppointment", appointment, {
       headers: {
         "Authorization": "Bearer " + this.accountService.token
       }

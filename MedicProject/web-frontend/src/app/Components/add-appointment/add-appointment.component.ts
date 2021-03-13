@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Appointment } from 'src/app/Models/AppointmentModel';
 import { AppointmentService } from 'src/app/Services/AppointmentService/appointment.service';
 
@@ -11,7 +12,7 @@ import { AppointmentService } from 'src/app/Services/AppointmentService/appointm
 export class AddAppointmentComponent implements OnInit {
   addAppointmentForm: FormGroup;
   app: Appointment;
-  constructor(private appointmentService: AppointmentService) { }
+  constructor(private appointmentService: AppointmentService, private route: Router) { }
   hours: Appointment[];
   ngOnInit(): void {
     this.addAppointmentForm = new FormGroup({
@@ -29,13 +30,9 @@ export class AddAppointmentComponent implements OnInit {
 
   onSubmit(){
     this.app = {...this.addAppointmentForm.value};
-    this.app.date = this.addAppointmentForm.get("date").value;
-    var replaceIndex = this.addAppointmentForm.get("hour").value.hour.indexOf("-");
-    console.log(replaceIndex);
-
-    this.app.hour = this.addAppointmentForm.get("hour").value.hour.substring(0, replaceIndex);
-    console.log(this.app);
-    // this.appointmentService.createAppointment(this.app);
+    this.appointmentService.createAppointment(this.app).subscribe(result => {
+      this.route.navigate(["/doctorappointments"]);
+    });
   }
 
   back(){
