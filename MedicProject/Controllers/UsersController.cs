@@ -182,7 +182,7 @@ namespace MedicProject.Controllers
       
         [Authorize]
         [HttpDelete]
-        [Route("DeletePatient")]
+        [Route("DeletePatient/{id}")]
         //deletes an user from the database
         public async Task<ActionResult> deletePatient(int id)
         {

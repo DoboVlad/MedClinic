@@ -37,4 +37,12 @@ export class PatientService {
         }
       });
     }
+
+    deletePatient(id: number){
+      return this.http.delete(this.account.baseUrl + "/users/DeletePatient/" + id, {
+        headers: {
+          'Authorization': 'Bearer ' + this.account.token
+        }
+      });
+    }
 }

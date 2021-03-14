@@ -86,6 +86,7 @@
   padding: 30px;
   min-height: 70vh;
   color: #B9F1DA;
+  animation: moveInUp 0.8s;
 }
 
 .pacients-list{

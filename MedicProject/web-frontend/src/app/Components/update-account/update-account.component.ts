@@ -43,13 +43,13 @@ export class UpdateAccountComponent implements OnInit {
       'email': new FormControl(this.authenticatedUser.email, [Validators.required, Validators.email]),
       'phoneNumber': new FormControl(this.authenticatedUser.phoneNumber, Validators.required),
       'description': new FormControl(this.authenticatedUser.description),
-      //'password': new FormControl(null)
     });
   }
 
 
   onSubmit(){
     const user : User = {...this.updateAccountForm.value};
+    console.log(user);
     if(this.router.url == '/profile'){
       this.accountService.updateMedic(user).subscribe(response => {
         this.router.navigateByUrl('/profile');

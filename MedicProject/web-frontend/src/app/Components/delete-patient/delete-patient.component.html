@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Delete patient</h1>
+<form [formGroup] = "deleteUserForm" *ngIf="deleteUserForm">
+<div class="left-section">
+  <p class="info">Are you sure you want to delete this patient?</p>
+  <p class="danger-info">This action is ireversible, you won't be able to bring him back until he's creating a new account.</p>
+</div>
+<br>
+<div class="buttons">
+  <button mat-button class="delete" type="button" [mat-dialog-close]="" (click) = "onDelete()">Delete</button>
+  <button mat-button [mat-dialog-close]="" (click)="cancel()">Cancel</button>
+</div>
+</form>
+
+

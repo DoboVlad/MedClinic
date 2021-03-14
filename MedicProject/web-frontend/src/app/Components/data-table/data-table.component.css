@@ -68,6 +68,10 @@ tr.example-element-row:not(.example-expanded-row):active {
   border-radius: 100px;
 }
 
+.button-delete{
+  background-color: #8B0000;
+}
+
 .delete-pacient{
   justify-self: end;
   padding: 10px;
@@ -101,4 +105,8 @@ tr.example-element-row:not(.example-expanded-row):active {
   .mytable{
     width: auto;
   }
+}
+
+.mat-elevation-z8{
+  animation: moveInUp 0.8s;
 }

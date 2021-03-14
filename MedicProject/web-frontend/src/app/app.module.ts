@@ -47,6 +47,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { AddAppointmentComponent } from './Components/add-appointment/add-appointment.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DeleteAppointmentComponent } from './Components/delete-appointment/delete-appointment.component';
+import { DeletePatientComponent } from './Components/delete-patient/delete-patient.component';
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin
@@ -75,7 +76,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MessagesComponent,
     CalendarComponent,
     AddAppointmentComponent,
-    DeleteAppointmentComponent
+    DeleteAppointmentComponent,
+    DeletePatientComponent
   ],
   imports: [
     BrowserModule,

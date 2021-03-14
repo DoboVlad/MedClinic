@@ -7,6 +7,7 @@ import { MatTable } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/Models/UserModel';
 import { PatientService } from 'src/app/Services/PatientService/patient.service';
+import { DeletePatientComponent } from '../delete-patient/delete-patient.component';
 import { UpdateAccountComponent } from '../update-account/update-account.component';
 import { DataTableDataSource } from './data-table-datasource';
 
@@ -55,7 +56,25 @@ export class DataTableComponent implements AfterViewInit, OnInit {
       data: {user: element}
     });
       dialogRef.afterClosed().subscribe(result => {
-        console.log(result);
+        this.refreshTable();
+    });
+  }
+
+  refreshTable(){
+    this.dataSource = null;
+    this.dataSource = new DataTableDataSource(this.patientService);
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.table.dataSource = this.dataSource;
+  }
+
+  deletePatient(element){
+    const dialogRef = this.dialog.open(DeletePatientComponent, {
+      data: {user: element}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.refreshTable();
     });
   }
 }

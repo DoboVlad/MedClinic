@@ -26,8 +26,6 @@ export class DeleteAppointmentComponent implements OnInit {
       });
       this.getSchedule(this.appointment[0].date);
     })
-
-
   }
 
   getSchedule(data?: Date){
