@@ -17,7 +17,8 @@ export class AddAppointmentComponent implements OnInit {
   ngOnInit(): void {
     this.addAppointmentForm = new FormGroup({
       'date': new FormControl(null, Validators.required),
-      "hour": new FormControl(null, Validators.required)
+      "hour": new FormControl(null, Validators.required),
+      "name": new FormControl()
     });
   }
 
@@ -30,7 +31,9 @@ export class AddAppointmentComponent implements OnInit {
 
   onSubmit(){
     this.app = {...this.addAppointmentForm.value};
+    this.app.firstName = this.addAppointmentForm.get("name").value;
     this.appointmentService.createAppointment(this.app).subscribe(result => {
+      this.appointmentService.info = "Appointment was succesfully created!";
       this.route.navigate(["/doctorappointments"]);
     });
   }

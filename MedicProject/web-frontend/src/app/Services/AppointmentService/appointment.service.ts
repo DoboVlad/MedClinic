@@ -10,7 +10,7 @@ import { AccountService } from '../account.service';
 export class AppointmentService {
   baseUrl: string = environment.apiUrl + "/appointments";
   constructor(private http: HttpClient, private accountService: AccountService) { }
-
+  info: string = null;
   isSuccesfully: boolean;
   createAppointment(appointment: Appointment){
     return this.http.post(this.baseUrl + "/createApp", appointment, {

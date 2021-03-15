@@ -35,6 +35,18 @@ namespace MedicProject.Data
                 .HasOne(u => u.Transmitter)
                 .WithMany(m => m.MessagesSent)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Appointments>()
+                .HasOne(u => u.User)
+                .WithMany(a => a.Appointments)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired(false);
+
+            builder.Entity<User>()
+                .HasMany(u => u.Appointments)
+                .WithOne(a => a.User)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired(false);
         }
     }
 }

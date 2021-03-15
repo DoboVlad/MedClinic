@@ -18,6 +18,15 @@
   </mat-select>
 </mat-form-field>
 <br>
+<p>Name of the appointment: </p>
+<mat-form-field appearance="fill">
+  <mat-label>Name</mat-label>
+  <input matInput formControlName="name" name="name">
+  <!-- <mat-error >
+    Please enter a valid phone number
+  </mat-error> -->
+</mat-form-field>
+
 <div class="buttons">
   <button mat-button type="submit" [mat-dialog-close]="" [disabled] = "addAppointmentForm.invalid">Add</button>
   <button mat-button [mat-dialog-close]="" (click)="back()">Cancel</button>

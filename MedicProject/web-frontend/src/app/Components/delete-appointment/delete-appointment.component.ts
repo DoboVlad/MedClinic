@@ -47,12 +47,16 @@ export class DeleteAppointmentComponent implements OnInit {
     const date = {...this.editAppointmentForm.value};
     date.Id = this.data.id;
     this.appointmentService.updateAppointment(date).subscribe(result => {
-      console.log("Programare schimbata cu succes");
+      this.appointmentService.info = "Appointment was updated succesfully!";
+    }, error => {
+      console.log(error);
     });
   }
 
   onDelete(){
-    this.appointmentService.deleteAppointmentById(this.data.id).subscribe(response => {})
+    this.appointmentService.deleteAppointmentById(this.data.id).subscribe(response => {
+      this.appointmentService.info = "Appointment was deleted succesfully!";
+    })
   }
 
   back(){

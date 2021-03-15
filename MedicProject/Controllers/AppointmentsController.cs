@@ -39,18 +39,18 @@ namespace MedicProject.Controllers
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
             var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
 
+            var Appointment = new Appointments();
 
-
-            var Appointment = new Appointments
+            if(app.name != null)
             {
-                date = app.date.ToLocalTime(),
-                hour = app.hour,
-                UserId = user.Id
-            };
+                Appointment.name = app.name;
+            }
+            Appointment.UserId = user.Id;
+            Appointment.date = app.date.ToLocalTime();
+            Appointment.hour = app.hour;
 
-            // var hour = await _context.hours.FirstAsync(h => h.hour.StartsWith(app.hour));
-            // hour.Availability = 0;
-            
+            Console.WriteLine(Appointment.name, Appointment.UserId);
+
             _context.appointments.Add(Appointment);
             await _context.SaveChangesAsync();
             
@@ -112,7 +112,14 @@ namespace MedicProject.Controllers
             {
                 var appointment = new EventSourceDTO();
                 appointment.Id = item.Id;
+                if(item.name != null)
+                {
+                    appointment.title = item.name;
+                }
+                else 
+                {
                 appointment.title = item.User.firstName + " " + item.User.lastName;
+                }
                 appointment.start = item.date;
                 appointment.end = item.date;
                 appointment.hour = item.hour;

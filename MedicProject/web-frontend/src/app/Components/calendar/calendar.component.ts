@@ -29,6 +29,8 @@ import { AddAppointmentComponent } from '../add-appointment/add-appointment.comp
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { filter, map, take } from 'rxjs/operators';
 import { DeleteAppointmentComponent } from '../delete-appointment/delete-appointment.component';
+import { AppointmentService } from 'src/app/Services/AppointmentService/appointment.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -51,7 +53,11 @@ export class CalendarComponent implements OnInit {
   openDialog(){
     const dialogRef = this.dialog.open(AddAppointmentComponent);
     dialogRef.afterClosed().subscribe(result => {
-      this.eventEmitter$ = this.getNextApp();
+      if(this.appointmentService.info != null){
+        this.toastr.info(this.appointmentService.info);
+        this.eventEmitter$ = this.getNextApp();
+      }
+      this.appointmentService.info = null;
     });
   }
 
@@ -91,7 +97,8 @@ export class CalendarComponent implements OnInit {
   activeDayIsOpen: boolean = true;
 
   constructor(private modal: NgbModal, private http: HttpClient, private accountService: AccountService,
-     private dialog: MatDialog, private cd: ChangeDetectorRef) {}
+     private dialog: MatDialog,
+     public appointmentService: AppointmentService, private toastr: ToastrService) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -110,7 +117,11 @@ export class CalendarComponent implements OnInit {
   handleEvent(action: string, event: CalendarEvent): void {
     const dialogRef = this.dialog.open(DeleteAppointmentComponent, {data: {id: event.id}});
     dialogRef.afterClosed().subscribe(result => {
-      this.eventEmitter$ = this.getNextApp();
+      if(this.appointmentService.info != null){
+        this.toastr.info(this.appointmentService.info);
+        this.eventEmitter$ = this.getNextApp();
+      }
+      this.appointmentService.info = null;
     });
   }
 

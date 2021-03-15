@@ -110,3 +110,8 @@ tr.example-element-row:not(.example-expanded-row):active {
 .mat-elevation-z8{
   animation: moveInUp 0.8s;
 }
+
+.toast-info {
+  background-color:#012C50 !important;
+  color:#B9F1DA !important;
+}
