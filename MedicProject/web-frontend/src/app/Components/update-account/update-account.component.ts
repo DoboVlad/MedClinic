@@ -52,22 +52,18 @@ export class UpdateAccountComponent implements OnInit {
     console.log(user);
     if(this.router.url == '/profile'){
       this.accountService.updateMedic(user).subscribe(response => {
+        this.accountService.info = "User updated succesfully!"
         this.router.navigateByUrl('/profile');
       })
     } else {
       this.accountService.updatePatient(user).subscribe(response => {
-        console.log('user update');
+        this.accountService.info = "User updated succesfully!"
         this.router.navigateByUrl('/doctorpatients');
       })
     }
   }
 
   back(){
-    if(this.router.url == '/profile'){
-      this.router.navigate(['/profile']);
-    }
-    else {
-      this.router.navigate(['/doctorpatients']);
-    }
+
   }
 }

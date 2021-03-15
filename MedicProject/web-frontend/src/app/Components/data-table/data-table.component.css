@@ -111,7 +111,8 @@ tr.example-element-row:not(.example-expanded-row):active {
   animation: moveInUp 0.8s;
 }
 
-.toast-info {
-  background-color:#012C50 !important;
+.custom-toast {
+  background-image:#012C50 !important;
+  background-color: #012C50;
   color:#B9F1DA !important;
 }

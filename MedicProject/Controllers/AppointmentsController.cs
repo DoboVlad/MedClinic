@@ -197,7 +197,7 @@ namespace MedicProject.Controllers
                 .Where(x => x.Id == appointment.Id)
                 .FirstOrDefaultAsync();
 
-            app.date = appointment.date;
+            app.date = appointment.date.ToLocalTime();
             app.hour = appointment.hour;
             
             _context.appointments.Update(app);

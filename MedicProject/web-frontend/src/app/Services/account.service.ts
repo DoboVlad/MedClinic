@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 export class AccountService {
   baseUrl: String = environment.apiUrl;
   error: any;
+  info: string;
   constructor(private http: HttpClient, private router: Router) { }
   user: User;
   token: string;

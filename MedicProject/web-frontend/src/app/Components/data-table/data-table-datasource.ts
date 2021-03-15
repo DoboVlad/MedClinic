@@ -1,11 +1,12 @@
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { PatientService } from 'src/app/Services/PatientService/patient.service';
 import { User } from 'src/app/Models/UserModel';
 import { Component } from '@angular/core';
+import { AccountService } from 'src/app/Services/account.service';
 
 // TODO: replace this with real data from your application
 
@@ -19,9 +20,15 @@ export class DataTableDataSource extends DataSource<User> {
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor(patientService: PatientService) {
+  constructor(patientService: PatientService, accountService: AccountService) {
     super();
-    patientService.getApprovedPatients().subscribe(patients => {
+    const service = patientService.getApprovedPatients().pipe(map(x => {
+      return x.filter(element =>
+        element.email != accountService.email
+      )
+    }));
+
+    service.subscribe(patients => {
       this.data = patients;
     })
   }
