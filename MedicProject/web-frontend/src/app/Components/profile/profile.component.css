@@ -110,7 +110,7 @@
 
 @media only screen and (max-width: 768px) {
   .container{
-    min-width: 300px;
+    min-width: 260px;
     margin: 10px;
   }
 

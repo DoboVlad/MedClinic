@@ -9,6 +9,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -166,9 +168,19 @@ namespace MedicProject.Controllers
         [HttpDelete("delete/{appId}")]
         public async Task<ActionResult> deleteApp(int appId)
         {
-            var appointment = await _context.appointments.FirstOrDefaultAsync(app => app.Id == appId);
+            var appointment = await _context.appointments.Include(u => u.User).FirstOrDefaultAsync(app => app.Id == appId);
 
             _context.appointments.Remove(appointment);
+
+            if(appointment.User.email != null)
+            {
+                var subject = "Appointment deleted.";
+                var body = "Hi " + appointment.User.firstName + ", <br/> Your appointment on " + appointment.date.ToString("MM/dd/yyyy") + ", hour: " + appointment.hour + " has been deleted." +
+                        "<br><br>" +
+                        "Contact your medic if you don't know why.<br/><br/> Thank you";
+
+                SendEmail(appointment.User.email, body, subject);  
+            }
 
             if(await _context.SaveChangesAsync() > 0) return Ok(appointment);
 
@@ -194,16 +206,49 @@ namespace MedicProject.Controllers
         public async Task<ActionResult> updateAppointment(Appointments appointment)
         {
             var app = await _context.appointments
+                .Include(u => u.User)
                 .Where(x => x.Id == appointment.Id)
                 .FirstOrDefaultAsync();
 
             app.date = appointment.date.ToLocalTime();
             app.hour = appointment.hour;
-            
-            _context.appointments.Update(app);
-            await _context.SaveChangesAsync();    
 
-            return Ok(app);
+            if(app.User.email != null)
+            {
+                var subject = "Appointment date changed";
+                var body = "Hi " + app.User.firstName + ", <br/> Your appointment date had been modified to " + app.date.ToString("MM/dd/yyyy") + ", hour: " + app.hour + "." +
+                        "<br><br>" +
+                        "Please be careful and come to that date.<br/><br/> Thank you";
+
+                SendEmail(app.User.email, body, subject);  
+            }
+
+            _context.appointments.Update(app);
+            await _context.SaveChangesAsync();   
+
+            var appointmentToReturn = new NextOrHistoryAppointmentsDTO
+            {
+                date = app.date,
+                hour = app.hour,
+            };
+
+            return Ok(appointmentToReturn);
+        }
+
+        private void SendEmail(string emailAddress, string body, string subject)
+        {
+            MailMessage mm = new MailMessage("medclinic121@gmail.com", emailAddress);
+            mm.Subject = subject;
+            mm.Body = body;
+            mm.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.EnableSsl = true;
+            NetworkCredential NetworkCred = new NetworkCredential("medclinic121@gmail.com", "parolamedclinic");
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = NetworkCred;
+            smtp.Port = 587;
+            smtp.Send(mm);
         }
     }
 }

@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Appointment } from 'src/app/Models/AppointmentModel';
 import { AppointmentService } from 'src/app/Services/AppointmentService/appointment.service';
@@ -15,7 +15,7 @@ export class DeleteAppointmentComponent implements OnInit {
   hours: Appointment[];
   appointment: Appointment;
 
-  constructor(private appointmentService: AppointmentService,  @Inject(MAT_DIALOG_DATA) public data: any, private router: Router) { }
+  constructor(private appointmentService: AppointmentService, private dialogRef: MatDialogRef<DeleteAppointmentComponent>,  @Inject(MAT_DIALOG_DATA) public data: any, private router: Router) { }
 
   ngOnInit(): void {
     this.appointmentService.getAnAppoinmentById(this.data.id).subscribe(appointment => {
@@ -48,6 +48,7 @@ export class DeleteAppointmentComponent implements OnInit {
     date.Id = this.data.id;
     this.appointmentService.updateAppointment(date).subscribe(result => {
       this.appointmentService.info = "Appointment was updated succesfully!";
+      this.dialogRef.close();
     }, error => {
       console.log(error);
     });
@@ -56,6 +57,7 @@ export class DeleteAppointmentComponent implements OnInit {
   onDelete(){
     this.appointmentService.deleteAppointmentById(this.data.id).subscribe(response => {
       this.appointmentService.info = "Appointment was deleted succesfully!";
+      this.dialogRef.close();
     })
   }
 
