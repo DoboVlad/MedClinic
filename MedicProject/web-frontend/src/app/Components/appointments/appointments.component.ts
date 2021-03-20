@@ -37,12 +37,15 @@ export class AppointmentsComponent implements OnInit {
     });
   }
 
+
   onSubmit(){
     this.app = {...this.appForm.value};
     this.app.date = this.appForm.get("date").value;
 
     this.app.hour = this.appForm.get("hour").value;
     console.log(this.app);
-    this.appService.createAppointment(this.app);
+    this.appService.createAppointment(this.app).subscribe(response => {
+      console.log(response);
+    });
   }
 }

@@ -38,6 +38,7 @@ namespace MedicProject.Controllers
             {
                     return BadRequest("This date is already used!");
             }
+
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
             var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
 
@@ -47,11 +48,10 @@ namespace MedicProject.Controllers
             {
                 Appointment.name = app.name;
             }
+
             Appointment.UserId = user.Id;
             Appointment.date = app.date.ToLocalTime();
             Appointment.hour = app.hour;
-
-            Console.WriteLine(Appointment.name, Appointment.UserId);
 
             _context.appointments.Add(Appointment);
             await _context.SaveChangesAsync();
@@ -168,19 +168,25 @@ namespace MedicProject.Controllers
         [HttpDelete("delete/{appId}")]
         public async Task<ActionResult> deleteApp(int appId)
         {
-            var appointment = await _context.appointments.Include(u => u.User).FirstOrDefaultAsync(app => app.Id == appId);
+            var appointment = await _context.appointments.FirstOrDefaultAsync(app => app.Id == appId);
+            
 
-            _context.appointments.Remove(appointment);
-
-            if(appointment.User.email != null)
+            if(appointment.name == null)
             {
+                var user = await _context.users.FirstOrDefaultAsync(app => app.Appointments.FirstOrDefault(app => app.Id == appId) != null);
+
+                Console.WriteLine(user.firstName);
+                Console.WriteLine(user.email);
+
                 var subject = "Appointment deleted.";
-                var body = "Hi " + appointment.User.firstName + ", <br/> Your appointment on " + appointment.date.ToString("MM/dd/yyyy") + ", hour: " + appointment.hour + " has been deleted." +
+                var body = "Hi " + user.firstName + ", <br/> Your appointment on " + appointment.date.ToString("MM/dd/yyyy") + ", hour: " + appointment.hour + " has been deleted." +
                         "<br><br>" +
                         "Contact your medic if you don't know why.<br/><br/> Thank you";
 
-                SendEmail(appointment.User.email, body, subject);  
+                SendEmail(user.email, body, subject);  
             }
+
+            _context.appointments.Remove(appointment);
 
             if(await _context.SaveChangesAsync() > 0) return Ok(appointment);
 

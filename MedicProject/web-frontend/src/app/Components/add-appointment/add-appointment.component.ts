@@ -12,9 +12,16 @@ import { AppointmentService } from 'src/app/Services/AppointmentService/appointm
 export class AddAppointmentComponent implements OnInit {
   addAppointmentForm: FormGroup;
   app: Appointment;
+  minDate: Date;
+  newDate: Date;
+
   constructor(private appointmentService: AppointmentService, private route: Router) { }
   hours: Appointment[];
+
   ngOnInit(): void {
+    this.minDate = new Date();
+    var date = new Date();
+    this.newDate = new Date(date.setMonth(date.getMonth()+1));
     this.addAppointmentForm = new FormGroup({
       'date': new FormControl(null, Validators.required),
       "hour": new FormControl(null, Validators.required),
@@ -28,6 +35,14 @@ export class AddAppointmentComponent implements OnInit {
       this.hours = hours;
     });
   }
+
+  weekendsDatesFilter = (d: Date): boolean => {
+    const day = d.getDay();
+
+    /* Prevent Saturday and Sunday for select. */
+    return day !== 0 && day !== 6 ;
+  }
+
 
   onSubmit(){
     this.app = {...this.addAppointmentForm.value};

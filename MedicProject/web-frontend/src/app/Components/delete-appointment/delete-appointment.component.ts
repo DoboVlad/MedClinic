@@ -14,10 +14,15 @@ export class DeleteAppointmentComponent implements OnInit {
   editAppointmentForm: FormGroup;
   hours: Appointment[];
   appointment: Appointment;
+  minDate: Date;
+  newDate: Date;
 
   constructor(private appointmentService: AppointmentService, private dialogRef: MatDialogRef<DeleteAppointmentComponent>,  @Inject(MAT_DIALOG_DATA) public data: any, private router: Router) { }
 
   ngOnInit(): void {
+    this.minDate = new Date();
+    var date = new Date();
+    this.newDate = new Date(date.setMonth(date.getMonth()+1));
     this.appointmentService.getAnAppoinmentById(this.data.id).subscribe(appointment => {
       this.appointment = appointment;
       this.editAppointmentForm = new FormGroup({
@@ -53,6 +58,13 @@ export class DeleteAppointmentComponent implements OnInit {
       console.log(error);
     });
   }
+
+  weekendsDatesFilter = (d: Date): boolean => {
+    const day = d.getDay();
+
+    /* Prevent Saturday and Sunday for select. */
+    return day !== 0 && day !== 6 ;
+}
 
   onDelete(){
     this.appointmentService.deleteAppointmentById(this.data.id).subscribe(response => {
