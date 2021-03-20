@@ -26,6 +26,27 @@
         </form>
     </div>
 </div>
+
+<div class="active-appointments">
+  <div class="appointments-title" >
+    <p class="mes">Your active appointments</p>
+  </div>
+
+  <div class="appointments">
+    <div class="appointment" *ngFor = "let appointment of appointments">
+      Date: {{appointment.date | date: 'longDate' }}
+      <br>
+      Hour: {{appointment.hour}}
+      <br>
+      Time left: {{appointment.difference.days}} days | {{appointment.difference.hours}} hours;
+      <br>
+      <div class="buttons">
+        <button class="button" (click)="handleEvent(appointment.id, appointment.date)">Edit appointment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!--romana-->
 <div *ngIf = "this.accountService.language == 1">
 <div class="appointments-title" >

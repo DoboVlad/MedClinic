@@ -21,4 +21,5 @@ export class User{
   isMedic?: number;
   status?: any;
   validated?: number;
+  active?: boolean;
 }

@@ -64,7 +64,7 @@
     [activeDayIsOpen]="activeDayIsOpen"
     [excludeDays]="excludeDays"
     (dayClicked)="dayClicked($event.day)"
-    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventClicked)="handleEvent('Clicked', $event.event, this.$event.event.start)"
   >
   </mwl-calendar-month-view>
 </div>

@@ -10,4 +10,10 @@ export class Appointment{
   title?: string;
   firstName? : string;
   lastName? : string;
+  difference?: TimeDifference;
+}
+
+class TimeDifference{
+  days: number = 0;
+  hours: number = 0;
 }

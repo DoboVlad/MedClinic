@@ -64,7 +64,9 @@ export class ProfileComponent implements OnInit {
   }
 
   openDialog(){
-    const dialogRef = this.dialog.open(UpdateAccountComponent);
+    const dialogRef = this.dialog.open(UpdateAccountComponent, {
+      data: {user: this.user}
+    });
     dialogRef.afterClosed().subscribe(result => {
       this.getMedicInfo();
     });

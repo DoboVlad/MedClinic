@@ -5,6 +5,7 @@ import { AccountService } from 'src/app/Services/account.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/Models/UserModel';
 import { PatientService } from 'src/app/Services/PatientService/patient.service';
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
@@ -18,7 +19,9 @@ export class MessagesComponent implements OnInit, OnDestroy {
   chatForm: FormGroup;
   patients: User[];
   email : string;
+  active_tab: boolean = false;
   message: Message = {};
+  activeUser: User;
 
   ngOnInit(): void {
     this.messageService.startConnection();
@@ -27,16 +30,25 @@ export class MessagesComponent implements OnInit, OnDestroy {
     });
 
     if(this.accountService.role == 1){
-      this.patientService.getApprovedPatients().subscribe(users => {
+      this.patientService.getApprovedPatients().pipe(map(x => {
+        return x.filter(element =>
+          element.email != this.accountService.email
+        )
+      })).subscribe(users => {
         this.patients = users;
       });
     }
   }
 
-  getMessage(email: string){
+  getMessage(patient){
+    console.log(this.activeUser);
+    patient.active = false;
+    this.activeUser = patient;
+    patient.active = !patient.active;
+    console.log(patient.active);
     this.messageService.stopConnection();
-    this.messageService.startConnection(email);
-    this.email = email;
+    this.messageService.startConnection(patient.email);
+    this.email = patient.email;
   }
 
   openForm() {

@@ -52,7 +52,7 @@
             <img src="{{user.photo}}" alt="user" class="img">
             <h2>{{user.firstName}} {{user.lastName}}</h2>
             <div class="button">
-              <button type="button" (click)="openDialog()">Update</button>
+              <button type="button" class="button" (click)="openDialog()">Update</button>
           </div>
         </div>
         <div class="right" *ngIf = "this.accountService.role == 1">

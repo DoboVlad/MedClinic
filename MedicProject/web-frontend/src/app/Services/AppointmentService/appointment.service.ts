@@ -67,4 +67,12 @@ export class AppointmentService {
       }
     });
   }
+
+  getAppointmentsForPacient(){
+    return this.http.get<Appointment[]>(this.baseUrl + "/getAppointmentsForPacient", {
+      headers: {
+        "Authorization": "Bearer " + this.accountService.token
+      }
+    });
+  }
 }

@@ -21,6 +21,25 @@
     min-width: 100px;
   }
 
+  .appointments{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 30px 0px;
+    padding: 10px;
+  }
+
+  .appointment{
+    background-color: #012C50;
+    color:#B9F1DA;
+    padding: 20px;
+    font-size: 16px;
+    flex-wrap: wrap;
+    margin: 10px auto;
+    max-width: 360px;
+    flex: 0 0 50%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.34);
+  }
 
 .appointments-title{
     text-align: center;
@@ -114,6 +133,31 @@ input[type=time]::-webkit-datetime-edit-ampm-field {
     display: none;
 }
 
+.buttons{
+  display: flex;
+  justify-content: space-around;
+}
+
+.button {
+  text-transform: uppercase;
+  outline: 0;
+  background: #B9F1DA;
+  color: #012C50;
+  border: 0;
+  font-weight: 500;
+  padding: 10px;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-radius: 100px;
+}
+
+.button-delete{
+  background-color: #8B0000;
+  color:#B9F1DA;
+}
+
 
 
 .message{
@@ -131,6 +175,15 @@ input[type=time]::-webkit-datetime-edit-ampm-field {
   }
   .mes--1, .label, input[type="date"], input[type="time"], input[type="submit"]{
     font-size: 16px;
+  }
+
+  .appointments{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .appointment{
+    margin: 10px;
   }
 }
 

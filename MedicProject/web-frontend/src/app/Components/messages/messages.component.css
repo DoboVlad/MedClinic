@@ -81,6 +81,13 @@
   opacity: 1;
 }
 
+.active{
+  background-color: #B9F1DA;
+  color:#012C50;
+  animation: selectPatient;
+  transition: all 0.4s;
+}
+
 .container{
   display: flex;
   padding: 30px;
@@ -144,9 +151,13 @@
 }
 
 .patient{
-  padding: 5px;
+  padding: 10px;
   border-bottom: 1px solid #B9F1DA;
   cursor: pointer;
+}
+
+p{
+  margin: 0px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -156,4 +167,15 @@
   }
 }
 
+@keyframes selectPatient{
+  0% {
+    background-color: #012C50;
+    color:#B9F1DA;
+  }
+
+  100%{
+    background-color:#B9F1DA;
+    color:#012C50;
+  }
+}
 

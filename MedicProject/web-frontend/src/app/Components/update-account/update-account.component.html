@@ -44,8 +44,8 @@
     Please enter a valid phone number
   </mat-error> -->
 </mat-form-field>
-<p>Description: </p>
-<mat-form-field appearance="fill">
+<p *ngIf="this.user.user.email == this.medicEmail">Description: </p>
+<mat-form-field appearance="fill" *ngIf="this.user.user.email == this.medicEmail">
   <mat-label>Description</mat-label>
   <textarea matInput formControlName="description" name="description"></textarea>
   <!-- <mat-error >

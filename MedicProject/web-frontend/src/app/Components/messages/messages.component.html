@@ -18,7 +18,7 @@
 
 <div class="container" *ngIf="this.accountService.role == 1">
   <div class="pacients-list">
-    <p class="patient" *ngFor="let patient of patients" (click)="getMessage(patient.email)">{{patient.firstName}} {{patient.lastName}}</p>
+    <p class="patient" *ngFor="let patient of patients" (click)="getMessage(patient)" [ngClass]="{'active': patient.active && this.activeUser == patient}">{{patient.firstName}} {{patient.lastName}}</p>
   </div>
   <div class="chat">
     <div class="chat__messages">

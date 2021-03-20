@@ -17,6 +17,7 @@ export class UpdateAccountComponent implements OnInit {
   updateAccountForm: FormGroup;
   previousUrl: string;
   currentUrl: string;
+  medicEmail: string;
 
   constructor(private accountService: AccountService,
      private MedicService: MedicService,
@@ -24,6 +25,8 @@ export class UpdateAccountComponent implements OnInit {
      @Inject(MAT_DIALOG_DATA) public user?: any) { }
 
   ngOnInit(): void {
+    console.log(this.user.user.email);
+    this.medicEmail = this.accountService.email;
     if(this.router.url == '/profile'){
       this.MedicService.medicAccount().subscribe(medic => {
         this.authenticatedUser = medic;
