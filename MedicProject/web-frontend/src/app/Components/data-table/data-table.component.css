@@ -68,6 +68,12 @@ tr.example-element-row:not(.example-expanded-row):active {
   border-radius: 100px;
 }
 
+.new{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
 .button-delete{
   background-color: #8B0000;
 }

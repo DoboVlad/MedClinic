@@ -17,7 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './Components/spinner/spinner.component';
 import { WaitingComponent } from './Components/waiting/waiting.component';
 import { DoctorAppointmentsComponent } from './Components/doctor-appointments/doctor-appointments.component';
-import { RequestsComponent } from './Components/requests/requests.component';
 import { DoctorPatientsComponent } from './Components/doctor-patients/doctor-patients.component';
 import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.component';
 import {MatInputModule} from '@angular/material/input';
@@ -48,6 +47,7 @@ import { AddAppointmentComponent } from './Components/add-appointment/add-appoin
 import { MatNativeDateModule } from '@angular/material/core';
 import { DeleteAppointmentComponent } from './Components/delete-appointment/delete-appointment.component';
 import { DeletePatientComponent } from './Components/delete-patient/delete-patient.component';
+import { ApproveAccountComponent } from './Components/approve-account/approve-account.component';
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin
@@ -67,7 +67,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     SpinnerComponent,
     WaitingComponent,
     DoctorAppointmentsComponent,
-    RequestsComponent,
     DoctorPatientsComponent,
     ChangeDoctorComponent,
     ActivateAccountComponent,
@@ -77,7 +76,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     CalendarComponent,
     AddAppointmentComponent,
     DeleteAppointmentComponent,
-    DeletePatientComponent
+    DeletePatientComponent,
+    ApproveAccountComponent
   ],
   imports: [
     BrowserModule,

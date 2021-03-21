@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/Models/UserModel';
 import { AccountService } from 'src/app/Services/account.service';
 import { PatientService } from 'src/app/Services/PatientService/patient.service';
+import { ApproveAccountComponent } from '../approve-account/approve-account.component';
 import { DeletePatientComponent } from '../delete-patient/delete-patient.component';
 import { UpdateAccountComponent } from '../update-account/update-account.component';
 import { DataTableDataSource } from './data-table-datasource';
@@ -54,6 +55,16 @@ export class DataTableComponent implements AfterViewInit, OnInit {
 
   openDialog(element?: any){
     const dialogRef = this.dialog.open(UpdateAccountComponent, {
+      data: {user: element}
+    });
+      dialogRef.afterClosed().subscribe(result => {
+        this.editAccount();
+    });
+  }
+
+
+  approveDialog(element?: any){
+    const dialogRef = this.dialog.open(ApproveAccountComponent, {
       data: {user: element}
     });
       dialogRef.afterClosed().subscribe(result => {

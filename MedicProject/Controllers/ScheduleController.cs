@@ -40,10 +40,10 @@ namespace MedicProject.Controllers
                                         .ToListAsync();
 
             var busyHours = await _context.appointments
-                                .Where(d => d.date == date)
+                                .Where(d => d.date.Date == date.Date)
                                 .Select(d => d.hour)
                                 .ToListAsync();
-                            
+
             var availableHours = new List<Hour>();
             
             foreach (var item in availableDate)

@@ -42,12 +42,10 @@ export class MedicService {
     }
 
     approveUser(id: number){
-      this.http.put(this.account.baseUrl + '/users/ApproveUser?id=' + id, id, {
+      return this.http.put(this.account.baseUrl + '/users/ApproveUser?id=' + id, id, {
         headers: {
           'Authorization': 'Bearer ' + this.account.token
         }
-      }).subscribe(user => {
-        this.router.navigate(["/home"]);
       });
   }
 

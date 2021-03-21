@@ -30,6 +30,8 @@ namespace MedicProject.DTO
       [Required(ErrorMessage="Please enter your phone number.")]
       [Phone(ErrorMessage="Invalid phone number format")]
       public string phoneNumber{get;set;}
+
+      public int isApproved { get; set; }
       public IEnumerable<CreateAppointmentDTO> Appointments { get; set; }
     }
 }

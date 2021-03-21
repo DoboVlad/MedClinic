@@ -7,11 +7,6 @@
             <li routerLink="/profile" *ngIf="this.accountService.isUserLoggedIn == true && this.accountService.isApproved == true">PROFILE</li>
             <li routerLink="/messages" *ngIf="this.accountService.isUserLoggedIn == true && this.accountService.isApproved == true && this.accountService.role == 1">MESSAGES</li>
             <li routerLink="/login" *ngIf= "this.accountService.isUserLoggedIn == false">ACCOUNT</li>
-            <li routerLink="/requests" *ngIf = "this.accountService.isUserLoggedIn  == true && this.accountService.isApproved == true && this.accountService.role  == 1">
-                <span title="requests" class="material-icons" >
-                notification_important
-                </span>
-            </li>
             <!-- <li class="dropdown">
                 <a class="dropbtn">LANGUAGE</a>
                 <div class="dropdown-content">

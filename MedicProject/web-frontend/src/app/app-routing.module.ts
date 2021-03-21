@@ -14,7 +14,6 @@ import { WaitingComponent } from './Components/waiting/waiting.component';
 import {ApproveGuard} from './Services/Guards/approve.guard';
 import {RoleGuard} from './Services/Guards/role.guard';
 import {DoctorAppointmentsComponent} from './Components/doctor-appointments/doctor-appointments.component';
-import {RequestsComponent} from './Components/requests/requests.component';
 import {DoctorPatientsComponent} from './Components/doctor-patients/doctor-patients.component';
 import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.component';
 import { ActivateAccountComponent } from './Components/activate-account/activate-account.component';
@@ -34,7 +33,6 @@ const routes: Routes = [
   {path: 'activate-account', component: ActivateAccountComponent, canActivate:[AuthGuard]},
   {path: 'waiting', component: WaitingComponent, canActivate:[AuthGuard]},
   // {path: 'doctorappointments', component: DoctorAppointmentsComponent, canActivate: [RoleGuard]},
-  {path: 'requests', component: RequestsComponent, canActivate: [RoleGuard]},
   {path: 'doctorpatients', component: DoctorPatientsComponent, canActivate: [RoleGuard]},
   {path: 'change-doctor', component: ChangeDoctorComponent},
   {path: 'updateAccount', component: UpdateAccountComponent},

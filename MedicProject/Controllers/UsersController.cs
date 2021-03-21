@@ -237,9 +237,8 @@ namespace MedicProject.Controllers
                 //get the list of approved users of the loged in medic
                 var users = await _context.users
                     .Where(p => p.doctorId == user.Id)
-                    .Where(p => p.isApproved == 1)
                     .Where(p => p.validated == 1)
-                    .Include(p => p.Appointments)
+                    .OrderByDescending(ord => ord.isApproved)
                     .ToListAsync();
                 
                 var approvedusers = _mapper.Map<IEnumerable<PatientDTO>>(users);

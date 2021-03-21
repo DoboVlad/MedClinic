@@ -30,6 +30,7 @@ export class DataTableDataSource extends DataSource<User> {
 
     service.subscribe(patients => {
       this.data = patients;
+      console.log(this.data);
     })
   }
 
