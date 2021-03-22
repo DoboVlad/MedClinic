@@ -1,0 +1,28 @@
+﻿body{
+    width: 700px;
+    margin:auto;
+    line-height: 1.8;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+h2{
+    text-align: center;
+}
+
+
+.semnatura{
+    float:right;
+}
+
+
+p.info{
+    border-bottom: 1px solid black;
+    width: 20%;
+    font-weight: bold;
+}
+
+p{
+    display: table-cell;
+}

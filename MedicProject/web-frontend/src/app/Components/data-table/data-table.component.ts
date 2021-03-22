@@ -80,6 +80,11 @@ export class DataTableComponent implements AfterViewInit, OnInit {
     this.accountService.info = null;
   }
 
+  generatePdf(element){
+    this.patientService.generatePdf(element.id).subscribe(pdf => {
+      window.open('https://localhost:5001/api/pdf/generatePDF/3', '_blank');
+    })
+  }
 
 
   refreshTable(){

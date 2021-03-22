@@ -35,6 +35,15 @@ namespace MedicProject.Models
         public int? doctorId { get; set; }
 
         public string Token{get;set;}
+
+        public string City { get; set; }
+
+        public string County { get; set; }
+
+        public string Street { get; set; }
+
+        public int HomeNumber { get; set; }
+
         public int validated{get;set;}
 
         public ICollection<User> Pacients{get;set;}

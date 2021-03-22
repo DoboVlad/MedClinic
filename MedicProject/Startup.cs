@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 using MedicProject.Data;
 using MedicProject.Interfaces;
 using MedicProject.Mappers;
@@ -35,6 +37,8 @@ namespace MedicProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
             services.AddSignalR(o =>
                     {
                         o.EnableDetailedErrors = true;

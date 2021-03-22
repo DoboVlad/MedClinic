@@ -45,4 +45,8 @@ export class PatientService {
         }
       });
     }
+
+    generatePdf(id: number){
+      return this.http.get("https://localhost:5001/api/pdf/generatePDF/3");
+    }
 }

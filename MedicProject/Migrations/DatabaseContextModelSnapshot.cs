@@ -23,6 +23,9 @@ namespace MedicProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Result")
+                        .HasColumnType("text");
+
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
 
@@ -131,11 +134,23 @@ namespace MedicProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("City")
+                        .HasColumnType("text");
+
+                    b.Property<string>("County")
+                        .HasColumnType("text");
+
+                    b.Property<int>("HomeNumber")
+                        .HasColumnType("int");
+
                     b.Property<byte[]>("PasswordHash")
                         .HasColumnType("varbinary(4000)");
 
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("varbinary(4000)");
+
+                    b.Property<string>("Street")
+                        .HasColumnType("text");
 
                     b.Property<string>("Token")
                         .HasColumnType("text");
