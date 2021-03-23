@@ -33,7 +33,6 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatTable) table: MatTable<User>;
   dataSource: DataTableDataSource;
   expandedElement: any;
-
   constructor(private patientService: PatientService,
     private toastr: ToastrService,
     public dialog: MatDialog, private accountService: AccountService) {}
@@ -81,9 +80,7 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   }
 
   generatePdf(element){
-    this.patientService.generatePdf(element.id).subscribe(pdf => {
-      window.open('https://localhost:5001/api/pdf/generatePDF/3', '_blank');
-    })
+    window.open("https://localhost:5001/api/pdf/generatePDF/" + element.id);
   }
 
 

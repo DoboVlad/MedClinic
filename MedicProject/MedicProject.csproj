@@ -9,6 +9,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20210309180839_AddedSchedule.cs" />
     <Compile Remove="Migrations\20210309180839_AddedSchedule.Designer.cs" />
+    <Compile Remove="Migrations\20210323190350_AddedMoreLocationInfo.cs" />
+    <Compile Remove="Migrations\20210323190350_AddedMoreLocationInfo.Designer.cs" />
   </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />

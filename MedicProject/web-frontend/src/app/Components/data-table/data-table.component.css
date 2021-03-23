@@ -78,6 +78,16 @@ tr.example-element-row:not(.example-expanded-row):active {
   background-color: #8B0000;
 }
 
+.generate-pdf{
+  justify-self: end;
+  padding: 10px;
+}
+
+.button-generate{
+  background-color: #07425d;
+
+}
+
 .delete-pacient{
   justify-self: end;
   padding: 10px;

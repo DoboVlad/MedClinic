@@ -49,14 +49,14 @@ namespace MedicProject.Helpers
             <p>cu domiciliu in:</p>
         </div>
         <div class='name'>
-            <p>Judetul:</p><p class='info' style='width:60%'>&nbsp{10}</p>
+            <p>Judetul:</p><p class='info' style='width:59%'>&nbsp{10}</p>
             <p>Localitatea:</p><p class='info' style='width:100%'>&nbsp{11}</p>
         </div>
         <div class='loc'>
             <p>Strada:</p><p class='info'>&nbsp{12}</p>
-                <p>Numarul</p><p class='info'>&nbsp{13}</p>
-                <p>Apartament</p><p class='info'>&nbsp</p>
-                <p>Scara</p><p class='info'>&nbsp</p>
+                <p>Numarul:</p><p class='info'>&nbsp{13}</p>
+                <p>Apartament:</p><p class='info'>&nbsp</p>
+                <p>Scara:</p><p class='info'>&nbsp</p>
                 </div>
         <div class='name'>
             <p style='width: 190px;'>Diagnostic prezumtiv:</p><p class='info' style='width:74%'>&nbsp{14}</p>
@@ -70,7 +70,7 @@ namespace MedicProject.Helpers
         <br></br>
         <div class='semnatura'>
             <div>Semnatura medic</div>
-            <div>{17}</div>
+            <div style='text-align:center;'>{17}</div>
         </div>
         </body>
         </html>

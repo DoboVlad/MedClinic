@@ -41,8 +41,8 @@
             <div class="delete-pacient">
               <button class="button-delete" (click)="deletePatient(element)">Delete pacient</button>
             </div>
-            <div class="generate-pdf">
-              <button class="button-delete" (click)="generatePdf(element)">Generate send</button>
+            <div class="generate-pdf" *ngIf = "element.isApproved == 1">
+              <button class="button-delete button-generate" (click)="generatePdf(element)">Medical letter</button>
             </div>
           </div>
         </div>
@@ -65,3 +65,4 @@
       [pageSizeOptions]="[10, 25 ,50]">
   </mat-paginator>
 </div>
+

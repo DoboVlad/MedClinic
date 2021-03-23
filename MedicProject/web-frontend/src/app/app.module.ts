@@ -48,6 +48,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { DeleteAppointmentComponent } from './Components/delete-appointment/delete-appointment.component';
 import { DeletePatientComponent } from './Components/delete-patient/delete-patient.component';
 import { ApproveAccountComponent } from './Components/approve-account/approve-account.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin
@@ -105,7 +106,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     }),
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
-    NgbModule
+    NgbModule,
+    PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
