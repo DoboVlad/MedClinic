@@ -49,6 +49,7 @@ import { DeleteAppointmentComponent } from './Components/delete-appointment/dele
 import { DeletePatientComponent } from './Components/delete-patient/delete-patient.component';
 import { ApproveAccountComponent } from './Components/approve-account/approve-account.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { GeneratePdfComponent } from './Components/generate-pdf/generate-pdf.component';
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin
@@ -78,7 +79,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     AddAppointmentComponent,
     DeleteAppointmentComponent,
     DeletePatientComponent,
-    ApproveAccountComponent
+    ApproveAccountComponent,
+    GeneratePdfComponent
   ],
   imports: [
     BrowserModule,

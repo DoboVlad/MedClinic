@@ -10,7 +10,7 @@ namespace MedicProject.Helpers
     public static class TemplateGenerator
     {
         [STAThread]
-        public static string GetHTMLString(User user)
+        public static string GetHTMLString(User user, String sendTo, String reason, String diagnostic, String treatment)
         {
             var employees = user;
 
@@ -45,7 +45,7 @@ namespace MedicProject.Helpers
         </div>
         <div class='name'>
             <p>Sexul: </p><p class='info' style='width:30%'>&nbsp{8}</p>
-            <p>varsta:</p><p class='info' style='width:35%'>&nbsp{9}</p>
+            <p>varsta:</p><p class='info' style='width:37%'>&nbsp{9}</p>
             <p>cu domiciliu in:</p>
         </div>
         <div class='name'>
@@ -55,8 +55,8 @@ namespace MedicProject.Helpers
         <div class='loc'>
             <p>Strada:</p><p class='info'>&nbsp{12}</p>
                 <p>Numarul:</p><p class='info'>&nbsp{13}</p>
-                <p>Apartament:</p><p class='info'>&nbsp</p>
-                <p>Scara:</p><p class='info'>&nbsp</p>
+                <p>Apartament:</p><p class='info'>&nbsp {18}</p>
+                <p>Scara:</p><p class='info'>&nbsp {19}</p>
                 </div>
         <div class='name'>
             <p style='width: 190px;'>Diagnostic prezumtiv:</p><p class='info' style='width:74%'>&nbsp{14}</p>
@@ -74,10 +74,10 @@ namespace MedicProject.Helpers
         </div>
         </body>
         </html>
-            ", "  " + user.County, "  " + DateTime.Now.Month,  "  " + DateTime.Now.Day,  "  " + user.City, " MedClinic", " specialist",
-             "  " + user.lastName,  "  " + user.firstName, "  M", user.Getage(),
-              "  " + user.County,  "  " + user.City,  "  " + user.Street,  "  " + user.HomeNumber,
-            "  Cancer", "  Test COVID", "-", "Vladutz");
+            ", user.County, DateTime.Now.Month,  DateTime.Now.Day,  user.City, " MedClinic", sendTo,
+             user.lastName,  user.firstName, "  M", user.Getage(),
+             user.County,  user.City,  user.Street,  user.HomeNumber,
+            diagnostic, reason, treatment, "Vladutz", user.Appartment, user.Entrance);
 
 
             return stringBuilder.ToString();

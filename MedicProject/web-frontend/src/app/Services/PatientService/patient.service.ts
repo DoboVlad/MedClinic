@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Pdf } from 'src/app/Models/PdfModel';
 import { User } from 'src/app/Models/UserModel';
 import { AccountService } from '../account.service';
 
@@ -8,7 +9,7 @@ import { AccountService } from '../account.service';
   providedIn: 'root'
 })
 export class PatientService {
-
+  pdfData: Pdf;
   constructor(private router: Router,
     private http: HttpClient,
      private account: AccountService) { }
@@ -46,7 +47,9 @@ export class PatientService {
       });
     }
 
-    generatePdf(id: number){
-      return this.http.get("https://localhost:5001/api/pdf/generatePDF/3");
+    generatePdf(pdf: Pdf){
+      return this.http.get("https://localhost:5001/api/pdf/generatePDF?id=" + pdf.id +
+      '&&reason=' + pdf.reason + '&&treatment=' + pdf.treatment +
+      '&&sendTo=' + pdf.sendTo + '&&diagnostic=' + pdf.diagnostic);
     }
 }

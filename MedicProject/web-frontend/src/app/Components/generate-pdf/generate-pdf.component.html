@@ -1,0 +1,44 @@
+<div class="container">
+<h1 mat-dialog-title>Add appointment</h1>
+<form [formGroup] = "generatePdfForm" *ngIf="generatePdfForm" (ngSubmit)= "onSubmit()">
+<div class="left-section">
+  <p>Send to: </p>
+  <mat-form-field appearance="fill">
+    <mat-label>Send to: </mat-label>
+    <input matInput formControlName="sendTo">
+  </mat-form-field>
+<br>
+<p>Reason: </p>
+  <mat-form-field appearance="fill" >
+  <mat-label>Reason: </mat-label>
+  <textarea matInput formControlName="reason" name="name">
+  </textarea>
+  </mat-form-field>
+<br>
+<p>Initial diagnostic:</p>
+<mat-form-field appearance="fill">
+  <mat-label>Diagnostic:</mat-label>
+  <textarea matInput formControlName="diagnostic" name="name">
+  </textarea>
+  <!-- <mat-error >
+    Please enter a valid phone number
+  </mat-error> -->
+</mat-form-field>
+<br>
+<p>Treatment and indications:</p>
+<mat-form-field appearance="fill">
+  <mat-label>Treatment:</mat-label>
+  <textarea matInput formControlName="treatment" name="name">
+  <!-- <mat-error >
+    Please enter a valid phone number
+  </mat-error> -->
+  </textarea>
+</mat-form-field>
+<div class="buttons">
+  <button mat-button type="submit" [disabled] = "generatePdfForm.invalid">Generate PDF</button>
+  <button mat-button [mat-dialog-close]="">Cancel</button>
+</div>
+</div>
+</form>
+
+</div>

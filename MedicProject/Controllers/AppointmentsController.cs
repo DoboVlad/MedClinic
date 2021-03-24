@@ -152,39 +152,6 @@ namespace MedicProject.Controllers
             return Ok(_mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments));
         }
 
-        // [HttpGet("historyAppointmentsByMedic")]
-        // // return all the appointments of all patients of a medic that have a date smaller than today
-        // public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getBackAppByMedic(int Id)
-        // {
-        //     DateTime date = DateTime.Now;
-        //     var appointments = await _context.appointments
-        //             .Include(p => p.User)
-        //             .Where(app => app.date < date)
-        //             .Where(p => p.User.doctorId == Id)
-        //             .ToListAsync();
-
-        //     var appToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
-
-        //     return Ok(appToReturn);
-        // }
-
-        // [HttpGet("nextAppointmentsByMedic")]
-        // // return all the appointments that have a date bigger than today
-        // public async Task<ActionResult<IEnumerable<NextOrHistoryAppointmentsDTO>>> getNextAppByMedic(int Id)
-        // {
-        //     DateTime date = DateTime.Now;
-        //     var appointments = await _context.appointments
-        //     .Include(p => p.User)
-        //     .Where(p => p.date > date)
-        //     .Where(p => p.User.doctorId == Id)
-        //     .ToListAsync();
-
-        //     var appointementsToReturn = _mapper.Map<IEnumerable<NextOrHistoryAppointmentsDTO>>(appointments);
-
-        //     return Ok(appointementsToReturn);
-        // }
-
-
         // api/appointments/delete/id
         // delete an appointment by ID
         [HttpDelete("delete/{appId}")]

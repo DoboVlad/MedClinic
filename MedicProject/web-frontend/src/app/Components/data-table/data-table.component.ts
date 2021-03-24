@@ -10,6 +10,7 @@ import { AccountService } from 'src/app/Services/account.service';
 import { PatientService } from 'src/app/Services/PatientService/patient.service';
 import { ApproveAccountComponent } from '../approve-account/approve-account.component';
 import { DeletePatientComponent } from '../delete-patient/delete-patient.component';
+import { GeneratePdfComponent } from '../generate-pdf/generate-pdf.component';
 import { UpdateAccountComponent } from '../update-account/update-account.component';
 import { DataTableDataSource } from './data-table-datasource';
 
@@ -80,7 +81,15 @@ export class DataTableComponent implements AfterViewInit, OnInit {
   }
 
   generatePdf(element){
-    window.open("https://localhost:5001/api/pdf/generatePDF/" + element.id);
+    const dialogRef = this.dialog.open(GeneratePdfComponent, {
+      data: {user: element}
+    });
+      dialogRef.afterClosed().subscribe(result => {
+        const pdf = this.patientService.pdfData;
+        window.open("https://localhost:5001/api/pdf/generatePDF?id=" + pdf.id +
+        '&&reason=' + pdf.reason + '&&treatment=' + pdf.treatment +
+        '&&sendTo=' + pdf.sendTo + '&&diagnostic=' + pdf.diagnostic);
+    });
   }
 
 
