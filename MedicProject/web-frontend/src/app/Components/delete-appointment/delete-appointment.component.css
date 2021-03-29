@@ -3,8 +3,37 @@
   justify-content: space-around;
 }
 
+.button_save{
+  display: flex;
+  justify-content: center;
+}
+
 .delete{
   background-color: #8B0000;
+}
+
+.main{
+  max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.helper{
+  display: flex;
+  justify-content: center;
+}
+
+.first{
+  padding: 10px;
+  border-right: 1px solid #012c50;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.second{
+  padding: 10px;
 }
 
 button{
@@ -21,8 +50,14 @@ button{
   border-radius: 100px;
 }
 
+.noscroll {
+  position: fixed;
+  overflow: hidden;
+}
+
 @media only screen and (max-width: 1080px) {
-  form{
+
+  .main{
     flex-direction: column;
   }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -18,7 +19,7 @@ namespace MedicProject.Models
 
         public string endHour { get; set; }
 
-        public string Result { get; set; }
+        public ICollection<Result> result { get; set; }
 
         public User User {get; set;}
 

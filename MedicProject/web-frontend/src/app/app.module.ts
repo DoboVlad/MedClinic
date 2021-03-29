@@ -16,7 +16,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './Components/spinner/spinner.component';
 import { WaitingComponent } from './Components/waiting/waiting.component';
-import { DoctorAppointmentsComponent } from './Components/doctor-appointments/doctor-appointments.component';
 import { DoctorPatientsComponent } from './Components/doctor-patients/doctor-patients.component';
 import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.component';
 import {MatInputModule} from '@angular/material/input';
@@ -50,6 +49,7 @@ import { DeletePatientComponent } from './Components/delete-patient/delete-patie
 import { ApproveAccountComponent } from './Components/approve-account/approve-account.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { GeneratePdfComponent } from './Components/generate-pdf/generate-pdf.component';
+import { HistoryComponent } from './Components/history/history.component';
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin
@@ -68,7 +68,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     TermsComponent,
     SpinnerComponent,
     WaitingComponent,
-    DoctorAppointmentsComponent,
     DoctorPatientsComponent,
     ChangeDoctorComponent,
     ActivateAccountComponent,
@@ -80,7 +79,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     DeleteAppointmentComponent,
     DeletePatientComponent,
     ApproveAccountComponent,
-    GeneratePdfComponent
+    GeneratePdfComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,

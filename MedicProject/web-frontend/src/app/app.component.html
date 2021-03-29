@@ -8,15 +8,16 @@
             <li routerLink="/messages" *ngIf="this.accountService.isUserLoggedIn == true && this.accountService.isApproved == true && this.accountService.role == 1">MESSAGES</li>
             <li routerLink="/login" *ngIf= "this.accountService.isUserLoggedIn == false">ACCOUNT</li>
             <!-- <li class="dropdown">
-                <a class="dropbtn">LANGUAGE</a>
-                <div class="dropdown-content">
-                  <a (click) = "setLanguage(0)">English</a>
-                  <a (click) = "setLanguage(1)">Romanian</a>
-                </div>
+              <a class="dropbtn">LANGUAGE</a>
+              <div class="dropdown-content">
+                <a (click) = "setLanguage(0)">English</a>
+                <a (click) = "setLanguage(1)">Romanian</a>
+              </div>
             </li> -->
           </div>
           <div class="right-nav">
             <li routerLink="/home">HOME</li>
+            <li routerLink="/history" *ngIf="this.accountService.isUserLoggedIn == true && this.accountService.isApproved == true && this.accountService.role  == 0">HISTORY</li>
             <li routerLink="/doctorpatients" *ngIf = "this.accountService.isUserLoggedIn  == true && this.accountService.isApproved == true && this.accountService.role  == 1">PATIENTS</li>
             <li routerLink="/doctors" *ngIf = "this.accountService.role  == 0">DOCTORS</li>
             <li routerLink="/appointments" *ngIf = "this.accountService.isUserLoggedIn  == true && this.accountService.isApproved == true && this.accountService.role  == 0">APPOINTMENTS</li>

@@ -102,9 +102,6 @@
         <div *ngIf = "!loginForm.get('email').valid && loginForm.get('email').touched">
           <span class="red">Email is required</span>
         </div>
-      <span *ngIf = "error()">
-        <p class="red">Wrong email or password</p>
-      </span>
       <input type="password" class="input" placeholder="password" formControlName="password" required/>
       <span *ngIf = "!loginForm.get('password').valid && loginForm.get('password').touched">
         <p class="red">Password is required</p>

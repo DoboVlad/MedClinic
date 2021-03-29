@@ -49,7 +49,7 @@
     <!-- MEDIC PROFILE -->
     <div class="container" *ngIf="this.accountService.isFetching == false">
         <div class="left" *ngIf = "this.accountService.role == 1">
-            <img src="{{user.photo}}" alt="user" class="img">
+
             <h2>{{user.firstName}} {{user.lastName}}</h2>
             <div class="button">
               <button type="button" class="button" (click)="openDialog()">Update</button>

@@ -24,6 +24,10 @@ namespace MedicProject.Data
 
         public DbSet<Hour> hours {get; set;}
 
+        public DbSet<Result> result { get; set; }
+
+        public DbSet<Medicine> medicine { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Message>()

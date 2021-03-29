@@ -13,13 +13,13 @@ import {LoggedInGuard} from './Services/Guards/logged-in.guard';
 import { WaitingComponent } from './Components/waiting/waiting.component';
 import {ApproveGuard} from './Services/Guards/approve.guard';
 import {RoleGuard} from './Services/Guards/role.guard';
-import {DoctorAppointmentsComponent} from './Components/doctor-appointments/doctor-appointments.component';
 import {DoctorPatientsComponent} from './Components/doctor-patients/doctor-patients.component';
 import { ChangeDoctorComponent } from './Components/change-doctor/change-doctor.component';
 import { ActivateAccountComponent } from './Components/activate-account/activate-account.component';
 import { UpdateAccountComponent } from './Components/update-account/update-account.component';
 import { MessagesComponent } from './Components/messages/messages.component';
 import { CalendarComponent } from './Components/calendar/calendar.component';
+import { HistoryComponent } from './Components/history/history.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -32,12 +32,11 @@ const routes: Routes = [
   {path: 'terms', component: TermsComponent},
   {path: 'activate-account', component: ActivateAccountComponent, canActivate:[AuthGuard]},
   {path: 'waiting', component: WaitingComponent, canActivate:[AuthGuard]},
-  // {path: 'doctorappointments', component: DoctorAppointmentsComponent, canActivate: [RoleGuard]},
   {path: 'doctorpatients', component: DoctorPatientsComponent, canActivate: [RoleGuard]},
-  {path: 'change-doctor', component: ChangeDoctorComponent},
-  {path: 'updateAccount', component: UpdateAccountComponent},
-  {path: 'messages', component: MessagesComponent},
-  {path: "doctorappointments", component: CalendarComponent},
+  {path: 'updateAccount', component: UpdateAccountComponent,  canActivate: [AuthGuard]},
+  {path: 'messages', component: MessagesComponent,  canActivate: [AuthGuard, ApproveGuard]},
+  {path: "doctorappointments", component: CalendarComponent,  canActivate: [RoleGuard]},
+  {path: "history", component: HistoryComponent, canActivate: [AuthGuard, ApproveGuard]},
   {path: "**", component: HomeComponent}
 ];
 

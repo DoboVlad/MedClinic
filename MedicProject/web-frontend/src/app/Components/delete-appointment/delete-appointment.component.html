@@ -1,29 +1,66 @@
-<h1 mat-dialog-title>Edit appointment</h1>
-<form [formGroup] = "editAppointmentForm" *ngIf="editAppointmentForm" (ngSubmit)= "onSubmit()">
-<div class="left-section">
-  <mat-form-field appearance="fill"  (blur)="getSchedule()">
-    <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker" min="{{this.minDate | date: 'yyyy-MM-dd'}}" max="{{this.newDate | date: 'yyyy-MM-dd'}}" [matDatepickerFilter]="weekendsDatesFilter" formControlName="date">
-    <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
-    <mat-datepicker #picker ></mat-datepicker>
-  </mat-form-field>
-<br>
-<p>Available hour: </p>
-<mat-form-field appearance="fill">
-  <mat-label>Change the hour</mat-label>
-  <mat-select formControlName="hour">
-    <mat-option *ngFor="let hour of hours" [value]="hour.startHour">
-      {{hour.startHour}}:{{hour.endHour}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<br>
-<div class="buttons">
-  <button mat-button type="submit" [disabled] = "editAppointmentForm.invalid">Edit</button>
-  <button mat-button class="delete" type="button" (click) = "onDelete()">Delete</button>
-  <button mat-button [mat-dialog-close]="" (click)="back()">Cancel</button>
-</div>
-</div>
+<div class="main" >
+  <form class="first" [formGroup] = "editAppointmentForm" *ngIf="editAppointmentForm" (ngSubmit)= "onSubmit()">
+  <h1 mat-dialog-title>Edit appointment</h1>
+    <div class="left-section">
+      <mat-form-field appearance="fill"  (blur)="getSchedule()">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" min="{{this.minDate | date: 'yyyy-MM-dd'}}" max="{{this.newDate | date: 'yyyy-MM-dd'}}" [matDatepickerFilter]="weekendsDatesFilter" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+        <mat-datepicker #picker ></mat-datepicker>
+      </mat-form-field>
+    <br>
+    <p>Available hour: </p>
+    <mat-form-field appearance="fill">
+      <mat-label>Change the hour</mat-label>
+      <mat-select formControlName="hour">
+        <mat-option *ngFor="let hour of hours" [value]="hour.startHour">
+          {{hour.startHour}}:{{hour.endHour}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <div class="buttons">
+      <button mat-button type="submit" [disabled] = "editAppointmentForm.invalid">Edit</button>
+      <button mat-button class="delete" type="button" (click) = "onDelete()">Delete</button>
+      <button mat-button [mat-dialog-close]="" (click)="back()">Cancel</button>
+    </div>
+    </div>
 </form>
+<form class="second" [formGroup]="resultForm" (onSubmit)="submitResult()">
+  <h1 mat-dialog-title>Result</h1>
+  <div class="left-section">
+    <mat-form-field appearance="fill">
+      <mat-label>Result </mat-label>
+      <input matInput formControlName="result">
+    </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Medicine </mat-label>
+    <input matInput formControlName="medicine">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Dosage </mat-label>
+    <input matInput formControlName="dosage">
+  </mat-form-field>
+  <div class="helper">
+    <button mat-button (click)="addToList()">Add to list</button>
+  </div>
+  <br>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Medicine list</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let med of medicineList">
+        {{med.medicine}} - {{med.dosage}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="button_save">
+    <button mat-button type="submit" style="width:100px;" [disabled] = "resultForm.invalid">Save</button>
+  </div>
+  </div>
+</form>
+</div>
 
 

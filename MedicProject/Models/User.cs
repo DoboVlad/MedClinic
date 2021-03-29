@@ -47,7 +47,6 @@ namespace MedicProject.Models
         public string Entrance { get; set; }
         public string Appartment { get; set; }
 
-        //comentariu
         public int validated{get;set;}
 
         public ICollection<User> Pacients{get;set;}
