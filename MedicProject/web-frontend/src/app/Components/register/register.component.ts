@@ -29,7 +29,13 @@ export class RegisterComponent implements OnInit {
       "phoneNumber": new FormControl(null, Validators.required),
       "password": new FormControl(null, Validators.required),
       "repeatPassword": new FormControl(null, Validators.required),
-      "doctorId": new FormControl(null, Validators.required)
+      "doctorId": new FormControl(null, Validators.required),
+      "City": new FormControl(null, Validators.required),
+      "Street": new FormControl(null, Validators.required),
+      "HomeNumber": new FormControl(null, Validators.required),
+      "County": new FormControl(null, Validators.required),
+      "Appartment": new FormControl(null),
+      "Entrance": new FormControl(null),
     });
   }
 

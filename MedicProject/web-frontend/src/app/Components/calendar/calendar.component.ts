@@ -117,7 +117,7 @@ export class CalendarComponent implements OnInit {
   handleEvent(action: string, event: CalendarEvent, date: any): void {
     var currentDate = new Date();
     if(date >= currentDate){
-      const dialogRef = this.dialog.open(DeleteAppointmentComponent, {data: {id: event.id}});
+      const dialogRef = this.dialog.open(DeleteAppointmentComponent, {data: {id: event.id}, autoFocus: false, maxHeight: '90vh'});
       dialogRef.afterClosed().subscribe(result => {
         if(this.appointmentService.info != null){
           this.toastr.info(this.appointmentService.info);

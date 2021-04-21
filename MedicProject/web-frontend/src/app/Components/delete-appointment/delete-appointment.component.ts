@@ -20,7 +20,9 @@ export class DeleteAppointmentComponent implements OnInit {
   newDate: Date;
   medicineList: Medicine[] = [];
 
-  constructor(private appointmentService: AppointmentService, private dialogRef: MatDialogRef<DeleteAppointmentComponent>,  @Inject(MAT_DIALOG_DATA) public data: any, private router: Router) { }
+  constructor(private appointmentService: AppointmentService,
+     private dialogRef: MatDialogRef<DeleteAppointmentComponent>,
+     @Inject(MAT_DIALOG_DATA) public data: any, private router: Router) { }
 
   ngOnInit(): void {
     this.minDate = new Date();

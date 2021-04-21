@@ -197,7 +197,7 @@ namespace MedicProject.Controllers
         }
         // history and next app get by id
 
-         [HttpPut("updateAppointment")]
+        [HttpPut("updateAppointment")]
         public async Task<ActionResult> updateAppointment(Appointments appointment)
         {
             var app = await _context.appointments

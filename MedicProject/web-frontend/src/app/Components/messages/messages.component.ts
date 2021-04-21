@@ -32,7 +32,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
     if(this.accountService.role == 1){
       this.patientService.getApprovedPatients().pipe(map(x => {
         return x.filter(element =>
-          element.email != this.accountService.email
+          element.email != this.accountService.email && element.isApproved == 1
         )
       })).subscribe(users => {
         this.patients = users;

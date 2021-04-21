@@ -42,7 +42,7 @@ namespace MedicProject.Models
 
         public string Street { get; set; }
 
-        public int HomeNumber { get; set; }
+        public int? HomeNumber { get; set; }
 
         public string Entrance { get; set; }
         public string Appartment { get; set; }

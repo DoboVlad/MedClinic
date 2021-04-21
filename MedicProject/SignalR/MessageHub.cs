@@ -86,17 +86,5 @@ namespace MedicProject.SignalR
 
                 await Clients.Caller.SendAsync("ReceiveMessage", _mapper.Map<IList<MessageDto>>(messages));
             }
-
-        //     private string getGroupName(string sender, string receiver)
-        //     {
-        //         var compare = string.CompareOrdinal(sender, receiver) < 0;
-
-        //         if (compare)
-        //         {
-        //             return $"{sender}-{receiver}";
-        //         }
-        //         return $"{receiver}-{sender}";
-        //     }
-        // }
     }
 }

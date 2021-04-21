@@ -22,4 +22,10 @@ export class User{
   status?: any;
   validated?: number;
   active?: boolean;
+  City?: String;
+  Street?: String;
+  County?: String;
+  HomeNumber?: number;
+  Appartment?: number;
+  Entrance?: number;
 }

@@ -37,6 +37,22 @@ namespace MedicProject.DTO
         [Required(ErrorMessage="Please enter the password again")]
         [Compare(nameof(password), ErrorMessage = "The passwords don't match.")]
         public String repeatPassword {get;set;}
+
+        [Required]
+        public string City { get; set; }
+
+        [Required]
+        public string County { get; set; }
+
+        [Required]
+        public string Street { get; set; }
+
+        [Required]
+        public int HomeNumber { get; set; }
+
+        public int? Entrance { get; set; }
+        public int? Appartment { get; set; }
+
         
         // [Required(ErrorMessage="Select a doctor")]
         public int doctorId { get; set; }

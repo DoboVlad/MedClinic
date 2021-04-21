@@ -486,6 +486,7 @@ namespace MedicProject.Controllers
         {
             if ( await UserExists(RegisterDTO.email)) return BadRequest("There is already an existing account with this email");
             using var hmac=new HMACSHA512();
+            Console.WriteLine(RegisterDTO.ToString());
             
             var user = new User
             {
@@ -497,6 +498,12 @@ namespace MedicProject.Controllers
                 phoneNumber=RegisterDTO.phoneNumber,
                 PasswordHash=hmac.ComputeHash(Encoding.UTF8.GetBytes(RegisterDTO.password)),
                 PasswordSalt=hmac.Key,
+                City = RegisterDTO.City,
+                Street = RegisterDTO.Street,
+                Appartment = RegisterDTO.Appartment.ToString(),
+                County = RegisterDTO.County,
+                HomeNumber = RegisterDTO.HomeNumber,
+                Entrance = RegisterDTO.Entrance.ToString(),
                 isApproved=0,
                 isMedic=0,
                 validated=0,
