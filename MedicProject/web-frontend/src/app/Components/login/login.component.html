@@ -104,10 +104,11 @@
         </div>
       <input type="password" class="input" placeholder="password" formControlName="password" required/>
       <span *ngIf = "!loginForm.get('password').valid && loginForm.get('password').touched">
-        <p class="red">Password is required</p>
+        <span class="red">Password is required</span>
       </span>
+      <br>
       <span *ngIf = "error()">
-        <p class="red">Invalid credentials</p>
+        <span class="red">Invalid credentials</span>
       </span>
       <button type="submit">login</button>
       <p class="message">Not registered? <a routerLink="/register">Create an account</a></p>

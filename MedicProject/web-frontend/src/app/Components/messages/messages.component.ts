@@ -60,12 +60,15 @@ export class MessagesComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(){
-    this.message.content = this.chatForm.get('Content').value;
-    this.message.receiverEmail = this.email;
-    console.log(this.message);
-    this.messageService.sendMessage(this.message).then(() => {
-      this.chatForm.reset();
-    });
+    if(this.chatForm.get("Content").value == null){
+      console.log(this.chatForm.get('Content'));
+    }else{
+      this.message.content = this.chatForm.get('Content').value;
+      this.message.receiverEmail = this.email;
+      this.messageService.sendMessage(this.message).then(() => {
+        this.chatForm.reset();
+      });
+    }
   }
 
   ngOnDestroy(){

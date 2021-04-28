@@ -19,7 +19,6 @@
             <li routerLink="/home">HOME</li>
             <li routerLink="/history" *ngIf="this.accountService.isUserLoggedIn == true && this.accountService.isApproved == true && this.accountService.role  == 0">HISTORY</li>
             <li routerLink="/doctorpatients" *ngIf = "this.accountService.isUserLoggedIn  == true && this.accountService.isApproved == true && this.accountService.role  == 1">PATIENTS</li>
-            <li routerLink="/doctors" *ngIf = "this.accountService.role  == 0">DOCTORS</li>
             <li routerLink="/appointments" *ngIf = "this.accountService.isUserLoggedIn  == true && this.accountService.isApproved == true && this.accountService.role  == 0">APPOINTMENTS</li>
             <li routerLink="/doctorappointments" *ngIf = "this.accountService.isUserLoggedIn  == true && this.accountService.isApproved == true && this.accountService.role  == 1">APPOINTMENTS</li>
             <!-- <li routerLink="/historic" *ngIf = "this.userService.isUserLoggedIn  == true && this.userService.isApproved == true && this.userService.role  == 0">PAST APPOINTMENTS</li> -->

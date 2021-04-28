@@ -118,21 +118,60 @@
       <form class="register-form" [formGroup] = "registerForm" (ngSubmit) = "onSubmit()">
         <div class="reg">Sign Up</div><br>
         <input type="text" placeholder="First Name" formControlName = "firstName" required/>
+        <span *ngIf = "!registerForm.get('firstName').valid && registerForm.get('firstName').touched">
+          <span class="red">First name is required</span>
+        </span>
         <input type="text" placeholder="Last Name" formControlName = "lastName" required/>
+        <span *ngIf = "!registerForm.get('lastName').valid && registerForm.get('lastName').touched">
+          <span class="red">Last name is required</span>
+        </span>
         <input type="text" placeholder=" Social Security number" formControlName ="cnp" required/>
+        <span *ngIf = "!registerForm.get('cnp').valid && registerForm.get('cnp').touched">
+          <span class="red">Social Security number is required</span>
+        </span>
         <div class="data">Birthday:</div>
         <input type="date" placeholder="Birthday" formControlName = "dateOfBirth" required/>
+        <span *ngIf = "!registerForm.get('dateOfBirth').valid && registerForm.get('dateOfBirth').touched">
+          <span class="red">Your birthday date is required</span>
+        </span>
         <input type="email" placeholder="Email" formControlName = "email" required/>
+        <span *ngIf = "!registerForm.get('email').valid && registerForm.get('email').touched">
+          <span class="red">Email is required</span>
+        </span>
         <input type="text" placeholder="Phone number" formControlName = "phoneNumber" required/>
+        <span *ngIf = "!registerForm.get('phoneNumber').valid && registerForm.get('phoneNumber').touched">
+          <span class="red">Phone number is required</span>
+        </span>
         <input type="password" placeholder="Password" formControlName = "password" required/>
+        <span *ngIf = "!registerForm.get('password').valid && registerForm.get('password').touched">
+          <span class="red">Password is required</span>
+        </span>
         <input type="password" placeholder="Confirm Password" formControlName = "repeatPassword" required/>
+        <span *ngIf = "!registerForm.get('repeatPassword').valid && registerForm.get('repeatPassword').touched">
+          <span class="red">Confirm password is required</span>
+        </span>
         <input type="text" placeholder="City" formControlName = "City" required/>
+        <span *ngIf = "!registerForm.get('City').valid && registerForm.get('City').touched">
+          <span class="red">City is required</span>
+        </span>
         <input type="text" placeholder="Street" formControlName = "Street" required/>
+        <span *ngIf = "!registerForm.get('Street').valid && registerForm.get('Street').touched">
+          <span class="red">Street is required</span>
+        </span>
         <input type="number" placeholder="Home number" formControlName = "HomeNumber" required/>
+        <span *ngIf = "!registerForm.get('HomeNumber').valid && registerForm.get('HomeNumber').touched">
+          <span class="red">Home number is required</span>
+        </span>
         <input type="text" placeholder="County" formControlName = "County" required/>
+        <span *ngIf = "!registerForm.get('County').valid && registerForm.get('County').touched">
+          <span class="red">County is required</span>
+        </span>
         <input type="number" placeholder="Appartment" formControlName = "Appartment" required/>
         <input type="number" placeholder="Entrance" formControlName = "Entrance" required/>
         <div class="doctors">Choose a doctor:</div>
+        <span *ngIf = "!registerForm.get('doctorId').valid && registerForm.get('doctorId').touched">
+          <span class="red">A medic is required. Please select one.</span>
+        </span>
           <select name="doctors" id="doctors" formControlName = "doctorId" required>
             <option value="" disabled selected></option>
             <option *ngFor="let doctor of doctors" [ngValue]="doctor.id">{{doctor.firstName}} {{doctor.lastName}}</option>
@@ -141,28 +180,4 @@
         <p class="message">Already registered? <a routerLink="/login">Login</a></p>
       </form>
     </div>
-</div>
-<!--romana-->
-<div class="register-page" *ngIf = "this.accountService.language == 1">
-  <div class="form">
-    <form class="register-form" [formGroup] = "registerForm" (ngSubmit) = "onSubmit()">
-      <div class="reg">Inregistreaza-te</div><br>
-      <input type="text" placeholder="Prenume" formControlName = "firstName" required/>
-      <input type="text" placeholder="Nume de familie" formControlName = "lastName" required/>
-      <input type="text" placeholder=" Cod Numeric Personal" formControlName ="cnp" required/>
-      <div class="data">Ziua de nastere:</div>
-      <input type="date" placeholder="Ziua de nastere" formControlName = "dateOfBirth" required/>
-      <input type="email" placeholder="Email" formControlName = "email" required/>
-      <input type="text" placeholder="Numar telefon" formControlName = "phoneNumber" required/>
-      <input type="password" placeholder="Parola" formControlName = "password" required/>
-      <input type="password" placeholder="Confirmare parola" formControlName = "repeatPassword" required/>
-      <div class="doctors">Alege un doctor:</div>
-        <select name="doctors" id="doctors" formControlName = "doctorId" required>
-          <option value="" disabled selected></option>
-          <option *ngFor="let doctor of doctors" [ngValue]="doctor.id">{{doctor.firstName}} {{doctor.lastName}}</option>
-        </select><br><br>
-      <button type="submit">Inregistreaza-te</button>
-      <p class="message">Esti deja inregistrat? <a routerLink="/login">Autentificare</a></p>
-    </form>
-  </div>
 </div>

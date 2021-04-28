@@ -1,1 +1,15 @@
-<p>history works!</p>
+<div class="container">
+  <h2>Appointment's history</h2>
+  <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-2">Pacient Name</div>
+      <div class="col col-3">Date</div>
+      <div class="col col-4">Hour</div>
+    </li>
+    <li class="table-row" *ngFor="let app of appointments">
+      <div class="col col-2" data-label="Pacient Name">{{app.user.firstName}} {{app.user.lastName}}</div>
+      <div class="col col-3" data-label="date">{{app.date | date: 'longDate'}}</div>
+      <div class="col col-4" data-label="hour">{{app.hour}}</div>
+    </li>
+  </ul>
+</div>
