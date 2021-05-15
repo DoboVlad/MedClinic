@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MedicProject.Models
 {
     [Table("APPOINTMENTS")]
-    public class Appointments
+    public class Appointment
     {
         public int Id { get; set; }
       
@@ -18,8 +18,6 @@ namespace MedicProject.Models
         public string hour { get; set; }
 
         public string endHour { get; set; }
-
-        public ICollection<Result> result { get; set; }
 
         public User User {get; set;}
 

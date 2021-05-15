@@ -52,7 +52,7 @@ namespace MedicProject.Models
         public ICollection<User> Pacients{get;set;}
        
        
-        public ICollection<Appointments> Appointments {get; set;}
+        public ICollection<Appointment> Appointments {get; set;}
 
         public int Getage(){
           return dateOfBirth.CalculateAge();

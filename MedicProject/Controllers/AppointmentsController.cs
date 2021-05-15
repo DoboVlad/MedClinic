@@ -32,7 +32,7 @@ namespace MedicProject.Controllers
         [HttpPost]
         [Route("createApp")]
         [Authorize]// only the users with a token can access this method
-        public async Task<ActionResult<Appointments>> createAppointment(CreateAppointmentDTO app)
+        public async Task<ActionResult<Appointment>> createAppointment(CreateAppointmentDTO app)
         {
             if(await AppointmentDateExist(app.date, app.hour))
             {
@@ -42,7 +42,7 @@ namespace MedicProject.Controllers
             var useremail = User.FindFirst(ClaimTypes.Email)?.Value;
             var user = await _context.users.Where(p => p.email==useremail).FirstAsync();
 
-            var Appointment = new Appointments();
+            var Appointment = new Appointment();
 
             if(app.name != null)
             {
@@ -66,7 +66,7 @@ namespace MedicProject.Controllers
 
         // return all the appointements made by a user
         [HttpGet("{userId}")]
-        public async Task<ActionResult<IList<Appointments>>> getAppointments(int userId)
+        public async Task<ActionResult<IList<Appointment>>> getAppointments(int userId)
         {
             // SELECT * FROM APPOINTMENTS a
             // WHERE a.userId = userId
@@ -198,7 +198,7 @@ namespace MedicProject.Controllers
         // history and next app get by id
 
         [HttpPut("updateAppointment")]
-        public async Task<ActionResult> updateAppointment(Appointments appointment)
+        public async Task<ActionResult> updateAppointment(Appointment appointment)
         {
             var app = await _context.appointments
                 .Include(u => u.User)

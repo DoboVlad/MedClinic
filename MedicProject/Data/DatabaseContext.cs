@@ -16,17 +16,13 @@ namespace MedicProject.Data
         
         public DbSet<User> users { get; set; }
 
-        public DbSet<Appointments> appointments { get; set; }
+        public DbSet<Appointment> appointments { get; set; }
 
         public DbSet<Message> messages {get; set;}
 
         public DbSet<Schedule> schedules {get; set;}
 
         public DbSet<Hour> hours {get; set;}
-
-        public DbSet<Result> result { get; set; }
-
-        public DbSet<Medicine> medicine { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -40,7 +36,7 @@ namespace MedicProject.Data
                 .WithMany(m => m.MessagesSent)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Entity<Appointments>()
+            builder.Entity<Appointment>()
                 .HasOne(u => u.User)
                 .WithMany(a => a.Appointments)
                 .OnDelete(DeleteBehavior.Cascade)
