@@ -34,7 +34,6 @@ namespace MedicProject.Controllers
             var day = date.ToString("ddd");
 
             var availableDate = await _context.hours
-                                        .Where(cond => cond.Availability == 1)
                                         .Where(cond => cond.schedule.day == day)
                                         .OrderBy(cond => cond.startHour)
                                         .ToListAsync();

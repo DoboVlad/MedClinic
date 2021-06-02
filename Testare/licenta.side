@@ -1,0 +1,487 @@
+{
+  "id": "0bd55c15-e3e4-4787-be36-c77145c85a91",
+  "version": "2.0",
+  "name": "licenta",
+  "url": "http://localhost:4200",
+  "tests": [{
+    "id": "824170c3-f32c-491a-8eb2-474ce4e358b6",
+    "name": "Login",
+    "commands": [{
+      "id": "24f3ed0c-2f7d-4933-9a3a-1e25c0d704b7",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e701b081-7059-426e-ae6b-eabaa0bc21b9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9d615bf5-6cba-4b36-a2a5-386f72ee9297",
+      "comment": "",
+      "command": "click",
+      "target": "css=.left-nav > li",
+      "targets": [
+        ["css=.left-nav > li", "css:finder"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'ACCOUNT')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e63bfb48-359b-4067-9c94-5d4c12951f88",
+      "comment": "",
+      "command": "click",
+      "target": "css=.input:nth-child(3)",
+      "targets": [
+        ["css=.input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "27a706bf-47ab-421a-849b-0ecb307f851c",
+      "comment": "",
+      "command": "type",
+      "target": "css=.input:nth-child(3)",
+      "targets": [
+        ["css=.input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "dobocanvlad1@gmail.com"
+    }, {
+      "id": "78480d8a-5e6f-4c5a-95cf-2713cc5b23ff",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ng-pristine",
+      "targets": [
+        ["css=.ng-pristine", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "vlad"
+    }, {
+      "id": "13236fa3-ea54-4c5d-afa5-1cd2140b1632",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.ng-untouched",
+      "targets": [
+        ["css=.ng-untouched", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "880ba13b-b8f2-42b0-b39c-f028256eff2b",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(3)",
+      "targets": [
+        ["css=li:nth-child(3)", "css:finder"],
+        ["xpath=//li[3]", "xpath:position"],
+        ["xpath=//li[contains(.,'APPOINTMENTS')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a360584e-e2e5-413e-9223-0c11319ae260",
+    "name": "See pacients",
+    "commands": [{
+      "id": "9f84c569-ab39-4e9c-a76a-56d67508d54f",
+      "comment": "",
+      "command": "open",
+      "target": "/home",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1333c747-1c45-4617-a872-a0ef1aebf9dd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "808x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4b135bf3-3d3e-4493-8aa6-b512fd75b7f8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.left-nav > li",
+      "targets": [
+        ["css=.left-nav > li", "css:finder"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'ACCOUNT')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f0696403-8e13-4b15-a007-2a62d6d41002",
+      "comment": "",
+      "command": "click",
+      "target": "css=.input:nth-child(3)",
+      "targets": [
+        ["css=.input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "64359871-9028-4064-9108-2f0a3e4af957",
+      "comment": "",
+      "command": "type",
+      "target": "css=.input:nth-child(3)",
+      "targets": [
+        ["css=.input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "medic@gmail.com"
+    }, {
+      "id": "6ebe0b42-fcbb-4237-bbed-60ba79ca2296",
+      "comment": "",
+      "command": "type",
+      "target": "css=.ng-untouched",
+      "targets": [
+        ["css=.ng-untouched", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "vlad"
+    }, {
+      "id": "23d76c8d-4a79-4c9e-bb40-b487f4ff73c4",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8bc8444d-db77-49b0-b3b8-61a6779a76e3",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "09825f44-54b6-433d-9bb7-bdaf33614fc8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.right-nav > li:nth-child(2)",
+      "targets": [
+        ["css=.right-nav > li:nth-child(2)", "css:finder"],
+        ["xpath=//div[2]/li[2]", "xpath:position"],
+        ["xpath=//li[contains(.,'PATIENTS')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f2478c2c-e2df-4045-b7c6-8dea2289bde9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mat-row:nth-child(1) > .cdk-column-firstName",
+      "targets": [
+        ["css=.mat-row:nth-child(1) > .cdk-column-firstName", "css:finder"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Vlad Dobocan')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "931736f8-3b5e-4547-a5ad-afa6fda7fec0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mat-row:nth-child(2) .button-edit",
+      "targets": [
+        ["css=.mat-row:nth-child(2) .button-edit", "css:finder"],
+        ["xpath=//button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e66df67e-a308-48c3-a047-6a40983ef658",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttons > button:nth-child(2)",
+      "targets": [
+        ["css=.buttons > button:nth-child(2)", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//mat-dialog-container[@id='mat-dialog-0']/app-update-account/form/div[2]/div/button[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div/button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "694afafd-50a7-47a0-923c-1a423538f172",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mat-row:nth-child(3) > .cdk-column-firstName",
+      "targets": [
+        ["css=.mat-row:nth-child(3) > .cdk-column-firstName", "css:finder"],
+        ["xpath=//tr[3]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Marian Pop')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b41caf51-11c6-4a8e-b111-b61d7666e154",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mat-row:nth-child(4) .button-edit",
+      "targets": [
+        ["css=.mat-row:nth-child(4) .button-edit", "css:finder"],
+        ["xpath=//tr[4]/td/div/div[2]/div/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "52bfee5c-05cc-40e9-bda2-126fb10f4003",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttons > button:nth-child(2)",
+      "targets": [
+        ["css=.buttons > button:nth-child(2)", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//mat-dialog-container[@id='mat-dialog-1']/app-update-account/form/div[2]/div/button[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div/button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "28179d24-d339-4ca3-be57-bdd5cf3a861e",
+    "name": "Create appointment medic",
+    "commands": [{
+      "id": "da1d266a-fe4e-467e-8872-22c611224e7f",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c5f69e2a-1dbb-4a4c-ab22-95a43cc9b26e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "810x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ca938c43-a48c-4119-ab76-6352ac0e167c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.left-nav > li",
+      "targets": [
+        ["css=.left-nav > li", "css:finder"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'ACCOUNT')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "db8f87bb-2bee-4459-b2d3-5123d1c30904",
+      "comment": "",
+      "command": "click",
+      "target": "css=.input:nth-child(3)",
+      "targets": [
+        ["css=.input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "488a3710-ddef-4edc-ad40-d1e7bfd1bdea",
+      "comment": "",
+      "command": "type",
+      "target": "css=.input:nth-child(3)",
+      "targets": [
+        ["css=.input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@type='text']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "medic@gmail.com"
+    }, {
+      "id": "2eb90a20-7e12-4de7-9a80-9051e5b1e894",
+      "comment": "",
+      "command": "type",
+      "target": "xpath=//input[@type='password']",
+      "targets": [
+        ["css=.ng-untouched", "css:finder"],
+        ["xpath=//input[@type='password']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "vlad"
+    }, {
+      "id": "3934cf34-2681-4d5a-9789-4116e0d0fcbb",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b318d16c-486c-4ad9-9a8a-a296f9c8c051",
+      "comment": "",
+      "command": "click",
+      "target": "css=.right-nav > li:nth-child(3)",
+      "targets": [
+        ["css=.right-nav > li:nth-child(3)", "css:finder"],
+        ["xpath=//div[2]/li[3]", "xpath:position"],
+        ["xpath=//li[contains(.,'APPOINTMENTS')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "616e5253-fe0e-4c6f-b4b9-28f725d8daaa",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-4:nth-child(3) .btn",
+      "targets": [
+        ["css=.col-md-4:nth-child(3) .btn", "css:finder"],
+        ["xpath=//div[3]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cde87ea0-8ab3-475f-83c2-bc9d47d7079a",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=path",
+      "targets": [
+        ["css=path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "ad1976eb-76f4-4053-9dcb-cd82afe4653c",
+      "comment": "",
+      "command": "click",
+      "target": "css=path",
+      "targets": [
+        ["css=path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "66aff09a-cdc4-45fd-842b-a32dd650b4e7",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=path",
+      "targets": [
+        ["css=path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "efd44706-9572-4e42-b3c6-7fed81d43721",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ng-star-inserted:nth-child(4) > .mat-calendar-body-cell:nth-child(5) > .mat-calendar-body-cell-content",
+      "targets": [
+        ["css=.ng-star-inserted:nth-child(4) > .mat-calendar-body-cell:nth-child(5) > .mat-calendar-body-cell-content", "css:finder"],
+        ["xpath=//mat-calendar[@id='mat-datepicker-0']/div/mat-month-view/table/tbody/tr[4]/td[5]/div", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[5]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c69d0ce6-5aca-4411-b168-fbbbf1d27d0b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mat-select-placeholder",
+      "targets": [
+        ["css=.mat-select-placeholder", "css:finder"],
+        ["xpath=//div[@id='mat-select-value-1']/span", "xpath:idRelative"],
+        ["xpath=//mat-select/div/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,' ')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8566ec03-8ed6-4b5a-9acd-a5c6b277ef60",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mat-select-arrow-wrapper",
+      "targets": [
+        ["css=.mat-select-arrow-wrapper", "css:finder"],
+        ["xpath=//mat-select[@id='mat-select-0']/div/div[2]", "xpath:idRelative"],
+        ["xpath=//mat-select/div/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f7490f7e-c7a0-45e3-81d2-5679fb3f5a09",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ng-tns-c84-10 > .mat-form-field-infix",
+      "targets": [
+        ["css=.ng-tns-c84-10 > .mat-form-field-infix", "css:finder"],
+        ["xpath=//mat-dialog-container[@id='mat-dialog-0']/app-add-appointment/form/div/mat-form-field[3]/div/div/div", "xpath:idRelative"],
+        ["xpath=//mat-form-field[3]/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "996494ab-5860-4414-afa5-6494a5e1603d",
+      "comment": "",
+      "command": "type",
+      "target": "id=mat-input-1",
+      "targets": [
+        ["id=mat-input-1", "id"],
+        ["name=name", "name"],
+        ["css=#mat-input-1", "css:finder"],
+        ["xpath=//input[@id='mat-input-1']", "xpath:attributes"],
+        ["xpath=//mat-dialog-container[@id='mat-dialog-0']/app-add-appointment/form/div/mat-form-field[3]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//mat-form-field[3]/div/div/div/input", "xpath:position"]
+      ],
+      "value": "Vlad"
+    }, {
+      "id": "7aa42b3e-b4e3-47d2-b5e5-9fd2e0cfe487",
+      "comment": "",
+      "command": "click",
+      "target": "css=.buttons > button:nth-child(1)",
+      "targets": [
+        ["css=.buttons > button:nth-child(1)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//mat-dialog-container[@id='mat-dialog-0']/app-add-appointment/form/div/div/button", "xpath:idRelative"],
+        ["xpath=//div/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2fc71675-6ca2-42be-bb42-0478cb87c03b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ng-star-inserted:nth-child(3) > .cal-cell-row > .cal-has-events > .cal-cell-top",
+      "targets": [
+        ["css=.ng-star-inserted:nth-child(3) > .cal-cell-row > .cal-has-events > .cal-cell-top", "css:finder"],
+        ["xpath=//div[3]/div/mwl-calendar-month-cell[4]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ba11ec94-20ed-4b0a-a317-83f576ef0986",
+      "comment": "",
+      "command": "click",
+      "target": "css=.cal-event-title",
+      "targets": [
+        ["css=.cal-event-title", "css:finder"],
+        ["xpath=//mwl-calendar-event-title/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Vlad | Hour: 10:30')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c2c6530-bc84-4b94-b2b2-b98155c3109b",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(3)",
+      "targets": [
+        ["css=button:nth-child(3)", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//mat-dialog-container[@id='mat-dialog-1']/app-delete-appointment/div/form/div/div/button[3]", "xpath:idRelative"],
+        ["xpath=//button[3]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "34fdb23e-a626-46b3-aa07-3b8e4354e002",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["824170c3-f32c-491a-8eb2-474ce4e358b6"]
+  }],
+  "urls": ["http://localhost:4200/"],
+  "plugins": []
+}

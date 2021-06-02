@@ -26,41 +26,6 @@
     </div>
     </div>
 </form>
-<form class="second" [formGroup]="resultForm" (onSubmit)="submitResult()">
-  <h1 mat-dialog-title>Result</h1>
-  <div class="left-section">
-    <mat-form-field appearance="fill">
-      <mat-label>Result </mat-label>
-      <input matInput formControlName="result">
-    </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Medicine </mat-label>
-    <input matInput formControlName="medicine">
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Dosage </mat-label>
-    <input matInput formControlName="dosage">
-  </mat-form-field>
-  <div class="helper">
-    <button mat-button (click)="addToList()">Add to list</button>
-  </div>
-  <br>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Medicine list</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let med of medicineList">
-        {{med.medicine}} - {{med.dosage}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <div class="button_save">
-    <button mat-button type="submit" style="width:100px;" [disabled] = "resultForm.invalid">Save</button>
-  </div>
-  </div>
-</form>
 </div>
 
 

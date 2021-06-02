@@ -18,7 +18,7 @@
             <p class="label">Date:</p> <input type="date" min="{{this.minDate | date: 'yyyy-MM-dd'}}" max="{{this.newDate | date: 'yyyy-MM-dd'}}"  formControlName="date"><br><br>
             <p class="label">Hour:</p>
             <!-- <input type="time" step="1800" min="09:00" formControlName="hour"><br> -->
-            <select name="hour" id="hour" formControlName = "hour" required (mouseover)="onSelectedDate()">
+            <select name="hour" id="hour" formControlName = "hour" required (click)="onSelectedDate()">
               <option value="" disabled selected></option>
               <option *ngFor="let hour of hours" [ngValue]="hour.startHour">{{hour.startHour}}:{{hour.endHour}}</option>
             </select><br><br>
