@@ -70,7 +70,7 @@ namespace MedicProject.Helpers
         <br></br>
         <div class='semnatura'>
             <div>Semnatura medic</div>
-            <div style='text-align:center;'>{17}</div>
+            <img src='https://dezmembrariandrei.ro/wp-content/uploads/2017/06/semnatura.png' width='200px'></img>
         </div>
         </body>
         </html>
